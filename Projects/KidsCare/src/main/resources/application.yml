@@ -3,6 +3,7 @@ logging:
     org:
       springframework:
         security: TRACE
+        
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 server:
