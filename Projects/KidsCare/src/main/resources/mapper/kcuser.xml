@@ -5,4 +5,11 @@
 		SELECT *
 		FROM kcuser;
 	</select>
+	
+	<insert id="add">
+		INSERT into kcuser
+		VALUES (#{userId},#{name},#{phone},#{email},#{role})
+	</insert>
+	
+	
 </mapper>
