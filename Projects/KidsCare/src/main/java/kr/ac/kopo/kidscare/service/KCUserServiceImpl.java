@@ -19,4 +19,19 @@ public class KCUserServiceImpl implements KCUserService {
 		return dao.list();
 	}
 
+	@Override
+	public void add(KCUser item) {
+		dao.add(item);
+	}
+
+	@Override
+	public KCUser item(String userId) {
+		return dao.item(userId);
+	}
+
+	@Override
+	public void update(KCUser item) {
+		dao.update(item);
+	}
+
 }
