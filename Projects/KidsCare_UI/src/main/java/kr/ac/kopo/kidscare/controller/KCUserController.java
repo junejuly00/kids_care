@@ -30,6 +30,19 @@ public class KCUserController {
 	
 	private final String defaultUrl = "http://localhost:9090/kcuser/default/";
 	
+	@GetMapping("/list") 
+	String list(Model model) throws JsonProcessingException {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/list", KCUser.class);
+		model.addAttribute(userInfo);
+		
+		return "/kcuser/list";
+		
+	}
+	
+	
 	@PostMapping("/default/register")
 	String register(KCUser userInfo) throws JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
