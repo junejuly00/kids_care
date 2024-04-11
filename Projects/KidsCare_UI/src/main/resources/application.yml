@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: KidsCare_UI
+    
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .jsp
+  
   security:
     oauth2:
       client:
