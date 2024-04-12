@@ -1,6 +1,5 @@
 package kr.ac.kopo.kidscare.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +21,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.JobOffer;
+import kr.ac.kopo.kidscare.model.BabySitter;
 
 @Controller
-public class JobOfferController {
+public class BabySitterController {
 	
-	final String url = "http://localhost:9090/joboffer/";
+	final String url = "http://localhost:9090/babysitter/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -40,33 +39,31 @@ public class JobOfferController {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
-	
+		
 		HttpEntity<String> req = new HttpEntity<String>(header);
 		
 		ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
 		
 		String body = resp.getBody();
 		
-
-		List<JobOffer> list = om.readValue(body, new TypeReference<List<JobOffer>>() {} );
-
+		List<BabySitter> list = om.readValue(body, new TypeReference<List<BabySitter>>() {	});
 		model.addAttribute("list", list);
-						
-		return "joboffer/list";	
+		
+		return "babysitter/list";
 	}
 	
 	@GetMapping("/add")
 	String add() {
-		return "joboffer/add";
+		return "babysitter/add";
 	}
 	
 	@PostMapping("/add")
-	String add(JobOffer offerInfo) throws JsonProcessingException {
+	String add(BabySitter sitterInfo) throws JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(offerInfo);
+		String jsonString = om.writeValueAsString(sitterInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -79,27 +76,27 @@ public class JobOfferController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{offerId}")
-	String update(@PathVariable Long offerId, Model model) {
-		JobOffer offerInfo = rest.getForObject(url + offerId, JobOffer.class);
+	@GetMapping("/update/{sitterId}")
+	String update(@PathVariable String sitterId, Model model) {
+		BabySitter sitterInfo = rest.getForObject(url + sitterId, BabySitter.class);
 		
-		model.addAttribute("offerInfo", offerInfo);
+		model.addAttribute("sitterInfo", sitterInfo);
 		
-		return "joboffer/update";
+		return "babysitter/update";
 	}
 	
-	@PostMapping("/update/{offerId}")
-	String update(@PathVariable String offerId, JobOffer offerInfo) throws JsonProcessingException {
-		offerInfo.setOfferId(offerId);
+	@PostMapping("/update/{sitterId}")
+	String update(@PathVariable String sitterId, BabySitter sitterInfo) throws JsonProcessingException {
+		sitterInfo.setSitterId(sitterId);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
-		String jsonString = om.writeValueAsString(offerInfo);
+		String jsonString = om.writeValueAsString(sitterInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + offerId, HttpMethod.PUT, req, Integer.class);
+		ResponseEntity<Integer> resp = rest.exchange(url + sitterId, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
@@ -108,9 +105,9 @@ public class JobOfferController {
 		return "redirect:../list";
 	}
 	
-	@GetMapping("/delete/{offerId}")
-	String delete(@PathVariable String offerId) {
-		RequestEntity<Void> req = RequestEntity.delete(url + offerId).build();
+	@GetMapping("/delete/{sitterId}")
+	String delete(@PathVariable String sitterId) {
+		RequestEntity<Void> req = RequestEntity.delete(url + sitterId).build();
 		
 		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
 		
@@ -118,4 +115,5 @@ public class JobOfferController {
 		
 		return "redirect:../list";
 	}
+	
 }
