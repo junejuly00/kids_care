@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.babysitter">
+
+	<select id="list">		
+		SELECT *
+		FROM babysitter		
+	</select>
+	
+	<insert id="add">
+		INSERT into babysitter
+		VALUES (#{sitterId},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope})		
+	</insert>
+	
+	<update id="update">
+		UPDATE babysitter
+		SET name=#{name},phone=#{phone},email=#{email},gender=#{gender},age=#{age},major=#{major},scope=#{scope}
+		WHERE sitter=#{sitterId}
+	</update>
+	
+</mapper>
