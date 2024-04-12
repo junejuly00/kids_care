@@ -29,20 +29,19 @@ public class JobOfferController {
 	}
 
 	@PostMapping
-	void add(@RequestBody JobOffer item) {
-		service.add(item);
+	void add(@RequestBody JobOffer offerInfo) {
+		service.add(offerInfo);
 	}
 	
 	@GetMapping("/{offerId}")
-	JobOffer item(@PathVariable String offerId) {
-		return service.item(offerId);
+	JobOffer getInfo(@PathVariable String offerId) {
+		return service.getOfferInfo(offerId);
 	}
 	
 	@PutMapping("/{offerId}")
-	void update(@PathVariable String offerId, @RequestBody JobOffer item) {
-		item.setOfferId(offerId);
+	void update(@PathVariable String offerId, @RequestBody JobOffer offerInfo) {
+		offerInfo.setOfferId(offerId);
 		
-		service.update(item);
+		service.update(offerInfo);
 	}
-	
 }

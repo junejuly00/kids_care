@@ -8,10 +8,10 @@ public interface JobOfferDao {
 
 	List<JobOffer> list();
 
-	void add(JobOffer item);
+	void add(JobOffer offerInfo);
 
-	JobOffer item(String offerId);
+	JobOffer getOfferInfo(String offerId);
 
-	void update(JobOffer item);
+	void update(JobOffer offerInfo);
 
 }

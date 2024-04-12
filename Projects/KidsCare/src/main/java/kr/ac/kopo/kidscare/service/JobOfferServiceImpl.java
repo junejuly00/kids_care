@@ -20,18 +20,18 @@ public class JobOfferServiceImpl implements JobOfferService {
 	}
 
 	@Override
-	public void add(JobOffer item) {
-		dao.add(item);
+	public void add(JobOffer offerInfo) {
+		dao.add(offerInfo);
 	}
 
 	@Override
-	public JobOffer item(String offerId) {
-		return dao.item(offerId);
+	public JobOffer getOfferInfo(String offerId) {
+		return dao.getOfferInfo(offerId);
 	}
 
 	@Override
-	public void update(JobOffer item) {
-		dao.update(item);
+	public void update(JobOffer offerInfo) {
+		dao.update(offerInfo);
 	}
 
 }

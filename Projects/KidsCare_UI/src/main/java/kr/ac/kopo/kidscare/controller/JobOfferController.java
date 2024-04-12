@@ -1,8 +1,6 @@
 package kr.ac.kopo.kidscare.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -47,8 +46,9 @@ public class JobOfferController {
 		
 		String body = resp.getBody();
 		
-		JobOffer jobOffer = om.readValue(body, JobOffer.class);
-		model.addAttribute("jobOffer", jobOffer);
+		
+		List<JobOffer> list = om.readValue(body, new TypeReference<List<JobOffer>>() {} );
+		model.addAttribute("list", list);
 						
 		return "joboffer/list";	
 	}
@@ -59,12 +59,12 @@ public class JobOfferController {
 	}
 	
 	@PostMapping("/add")
-	String add(JobOffer item) throws JsonProcessingException {
+	String add(JobOffer offerInfo) throws JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(item);
+		String jsonString = om.writeValueAsString(offerInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -79,21 +79,21 @@ public class JobOfferController {
 	
 	@GetMapping("/update/{offerId}")
 	String update(@PathVariable Long offerId, Model model) {
-		JobOffer item = rest.getForObject(url + offerId, JobOffer.class);
+		JobOffer offerInfo = rest.getForObject(url + offerId, JobOffer.class);
 		
-		model.addAttribute("item", item);
+		model.addAttribute("offerInfo", offerInfo);
 		
 		return "joboffer/update";
 	}
 	
 	@PostMapping("/update/{offerId}")
-	String update(@PathVariable String offerId, JobOffer item) throws JsonProcessingException {
-		item.setOfferId(offerId);
+	String update(@PathVariable String offerId, JobOffer offerInfo) throws JsonProcessingException {
+		offerInfo.setOfferId(offerId);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
-		String jsonString = om.writeValueAsString(item);
+		String jsonString = om.writeValueAsString(offerInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
