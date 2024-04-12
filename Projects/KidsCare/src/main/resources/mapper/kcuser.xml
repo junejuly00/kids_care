@@ -3,7 +3,7 @@
 <mapper namespace="mapper.kcuser">
 	 <select id="list" >
 		SELECT *
-		FROM kcuser;
+		FROM kcuser
 	</select>
 	
 	<insert id="add">
@@ -11,5 +11,10 @@
 		VALUES (#{userId},#{name},#{phone},#{email},#{role})
 	</insert>
 	
+	<update id="update">
+		UPDATE kcuser
+		SET name=#{name},phone=#{phone},#{email},#{role}
+		WHERE userid=#{userid}
+	</update>
 	
 </mapper>
