@@ -20,18 +20,18 @@ public class KCUserServiceImpl implements KCUserService {
 	}
 
 	@Override
-	public void add(KCUser item) {
-		dao.add(item);
+	public void add(KCUser userInfo) {
+		dao.add(userInfo);
 	}
 
 	@Override
-	public KCUser item(String userId) {
-		return dao.item(userId);
+	public KCUser getUserInfo(String userId) {
+		return dao.getUserInfo(userId);
 	}
 
 	@Override
-	public void update(KCUser item) {
-		dao.update(item);
+	public void update(KCUser userInfo) {
+		dao.update(userInfo);
 	}
 
 }

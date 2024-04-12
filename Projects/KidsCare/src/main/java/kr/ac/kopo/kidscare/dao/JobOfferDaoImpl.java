@@ -20,18 +20,18 @@ public class JobOfferDaoImpl implements JobOfferDao {
 	}
 
 	@Override
-	public void add(JobOffer item) {
-		sql.insert("JobOffer.add",item);
+	public void add(JobOffer offerInfo) {
+		sql.insert("JobOffer.add",offerInfo);
 	}
 
 	@Override
-	public JobOffer item(String offerId) {
+	public JobOffer getOfferInfo(String offerId) {
 		return sql.selectOne("JobOffer.offerId",offerId);
 	}
 
 	@Override
-	public void update(JobOffer item) {
-		sql.update("JobOffer.update",item);
+	public void update(JobOffer offerInfo) {
+		sql.update("JobOffer.update",offerInfo);
 	}
 
 }
