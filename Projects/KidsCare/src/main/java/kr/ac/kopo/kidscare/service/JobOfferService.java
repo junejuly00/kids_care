@@ -8,10 +8,10 @@ public interface JobOfferService {
 
 	List<JobOffer> list();
 
-	void add(JobOffer item);
+	void add(JobOffer offerInfo);
 
-	JobOffer item(String offerid);
+	JobOffer getOfferInfo(String offerid);
 
-	void update(JobOffer item);
+	void update(JobOffer offerInfo);
 
 }

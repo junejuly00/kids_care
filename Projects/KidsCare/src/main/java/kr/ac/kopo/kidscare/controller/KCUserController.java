@@ -29,20 +29,20 @@ public class KCUserController {
 	}
 		
 	@PostMapping
-	void add(@RequestBody KCUser item) {
-		service.add(item);
+	void add(@RequestBody KCUser userInfo) {
+		service.add(userInfo);
 	}
 	
 	@GetMapping("/{userId}")
-	KCUser item(@PathVariable String userId) {
-		return service.item(userId);			
+	KCUser getUserInfo(@PathVariable String userId) {
+		return service.getUserInfo(userId);			
 	}
 	
 	@PutMapping("/{userId}")
-	void update(@PathVariable String userId, @RequestBody KCUser item) {
-		item.setUserId(userId);
+	void update(@PathVariable String userId, @RequestBody KCUser userInfo) {
+		userInfo.setUserId(userId);
 		
-		service.update(item);
+		service.update(userInfo);
 	}
 	
 	

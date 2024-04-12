@@ -8,10 +8,10 @@ public interface KCUserDao {
 
 	List<KCUser> list();
 
-	void add(KCUser item);
+	void add(KCUser userInfo);
 
-	KCUser item(String userId);
+	KCUser getUserInfo(String userId);
 
-	void update(KCUser item);
+	void update(KCUser userInfo);
 
 }

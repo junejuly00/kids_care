@@ -8,10 +8,10 @@ public interface KCUserService {
 
 	List<KCUser> list();
 
-	void add(KCUser item);
+	void add(KCUser userInfo);
 
-	KCUser item(String userid);
+	KCUser getUserInfo(String userid);
 
-	void update(KCUser item);
+	void update(KCUser userInfo);
 
 }
