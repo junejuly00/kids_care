@@ -16,10 +16,12 @@ public class JobOfferDaoImpl implements JobOfferDao {
 
 	@Override
 	public List<JobOffer> list() {
-		return sql.selectList("joboffer.list");
+		return sql.selectList("mapper.joboffer.list");
 	}
 
 	@Override
+
+
 	public void add(JobOffer offerInfo) {
 		sql.insert("JobOffer.add",offerInfo);
 	}

@@ -8,12 +8,13 @@
 	
 	<insert id="add">
 		INSERT into joboffer
-		VALUES(#{offerid},#{userid},#{jobDate},#{jobInfo},#{estPay},#{viewCount})
+		VALUES(#{offerId},#{userId},#{jobDate},#{jobInfo},#{estPay},#{viewCount})
 	</insert>
 	
 	<update id="update">
 		update joboffer
-		SET offerid=#{offerid}, userid=#{userid},#{jobDate},#{jobInfo},#{estPay},#{viewCount})
+		SET userId=#{userId},#{jobDate},#{jobInfo},#{estPay},#{viewCount}
+		WHERE offerId=#{offerId}
 	</update>
 	
 </mapper>

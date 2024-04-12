@@ -16,23 +16,26 @@ public class KCUserDaoImpl implements KCUserDao {
 
 	@Override
 	public List<KCUser> list() {
-		return sql.selectList("kcuser.list");
+		return sql.selectList("mapper.kcuser.list");
 	}
 
 	@Override
+
 	public void add(KCUser userInfo) {
-		sql.insert("KCUser.add",userInfo);
+		sql.insert("mapper.kcuser.add",item);
 	}
 
 	@Override
 	public KCUser getUserInfo(String userId) {
-		return sql.selectOne("KCUser.userId",userId);
+		return sql.selectOne("mapper.kcuser.userId",userId);
+
 	}
 
 
 	@Override
 	public void update(KCUser userInfo) {
-		sql.update("KCUser.update",userInfo);
+		sql.update("mapper.kcuser.update",userInfo);
+
 	}
 
 }

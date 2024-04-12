@@ -14,7 +14,7 @@
 	<update id="update">
 		UPDATE kcuser
 		SET name=#{name},phone=#{phone},#{email},#{role}
-		WHERE userid=#{userid}
+		WHERE userId=#{userId}
 	</update>
 	
 </mapper>
