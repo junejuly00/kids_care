@@ -22,7 +22,7 @@ public class KCUserDaoImpl implements KCUserDao {
 	@Override
 
 	public void add(KCUser userInfo) {
-		sql.insert("mapper.kcuser.add",item);
+		sql.insert("mapper.kcuser.add",userInfo);
 	}
 
 	@Override
