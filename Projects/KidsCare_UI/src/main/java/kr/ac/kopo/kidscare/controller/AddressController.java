@@ -7,7 +7,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +21,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.Address;
 
 @Controller
-@RequestMapping("/babysitter")
-public class BabySitterController {
+@RequestMapping("/address")
+public class AddressController {
 	
-	final String url = "http://localhost:9090/babysitter/";
+	final String url = "http://localhost:9090/address/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -38,7 +37,6 @@ public class BabySitterController {
 	
 	@GetMapping("/list")
 	String list(Model model) throws JsonMappingException, JsonProcessingException {
-		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -48,28 +46,28 @@ public class BabySitterController {
 		
 		String body = resp.getBody();
 		
-		List<BabySitter> list = om.readValue(body, new TypeReference<List<BabySitter>>() {	});
-		model.addAttribute("list", list);
+		List<Address> list = om.readValue(body, new TypeReference<List<Address>>() {});
 		
-		return "babysitter/list";
+		model.addAttribute("list",list);
+		
+		return "address/list";
 	}
 	
 	@GetMapping("/add")
 	String add() {
-		return "babysitter/add";
+		return "address/add";
 	}
 	
 	@PostMapping("/add")
-	String add(BabySitter sitterInfo) throws JsonProcessingException {
-		
+	String add(Address addressInfo) throws JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
+		String jsonString = om.writeValueAsString(addressInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.postForEntity(url + "add", req, Integer.class);
+		ResponseEntity<Integer> resp = rest.postForEntity(url, req, Integer.class);
 		
 		Integer body = resp.getBody();
 		
@@ -78,27 +76,27 @@ public class BabySitterController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, Model model) {
-		BabySitter sitterInfo = rest.getForObject(url + sitterId, BabySitter.class);
+	@GetMapping("/update/{userName}")
+	String update(@PathVariable String userName, Model model) {
+		Address addressInfo = rest.getForObject(url + userName, Address.class);
 		
-		model.addAttribute("sitterInfo", sitterInfo);
+		model.addAttribute("addressInfo", addressInfo);
 		
-		return "babysitter/update";
+		return "address/update";
 	}
 	
-	@PostMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setSitterId(sitterId);
+	@PostMapping("/update/{userName}")
+	String update(@PathVariable String userName, Address addressInfo) throws JsonProcessingException {
+		addressInfo.setUserName(userName);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
+		String jsonString = om.writeValueAsString(addressInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + sitterId, HttpMethod.PUT, req, Integer.class);
+		ResponseEntity<Integer> resp = rest.exchange(url + userName, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
@@ -106,16 +104,5 @@ public class BabySitterController {
 		
 		return "redirect:../list";
 	}
-	
-	@GetMapping("/delete/{sitterId}")
-	String delete(@PathVariable String sitterId) {
-		RequestEntity<Void> req = RequestEntity.delete(url + sitterId).build();
-		
-		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
-		
-		System.out.println(result);
-		
-		return "redirect:../list";
-	}
-	
+
 }

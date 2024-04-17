@@ -7,7 +7,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +21,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.UserReview;
 
 @Controller
-@RequestMapping("/babysitter")
-public class BabySitterController {
-	
-	final String url = "http://localhost:9090/babysitter/";
+@RequestMapping("/userreview")
+public class UserReviewController {
+	final String url = "http://localhost:9090/userreview/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -48,24 +46,24 @@ public class BabySitterController {
 		
 		String body = resp.getBody();
 		
-		List<BabySitter> list = om.readValue(body, new TypeReference<List<BabySitter>>() {	});
+		List<UserReview> list = om.readValue(body, new TypeReference<List<UserReview>>() {});
+		
 		model.addAttribute("list", list);
 		
-		return "babysitter/list";
+		return "userreview/list";
 	}
 	
 	@GetMapping("/add")
 	String add() {
-		return "babysitter/add";
+		return "userreview/add";
 	}
 	
 	@PostMapping("/add")
-	String add(BabySitter sitterInfo) throws JsonProcessingException {
-		
+	String add(UserReview reviewInfo) throws JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
+		String jsonString = om.writeValueAsString(reviewInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -78,27 +76,27 @@ public class BabySitterController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, Model model) {
-		BabySitter sitterInfo = rest.getForObject(url + sitterId, BabySitter.class);
+	@GetMapping("/update/{reviewId}")
+	String update(@PathVariable String reviewId, Model model) {
+		UserReview reviewInfo = rest.getForObject(url + reviewId, UserReview.class);
 		
-		model.addAttribute("sitterInfo", sitterInfo);
+		model.addAttribute("reviewInfo", reviewInfo);
 		
-		return "babysitter/update";
+		return "userreview/update";
 	}
 	
-	@PostMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setSitterId(sitterId);
+	@PostMapping("/update/{reviewId}")
+	String update(@PathVariable String reviewId, UserReview reviewInfo) throws JsonProcessingException {
+		reviewInfo.setReviewId(reviewId);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
+		String jsonString = om.writeValueAsString(reviewInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + sitterId, HttpMethod.PUT, req, Integer.class);
+		ResponseEntity<Integer> resp = rest.exchange(url + reviewId, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
@@ -107,15 +105,6 @@ public class BabySitterController {
 		return "redirect:../list";
 	}
 	
-	@GetMapping("/delete/{sitterId}")
-	String delete(@PathVariable String sitterId) {
-		RequestEntity<Void> req = RequestEntity.delete(url + sitterId).build();
-		
-		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
-		
-		System.out.println(result);
-		
-		return "redirect:../list";
-	}
+	
 	
 }
