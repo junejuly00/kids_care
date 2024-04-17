@@ -2,7 +2,7 @@ package kr.ac.kopo.kidscare.model;
 
 public class JobCert {
 	private String certName;
-	private String sitterId;
+	private String username;
 	private String certDate;
 	public String getCertName() {
 		return certName;
@@ -11,10 +11,10 @@ public class JobCert {
 		this.certName = certName;
 	}
 	public String getSitterId() {
-		return sitterId;
+		return username;
 	}
 	public void setSitterId(String sitterId) {
-		this.sitterId = sitterId;
+		this.username = sitterId;
 	}
 	public String getCertDate() {
 		return certDate;
@@ -29,4 +29,5 @@ public class JobCert {
 		this.termination = termination;
 	}
 	private String termination;
+	
 }
