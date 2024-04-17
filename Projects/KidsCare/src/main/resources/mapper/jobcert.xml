@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.jobcert">
+	<select id="list">
+		SELECT * FROM jobcert
+	</select>
+	<insert id="add">
+		INSERT INTO jobcert
+		VALUES(#{certName},#{username},#{certDate},#{termination})
+	</insert>
+	<select id="select">
+		SELECT * FROM jobcert
+		WHERE certName=#{certName}
+	</select>
+	<update id="update">
+		UPDATE jobcert SET
+		username=#{username},certDate=#{certDate},termination=#{termination}
+		WHERE certName=#{certName}
+	</update>
+</mapper>

@@ -13,8 +13,10 @@ public class JobCert {
 	public String getSitterId() {
 		return username;
 	}
+
 	public void setSitterId(String username) {
 		this.username = username;
+
 	}
 	public String getCertDate() {
 		return certDate;
@@ -29,4 +31,5 @@ public class JobCert {
 		this.termination = termination;
 	}
 	private String termination;
+	
 }
