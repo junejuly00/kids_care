@@ -2,7 +2,7 @@ package kr.ac.kopo.kidscare.model;
 
 public class JobOffer {
 	private String offerId;
-	private String userId;
+	private String userName;
 	private String jobDate;
 	private String jobInfo;
 	private String estPay;
@@ -13,11 +13,11 @@ public class JobOffer {
 	public void setOfferId(String offerId) {
 		this.offerId = offerId;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getJobDate() {
 		return jobDate;

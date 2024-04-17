@@ -1,7 +1,8 @@
 package kr.ac.kopo.kidscare.model;
 
 public class KCUser {
-	private String userid;
+	private String userName;
+	private String password;
 	private String name;
 	private String phone;
 	private String email;
@@ -9,11 +10,11 @@ public class KCUser {
 	private String provider;
 	
 	
-	public String getUserid() {
-		return userid;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getName() {
 		return name;
@@ -44,6 +45,12 @@ public class KCUser {
 	}
 	public void setProvider(String provider) {
 		this.provider = provider;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
