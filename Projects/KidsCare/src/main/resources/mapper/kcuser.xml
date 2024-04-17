@@ -8,13 +8,13 @@
 	
 	<insert id="add">
 		INSERT into kcuser
-		VALUES (#{userId},#{name},#{phone},#{email},#{role})
+		VALUES (#{username},#{name},#{phone},#{email},#{role})
 	</insert>
 	
 	<update id="update">
 		UPDATE kcuser
 		SET name=#{name},phone=#{phone},#{email},#{role}
-		WHERE userId=#{userId}
+		WHERE username=#{username}
 	</update>
 	
 </mapper>

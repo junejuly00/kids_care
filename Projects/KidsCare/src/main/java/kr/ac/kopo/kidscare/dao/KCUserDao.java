@@ -10,7 +10,7 @@ public interface KCUserDao {
 
 	void add(KCUser userInfo);
 
-	KCUser getUserInfo(String userId);
+	KCUser getUserInfo(String username);
 
 	void update(KCUser userInfo);
 

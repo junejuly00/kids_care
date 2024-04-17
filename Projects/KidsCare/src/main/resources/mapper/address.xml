@@ -8,13 +8,13 @@
 	
 	<insert id="add">
 		INSERT into address
-		VALUES(#{userid},#{fullAddress},#{province},#{city},#{village})
+		VALUES(#{username},#{fullAddress},#{province},#{city},#{village})
 	</insert>
 	
 	<update id="update">
 		UPDATE Address
-		SET name=#{userId},fullAddress=#{fullAddress},#{province},#{city},#{village}
-		WHERE userId=#{userId}
+		SET name=#{username},fullAddress=#{fullAddress},#{province},#{city},#{village}
+		WHERE username=#{username}
 	</update>
 	
 </mapper>

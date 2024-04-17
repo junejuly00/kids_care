@@ -76,18 +76,18 @@ public class AddressController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{userName}")
-	String update(@PathVariable String userName, Model model) {
-		Address addressInfo = rest.getForObject(url + userName, Address.class);
+	@GetMapping("/update/{username}")
+	String update(@PathVariable String username, Model model) {
+		Address addressInfo = rest.getForObject(url + username, Address.class);
 		
 		model.addAttribute("addressInfo", addressInfo);
 		
 		return "address/update";
 	}
 	
-	@PostMapping("/update/{userName}")
-	String update(@PathVariable String userName, Address addressInfo) throws JsonProcessingException {
-		addressInfo.setUserName(userName);
+	@PostMapping("/update/{username}")
+	String update(@PathVariable String username, Address addressInfo) throws JsonProcessingException {
+		addressInfo.setUsername(username);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -96,7 +96,7 @@ public class AddressController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + userName, HttpMethod.PUT, req, Integer.class);
+		ResponseEntity<Integer> resp = rest.exchange(url + username, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		

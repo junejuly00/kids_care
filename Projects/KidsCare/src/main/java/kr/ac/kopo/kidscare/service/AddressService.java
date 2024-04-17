@@ -10,7 +10,7 @@ public interface AddressService {
 
 	void add(Address addressInfo);
 
-	Address addressInfo(String userId);
+	Address addressInfo(String username);
 
 	void update(Address addressInfo);
 

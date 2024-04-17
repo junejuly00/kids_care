@@ -10,7 +10,7 @@
 <body>
 	<table>
     <tr>
-        <th>userId</th>
+        <th>username</th>
         <th>email</th>
         <th>name</th>
         <th>phone</th>
@@ -20,7 +20,7 @@
     </tr>
     <c:forEach var="userInfo" items="${list}">
 	    <tr>
-	        <td>${userInfo.userId}</td>
+	        <td>${userInfo.username}</td>
 	        <td>${userInfo.email}</td>
 	        <td>${userInfo.name}</td>
 	        <td>${userInfo.phone}</td>

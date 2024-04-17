@@ -33,14 +33,14 @@ public class KCUserController {
 		service.add(userInfo);
 	}
 	
-	@GetMapping("/{userId}")
-	KCUser getUserInfo(@PathVariable String userId) {
-		return service.getUserInfo(userId);			
+	@GetMapping("/{username}")
+	KCUser getUserInfo(@PathVariable String username) {
+		return service.getUserInfo(username);			
 	}
 	
-	@PutMapping("/{userId}")
-	void update(@PathVariable String userId, @RequestBody KCUser userInfo) {
-		userInfo.setUserId(userId);
+	@PutMapping("/{username}")
+	void update(@PathVariable String username, @RequestBody KCUser userInfo) {
+		userInfo.setUsername(username);
 		
 		service.update(userInfo);
 	}

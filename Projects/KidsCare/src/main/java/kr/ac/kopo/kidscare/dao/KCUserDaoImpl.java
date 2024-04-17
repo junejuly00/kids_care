@@ -26,8 +26,8 @@ public class KCUserDaoImpl implements KCUserDao {
 	}
 
 	@Override
-	public KCUser getUserInfo(String userId) {
-		return sql.selectOne("mapper.kcuser.userId",userId);
+	public KCUser getUserInfo(String username) {
+		return sql.selectOne("mapper.kcuser.username",username);
 
 	}
 
