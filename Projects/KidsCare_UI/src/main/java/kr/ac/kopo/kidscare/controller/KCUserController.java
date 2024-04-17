@@ -67,8 +67,8 @@ public class KCUserController {
 	}
 	
 	@PostMapping("/default/update_info")
-	String updateInfo(@PathVariable String userName, KCUser userInfo) throws JsonProcessingException {
-		userInfo.setUserName(userName);
+	String updateInfo(@PathVariable String username, KCUser userInfo) throws JsonProcessingException {
+		userInfo.setUsername(username);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -77,7 +77,7 @@ public class KCUserController {
 		
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> response = rest.exchange(defaultUrl + "userName", HttpMethod.POST, request, Integer.class);
+		ResponseEntity<Integer> response = rest.exchange(defaultUrl + "username", HttpMethod.POST, request, Integer.class);
 		
 		Integer result = response.getBody();
 		

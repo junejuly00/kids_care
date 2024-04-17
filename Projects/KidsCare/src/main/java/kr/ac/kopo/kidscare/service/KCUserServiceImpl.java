@@ -25,8 +25,8 @@ public class KCUserServiceImpl implements KCUserService {
 	}
 
 	@Override
-	public KCUser getUserInfo(String userId) {
-		return dao.getUserInfo(userId);
+	public KCUser getUserInfo(String username) {
+		return dao.getUserInfo(username);
 	}
 
 	@Override

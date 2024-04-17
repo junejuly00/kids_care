@@ -2,8 +2,8 @@ package kr.ac.kopo.kidscare.model;
 
 public class Reservation {
 	private String resId;
-	private String userId;
-	private String sitterId;
+	private String username;
+	private String username;
 	private String resDate;
 	public String getResId() {
 		return resId;
@@ -11,17 +11,17 @@ public class Reservation {
 	public void setResId(String resId) {
 		this.resId = resId;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getSitterId() {
-		return sitterId;
+		return username;
 	}
-	public void setSitterId(String sitterId) {
-		this.sitterId = sitterId;
+	public void setSitterId(String username) {
+		this.username = username;
 	}
 	public String getResDate() {
 		return resDate;

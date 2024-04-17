@@ -8,6 +8,6 @@
 	
 	<insert id="add">
 		INSERT into userreview
-		VALUES (#{userId})
+		VALUES (#{username})
 	</insert>
 </mapper>

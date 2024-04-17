@@ -33,14 +33,14 @@ public class BabySitterController {
 		service.add(sitterInfo);
 	}
 	
-	@GetMapping("/{sitterId}")
-	BabySitter sitterInfo(@PathVariable String sitterId) {
-		return service.sitterInfo(sitterId);
+	@GetMapping("/{username}")
+	BabySitter sitterInfo(@PathVariable String username) {
+		return service.sitterInfo(username);
 	}
 	
-	@PutMapping("/{sitterId}")
-	void update(@PathVariable String sitterId, @RequestBody BabySitter sitterInfo) {
-		sitterInfo.setSitterId(sitterId);
+	@PutMapping("/{username}")
+	void update(@PathVariable String username, @RequestBody BabySitter sitterInfo) {
+		sitterInfo.setSitterId(username);
 
 		service.update(sitterInfo);
 	}

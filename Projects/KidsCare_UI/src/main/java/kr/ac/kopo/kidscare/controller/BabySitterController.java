@@ -78,18 +78,18 @@ public class BabySitterController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, Model model) {
-		BabySitter sitterInfo = rest.getForObject(url + sitterId, BabySitter.class);
+	@GetMapping("/update/{username}")
+	String update(@PathVariable String username, Model model) {
+		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);
 		
 		model.addAttribute("sitterInfo", sitterInfo);
 		
 		return "babysitter/update";
 	}
 	
-	@PostMapping("/update/{sitterId}")
-	String update(@PathVariable String sitterId, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setSitterId(sitterId);
+	@PostMapping("/update/{username}")
+	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
+		sitterInfo.setSitterId(username);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -98,7 +98,7 @@ public class BabySitterController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + sitterId, HttpMethod.PUT, req, Integer.class);
+		ResponseEntity<Integer> resp = rest.exchange(url + username, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
@@ -107,9 +107,9 @@ public class BabySitterController {
 		return "redirect:../list";
 	}
 	
-	@GetMapping("/delete/{sitterId}")
-	String delete(@PathVariable String sitterId) {
-		RequestEntity<Void> req = RequestEntity.delete(url + sitterId).build();
+	@GetMapping("/delete/{username}")
+	String delete(@PathVariable String username) {
+		RequestEntity<Void> req = RequestEntity.delete(url + username).build();
 		
 		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
 		

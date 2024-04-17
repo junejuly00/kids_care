@@ -9,13 +9,13 @@
 	
 	<insert id="add">
 		INSERT into babysitter
-		VALUES (#{sitterId},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope})		
+		VALUES (#{username},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope})		
 	</insert>
 	
 	<update id="update">
 		UPDATE babysitter
 		SET name=#{name},phone=#{phone},email=#{email},gender=#{gender},age=#{age},major=#{major},scope=#{scope}
-		WHERE sitter=#{sitterId}
+		WHERE sitter=#{username}
 	</update>
 	
 </mapper>

@@ -13,8 +13,10 @@ public class JobCert {
 	public String getSitterId() {
 		return username;
 	}
-	public void setSitterId(String sitterId) {
-		this.username = sitterId;
+
+	public void setSitterId(String username) {
+		this.username = username;
+
 	}
 	public String getCertDate() {
 		return certDate;
