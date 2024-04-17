@@ -8,6 +8,12 @@
 	
 	<insert id="add">
 		INSERT into userreview
-		VALUES (#{username})
+		VALUES (#{reviewId},#{userId},#{sitterId},#{rating},#{reviewInfo})
 	</insert>
+	
+	<update id="update">
+		UPDATE userreview
+		SET name=#{userId},sitterId=#{sitterId},rating=#{rating},reviewInfo=#{reviewInfo}
+		WHERE reviewId=#{reviewId}
+	</update>
 </mapper>

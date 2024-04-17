@@ -13,7 +13,7 @@
 	
 	<update id="update">
 		UPDATE Address
-		SET name=#{username},fullAddress=#{fullAddress},#{province},#{city},#{village}
+		SET fullAddress=#{fullAddress},province=#{province},city=#{city},village=#{village}
 		WHERE username=#{username}
 	</update>
 	

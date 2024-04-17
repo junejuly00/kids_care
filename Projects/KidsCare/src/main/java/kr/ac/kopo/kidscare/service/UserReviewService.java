@@ -10,4 +10,8 @@ public interface UserReviewService {
 
 	void add(UserReview reviewInfo);
 
+	UserReview userreviewInfo(String reviewId);
+
+	void update(UserReview userreviewInfo);
+
 }

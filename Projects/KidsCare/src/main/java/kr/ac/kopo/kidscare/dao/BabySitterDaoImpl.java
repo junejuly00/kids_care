@@ -26,12 +26,12 @@ public class BabySitterDaoImpl implements BabySitterDao {
 
 	@Override
 	public BabySitter sitterInfo(String username) {
-		return sql.selectOne("BabySitter.username",username);
+		return sql.selectOne("mapper.babySitter.username",username);
 	}
 
 	@Override
 	public void update(BabySitter sitterInfo) {
-		sql.update("BabySitter.update",sitterInfo);
+		sql.update("mapper.babySitter.update",sitterInfo);
 	}
 
 }
