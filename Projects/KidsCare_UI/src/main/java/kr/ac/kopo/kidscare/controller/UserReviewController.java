@@ -59,11 +59,11 @@ public class UserReviewController {
 	}
 	
 	@PostMapping("/add")
-	String add(UserReview reviewInfo) throws JsonProcessingException {
+	String add(UserReview userreviewInfo) throws JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(reviewInfo);
+		String jsonString = om.writeValueAsString(userreviewInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -78,21 +78,21 @@ public class UserReviewController {
 	
 	@GetMapping("/update/{reviewId}")
 	String update(@PathVariable String reviewId, Model model) {
-		UserReview reviewInfo = rest.getForObject(url + reviewId, UserReview.class);
+		UserReview userreviewInfo = rest.getForObject(url + reviewId, UserReview.class);
 		
-		model.addAttribute("reviewInfo", reviewInfo);
+		model.addAttribute("reviewInfo", userreviewInfo);
 		
 		return "userreview/update";
 	}
 	
 	@PostMapping("/update/{reviewId}")
-	String update(@PathVariable String reviewId, UserReview reviewInfo) throws JsonProcessingException {
-		reviewInfo.setReviewId(reviewId);
+	String update(@PathVariable String reviewId, UserReview userreviewInfo) throws JsonProcessingException {
+		userreviewInfo.setReviewId(reviewId);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
-		String jsonString = om.writeValueAsString(reviewInfo);
+		String jsonString = om.writeValueAsString(userreviewInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
