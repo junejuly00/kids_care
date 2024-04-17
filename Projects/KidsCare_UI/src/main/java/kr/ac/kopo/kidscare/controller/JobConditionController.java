@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -56,7 +58,50 @@ public class JobConditionController {
 	}
 	
 	@PostMapping("/add")
-	String add(JobCondition conditionInfo) {
+	String add(JobCondition jobconditionInfo) throws JsonProcessingException {
 		
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		String jsonString = om.writeValueAsString(jobconditionInfo);
+		
+		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+		
+		ResponseEntity<Integer> resp = rest.postForEntity(url + "add", req, Integer.class);
+		
+		Integer body = resp.getBody();
+		
+		System.out.println(body);
+		
+		return "redirect:list";
+	}
+	
+	@GetMapping("/update/{ofCertId}")
+	String update(@PathVariable String ofCertId, Model model) {
+		JobCondition jobconditionInfo = rest.getForObject(url + ofCertId, JobCondition.class);
+		
+		model.addAttribute("jobconditionInfo", jobconditionInfo);
+		
+		return "jobcondition/update";
+	}
+	
+	@PostMapping("/update/{ofCertId}")
+	String update(@PathVariable String ofCertId, JobCondition jobconditionInfo) throws JsonProcessingException {
+		jobconditionInfo.setOfCertId(ofCertId);
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json");
+		
+		String jsonString = om.writeValueAsString(jobconditionInfo);
+		
+		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+		
+		ResponseEntity<Integer> resp = rest.exchange(url + ofCertId, HttpMethod.PUT, req, Integer.class);
+		
+		Integer result = resp.getBody();
+		
+		System.out.println(result);
+		
+		return "redirect:../list";
 	}
 }
