@@ -25,8 +25,8 @@ public class BabySitterServiceImpl implements BabySitterService {
 	}
 
 	@Override
-	public BabySitter sitterInfo(String sitterId) {
-		return dao.sitterInfo(sitterId);
+	public BabySitter sitterInfo(String username) {
+		return dao.sitterInfo(username);
 	}
 
 	@Override

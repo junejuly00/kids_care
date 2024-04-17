@@ -2,8 +2,8 @@ package kr.ac.kopo.kidscare.model;
 
 public class UserReview {
 	private String reviewId;
-	private String userId;
-	private String sitterId;
+	private String username;
+	private String username;
 	private Byte rating;
 	private String reviewInfo;
 	public String getReviewId() {
@@ -12,17 +12,17 @@ public class UserReview {
 	public void setReviewId(String reviewId) {
 		this.reviewId = reviewId;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getSitterId() {
-		return sitterId;
+		return username;
 	}
-	public void setSitterId(String sitterId) {
-		this.sitterId = sitterId;
+	public void setSitterId(String username) {
+		this.username = username;
 	}
 	public Byte getRating() {
 		return rating;

@@ -25,8 +25,8 @@ public class BabySitterDaoImpl implements BabySitterDao {
 	}
 
 	@Override
-	public BabySitter sitterInfo(String sitterId) {
-		return sql.selectOne("BabySitter.sitterId",sitterId);
+	public BabySitter sitterInfo(String username) {
+		return sql.selectOne("BabySitter.username",username);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface KCUserService {
 
 	void add(KCUser userInfo);
 
-	KCUser getUserInfo(String userid);
+	KCUser getUserInfo(String username);
 
 	void update(KCUser userInfo);
 

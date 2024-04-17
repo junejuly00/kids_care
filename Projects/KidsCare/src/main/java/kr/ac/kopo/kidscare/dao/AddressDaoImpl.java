@@ -25,8 +25,8 @@ public class AddressDaoImpl implements AddressDao {
 	}
 
 	@Override
-	public Address addressInfo(String userId) {
-		return sql.selectOne("address.userId",userId);
+	public Address addressInfo(String username) {
+		return sql.selectOne("address.username",username);
 	}
 
 	@Override

@@ -25,8 +25,8 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public Address addressInfo(String userId) {
-		return dao.addressInfo(userId);
+	public Address addressInfo(String username) {
+		return dao.addressInfo(username);
 	}
 
 	@Override

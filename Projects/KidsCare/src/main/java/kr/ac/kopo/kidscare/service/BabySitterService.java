@@ -10,7 +10,7 @@ public interface BabySitterService {
 
 	void add(BabySitter sitterInfo);
 
-	BabySitter sitterInfo(String sitterId);
+	BabySitter sitterInfo(String username);
 
 	void update(BabySitter sitterInfo);
 

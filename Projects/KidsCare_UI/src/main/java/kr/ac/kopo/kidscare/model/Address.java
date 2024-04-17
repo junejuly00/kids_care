@@ -1,16 +1,16 @@
 package kr.ac.kopo.kidscare.model;
 
 public class Address {
-	private String userName;
+	private String username;
 	private String fullAddress;
 	private String province;
 	private String city;
 	private String village;
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getFullAddress() {
 		return fullAddress;

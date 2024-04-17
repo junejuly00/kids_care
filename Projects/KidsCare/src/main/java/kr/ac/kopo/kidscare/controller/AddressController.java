@@ -33,14 +33,14 @@ public class AddressController {
 		service.add(addressInfo);
 	}
 	
-	@GetMapping("/{userid}")
-	Address addressInfo(@PathVariable String userId) {
-		return service.addressInfo(userId);
+	@GetMapping("/{username}")
+	Address addressInfo(@PathVariable String username) {
+		return service.addressInfo(username);
 	}
 	
-	@PutMapping("/{userid}")	
-	void update(@PathVariable String userId, @RequestBody Address addressInfo) {
-		addressInfo.setUserId(userId);
+	@PutMapping("/{username}")	
+	void update(@PathVariable String username, @RequestBody Address addressInfo) {
+		addressInfo.setUsername(username);
 		
 		service.update(addressInfo);
 		

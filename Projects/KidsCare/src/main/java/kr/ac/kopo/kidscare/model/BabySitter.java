@@ -1,7 +1,7 @@
 package kr.ac.kopo.kidscare.model;
 
 public class BabySitter {
-	private String sitterId;
+	private String username;
 	private String name;
 	private String phone;
 	private String email;
@@ -11,10 +11,10 @@ public class BabySitter {
 	private Byte scope;
 	private Integer rating;
 	public String getSitterId() {
-		return sitterId;
+		return username;
 	}
-	public void setSitterId(String sitterId) {
-		this.sitterId = sitterId;
+	public void setSitterId(String username) {
+		this.username = username;
 	}
 	public String getName() {
 		return name;
