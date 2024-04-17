@@ -3,7 +3,7 @@ package kr.ac.kopo.kidscare.model;
 public class Reservation {
 	private String resId;
 	private String username;
-	private String username;
+	private String sitterUsername;
 	private String resDate;
 	public String getResId() {
 		return resId;
@@ -20,13 +20,19 @@ public class Reservation {
 	public String getSitterId() {
 		return username;
 	}
-	public void setSitterId(String username) {
-		this.username = username;
+	public void setSitterId(String sitterUsername) {
+		this.setSitterUsername(sitterUsername);
 	}
 	public String getResDate() {
 		return resDate;
 	}
 	public void setResDate(String resDate) {
 		this.resDate = resDate;
+	}
+	public String getSitterUsername() {
+		return sitterUsername;
+	}
+	public void setSitterUsername(String sitterUsername) {
+		this.sitterUsername = sitterUsername;
 	}
 }

@@ -16,12 +16,22 @@ public class UserReviceDaoImpl implements UserReviceDao {
 
 	@Override
 	public List<UserReview> list() {
-		return sql.selectList("userreview.list");
+		return sql.selectList("mapper.userreview.list");
 	}
 
 	@Override
-	public void add(UserReview reviewInfo) {
-		sql.insert("userreview.add",reviewInfo);
+	public void add(UserReview userreviewInfo) {
+		sql.insert("mapper.userreview.add",userreviewInfo);
+	}
+
+	@Override
+	public UserReview userreviewInfo(String reviewId) {
+		return sql.selectOne("mapper.UserReview.reviewId",reviewId);
+	}
+
+	@Override
+	public void update(UserReview userreviewInfo) {
+		sql.update("mapper.UserReview.update",userreviewInfo);
 	}
 
 }

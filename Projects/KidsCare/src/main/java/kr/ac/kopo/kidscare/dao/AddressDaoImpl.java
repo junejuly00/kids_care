@@ -16,22 +16,22 @@ public class AddressDaoImpl implements AddressDao {
 
 	@Override
 	public List<Address> list() {
-		return sql.selectList("address.list");
+		return sql.selectList("mapper.address.list");
 	}
 
 	@Override
 	public void add(Address addressInfo) {
-		sql.insert("address.add",addressInfo);
+		sql.insert("mapper.address.add",addressInfo);
 	}
 
 	@Override
 	public Address addressInfo(String username) {
-		return sql.selectOne("address.username",username);
+		return sql.selectOne("mapper.address.username",username);
 	}
 
 	@Override
 	public void update(Address addressInfo) {
-		sql.update("address.update",addressInfo);
+		sql.update("mapper.address.update",addressInfo);
 	}
 
 }

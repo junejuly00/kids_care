@@ -8,12 +8,12 @@
 	
 	<insert id="add">
 		INSERT into kcuser
-		VALUES (#{username},#{name},#{phone},#{email},#{role})
+		VALUES (#{username},#{password},#{name},#{phone},#{email},#{role})
 	</insert>
 	
 	<update id="update">
 		UPDATE kcuser
-		SET name=#{name},phone=#{phone},#{email},#{role}
+		SET password=#{password},name=#{name},phone=#{phone},email=#{email},role=#{role}
 		WHERE username=#{username}
 	</update>
 	

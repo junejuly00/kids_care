@@ -2,7 +2,14 @@ package kr.ac.kopo.kidscare.model;
 
 public class KCUser {
 	private String username;
+	private String password;
 	private String name;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	private String phone;
 	private String email;
 	private Byte role;

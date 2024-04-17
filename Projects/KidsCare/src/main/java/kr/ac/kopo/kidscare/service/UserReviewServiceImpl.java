@@ -20,8 +20,18 @@ public class UserReviewServiceImpl implements UserReviewService {
 	}
 
 	@Override
-	public void add(UserReview reviewInfo) {
-		dao.add(reviewInfo);
+	public void add(UserReview userreviewInfo) {
+		dao.add(userreviewInfo);
+	}
+
+	@Override
+	public UserReview userreviewInfo(String reviewId) {
+		return dao.userreviewInfo(reviewId);
+	}
+
+	@Override
+	public void update(UserReview userreviewInfo) {
+		dao.update(userreviewInfo);
 	}
 
 }
