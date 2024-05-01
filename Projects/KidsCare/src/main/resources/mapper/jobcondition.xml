@@ -13,7 +13,7 @@
 	
 	<update id="update">
 		UPDATE jobcondition
-		SET offerid=#{orrderid},certname=#{certname},trnname=#{trnname}
+		SET offerid=#{offerid},certname=#{certname},trnname=#{trnname}
 		WHERE ofcertid=#{ofcertid}
 	</update>
 </mapper>
