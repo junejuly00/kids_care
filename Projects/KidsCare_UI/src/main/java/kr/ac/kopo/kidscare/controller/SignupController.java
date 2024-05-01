@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +25,8 @@ public class SignupController {
 	private RestTemplate rest = new RestTemplate();
 	@Autowired
 	private ObjectMapper om = new ObjectMapper();
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	
 	final String path = "signup/";
@@ -36,6 +38,8 @@ public class SignupController {
 	
 	@PostMapping("/user")
 	public String userSignup(KCUser userInfo) throws JsonProcessingException {
+		String rawPassword = userInfo.getPassword();
+		userInfo.setPassword(passwordEncoder.encode(rawPassword));
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -56,6 +60,7 @@ public class SignupController {
 	}
 	@PostMapping("/sitter")
 	public String sitterSignup(BabySitter sitterInfo) throws JsonProcessingException {
+	
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
