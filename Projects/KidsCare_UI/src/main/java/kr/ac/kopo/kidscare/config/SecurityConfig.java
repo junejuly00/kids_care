@@ -15,7 +15,7 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
-		String[] permitUri = {"/login", "/signup", "/static/**", "/error","/"}; //{"/**"};
+		String[] permitUri = {"/login/**", "/signup", "/static/**", "/error","/"}; //{"/**"};
 		return http.authorizeHttpRequests(req -> {
 						req.requestMatchers(permitUri).permitAll();
 						req.anyRequest().authenticated();

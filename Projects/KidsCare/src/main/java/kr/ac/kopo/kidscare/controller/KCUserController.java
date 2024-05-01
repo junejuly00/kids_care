@@ -28,7 +28,7 @@ public class KCUserController {
 		return list;
 	}
 		
-	@PostMapping
+	@PostMapping("/add")
 	void add(@RequestBody KCUser userInfo) {
 		service.add(userInfo);
 	}

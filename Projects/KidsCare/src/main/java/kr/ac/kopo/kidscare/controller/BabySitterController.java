@@ -28,7 +28,7 @@ public class BabySitterController {
 		return list;
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	void add(@RequestBody BabySitter sitterInfo) {
 		service.add(sitterInfo);
 	}

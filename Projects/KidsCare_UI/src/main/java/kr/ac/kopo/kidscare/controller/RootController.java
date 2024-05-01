@@ -20,4 +20,6 @@ public class RootController {
 	public String secured() {
 		return "secured";
 	}
+	
+	
 }
