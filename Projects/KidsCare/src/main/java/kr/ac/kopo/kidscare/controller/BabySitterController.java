@@ -21,6 +21,8 @@ public class BabySitterController {
 	@Autowired
 	BabySitterService service;
 	
+	
+	
 	@GetMapping("/list")
 	List<BabySitter> list(){
 		List<BabySitter> list = service.list();
@@ -28,7 +30,7 @@ public class BabySitterController {
 		return list;
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	void add(@RequestBody BabySitter sitterInfo) {
 		service.add(sitterInfo);
 	}
