@@ -1,4 +1,4 @@
-package kr.ac.kopo.kidscare.service;
+package kr.ac.kopo.kidscare.dao;
 
 import java.util.List;
 

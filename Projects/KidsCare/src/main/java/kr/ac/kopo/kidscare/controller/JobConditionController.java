@@ -38,7 +38,7 @@ public class JobConditionController {
 		return service.jobconditionInfo(ofCertId);
 	}
 	
-	@PutMapping("/{ofcertid")
+	@PutMapping("/{ofcertid}")
 	void update(@PathVariable String ofcertId, @RequestBody JobCondition jobconditionInfo) {
 		jobconditionInfo.setOfCertId(ofcertId);
 		

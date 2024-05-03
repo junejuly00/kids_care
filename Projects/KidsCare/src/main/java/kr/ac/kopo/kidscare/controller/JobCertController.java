@@ -15,7 +15,7 @@ import kr.ac.kopo.kidscare.model.JobCert;
 import kr.ac.kopo.kidscare.service.JobCertService;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/jobcert")
 public class JobCertController {
 	
 	@Autowired
