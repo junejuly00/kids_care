@@ -46,5 +46,12 @@ public class BabySitterController {
 
 		service.update(sitterInfo);
 	}
+	
+	@PostMapping("/sitter/find")
+	public BabySitter findSitter(String username) {
+		
+		return service.sitterInfo(username);
+	}
+	
 
 }

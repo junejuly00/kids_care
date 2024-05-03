@@ -11,21 +11,21 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SitterSecurityConfig {
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain sitterSecurityFilterChain(HttpSecurity http) throws Exception {
 		
-		String[] permitUri = {"/login/**", "/signup", "/static/**", "/error","/"}; //{"/**"};
+		String[] permitUri = {"/login/**", "/signup/**", "/static/**", "/error","/"}; //{"/**"};
 		return http.authorizeHttpRequests(req -> {
 						req.requestMatchers(permitUri).permitAll();
 						req.anyRequest().authenticated();
 					})
 					.oauth2Login(login -> {
-						login.loginPage("/login");
+						login.loginPage("/login/sitter");
 						login.defaultSuccessUrl("/secured");
 					})
 					.formLogin(login -> {
-						login.loginPage("/login");
+						login.loginPage("/login/sitter");
 						login.defaultSuccessUrl("/secured");
 					})
 					.logout(logout -> {
