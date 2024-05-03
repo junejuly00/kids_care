@@ -1,0 +1,195 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    margin: 140px;
+    padding: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    border: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.signupbox{
+    width: 800px;
+    height: 840px;
+    background-color: #EAF6D2;
+    border-radius: 0px 10px 10px 10px;
+    background: #EAF6D2;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signup{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.siterbox{
+    width: 800px;
+    height: 50px;
+}
+
+#siter_user {
+    width: 130px;
+    height: 50px;
+    background: #FFEF99;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    outline: 0.4em;
+    padding-left: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.id{
+    width: 350px;
+    height: 50px;
+    border-radius: 10px;
+    border-width: 0px;
+    margin-top: 10px;
+}
+
+.id_check {
+    width: 83px;
+    height: 50px;
+    background: #FFEF99;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px ;
+}
+
+.passwd{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.passwd_check{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.name{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.phone{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.mail{
+    width: 240px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#dd{
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+}
+
+.email_choice{
+    width: 210px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.majorbox{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.address{
+    width: 412px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.search_address{
+    width: 83px;
+    height: 50px;
+    background: #FFEF99;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px ;
+    margin-top: 10px;
+}
+
+.address_detail{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#btn{
+    width: 800px;
+}
+
+.nextbox{  
+    background-color: #FFEF99;
+    border-radius: 10px;
+    border-width: 0px;
+    width: 83px;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+.mainbtn {
+    width: 150px;
+    height: 50px;
+    background: #FFEF99;
+    border-style: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#main {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+}
