@@ -3,9 +3,12 @@ package kr.ac.kopo.kidscare.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import kr.ac.kopo.kidscare.dao.JobCertDao;
 import kr.ac.kopo.kidscare.model.JobCert;
 
+@Service
 public class JobCertServiceImpl implements JobCertService {
 
 	@Autowired
