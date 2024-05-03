@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+html{
+    font-size: 18px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration-line: none;
+    text-transform: capitalize;
+}
+header a{
+    padding: 35px;
+    color: black;
+    display: inline-block;
+    transition: 0.2s linear;
+}
+
+header{
+    height: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #d4eda5;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+#logo{
+    font-size: 24px;
+    font-weight: bold;
+}
+a:hover{
+    color:green;
+}
+a:active{
+    color:yellow;
+}
+.navbar a::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: green;
+    display: block;
+    transition: 0.2s linear;
+}
+header .navbar a:hover::after{
+    width: 100%;
+}
+
+header .user a{
+    font-size: 16px;
+    padding: 10px;
+}
+
