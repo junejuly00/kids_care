@@ -32,19 +32,7 @@ public class LoginController {
 		return path + "user";
 	}
 	
-	@PostMapping("/user")
-	String userLogin(KCUser userInfo) throws JsonProcessingException {
-		HttpHeaders header = new HttpHeaders();
-		header.setContentType(MediaType.APPLICATION_JSON);
-		
-		String jsonString = om.writeValueAsString(userInfo);
-		
-		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
-		
-		Integer body = rest.postForObject(""/* TODO */, request, Integer.class);
-		
-		return "redirect:../../secured";
-	}
+	
 	
 	@GetMapping("/sitter")
 	String sitterLogin() {
