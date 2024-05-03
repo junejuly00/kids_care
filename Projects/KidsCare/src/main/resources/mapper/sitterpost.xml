@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.sitterpost">
+	<select id="list">
+		SELECT *
+		FROM sitterpost
+	</select>
+	
+	<insert id="add">
+		INSERT into sitterpost
+		VALUES(#{sitterpostid},#{username},#{date},#{contents})
+	</insert>
+	
+	<update id="update">
+		UPDATE sitterpost
+		SET username=#{username},date=#{date},contents=#{contents}
+		WHERE sitterpostid=#{sitterpostid}
+	</update>
+	
+</mapper>

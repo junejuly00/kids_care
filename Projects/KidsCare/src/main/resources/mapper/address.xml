@@ -12,7 +12,7 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE Address
+		UPDATE address
 		SET fullAddress=#{fullAddress},province=#{province},city=#{city},village=#{village}
 		WHERE username=#{username}
 	</update>
