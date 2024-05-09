@@ -1,10 +1,22 @@
 server:
   port: 9091
 
+mybatis:
+  mapper-locations:
+  - classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
 spring:
   application:
     name: KidsCare_UI
-    
+  datasource: 
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: kidscare
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: kidscare 
+   
+  
   security:
     oauth2:
       client:
@@ -31,9 +43,12 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
-
+  mvc:
+    static-path-pattern: "/static/**"
   thymeleaf:
     cache: false
     check-template-location: true
     prefix: classpath:/templates/
     suffix: .html
+    
+  
