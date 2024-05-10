@@ -2,6 +2,7 @@ package kr.ac.kopo.kidscare.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -36,5 +37,18 @@ public class ReservationController {
 		model.addAttribute(resInfo);
 		
 		return "/reservation/totallist";
+	}
+	
+	@GetMapping("/create")
+	String newReservation(Reservation rsvInfo) throws JsonProcessingException {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		String jsonString = om.writeValueAsString(rsvInfo);
+		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
+		
+		Integer body = rest.postForObject(defaultUrl+"add", request, Integer.class);
+		
+		return "redirect:../list";
 	}
 }
