@@ -3,7 +3,8 @@ server:
 
 mybatis:
   mapper-locations:
-  - classpath:mapper/*.xml
+  - classpath:/mapper/*.xml
+  type-aliases-package: kr.ac.kopo.kidscare.model
   configuration:
     map-underscore-to-camel-case: true
 
@@ -17,32 +18,7 @@ spring:
     username: kidscare 
    
   
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 609083614747-vcddufo69mmdnaogv2jc1ru2o4d2p80m.apps.googleusercontent.com
-            client-secret: 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
-            redirect-uri: http://localhost:9090/login/oauth2/code/google
-          
-          kakao:
-            client-id: d81f479d37acc45ec0cf95208308dc97
-            client-secret: Ar3TCOltUOE4kakwr1zdQPm1MGusoMiA
-            redirect-uri: http://localhost:9090/login/oauth2/code/kakao
-            authorization-grant-type: authorization_code
-            client-authentication-method: client_secret_post
-            scope:
-              - profile_nickname
-              - profile_image
-            client-name: Kakao
-            
-        provider:
-          kakao:
-            authorization-uri: https://kauth.kakao.com/oauth/authorize
-            token-uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id
+  
   mvc:
     static-path-pattern: "/static/**"
   thymeleaf:
