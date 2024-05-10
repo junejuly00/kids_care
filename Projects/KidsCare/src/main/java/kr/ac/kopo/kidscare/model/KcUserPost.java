@@ -3,7 +3,16 @@ package kr.ac.kopo.kidscare.model;
 public class KcUserPost {
 	private Integer userPostId;
 	private String username;
-	private String date;
+	private String postdate;
+	private String title;
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	private String contents;
 
 	public Integer getUserPostId() {
@@ -23,11 +32,11 @@ public class KcUserPost {
 	}
 
 	public String getDate() {
-		return date;
+		return postdate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String postdate) {
+		this.postdate = postdate;
 	}
 
 	public String getContents() {

@@ -8,12 +8,12 @@
 	
 	<insert id="add">
 		INSERT into kcuserpost
-		VALUES(#{userPostId},#{username},#{date},#{contents})
+		VALUES(#{userPostId},#{username},to_date(sysdate,'YYYY-MM-DD),#{title},#{contents})
 	</insert>
 	
 	<update id="update">
 		UPDATE kcuserpost
-		SET username=#{username},date=#{date},contents=#{contents}
+		SET username=#{username},to_date(sysdate,'YYYY-MM-DD),title=#{title},contents=#{contents}
 		WHERE userPostId=#{userPostId}
 	</update>
 	
