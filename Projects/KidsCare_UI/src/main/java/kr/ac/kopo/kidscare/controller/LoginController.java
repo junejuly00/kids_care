@@ -11,6 +11,11 @@ public class LoginController {
 	
 	final String path = "login/";
 	
+	@GetMapping("/newlogin")
+	String newLogin() {
+		return path + "newlogin";
+	}
+
 	@GetMapping("/user")
 	String userLogin() {
 		return path + "user";

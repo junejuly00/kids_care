@@ -25,7 +25,7 @@ import kr.ac.kopo.kidscare.model.SitterPost;
 
 @Controller
 @RequestMapping("/sitterpost")
-public class SiterPostController {
+public class SitterPostController {
 
 	final String url = "http://localhost:9090/sitterpost/";
 	

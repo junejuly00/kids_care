@@ -17,10 +17,9 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521:xe
     username: kidscare 
    
-  
-  
   mvc:
     static-path-pattern: "/static/**"
+
   thymeleaf:
     cache: false
     check-template-location: true

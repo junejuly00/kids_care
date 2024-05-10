@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 html {
   font-size: 18px;
 }
@@ -42,11 +43,6 @@ button {
   border: none;
 }
 
-.login-form .group .button {
-  width: 500px;
-  height: 40px;
-}
-
 .wrap {
   margin: 120px 0 120PX 0;
   margin-left: 140px;
@@ -60,18 +56,18 @@ button {
   margin-top: 20px;
 }
 
-.login-wrap {
+.signup-wrap {
   width: 100%;
   height: auto;
   margin: auto;
   max-width: 800px;
-  min-height: 600px;
+  min-height: 1000px;
   position: relative;
   box-shadow: 0 12px 15px 0 rgba(53, 53, 53, 0.24), 0 17px 50px 0 rgba(23, 23, 23, 0.19);
   border-radius: 10px;
 }
 
-.login-html {
+.signup-html {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -80,8 +76,8 @@ button {
   border-radius: 10px;
 }
 
-.login-html .login_parents,
-.login-html .login_siter {
+.signup-html .signup_parents,
+.signup-html .signup_siter {
   top: 0;
   left: 0;
   right: 0;
@@ -92,19 +88,13 @@ button {
   transition: all .4s linear;
 }
 
-.login-html .parents,
-.login-html .siter,
-.login-form .group .check {
+.signup-html .parents,
+.signup-html .siter,
+.signup-form .group .check {
   display: none;
 }
 
-.login-html .tab,
-.login-form .group .label,
-.login-form .group .button {
-  text-transform: uppercase;
-}
-
-.login-html .tab {
+.signup-html .tab {
   font-size: 20px;
   margin-right: 15px;
   padding-bottom: 5px;
@@ -113,57 +103,118 @@ button {
   border-bottom: 2px solid transparent;
 }
 
-.login-html .parents:checked+.tab,
-.login-html .siter:checked+.tab {
+.signup-html .parents:checked+.tab,
+.signup-html .siter:checked+.tab {
   color: #677E52;
   border-color: #FFEF99;
   font-weight: 550;
 }
 
-.login-form {
+.signup-form {
   min-height: 345px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
 
-.login-form .group {
+.signup-form .group {
   margin-bottom: 12px;
 }
 
-input,
-.login-form .group .button {
+.parents_passwd,
+.passwd_check,
+.name,
+.phone,
+.address_detail,
+.email_choice,
+.birth,
+.certificate,
+.childs,
+.signup-form .group .button {
   width: 500px;
   height: 50px;
   color: #000000;
-  display: block;
 }
 
-.login-form .group .input,
-.login-form .group .button {
+
+input[type='date']::before {
+  content: attr(data-placeholder);
+  width: 100%;
+  color: #818078;
+}
+
+.parents_id,
+.address {
+  width: 410px;
+  height: 50px;
+}
+
+.id_check,
+.search_address {
+  width: 83px;
+  height: 50px;
+  background-color: #FFE371;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.mail {
+  width: 241.75px;
+  height: 50px;
+}
+
+#dd {
+  height: auto;
+  font-size: 16px;
+  border: none;
+  padding: 0 8px 0 8px;
+  font-size: 20px;
+}
+
+.email_choice {
+  width: 210px;
+  height: 50px;
+}
+
+
+
+input,
+.email_choice,
+.signup-form .group .button {
   border: none;
   padding: 15px 20px;
   border-radius: 10px;
   background: #fff;
+  ;
   font-size: 16px;
 }
 
-.login-form .group .button {
+.signup-form .group .button {
   background: #E3F0FB;
   font-size: 16px;
 }
 
-.login-form .group label .icon {
+#gender div {
+  width: 500px;
+}
+
+#gender div #fm {
+  margin-left: 20px;
+}
+
+
+.signup-form .group label .icon {
   width: 15px;
   height: 15px;
   border-radius: 2px;
   position: relative;
   display: inline-block;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(187, 187, 187, 0.1);
 }
 
-.login-form .group label .icon:before,
-.login-form .group label .icon:after {
+.signup-form .group label .icon:before,
+.signup-form .group label .icon:after {
   content: '';
   width: 10px;
   height: 2px;
@@ -172,40 +223,40 @@ input,
   transition: all .2s ease-in-out 0s;
 }
 
-.login-form .group label .icon:before {
+.signup-form .group label .icon:before {
   left: 3px;
   width: 5px;
   bottom: 6px;
   transform: scale(0) rotate(0);
 }
 
-.login-form .group label .icon:after {
+.signup-form .group label .icon:after {
   top: 6px;
   right: 0;
   transform: scale(0) rotate(0);
 }
 
-.login-form .group .check:checked+label {
+.signup-form .group .check:checked+label {
   color: #fff;
 }
 
-.login-form .group .check:checked+label .icon {
+.signup-form .group .check:checked+label .icon {
   background: #1161ee;
 }
 
-.login-form .group .check:checked+label .icon:before {
+.signup-form .group .check:checked+label .icon:before {
   transform: scale(1) rotate(45deg);
 }
 
-.login-form .group .check:checked+label .icon:after {
+.signup-form .group .check:checked+label .icon:after {
   transform: scale(1) rotate(-45deg);
 }
 
-.login-html .parents:checked+.tab+.siter+.tab+.login-form .login_parents {
+.signup-html .parents:checked+.tab+.siter+.tab+.signup-form .signup_parents {
   transform: rotate(0);
 }
 
-.login-html .siter:checked+.tab+.login-form .login_siter {
+.signup-html .siter:checked+.tab+.signup-form .signup_siter {
   transform: rotate(0);
 }
 
@@ -218,7 +269,7 @@ input,
   text-align: center;
   height: 1.5em;
   opacity: .5;
-  margin: 30px 0 30px 0;
+  margin: 20px 0 20px 0;
 
   &:before {
     content: '';
@@ -240,57 +291,6 @@ input,
     color: #818078;
     background-color: #EAF6D2;
   }
-}
-
-.choicebox {
-  display: flex;
-  justify-content: center;
-}
-
-.naverbox button {
-  background-color: #00C73C;
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  margin: 0 10px;
-}
-
-.naverbox img {
-  width: 35px;
-  height: 32.31px;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.kakaobox button {
-  background-color: #FCEB46;
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  margin: 0 10px;
-}
-
-.kakaobox img {
-  width: 35px;
-  height: 32.31px;
-  justify-content: center;
-  align-items: center;
-}
-
-.googlebox button {
-  background-color: #F5F5F5;
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  margin: 0 10px;
-}
-
-.googlebox img {
-  width: 35px;
-  height: 31.82px;
-  justify-content: center;
-  align-items: center;
 }
 
 .foot-lnk {
