@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/static/css/signup.css}"/>
+	<title>회원가입</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="signup-wrap">
+
+			<div class="signup-html">
+
+				<input id="tab-1" type="radio" name="tab" class="parents" checked><label
+					for="tab-1" class="tab">부모회원</label> <input id="tab-2" type="radio"
+					name="tab" class="siter"><label for="tab-2" class="tab">시터회원</label>
+
+				<div class="signup-form">
+
+					<div class="signup_parents">
+
+						<form class="id_pw">
+
+							<div class="group">
+								<input id="parents_id" type="text" class="parents_id"
+									placeholder="아이디를 입력해주세요." required>
+								<button class="id_check">중복확인</button>
+							</div>
+
+							<div class="group">
+								<input id="parents_passwd" type="password"
+									class="parents_passwd" data-type="password"
+									placeholder="비밀번호를 입력해주세요." required>
+							</div>
+
+							<div class="group">
+								<input id="passwd_check" type="password" class="passwd_check"
+									required="required" placeholder="비밀번호를 확인해주세요." >
+							</div>
+
+							<div class="group">
+								<input type="text" placeholder="성명을 입력해주세요." class="name"
+									required>
+							</div>
+
+							<div class="group">
+								<input type="tel" placeholder="연락처를 입력해주세요." class="phone"
+									required>
+							</div>
+
+							<div class="group">
+								<input type="number" placeholder="자녀 수를 입력해주세요." max="50"
+									min="1" class="childs" required>
+							</div>
+
+							<div class="group">
+								<input type="email" placeholder="메일을 입력해주세요." class="mail"
+									required> <span id="dd">@</span> <select
+									name="email_address" class="email_choice">
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="daum.net">daum.net</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="nate.com">nate.com</option>
+									<option value="direct">직접입력</option>
+								</select>
+							</div>
+
+							<div class="group">
+								<input type="text" class="address" placeholder="주소를 입력해주세요."
+									required>
+								<button class="search_address">주소찾기</button>
+							</div>
+
+							<div class="group">
+								<input type="text" placeholder="상세주소를 입력해주세요."
+									class="address_detail" required>
+							</div>
+
+							<div class="group">
+								<button class="button">회원가입</button>
+							</div>
+						</form>
+
+						<div class="hr" data-content="OR"></div>
+
+						<div class="foot-lnk">
+							<a href="new_login.html">이미 회원이신가요?</a>
+						</div>
+
+					</div>
+
+					<div class="signup_siter">
+
+						<form class="id_pw">
+
+							<div class="group" id="gender">
+								<div>
+									<input type="radio" name="gender" value="man">남성 <input
+										type="radio" name="gender" value="female" id="fm">여성
+								</div>
+							</div>
+
+							<div class="group">
+								<input id="parents_id" type="text" class="parents_id"
+									placeholder="아이디를 입력해주세요.">
+								<button class="id_check">중복확인</button>
+							</div>
+
+							<div class="group">
+								<input id="parents_passwd" type="password"
+									class="parents_passwd" data-type="password"
+									placeholder="비밀번호를 입력해주세요.">
+							</div>
+
+							<div class="group">
+								<input id="passwd_check" type="password" class="passwd_check"
+									required="required" placeholder="비밀번호를 확인해주세요.">
+							</div>
+
+							<div class="group">
+								<input type="text" placeholder="성명을 입력해주세요." class="name">
+							</div>
+
+							<div class="group">
+								<input type="date" data-placeholder="출생일을 선택해주세요." class="birth"
+									required>
+							</div>
+
+							<div class="group">
+								<input type="tel" placeholder="연락처를 입력해주세요." class="phone">
+							</div>
+
+							<div class="group">
+								<input type="email" placeholder="메일을 입력해주세요." class="mail">
+								<span id="dd">@</span> <select name="email_address"
+									class="email_choice">
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="daum.net">daum.net</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="nate.com">nate.com</option>
+									<option value="direct">직접입력</option>
+								</select>
+							</div>
+
+							<div class="group">
+								<input type="text" class="certificate"
+									placeholder="자격증 정보를 입력하세요.">
+							</div>
+
+							<div class="group">
+								<input type="address" class="address" placeholder="주소를 입력해주세요.">
+								<button class="search_address">주소찾기</button>
+							</div>
+
+							<div class="group">
+								<input type="text" placeholder="상세주소를 입력해주세요."
+									class="address_detail">
+							</div>
+
+							<div class="group">
+								<button class="button">회원가입</button>
+							</div>
+						</form>
+
+						<div class="hr" data-content="OR"></div>
+
+						<div class="foot-lnk">
+							<a href="new_login.html">이미 회원이신가요?</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+		</div>
+</body>
+</html>
