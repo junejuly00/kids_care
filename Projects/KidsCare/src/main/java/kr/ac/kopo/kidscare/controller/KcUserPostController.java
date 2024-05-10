@@ -23,7 +23,6 @@ public class KcUserPostController {
 	@GetMapping("/list")
 	List<KcUserPost> list(){
 		List<KcUserPost> list = service.list();
-		
 		return list;
 	}
 	

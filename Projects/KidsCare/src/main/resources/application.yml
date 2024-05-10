@@ -1,6 +1,7 @@
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: kr.ac.kopo.kidscare.model
   configuration:
     map-underscore-to-camel-case: true
 
@@ -13,4 +14,5 @@ spring:
     driver-class-name: oracle.jdbc.OracleDriver
     password: kidscare
     url: jdbc:oracle:thin:@localhost:1521:xe
-    username: kidscare
+    username: kidscare 
+      

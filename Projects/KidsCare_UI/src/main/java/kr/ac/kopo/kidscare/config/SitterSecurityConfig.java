@@ -15,7 +15,7 @@ public class SitterSecurityConfig {
 	@Bean
 	SecurityFilterChain sitterSecurityFilterChain(HttpSecurity http) throws Exception {
 		
-		String[] permitUri = {"/login/**", "/signup/**", "/static/**", "/error","/","/css/**"}; //{"/**"};
+		String[] permitUri = {"/login/**", "/signup/**", "/static/**", "/error","/","/css/**","/**"}; //{"/**"};
 		return http.authorizeHttpRequests(req -> {
 						req.requestMatchers(permitUri).permitAll();
 						req.anyRequest().authenticated();

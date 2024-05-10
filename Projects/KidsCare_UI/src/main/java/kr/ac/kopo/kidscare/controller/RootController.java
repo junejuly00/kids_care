@@ -20,11 +20,4 @@ public class RootController {
 	public String secured() {
 		return "secured";
 	}
-	
-	@GetMapping("/kcuserpost")
-	public String kcuserpost() {
-		return "kcuserpost";
-	}
-	
-	
 }

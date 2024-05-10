@@ -28,11 +28,14 @@ import kr.ac.kopo.kidscare.model.KCUserPost;
 public class KCUserPostController {
 	final String url = "http://localhost:9090/kcuserpost/";
 	
+	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
 	
 	@Autowired
 	private ObjectMapper om = new ObjectMapper();
+	
+	
 	
 	@GetMapping("/list")
 	String list(Model model) throws JsonMappingException, JsonProcessingException {
@@ -40,13 +43,9 @@ public class KCUserPostController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		HttpEntity<String> req = new HttpEntity<String>(header);
+		String resp = rest.getForObject(url + "list", String.class);
 		
-		ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
-		
-		String body = resp.getBody();
-		
-		List<KCUserPost> list = om.readValue(body, new TypeReference<List<KCUserPost>>() {});
+		List<KCUserPost> list = om.readValue(resp, new TypeReference<List<KCUserPost>>() {});
 		
 		model.addAttribute("list", list);
 		
@@ -102,6 +101,6 @@ public class KCUserPostController {
 		
 		System.out.println(result);
 		
-		return "redirect:../list";
+		return "redirect:../kcuserpost";
 	}
 }

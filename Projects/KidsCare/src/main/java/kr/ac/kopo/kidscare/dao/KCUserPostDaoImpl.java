@@ -16,22 +16,22 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 
 	@Override
 	public KcUserPost item(Integer userPostId) {
-		return sql.selectOne("mapper.kcuserpost.userPostId",userPostId);
+		return sql.selectOne("kcuserpost.userPostId",userPostId);
 	}
 
 	@Override
 	public void add(KcUserPost item) {
-		sql.insert("mapper.kcuserpost.add",item);
+		sql.insert("kcuserpost.add",item);
 	}
 
 	@Override
 	public void update(KcUserPost item) {
-		sql.update("mapper.kcuserpost.update",item);
+		sql.update("kcuserpost.update",item);
 	}
 
 	@Override
 	public List<KcUserPost> list() {
-		return sql.selectList("mapper.kcuserpost.list");
+		return sql.selectList("kcuserpost.list");
 	}
 
 }
