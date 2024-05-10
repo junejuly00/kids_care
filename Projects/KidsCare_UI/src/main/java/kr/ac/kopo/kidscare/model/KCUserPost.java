@@ -1,11 +1,12 @@
 package kr.ac.kopo.kidscare.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 public class KCUserPost {
 	private Long userPostId;
 	private String username;
-	@JsonIgnore
+	@DateTimeFormat(pattern="yyyyMMddHHmmss")
 	private String postdate;
 	private String contents;
 	private String title;

@@ -27,8 +27,5 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     
-logging:
-  level:
-    '[org.springframework]': trace 
-    
+
   
