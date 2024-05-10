@@ -9,21 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 	
 	
-	
 	final String path = "login/";
-	
 	
 	@GetMapping("/user")
 	String userLogin() {
 		return path + "user";
 	}
 	
-	
-	
 	@GetMapping("/sitter")
 	String sitterLogin() {
 		return path + "sitter";
 	}
 	
-	
 }
+	

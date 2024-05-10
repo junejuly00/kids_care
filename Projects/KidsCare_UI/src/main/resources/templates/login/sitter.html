@@ -15,17 +15,18 @@
           <div class="login-form">
             <div class="sign-in-htm">
               
-            <form class="sign-in-wrap">
+            <form class="sign-in-wrap" th:action="@{/login/sitter}" method="post" >
+            
               <div class="group">
-                <input id="user" type="text" class="input" placeholder="아이디를 입력해주세요." th:value="${user}">
+                <input id="user" name="username" type="text" class="input" placeholder="아이디를 입력해주세요." th:value="${username}">
               </div>
               
               <div class="group">
-                <input id="pass" type="password" class="input" placeholder="비밀번호를 입력해주세요." th:value="${password}">
+                <input id="pass" name="password" type="password" class="input" placeholder="비밀번호를 입력해주세요." th:value="${password}">
               </div>
            
               <div class="group">
-                <button class="button">로그인</button>
+                <button class="button" type="submit">로그인</button>
               </div>
             </form>
 
@@ -39,16 +40,16 @@
                 
                 <div class="naverbox">
                     <button type="button">
-                        <img src="image/네이버.png">
+                        naver
                     </button>
                 </div>
 
                 <div class="kakaobox">
-                    <button><img src="image/카카오.png"></button>
+                    <button>kakao</button>
                 </div>
                 
                 <div class="googlebox">
-                    <button><img src="image/구글.png"></button>
+                    <button>google</button>
                 </div>
                
             </div>
