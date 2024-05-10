@@ -16,7 +16,7 @@ public class KCUserDaoImpl implements KCUserDao {
 
 	@Override
 	public List<KCUser> list() {
-		return sql.selectList("mapper.kcuser.list");
+		return sql.selectList("kcuser.list");
 	}
 
 	@Override

@@ -1,10 +1,26 @@
 package kr.ac.kopo.kidscare.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class KCUserPost {
 	private Long userPostId;
 	private String username;
-	private String date;
+	@JsonIgnore
+	private String postdate;
 	private String contents;
+	private String title;
+	
+	
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	
+	
+	
+	
 	
 	public Long getUserPostId() {
 		return userPostId;
@@ -18,16 +34,19 @@ public class KCUserPost {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getDate() {
-		return date;
+	public String getTitle() {
+		return title;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getContents() {
-		return contents;
+	public String getPostdate() {
+		return postdate;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setPostdate(String postdate) {
+		this.postdate = postdate;
 	}
+	
+	
+	
 }
