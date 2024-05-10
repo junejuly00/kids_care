@@ -15,19 +15,19 @@
           <div class="login-form">
             <div class="sign-in-htm">
               
-            <div class="sign-in-wrap">
+            <form class="sign-in-wrap">
               <div class="group">
-                <input id="user" type="text" class="input" placeholder="아이디를 입력해주세요." th:value="${user}">
+                <input id="user" name="username" type="text" class="input" placeholder="아이디를 입력해주세요." th:value="${username}">
               </div>
               
               <div class="group">
-                <input id="pass" type="password" class="input" placeholder="비밀번호를 입력해주세요." th:value="${password}">
+                <input id="pass" name="password" type="password" class="input" placeholder="비밀번호를 입력해주세요." th:value="${password}">
               </div>
            
               <div class="group">
                 <button class="button">로그인</button>
               </div>
-            </div>
+            </form>
 
             <div class="foot-lnk_pw">
               <a href="#forgot">비밀번호 찾기</a>

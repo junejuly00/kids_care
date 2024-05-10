@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>커뮤니티</title>
-    <link th:href="@{/resources/community.css}" rel="stylesheet" type="text/css"></head>
+    <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css"></head>
 <body>
 
 <section class="main_img">
@@ -31,7 +31,7 @@
                     <td th:text="${itemuserPostId.index + 1}"></td>
                     <td><a th:href="@{'/item/' + ${item.id}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
-                    <td th:text="${item.date}"></td>
+                    <td th:text="${item.postdate}"></td>
                     <td th:text="${item.views}"></td>
                 </tr>
             </tbody>
@@ -39,16 +39,16 @@
     </div>
 
     <div id="btn">
-        <button class="write">글쓰기</button>
+        <a href="/kcuserpost/add"><button class="write">글쓰기</button></a>
     </div>
 
     <div class="pagination">
         <ul>
-            <li class="prev"><a href="#"></a></li>
+            <li class="prev"><a href="#">이전</a></li>
             <li class="page"><a href="#">1</a></li>
             <li class="page"><a href="#">2</a></li>
             <li class="page"><a href="#">3</a></li>
-            <li class="next"><a href="#">></a></li>
+            <li class="next"><a href="#">다음</a></li>
         </ul>
     </div>
 </div>

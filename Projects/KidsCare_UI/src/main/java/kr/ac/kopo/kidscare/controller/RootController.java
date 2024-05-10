@@ -21,5 +21,10 @@ public class RootController {
 		return "secured";
 	}
 	
+	@GetMapping("/kcuserpost")
+	public String kcuserpost() {
+		return "kcuserpost";
+	}
+	
 	
 }
