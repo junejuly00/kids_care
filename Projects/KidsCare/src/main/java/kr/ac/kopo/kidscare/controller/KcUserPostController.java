@@ -27,7 +27,7 @@ public class KcUserPostController {
 		return list;
 	}
 	
-	@PostMapping
+	@PostMapping("/{userpostid}")
 	void add(@RequestBody KcUserPost item) {
 		service.add(item);
 	}
