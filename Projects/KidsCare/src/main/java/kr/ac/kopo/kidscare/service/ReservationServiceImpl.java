@@ -19,4 +19,16 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.totalList();
 	}
 
+	@Override
+	public Integer add(Reservation rsvInfo) {
+		// TODO Auto-generated method stub
+		return dao.add(rsvInfo);
+	}
+
+	@Override
+	public Integer delete(Long resId) {
+		// TODO Auto-generated method stub
+		return dao.delete(resId);
+	}
+
 }
