@@ -28,8 +28,8 @@
             </thead>
             <tbody>
                 <tr th:each="item : ${list}">
-                    <td><a th:href="@{'/item/' + ${item.userPostId}}" th:text="${item.userPostId}"></a></td>
-                    <td th:text="${item.title}"></td>
+                    <td><a th:href="@{'/kcuserpost/post/' + ${item.userPostId}}" th:text="${item.userPostId}"></a></td>
+                    <td ><a th:href="@{'/kcuserpost/post/' + ${item.userPostId}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
                     <td th:text="${item.postdate}"></td>
                 </tr>
