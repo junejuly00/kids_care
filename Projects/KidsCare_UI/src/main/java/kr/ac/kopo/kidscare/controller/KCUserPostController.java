@@ -103,4 +103,15 @@ public class KCUserPostController {
 		
 		return "redirect:../kcuserpost";
 	}
+	
+	@GetMapping("/post/{userPostId}")
+	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
+		
+		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);	
+		
+		model.addAttribute("postInfo", postInfo);
+		
+		return "kcuserpost/post";
+	}
+	
 }

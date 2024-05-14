@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kcuserpost">
-	<select id="list" resultType="Kcuserpost">
+	<select id="list" resultType="KCUserPost">
 		SELECT *
 		FROM kcuserpost
 	</select>
@@ -16,5 +16,11 @@
 	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
 	    WHERE userPostId=#{userPostId}
 	</update>
+	
+	<select id="search" resultType="KCUserPost">
+		SELECT *
+		FROM kcuserpost
+		WHERE userPostId=#{userPostId}
+	</select>
 </mapper>
 
