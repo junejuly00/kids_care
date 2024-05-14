@@ -16,7 +16,7 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 
 	@Override
 	public KcUserPost item(Integer userPostId) {
-		return sql.selectOne("kcuserpost.userPostId",userPostId);
+		return sql.selectOne("kcuserpost.search",userPostId);
 	}
 
 	@Override

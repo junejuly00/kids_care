@@ -11,17 +11,13 @@ public class KCUserPost {
 	private String contents;
 	private String title;
 	
-	
+
 	public String getContents() {
 		return contents;
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
-	
-	
-	
 	
 	public Long getUserPostId() {
 		return userPostId;

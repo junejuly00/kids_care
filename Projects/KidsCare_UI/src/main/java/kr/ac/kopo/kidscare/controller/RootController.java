@@ -20,4 +20,12 @@ public class RootController {
 	public String secured() {
 		return "secured";
 	}
+	
+
+
+	@GetMapping("/sitter_profile")
+	String sitter_profile() {
+		return "sitter_profile";
+	}
+
 }

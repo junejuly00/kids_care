@@ -2,6 +2,7 @@ package kr.ac.kopo.kidscare.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,13 +22,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.KCUserPost;
+import kr.ac.kopo.kidscare.model.Notice;
 
 @Controller
-@RequestMapping("/kcuserpost")
-public class KCUserPostController {
-	final String url = "http://localhost:9090/kcuserpost/";
-	
+@RequestMapping("/notice")
+public class NoticeController {
+	final String path = "notice/";
+	final String url = "http://localhost:9090/notice/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -35,30 +36,30 @@ public class KCUserPostController {
 	@Autowired
 	private ObjectMapper om = new ObjectMapper();
 	
-	
-	
 	@GetMapping("/list")
-	String list(Model model) throws JsonMappingException, JsonProcessingException {
+	String list(Model model) throws JsonMappingException, JsonProcessingException{
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
 		String resp = rest.getForObject(url + "list", String.class);
 		
-		List<KCUserPost> list = om.readValue(resp, new TypeReference<List<KCUserPost>>() {});
+		List<Notice> list = om.readValue(resp, new TypeReference<List<Notice>>() {});
 		
-		model.addAttribute("list", list);
+		model.addAttribute("list",list);
 		
-		return "kcuserpost/list";
+		return path + "list";
+		
 	}
 	
 	@GetMapping("/add")
 	String add() {
-		return "kcuserpost/add";
+		return path + "add";
 	}
 	
 	@PostMapping("/add")
-	String add(KCUserPost item) throws JsonProcessingException {
+	String add(Notice item) throws JsonProcessingException {
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -66,7 +67,7 @@ public class KCUserPostController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.postForEntity(url + item.getUserPostId().toString(), req, Integer.class);
+		ResponseEntity<Integer> resp = rest.postForEntity(url + item.getCode().toString(), req, Integer.class);
 		
 		Integer body = resp.getBody();
 		
@@ -75,43 +76,35 @@ public class KCUserPostController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{userPostId}")
-	String update(@PathVariable Long userPostId, Model model) {
-		KCUserPost item = rest.getForObject(url + userPostId, KCUserPost.class);
+	@GetMapping("/update/{code}")
+	String update(@PathVariable Long code, Model model) {
+		Notice item = rest.getForObject(url + code, Notice.class);
 		
 		model.addAttribute("item", item);
 		
-		return "kcuserpost/update";
+		return path + "update";
 	}
 	
-	@PostMapping("/update/{userPostId}")
-	String update(@PathVariable Long userPostId, KCUserPost item) throws JsonProcessingException {
-		item.setUserPostId(userPostId);
+	@PostMapping("/update/{code}")
+	String update(@PathVariable Long code, Notice item) throws JsonProcessingException {
+		item.setCode(code);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
 		
 		String jsonString = om.writeValueAsString(item);
 		
-		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.exchange(url + userPostId, HttpMethod.PUT, req, Integer.class);
+		HttpEntity<String> req = new HttpEntity<String>(jsonString ,header);
+		
+		ResponseEntity<Integer> resp = rest.exchange(url + code, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
 		System.out.println(result);
 		
-		return "redirect:../kcuserpost";
+		return "redirect:../list";
 	}
 	
-	@GetMapping("/post/{userPostId}")
-	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
-		
-		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);	
-		
-		model.addAttribute("postInfo", postInfo);
-		
-		return "kcuserpost/post";
-	}
-	
+
 }

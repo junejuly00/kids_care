@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>
+		<table>
+            <thead>
+                <tr>
+                    
+                    <th class="title">제목</th>
+                    <th>내용</th>
+                    <th>작성자</th>                   
+                    <th>작성일<th>
+                </tr>
+            </thead>
+            <tbody>               
+            	<tr>            		
+                    <td th:text="${postInfo.title}"></td>
+                    <td th:text="${postInfo.contents}"></td>
+                    <td th:text="${postInfo.username}"></td>
+                    <td th:text="${postInfo.postdate}"></td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</body>
+</html>

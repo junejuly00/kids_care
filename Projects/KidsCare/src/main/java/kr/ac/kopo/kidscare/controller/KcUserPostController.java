@@ -26,17 +26,17 @@ public class KcUserPostController {
 		return list;
 	}
 	
-	@PostMapping("/{userpostid}")
+	@PostMapping("/{userPostId}")
 	void add(@RequestBody KcUserPost item) {
 		service.add(item);
 	}
 	
-	@GetMapping("/{userpostid}")
+	@GetMapping("/{userPostId}")
 	KcUserPost item(@PathVariable Integer userPostId) {
 		return service.item(userPostId);
 	}
 	
-	@PutMapping("/{userpostid}")
+	@PutMapping("/{userPostId}")
 	void update(@PathVariable Integer userPostId, @RequestBody KcUserPost item) {
 		item.setUserPostId(userPostId);
 		

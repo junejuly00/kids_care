@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시터 프로필</title>
-    <link href="/siter_profile.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시터 프로필</title>
+<link href="/siter_profile.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="wrap">
-        
-        <div>
-            <table class="body">
-                <div>
-                    <div class="thead">
-                        <div class="search">
-                            <input type="text" placeholder="검색할 단어를 입력하세요.">
-                            <button id="search_btn">검색</button>
-                            <button id="option">
-                                <img src="image/점3개_옵션.png" alt="" style="height: 45px;">
-                            </button>
-                        </div>
-                    </div>
-                    <tbody>
-                        <tr class="tr1" th:each="sitterInfo : ${list}">
-                            <td class="profile">
-                                <div class="td1">
-                                    <img src="image/김지원.jpg" alt="">
-                                </div>
-                                <div class="td1-1">
-                                    <img src="image/icon-star.png" alt="" style="width: 17px;">
-                                </div>   
-                            </td>
-                            <td>
-                                <div class="td2">
-                                    <p th:text="|${sitterInfo.name} | ${sitterInfo.age} ${sitterInfo.gender}|"></p>
-                                    <p th:text="|경력 : ${sitterInfo.경력}|"></p>
-                                    <p th:text="|희망급여 : ${sitterInfo.희망급여}|"></p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="td3">
-                                    <p th:text="${sitterInfo.제목?}"></p>
-                                    <p th:text="|${sitterInfo.주소} | ${sitterInfo.scope}|"></p>
-                                    <p th:text="|${sitterInfo.시간} | ${sitterInfo.서류}|"></p>
-                                    <p th:text="|CCTV 동의 : ${sitterInfo.홈캠유무}|"></p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>   
-            </table>
-        </div>
+	<div class="wrap">
 
-        <div class="writebox">
-            <a href="#"><button class="write"><h1>글쓰기</h1></button></a>
-        </div>
+		<div>
+		
+			<table class="body">
+			
+				<div>
+				
+					<div class="thead">
+					
+						<div class="search">
+							<input type="text" placeholder="검색할 단어를 입력하세요.">
+							<button id="search_btn">검색</button>
+							<button id="option">
+								<img src="image/점3개_옵션.png" alt="" style="height: 45px;">
+							</button>
+						</div>
+						
+					</div>
+					
+					<tbody>
+						<tr class="tr1" th:each="sitterInfo : ${list}">
+							<td class="profile">
+								<div class="td1">
+									<img src="image/김지원.jpg" alt="">
+								</div>
+								<div class="td1-1">
+									<img src="image/icon-star.png" alt="" style="width: 17px;">
+								</div>
+							</td>
+							<td>
+								<div class="td2">
+									<p
+										th:text="|${sitterInfo.name} | ${sitterInfo.age} ${sitterInfo.gender}|"></p>
+									<p th:text="|경력 : ${sitterInfo.경력}|"></p>
+									<p th:text="|희망급여 : ${sitterInfo.희망급여}|"></p>
+								</div>
+							</td>
+							<td>
+								<div class="td3">
+									<p th:text="${sitterInfo.제목?}"></p>
+									<p th:text="|${sitterInfo.주소} | ${sitterInfo.scope}|"></p>
+									<p th:text="|${sitterInfo.시간} | ${sitterInfo.서류}|"></p>
+									<p th:text="|CCTV 동의 : ${sitterInfo.홈캠유무}|"></p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					
+				</div>
+				
+			</table>
+			
+		</div>
 
-        <div class="pagination">
-            <div class="pageBtn">
-                <ul>
-                    <li class="prev"><a href="#"><</a></li>
-                    <li class="page"><a href="#">1</a></li>
-                    <li class="page"><a href="#">2</a></li>
-                    <li class="page"><a href="#">3</a></li>
-                    <li class="next"><a href="#">></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+		<div class="writebox">
+			<a href="#"><button class="write">
+					<h1>글쓰기</h1>
+				</button></a>
+		</div>
+
+		<div class="pagination">
+			<div class="pageBtn">
+				<ul>
+					<li class="prev"><a href="#"><</a></li>
+					<li class="page"><a href="#">1</a></li>
+					<li class="page"><a href="#">2</a></li>
+					<li class="page"><a href="#">3</a></li>
+					<li class="next"><a href="#">></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
