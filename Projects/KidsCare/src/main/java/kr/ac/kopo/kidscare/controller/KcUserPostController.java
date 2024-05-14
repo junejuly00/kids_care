@@ -42,4 +42,10 @@ public class KcUserPostController {
 		
 		service.update(item);
 	}
+	
+	@GetMapping("/mypost/{username}")
+	List<KcUserPost> mypost(@PathVariable String username) {
+		List<KcUserPost> myPostList = service.mypost(username);
+		return myPostList;
+	}
 }

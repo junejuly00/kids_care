@@ -39,7 +39,7 @@ public class ReservationController {
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
 		Reservation resInfo = rest.getForObject( defaultUrl +"list", Reservation.class);
-		model.addAttribute(resInfo);
+		model.addAttribute("resInfo",resInfo);
 		
 		return "/reservation/totallist";
 	}

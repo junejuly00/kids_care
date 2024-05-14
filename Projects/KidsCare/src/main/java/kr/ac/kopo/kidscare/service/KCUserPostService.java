@@ -14,4 +14,6 @@ public interface KCUserPostService {
 
 	void update(KcUserPost item);
 
+	List<KcUserPost> mypost(String username);
+
 }
