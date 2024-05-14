@@ -1,18 +1,17 @@
 package kr.ac.kopo.kidscare.model;
 
-
-public class KcUserPost {
-	private Integer userPostId;
+public class Notice {
+	private Integer code;
 	private String username;
-	private String postdate;
+	private String noticedate;
 	private String contents;
 	private String title;
 	
-	public Integer getUserPostId() {
-		return userPostId;
+	public Integer getCode() {
+		return code;
 	}
-	public void setUserPostId(Integer userPostId) {
-		this.userPostId = userPostId;
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 	public String getUsername() {
 		return username;
@@ -20,11 +19,11 @@ public class KcUserPost {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPostdate() {
-		return postdate;
+	public String getNoticedate() {
+		return noticedate;
 	}
-	public void setPostdate(String postdate) {
-		this.postdate = postdate;
+	public void setNoticedate(String noticedate) {
+		this.noticedate = noticedate;
 	}
 	public String getContents() {
 		return contents;
@@ -38,6 +37,5 @@ public class KcUserPost {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
+
 }

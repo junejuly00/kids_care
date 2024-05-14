@@ -17,7 +17,7 @@
 </section>
 
 <div class="wrap">
-    <p class="community">커뮤니티</p>
+    <p class="community">공지사항</p>
     <div class="table">
         <table>
             <thead>
@@ -32,21 +32,21 @@
             
             <tbody>
             	<tr th:if="${list.size() < 1}">
-                  <td colspan="5">등록된 글이 없습니다.</td>
+                  <td colspan="5">등록된 공지가 없습니다.</td>
                </tr>
             
                 <tr th:each="item : ${list}">
-                    <td><a th:href="@{'/item/' + ${item.userPostId}}" th:text="${item.userPostId}"></a></td>
+                    <td><a th:href="@{'/item/' + ${item.code}}" th:text="${item.code}"></a></td>
                     <td th:text="${item.title}"></td>
                     <td th:text="${item.username}"></td>
-                    <td th:text="${item.postdate}"></td>
+                    <td th:text="${item.noticedate}"></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div id="btn">
-        <a href="/kcuserpost/add"><button class="write">글쓰기</button></a>
+        <a href="/notice/add"><button class="write">글쓰기</button></a>
     </div>
 
     <div class="pagination">
