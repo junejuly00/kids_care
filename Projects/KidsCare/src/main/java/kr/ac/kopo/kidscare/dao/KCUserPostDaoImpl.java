@@ -34,4 +34,10 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 		return sql.selectList("kcuserpost.list");
 	}
 
+	@Override
+	public List<KcUserPost> mypost(String username) {
+		
+		return sql.selectList("kcuserpost.mypost", username);
+	}
+
 }

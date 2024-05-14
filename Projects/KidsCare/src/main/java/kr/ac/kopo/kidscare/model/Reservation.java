@@ -5,6 +5,8 @@ public class Reservation {
 	private String username;
 	private String sitterUsername;
 	private String resDate;
+	private Integer status;
+	
 	public String getResId() {
 		return resId;
 	}
@@ -29,5 +31,11 @@ public class Reservation {
 	}
 	public void setSitterUsername(String sitterUsername) {
 		this.sitterUsername = sitterUsername;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 }

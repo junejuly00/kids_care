@@ -14,4 +14,6 @@ public interface KCUserPostDao {
 
 	List<KcUserPost> list();
 
+	List<KcUserPost> mypost(String username);
+
 }

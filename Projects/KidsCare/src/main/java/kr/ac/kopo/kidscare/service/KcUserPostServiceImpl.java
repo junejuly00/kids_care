@@ -33,6 +33,12 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	public void update(KcUserPost item) {
 		dao.update(item);
 	}
+
+	@Override
+	public List<KcUserPost> mypost(String username) {
+		
+		return dao.mypost(username);
+	}
 	
 	
 
