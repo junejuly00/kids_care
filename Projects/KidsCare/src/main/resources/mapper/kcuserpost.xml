@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kcuserpost">
-	<select id="list" resultType="Kcuserpost">
+	<select id="list" resultType="KcUserPost">
 		SELECT *
 		FROM kcuserpost
 	</select>
 	
-		<insert id="add">
+	<insert id="add">
 	    INSERT into kcuserpost
-	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents})
+	    VALUES(#{userPostId}, #{username}, SYSDATE, #{title}, #{contents})
 	</insert>
 	
 	<update id="update">
 	    UPDATE kcuserpost
-	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
+	    SET username=#{username}, postdate=SYSDATE, title=#{title}, contents=#{contents}
 	    WHERE userPostId=#{userPostId}
 	</update>
+	
+	<insert id="add_image">
+		INSERT INTO userfile
+		(userPostId, filename, uuid)
+		VALUES (#{userPostId},#{filename},#{uuid})
+	</insert>
+	
 </mapper>
 

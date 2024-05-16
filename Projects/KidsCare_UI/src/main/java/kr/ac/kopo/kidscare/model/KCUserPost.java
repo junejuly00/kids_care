@@ -1,5 +1,7 @@
 package kr.ac.kopo.kidscare.model;
 
+import java.util.List;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -10,6 +12,7 @@ public class KCUserPost {
 	private String postdate;
 	private String contents;
 	private String title;
+	private List<UserFile> userFiles;
 	
 	
 	public String getContents() {
@@ -46,6 +49,12 @@ public class KCUserPost {
 	}
 	public void setPostdate(String postdate) {
 		this.postdate = postdate;
+	}
+	public List<UserFile> getUserFiles() {
+		return userFiles;
+	}
+	public void setUserFiles(List<UserFile> userFiles) {
+		this.userFiles = userFiles;
 	}
 	
 	
