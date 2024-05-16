@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 public class KCUserPost {
-	private Long userPostId;
+	private Integer userPostId;
 	private String username;
 	@DateTimeFormat(pattern="yyyyMMddHHmmss")
 	private String postdate;
@@ -23,10 +23,10 @@ public class KCUserPost {
 	
 	
 	
-	public Long getUserPostId() {
+	public Integer getUserPostId() {
 		return userPostId;
 	}
-	public void setUserPostId(Long userPostId) {
+	public void setUserPostId(Integer userPostId) {
 		this.userPostId = userPostId;
 	}
 	public String getUsername() {
