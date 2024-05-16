@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Summary Note</title>
+<!-- Summernote CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/static/css/nav.css}" />
+<link rel="stylesheet" th:href="@{/static/css/post_add.css}" /> 
+</head>
+<body>
+
+	<nav th:replace="/nav.html"></nav>
+	
+	<div class="main_txt">
+		<h2>공지사항 글 등록</h2>
+	</div>
+	
+	<div class="wrap">
+	
+		
+		
+		<form action="/notice/add" method="post">
+<!--  <input type="hidden" name="code" th:value="${code}"/> 
+        <input type="hidden" name="username" th:value="${username}"/> 
+        <input type="hidden" name="noticedate" th:value="${noticedate}"/> -->
+
+			<div>
+				번호<input type="text" name="code" />
+			</div>
+			
+			<p>
+				아이디<input type="text" name="username" />
+			</p>
+			
+			<p>
+				Title: <input type="text" name="title" />
+			</p>
+			
+			<p>Content:</p>
+			<!-- Summernote TextArea -->
+			<textarea id="summernote" name="contents" rows="15" cols="120"></textarea>
+			<p>
+				<input type="submit" value="Add Note" />
+			</p>
+		</form>
+
+	</div>
+
+	<!-- Summernote JavaScript -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	<script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
+</body>
+</html>

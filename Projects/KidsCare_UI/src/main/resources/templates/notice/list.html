@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:href="@{/fragment/head.html}">
-  	<meta charset="UTF-8">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
     <title>커뮤니티</title>
     <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
@@ -16,7 +17,7 @@
 </section>
 
 <div class="wrap">
-    <p class="community">커뮤니티</p>
+    <p class="community">공지사항</p>
     <div class="table">
         <table>
             <thead>
@@ -34,26 +35,26 @@
                </tr>
             
                 <tr th:each="item : ${list}">
-                    <td><a th:href="@{'/kcuserpost/post/' + ${item.userPostId}}" th:text="${item.userPostId}"></a></td>
-                    <td ><a th:href="@{'/kcuserpost/post/' + ${item.userPostId}}" th:text="${item.title}"></a></td>
+                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.code}"></a></td>
+                    <td ><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
-                    <td th:text="${item.postdate}"></td>
+                    <td th:text="${item.noticedate}"></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div id="btn">
-        <a href="/kcuserpost/add"><button class="write">글쓰기</button></a>
+        <a href="/notice/add"><button class="write">글쓰기</button></a>
     </div>
 
     <div class="pagination">
         <ul>
-            <li class="prev"><a href="#">이전</a></li>
+            <li class="prev"><a href="#"><</a></li>
             <li class="page"><a href="#">1</a></li>
             <li class="page"><a href="#">2</a></li>
             <li class="page"><a href="#">3</a></li>
-            <li class="next"><a href="#">다음</a></li>
+            <li class="next"><a href="#">></a></li>
         </ul>
     </div>
 </div>

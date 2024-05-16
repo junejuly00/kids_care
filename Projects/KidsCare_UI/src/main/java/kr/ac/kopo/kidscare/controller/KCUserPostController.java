@@ -1,6 +1,9 @@
 package kr.ac.kopo.kidscare.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,12 +26,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.KCUserPost;
+import kr.ac.kopo.kidscare.model.UserFile;
 
 @Controller
 @RequestMapping("/kcuserpost")
 public class KCUserPostController {
 	final String url = "http://localhost:9090/kcuserpost/";
-	
+	private String uploadPath = "d:/upload/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -58,7 +63,32 @@ public class KCUserPostController {
 	}
 	
 	@PostMapping("/add")
-	String add(KCUserPost item) throws JsonProcessingException {
+	String add(KCUserPost item, List<MultipartFile> uploadFile) throws JsonProcessingException {
+		
+		List<UserFile> userFiles = new ArrayList<UserFile>();
+		
+		for(MultipartFile file : uploadFile) {
+			if(file.isEmpty())
+				continue;
+			
+			String filename = file.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			
+			try {
+				file.transferTo(new File(uploadPath + uuid + "_" + filename));
+				
+				UserFile img = new UserFile();
+				img.setFilename(filename);
+				img.setUuid(uuid);
+				
+				userFiles.add(img);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		item.setUserFiles(userFiles);
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		

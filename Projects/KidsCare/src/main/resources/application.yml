@@ -1,4 +1,11 @@
 
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+        
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: kr.ac.kopo.kidscare.model
