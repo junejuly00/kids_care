@@ -42,9 +42,12 @@ public class BabySitterController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String.resp = rest.getForObject(url+"list",String.class);
+		String resp = rest.getForObject(url+"list",String.class);
 		
+		List<BabySitter> list = om.readValue(resp, new TypeReference<List <BabySitter>>() {});
 		
+		model.addAttribute("list",list);				
+				
 		
 		return "babysitter/list";
 	}
