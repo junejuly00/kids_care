@@ -37,7 +37,7 @@ public class NoticeController {
 	private ObjectMapper om = new ObjectMapper();
 	
 	@GetMapping("/list")
-	String list(Model model) throws JsonMappingException, JsonProcessingException{
+	String list(Model model) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -46,7 +46,7 @@ public class NoticeController {
 		
 		List<Notice> list = om.readValue(resp, new TypeReference<List<Notice>>() {});
 		
-		model.addAttribute("list",list);
+		model.addAttribute("list", list);
 		
 		return path + "list";
 		

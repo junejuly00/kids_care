@@ -3,16 +3,16 @@
 <mapper namespace="notice">
 	<select id="list" resultType="Notice">
 		SELECT *
-		FROM code
+		FROM notice
 	</select>
 	
 		<insert id="add">
-	    INSERT into kcuserpost
+	    INSERT into notice
 	    VALUES(#{code},#{username},sysdate,#{title},#{contents})
 	</insert>
 	
 	<update id="update">
-	    UPDATE kcuserpost
+	    UPDATE notice
 	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
 	    WHERE code=#{code}
 	</update>

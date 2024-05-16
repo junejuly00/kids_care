@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale=1.0">
+<head th:href="@{/fragment/head.html}">
+  	<meta charset="UTF-8">  
     <title>커뮤니티</title>
     <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
@@ -26,7 +25,6 @@
                     <th class="title">제목</th>
                     <th>작성자</th>
                     <th>작성 날짜</th>
-                    <th>조회</th>
                 </tr>
             </thead>
             
