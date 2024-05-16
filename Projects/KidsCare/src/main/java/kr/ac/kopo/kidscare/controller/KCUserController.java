@@ -45,11 +45,7 @@ public class KCUserController {
 		service.update(userInfo);
 	}
 	
-	@PostMapping("/find")
-	KCUser find(String username) {
-		return service.getUserInfo(username);
-		
-	}
+	
 	
 	
 }

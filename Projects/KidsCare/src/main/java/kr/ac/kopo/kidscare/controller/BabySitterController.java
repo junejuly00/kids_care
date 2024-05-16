@@ -47,11 +47,11 @@ public class BabySitterController {
 		service.update(sitterInfo);
 	}
 	
-	@PostMapping("/sitter/find")
-	public BabySitter findSitter(String username) {
+	@PostMapping("/sitter/find/{username}")
+	public BabySitter findSitter(@PathVariable String username) {
 		
 		return service.sitterInfo(username);
 	}
-	
+		
 
 }

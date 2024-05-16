@@ -104,7 +104,7 @@ public class BabySitterController {
 		
 		System.out.println(result);
 		
-		return "redirect:../list";
+		return "redirect:../list";	
 	}
 	
 	@GetMapping("/delete/{username}")
