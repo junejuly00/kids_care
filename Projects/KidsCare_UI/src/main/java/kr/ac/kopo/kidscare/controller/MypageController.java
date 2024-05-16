@@ -30,9 +30,8 @@ public class MypageController {
 	@Autowired
 	private ObjectMapper om = new ObjectMapper();
 	
-	private final String defaultUrl = "http://localhost:9090/mypage/";
 	
-	@GetMapping("/parents")
+	@GetMapping("/parents")  
 	String parents(Model model) throws JsonMappingException, JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -52,5 +51,19 @@ public class MypageController {
 		model.addAttribute("postList", postList);
 		
 		return "/mypage/parents";
+	}
+	
+	@GetMapping("/sitter")
+	String sitter(Model model) {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		String username = "sitter";
+		
+		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find" + username, BabySitter.class);
+		model.addAttribute("sitterInfo",sitterInfo);
+		
+		return "/mypage/sitter";
+		
 	}
 }
