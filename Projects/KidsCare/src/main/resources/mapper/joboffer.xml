@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.joboffer">
+	<select id="list">
+		SELECT *
+		FROM joboffer
+	</select>
+	
+	<insert id="add">
+		INSERT into joboffer
+		VALUES(#{offerId},#{username},#{jobDate},#{jobInfo},#{estPay},#{viewCount})
+	</insert>
+	
+	<update id="update">
+		update joboffer
+		SET username=#{username},#{jobDate},#{jobInfo},#{estPay},#{viewCount}
+		WHERE offerId=#{offerId}
+	</update>
+	
+</mapper>

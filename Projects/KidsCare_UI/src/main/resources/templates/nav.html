@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav</title>
+    <link th:href="@{/resources/nav.css}" rel="stylesheet" type="text/css"></head>
+</head>
+<body>
+    <header th:fragment="nav">
+        <a href="/" id="logo">LOGO</a>
+        <nav class="navbar">
+            <a href="/sitter_profile">시터 찾기</a>
+            <a href="#">일자리 찾기</a>
+            <a href="/kcuserpost/list">커뮤니티</a>
+            <a href="/notice/list">공지사항</a>
+        </nav>
+
+        <div class="user">
+        	<a href="/mypage">내 정보</a>
+            <a href="/singup">회원가입</a>
+            <a href="/login">로그인</a>
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.jobcondition">
+	<select id="list">
+		SELECT *
+		FROM jobcondition
+	</select>
+	
+	<insert id="add">
+		INSERT into jobcondition
+		VALUES (#{ofcertid},#{offerid},#{certname},#{trnname})
+	</insert>
+	
+	<update id="update">
+		UPDATE jobcondition
+		SET offerid=#{offerid},certname=#{certname},trnname=#{trnname}
+		WHERE ofcertid=#{ofcertid}
+	</update>
+</mapper>

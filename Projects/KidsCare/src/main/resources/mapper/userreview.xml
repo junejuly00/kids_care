@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.userreview">
+	<select id="list">
+		SELECT *
+		FROM userreview
+	</select>
+	
+	<insert id="add">
+		INSERT into userreview
+		VALUES (#{reviewId},#{userId},#{sitterId},#{rating},#{reviewInfo})
+	</insert>
+	
+	<update id="update">
+		UPDATE userreview
+		SET name=#{userId},sitterId=#{sitterId},rating=#{rating},reviewInfo=#{reviewInfo}
+		WHERE reviewId=#{reviewId}
+	</update>
+</mapper>

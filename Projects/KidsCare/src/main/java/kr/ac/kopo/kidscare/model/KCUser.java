@@ -1,18 +1,25 @@
 package kr.ac.kopo.kidscare.model;
 
 public class KCUser {
-	private String userid;
+	private String username;
+	private String password;
 	private String name;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	private String phone;
 	private String email;
 	private Byte role;
 	
 	
-	public String getUserid() {
-		return userid;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getName() {
 		return name;

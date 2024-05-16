@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link th:href="@{/resources/sitter_signup.css}" rel="stylesheet" type="text/css"></head>
+</head>
+<body>
+    <div class="wrap">
+        
+        <div id="signup">
+
+            <div class="siterbox">
+                <div id="siter_user">
+                    시터회원
+                </div>
+            </div>
+
+            <div class="signupbox">
+                <form action="post" class="info">
+
+                    <div>
+                        <input type="radio" name="gender">남성
+                        <input type="radio" name="gender">여성  
+                    </div>
+
+                    <div>
+                        <input type="text" class="id" placeholder="아이디를 입력해 주세요."> 
+                        <button class="id_check"><a href="#">중복확인</a></button>
+                    </div>
+                
+                    <input type="password" class="passwd"  placeholder="비밀번호를 입력해 주세요.">
+                    <input type="password" class="passwd_check" placeholder="비밀번호 확인을 위해 입력해 주세요.">
+                    <input type="text" class="name" placeholder="성명을 입력해 주세요.">
+                    <input type="tel" class="phone" placeholder="연락처를 입력해 주세요.">
+                    
+                    <div id = "confrimEmail">
+                        <input type="email" class="mail" placeholder="이메일을 입력해 주세요.">
+                        <span id="dd">@</span>
+                        <select name="email_address" class="email_choice">
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="direct">직접입력</option>
+                        </select>
+                    </div>
+                    <input type="text" class="majorbox" placeholder="  전공을 입력해 주세요.">
+                    
+                    <div>
+                        <input type="text" placeholder="주소" class="address">
+                        <button class="search_address"><a href="#">주소찾기</a></button>
+                    </div>
+                    
+                    <input type="text" class="address_detail" placeholder="상세주소를 입력해 주세요.">
+                    
+                    <div class="btn">
+                        <div class="nextbox"><a href="#">다음</a></div>
+                    </div>
+                </form>
+                </div>
+
+            <div id="main">
+                <a href="#"><button class="mainbtn">메인</button></a>
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+</html>

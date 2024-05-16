@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>커뮤니티</title>
+    <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
+<body>
+
+<nav th:replace="/nav.html"></nav>
+
+<section class="main_img">
+    <div class="main_content">
+        <h2>믿음과 사랑으로</h2>
+    </div>
+</section>
+
+<div class="wrap">
+    <p class="community">공지사항</p>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th class="title">제목</th>
+                    <th>작성자</th>
+                    <th>작성 날짜</th>
+                    <th>조회</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            	<tr th:if="${list.size() < 1}">
+                  <td colspan="5">등록된 공지가 없습니다.</td>
+               </tr>
+            
+                <tr th:each="item : ${list}">
+                    <td><a th:href="@{'/item/' + ${item.code}}" th:text="${item.code}"></a></td>
+                    <td th:text="${item.title}"></td>
+                    <td th:text="${item.username}"></td>
+                    <td th:text="${item.noticedate}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="btn">
+        <a href="/notice/add"><button class="write">글쓰기</button></a>
+    </div>
+
+    <div class="pagination">
+        <ul>
+            <li class="prev"><a href="#">이전</a></li>
+            <li class="page"><a href="#">1</a></li>
+            <li class="page"><a href="#">2</a></li>
+            <li class="page"><a href="#">3</a></li>
+            <li class="next"><a href="#">다음</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

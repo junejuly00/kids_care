@@ -1,0 +1,172 @@
+@charset "UTF-8";
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration-line: none;
+}
+
+.wrap {
+    margin-left: 140px;
+    margin-right: 140px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+input, select {
+    outline: 0.4em;
+    padding-left: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+button{
+    border: none;
+}
+
+
+.top a {
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+    font-size: 24px;
+    text-align: center;
+}
+
+#signup{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signupbox {
+    width: 800px;
+    height: 700px;
+    background: #EAF6D2;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mom{
+    width: 800px;
+    height: 50px;
+}
+#parent_user {
+    width: 130px;
+    height: 50px;
+    background: #FFEF99;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+.id {
+    width: 412px;
+    height: 50px;
+}
+
+.id_check {
+    width: 83px;
+    height: 50px;
+    background: #FFE371;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px ;
+}
+
+.passwd {
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+.passwd_check{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.name {
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.phone {
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.mail{
+    width: 240px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#dd{
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+}
+
+.email_choice{
+    width: 210px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.address {
+    width: 412px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.search_address{
+    width: 83px;
+    height: 50px;
+    background: #FFE371;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px ;
+    margin-top: 10px;
+}
+
+.address_detail{
+    width: 500px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+a  {
+    text-decoration: none;
+    color: black;
+}
+
+.mainbtn {
+    width: 150px;
+    height: 50px;
+    background: #FFE371;
+    border-style: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#main {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+}

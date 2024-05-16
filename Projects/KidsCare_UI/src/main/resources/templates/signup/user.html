@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link href="/parents_signup.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="wrap">
+        
+        <div id="signup">
+            <div class="mom">
+                <div id="parent_user">
+                    부모회원
+                </div>
+            </div>
+            <div class="signupbox">
+                <form action="post" class="info">
+
+                    <div>
+                        <input type="text" placeholder="아이디" class="id">
+                        <button class="id_check"><a href="#">중복확인</a></button>
+                    </div>
+                    
+                    <input type="password" placeholder="비밀번호" class="passwd">
+                    <input type="password" placeholder="비밀번호 확인" class="passwd_check">
+                    <input type="text" placeholder="성명" class="name">
+                    <input type="tel" placeholder="연락처" class="phone">
+                    
+                    <div id = "confirm_email">
+                        <input type="email" class="mail" placeholder="이메일을 입력해 주세요.">
+                        <span id="dd">@</span>
+                        <select name="email_address" class="email_choice">
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="direct">직접입력</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <input type="text" placeholder="주소" class="address" id="address_kakao">
+                        <button class="search_address" id="address_kakao"><a href="#">주소찾기</a></button>
+                    </div>
+
+                    <input type="text" placeholder="상세주소" class="address_detail" name="address_detail">
+                </form>
+            </div>
+
+            <div id="main">
+                <a href="#"><button class="mainbtn">메인</button></a>
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+ window.onload = function(){
+    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address_kakao").value = data.address; // 주소 넣기
+                document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+}
+</script>
+</html>

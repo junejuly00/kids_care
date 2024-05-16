@@ -3,9 +3,13 @@ package kr.ac.kopo.kidscare.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -24,19 +28,59 @@ public class KCUserController {
 	@Autowired
 	private ObjectMapper om = new ObjectMapper();
 	
-	@PostMapping("/register/default")
+	private final String defaultUrl = "http://localhost:9090/kcuser/default/";
+	
+	@GetMapping("/list") 
+	String list(Model model) throws JsonProcessingException {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/list", KCUser.class);
+		model.addAttribute(userInfo);
+		
+		return "/kcuser/list";
+		
+	}
+	
+	
+	@PostMapping("/default/register")
 	String register(KCUser userInfo) throws JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
 		String jsonString = om.writeValueAsString(userInfo);
 		
-		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		
-		Integer body = rest.postForObject("http://localhost:9090/kcuser/register/default", req, Integer.class);
+		Integer body = rest.postForObject(defaultUrl + "register", request, Integer.class);
 		
 		
 		
-		return "redirect:../../";
+		return "redirect:../../list";
+	}
+	
+	@GetMapping("/default/update_info")
+	String updateInfo(Model model) {
+		KCUser userInfo = rest.getForObject(defaultUrl +"update_info", KCUser.class);
+		model.addAttribute("userInfo", userInfo);
+		return "/kcuser/default/update_info";
+	}
+	
+	@PostMapping("/default/update_info")
+	String updateInfo(@PathVariable String username, KCUser userInfo) throws JsonProcessingException {
+		userInfo.setUsername(username);
+		
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		String jsonString = om.writeValueAsString(userInfo);
+		
+		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
+		
+		ResponseEntity<Integer> response = rest.exchange(defaultUrl + "username", HttpMethod.POST, request, Integer.class);
+		
+		Integer result = response.getBody();
+		
+		return "redirect:../../list";
 	}
 }
