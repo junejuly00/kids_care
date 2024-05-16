@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.KCUserPostDao;
 import kr.ac.kopo.kidscare.model.KcUserPost;
-import kr.ac.kopo.kidscare.model.UserFile;
 
 @Service
 public class KcUserPostServiceImpl implements KCUserPostService {
@@ -15,6 +14,8 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	@Autowired
 	KCUserPostDao dao;
 
+
+	
 	@Override
 	public List<KcUserPost> list() {
 		return dao.list();
@@ -29,12 +30,9 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	public void add(KcUserPost item) {
 		dao.add(item);
 		
-		for(UserFile userFile : item.getUserFiles()) {
-			userFile.setUserPostId(item.getUserPostId());
-			
-			dao.add(userFile);
 		}
-	}
+		
+	
 
 	@Override
 	public void update(KcUserPost item) {

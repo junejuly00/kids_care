@@ -67,23 +67,25 @@ public class KCUserPostController {
 		
 		List<UserFile> userFiles = new ArrayList<UserFile>();
 		
-		for(MultipartFile file : uploadFile) {
-			if(file.isEmpty())
-				continue;
-			
-			String filename = file.getOriginalFilename();
-			String uuid = UUID.randomUUID().toString();
-			
-			try {
-				file.transferTo(new File(uploadPath + uuid + "_" + filename));
+		if(uploadFile != null) {
+			for(MultipartFile file : uploadFile) {
+				if(file.isEmpty())
+					continue;
 				
-				UserFile img = new UserFile();
-				img.setFilename(filename);
-				img.setUuid(uuid);
+				String filename = file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
 				
-				userFiles.add(img);
-			} catch (Exception e) {
-				e.printStackTrace();
+				try {
+					file.transferTo(new File(uploadPath + uuid + "_" + filename));
+					
+					UserFile img = new UserFile();
+					img.setFilename(filename);
+					img.setUuid(uuid);
+					
+					userFiles.add(img);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		

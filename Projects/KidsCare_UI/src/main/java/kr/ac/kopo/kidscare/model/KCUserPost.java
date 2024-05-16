@@ -23,7 +23,7 @@ public class KCUserPost {
 	}
 	
 
-	public Long getUserPostId() {
+	public Integer getUserPostId() {
 
 		return userPostId;
 	}

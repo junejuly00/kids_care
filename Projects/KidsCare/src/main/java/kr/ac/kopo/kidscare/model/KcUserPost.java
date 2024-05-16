@@ -3,17 +3,17 @@ package kr.ac.kopo.kidscare.model;
 import java.util.List;
 
 public class KcUserPost {
-	private Long userPostId;
+	private Integer userPostId;
 	private String username;
 	private String postdate;
 	private String contents;
 	private String title;
 	private List<UserFile> userFiles;
 	
-	public Long getUserPostId() {
+	public Integer getUserPostId() {
 		return userPostId;
 	}
-	public void setUserPostId(Long userPostId) {
+	public void setUserPostId(Integer userPostId) {
 		this.userPostId = userPostId;
 	}
 	public String getUsername() {

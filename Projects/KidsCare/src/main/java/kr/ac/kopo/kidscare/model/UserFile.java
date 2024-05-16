@@ -2,7 +2,7 @@ package kr.ac.kopo.kidscare.model;
 
 public class UserFile {
 	private Long code;
-	private Long userPostId;
+	private Integer userPostId;
 	private String filename;
 	private String uuid;
 	
@@ -12,10 +12,10 @@ public class UserFile {
 	public void setCode(Long code) {
 		this.code = code;
 	}
-	public Long getUserPostId() {
+	public Integer getUserPostId() {
 		return userPostId;
 	}
-	public void setUserPostId(Long userPostId) {
+	public void setUserPostId(Integer userPostId) {
 		this.userPostId = userPostId;
 	}
 	public String getFilename() {
