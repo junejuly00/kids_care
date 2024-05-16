@@ -27,5 +27,10 @@ public class RootController {
 	String sitter_profile() {
 		return "sitter_profile";
 	}
+	
+	@GetMapping("/notice_list")
+	String notice_list() {
+		return "notice_list";
+	}
 
 }

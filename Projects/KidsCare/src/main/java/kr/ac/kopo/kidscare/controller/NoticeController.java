@@ -22,7 +22,7 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 	
-	@PostMapping("/list")
+	@GetMapping("/list")
 	List<Notice> list(){
 		List<Notice> list = service.list();
 	

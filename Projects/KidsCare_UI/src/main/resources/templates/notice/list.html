@@ -26,18 +26,17 @@
                     <th class="title">제목</th>
                     <th>작성자</th>
                     <th>작성 날짜</th>
-                    <th>조회</th>
                 </tr>
             </thead>
             
             <tbody>
             	<tr th:if="${list.size() < 1}">
-                  <td colspan="5">등록된 공지가 없습니다.</td>
+                  <td colspan="5">등록된 글이 없습니다.</td>
                </tr>
             
                 <tr th:each="item : ${list}">
-                    <td><a th:href="@{'/item/' + ${item.code}}" th:text="${item.code}"></a></td>
-                    <td th:text="${item.title}"></td>
+                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.code}"></a></td>
+                    <td ><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
                     <td th:text="${item.noticedate}"></td>
                 </tr>
@@ -51,11 +50,11 @@
 
     <div class="pagination">
         <ul>
-            <li class="prev"><a href="#">이전</a></li>
+            <li class="prev"><a href="#"><</a></li>
             <li class="page"><a href="#">1</a></li>
             <li class="page"><a href="#">2</a></li>
             <li class="page"><a href="#">3</a></li>
-            <li class="next"><a href="#">다음</a></li>
+            <li class="next"><a href="#">></a></li>
         </ul>
     </div>
 </div>
