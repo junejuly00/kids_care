@@ -27,5 +27,11 @@
 		WHERE userPostId=#{userPostId}
 
 	</select>
+	
+	<insert id="add_image">
+		INSERT INTO userfile
+		(userPostId, filename, uuid)
+		VALUES (#{userPostId},#{filename},#{uuid})
+	</insert>
 </mapper>
 

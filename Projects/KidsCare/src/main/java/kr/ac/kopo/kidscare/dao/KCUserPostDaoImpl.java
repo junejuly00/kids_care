@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
+import kr.ac.kopo.kidscare.model.UserFile;
 
 @Repository
 public class KCUserPostDaoImpl implements KCUserPostDao {
@@ -38,6 +39,11 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 	public List<KcUserPost> mypost(String username) {
 		
 		return sql.selectList("kcuserpost.mypost", username);
+	}
+
+	@Override
+	public void add(UserFile userFile) {
+		sql.insert("kcuserpost.add_image", userFile);
 	}
 
 }
