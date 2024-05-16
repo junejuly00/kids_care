@@ -20,17 +20,7 @@ public class RootController {
 	public String secured() {
 		return "secured";
 	}
-	
 
-
-	@GetMapping("/sitter_profile")
-	String sitter_profile() {
-		return "sitter_profile";
-	}
 	
-	@GetMapping("/notice_list")
-	String notice_list() {
-		return "notice_list";
-	}
 
 }

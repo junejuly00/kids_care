@@ -115,7 +115,7 @@ public class KCUserPostController {
 	}
 	
 	@PostMapping("/update/{userPostId}")
-	String update(@PathVariable Long userPostId, KCUserPost item) throws JsonProcessingException {
+	String update(@PathVariable Integer userPostId, KCUserPost item) throws JsonProcessingException {
 		item.setUserPostId(userPostId);
 		
 		HttpHeaders header = new HttpHeaders();
