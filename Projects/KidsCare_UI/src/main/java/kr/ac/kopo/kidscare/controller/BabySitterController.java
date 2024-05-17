@@ -49,7 +49,7 @@ public class BabySitterController {
 		model.addAttribute("list",list);				
 				
 		
-		return "babysitter/list";
+		return "/sitter_profile/list";
 	}
 	
 	@GetMapping("/add")

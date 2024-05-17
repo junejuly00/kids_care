@@ -9,14 +9,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class BabySitter implements UserDetails{
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private String username;
+	private String password;
 	private String name;
 	private String phone;
 	private String email;
@@ -24,10 +21,96 @@ public class BabySitter implements UserDetails{
 	private Short age;
 	private String major;
 	private Byte scope;
+	private Integer avgRating;
+	private String content;
 	private Byte open;
-	private Integer rating;
 	private String provider;
-	private String password;
+	private Integer status;
+	private String insurance;
+	private String document;
+	private String other;
+	private String worktime;
+	private Integer cctv;
+	private String nickname;
+	private String startday;
+	private String salary;
+	public Integer getAvgRating() {
+		return avgRating;
+	}
+	public void setAvgRating(Integer avgRating) {
+		this.avgRating = avgRating;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public String getInsurance() {
+		return insurance;
+	}
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
+	public String getDocument() {
+		return document;
+	}
+	public void setDocument(String document) {
+		this.document = document;
+	}
+	public String getOther() {
+		return other;
+	}
+	public void setOther(String other) {
+		this.other = other;
+	}
+	public String getWorktime() {
+		return worktime;
+	}
+	public void setWorktime(String worktime) {
+		this.worktime = worktime;
+	}
+	public Integer getCctv() {
+		return cctv;
+	}
+	public void setCctv(Integer cctv) {
+		this.cctv = cctv;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getStartday() {
+		return startday;
+	}
+	public void setStartday(String startday) {
+		this.startday = startday;
+	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	public String getCareer() {
+		return career;
+	}
+	public void setCareer(String career) {
+		this.career = career;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	private String career;
+	
 	public String getSitterId() {
 		return username;
 	}
@@ -76,11 +159,11 @@ public class BabySitter implements UserDetails{
 	public void setScope(Byte scope) {
 		this.scope = scope;
 	}
-	public Integer getRating() {
-		return rating;
+	public Integer getavgRating() {
+		return avgRating;
 	}
-	public void setRating(Integer rating) {
-		this.rating = rating;
+	public void setRating(Integer avgRating) {
+		this.avgRating = avgRating;
 	}
 	public String getProvider() {
 		return provider;
