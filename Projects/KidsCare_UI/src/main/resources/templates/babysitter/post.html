@@ -13,30 +13,25 @@
 	
 	<div class="wrap">
 		<div class="main_txt">
-			<h2>커뮤니티</h2>
+			<h2>시터 찾기</h2>
 		</div>
 		
 		<div class="box">
 		<div class="title">
-			<h4 th:text="${postInfo.title}"></h4>
+			<h4 th:text="${sitterInfo.title}"></h4>
 		</div>
 		
 		<div class="info">
-			<p>작성자:</p><p th:text="${postInfo.username}"></p>
-			<p>| 작성일:</p><p th:text="${postInfo.postdate}"></p>
+			<p>작성자:</p><p th:text="${sitterInfo.username}"></p>
 		</div>
 		
 		<hr>
 		
 		<div class="content">
-			<div th:text="${postInfo.contents}"></div>
+			<div th:text="${sitterInfo.contents}"></div>
 		</div>
 		
 		</div>
-		
-		<div id="btn">
-        <a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="숨기기"><button class="write">삭제</button></a>
-    </div>
 		
 		<div>
 			<a href="../list">목록</a>

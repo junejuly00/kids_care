@@ -13,8 +13,15 @@
 	
 	<update id="update">
 	    UPDATE notice
-	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
+	    SET username=#{username},title=#{title},contents=#{contents}
 	    WHERE code=#{code}
 	</update>
+	
+	<select id="item" resultType="Notice">
+		SELECT *
+		FROM notice
+		WHERE code=#{code}
+
+	</select>
 </mapper>
 

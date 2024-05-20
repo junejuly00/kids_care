@@ -16,4 +16,6 @@ public interface KCUserPostService {
 
 	List<KcUserPost> mypost(String username);
 
+	void hide(Integer userPostId);
+
 }

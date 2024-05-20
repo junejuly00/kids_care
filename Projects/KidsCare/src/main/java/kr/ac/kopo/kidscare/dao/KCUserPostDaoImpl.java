@@ -46,4 +46,9 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 		sql.insert("kcuserpost.add_image", userFile);
 	}
 
+	@Override
+	public void hide(Integer userPostId) {
+		sql.update("kcuserpost.hide",userPostId);
+	}
+
 }

@@ -34,4 +34,9 @@ public class BabySitterDaoImpl implements BabySitterDao {
 		sql.update("babySitter.update",sitterInfo);
 	}
 
+	@Override
+	public List<BabySitter> detail(String username) {
+		return sql.selectList("babySitter.detail", username);
+	}
+
 }
