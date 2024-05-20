@@ -36,12 +36,7 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
-	public Integer getAvgRating() {
-		return avgRating;
-	}
-	public void setAvgRating(Integer avgRating) {
-		this.avgRating = avgRating;
-	}
+	
 	public String getContent() {
 		return content;
 	}

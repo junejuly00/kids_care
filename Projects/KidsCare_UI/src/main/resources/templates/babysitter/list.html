@@ -10,15 +10,15 @@
 <body>
 	<div class="wrap">
 
-		<div>
+		<div class="container">
 			<table class="body">
 				<thead>
 					<tr>
 						<td>테스트 테스트 테스트</td>
 					</tr>
 					
-					<tr>
-						<td class="thead">
+					<tr class="thead">
+						<td>
 							<div class="search">
 								<input type="text" placeholder="검색할 단어를 입력하세요.">
 								<button id="search_btn">검색</button>
@@ -43,17 +43,17 @@
 
 						<td>
 							<div class="td2">
-								<p
-									th:text="|${sitterInfo.name} | ${sitterInfo.age} ${sitterInfo.gender}|"></p>
-								<p th:text="|경력 : ${sitterInfo.age}|"></p>
+								<p th:text="${sitterInfo.name} + | ${sitterInfo.age}"></p>
+								<p th:text="|경력 : ${sitterInfo.career}|"></p>
 								<p th:text="|희망급여 : ${sitterInfo.salary}|"></p>
+								<p th:text="${sitterInfo.insurance}">
 							</div>
 						</td>
 						<td>
 							<div class="td3">
-								<p th:text="${sitterInfo.clob}"></p>
-								<p th:text="|${sitterInfo.address} | ${sitterInfo.scope}|"></p>
-								<p th:text="|${sitterInfo.시간} | ${sitterInfo.document}|"></p>
+								<p th:text="${sitterInfo.content}"></p>
+								
+								<p th:text="${sitterInfo.startday}"></p>
 								<p th:text="|CCTV 동의 : ${sitterInfo.cctv}|"></p>
 							</div>
 						</td>
