@@ -3,7 +3,6 @@
 <mapper namespace="kcuserpost">
 
 	<select id="list" resultType="KcUserPost">
-
 		SELECT *
 		FROM kcuserpost
 	</select>
@@ -21,7 +20,7 @@
 	
 
 
-	<select id="search" resultType="KCUserPost">
+	<select id="search" resultType="KcUserPost">
 		SELECT *
 		FROM kcuserpost
 		WHERE userPostId=#{userPostId}
