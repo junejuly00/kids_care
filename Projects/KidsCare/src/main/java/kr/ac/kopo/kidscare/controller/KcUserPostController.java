@@ -37,7 +37,7 @@ public class KcUserPostController {
 	}
 	
 	@PutMapping("/{userPostId}")
-	void update(@PathVariable Long userPostId, @RequestBody KcUserPost item) {
+	void update(@PathVariable Integer userPostId, @RequestBody KcUserPost item) {
 		item.setUserPostId(userPostId);
 		
 		service.update(item);

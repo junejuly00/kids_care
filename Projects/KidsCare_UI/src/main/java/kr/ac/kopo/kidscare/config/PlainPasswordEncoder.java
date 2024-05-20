@@ -12,7 +12,9 @@ public class PlainPasswordEncoder implements PasswordEncoder {
 
 	@Override
 	public boolean matches(CharSequence rawPassword, String encodedPassword) {
-		if (rawPassword == encodedPassword) {
+		System.out.println(rawPassword + ", "+ encodedPassword);
+		
+		if (rawPassword.toString() == encodedPassword) {
 			return true;
 		}
 		return false;
