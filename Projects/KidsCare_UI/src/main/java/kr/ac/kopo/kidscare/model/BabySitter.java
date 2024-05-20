@@ -36,12 +36,93 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
+
+	public String getCareer() {
+		return career;
+	}
+	public void setCareer(String career) {
+		this.career = career;
+	}
+	private String career;
 	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		List<SimpleGrantedAuthority> list = new ArrayList<>();
+		list.add(new SimpleGrantedAuthority("ROLE_SITTER"));
+		return list;
+	}
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Byte getGender() {
+		return gender;
+	}
+	public void setGender(Byte gender) {
+		this.gender = gender;
+	}
+	public Short getAge() {
+		return age;
+	}
+	public void setAge(Short age) {
+		this.age = age;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public Byte getScope() {
+		return scope;
+	}
+	public void setScope(Byte scope) {
+		this.scope = scope;
+	}
+	public Integer getAvgRating() {
+		return avgRating;
+	}
+	public void setAvgRating(Integer avgRating) {
+		this.avgRating = avgRating;
+	}
+
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
 	}
 	public Integer getStatus() {
 		return status;
@@ -97,95 +178,8 @@ public class BabySitter implements UserDetails{
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
-	public String getCareer() {
-		return career;
-	}
-	public void setCareer(String career) {
-		this.career = career;
-	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	private String career;
-
-	
-	public String getSitterId() {
-		return username;
-	}
-	public void setSitterId(String username) {
-		this.username = username;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public Byte getGender() {
-		return gender;
-	}
-	public void setGender(Byte gender) {
-		this.gender = gender;
-	}
-	public Short getAge() {
-		return age;
-	}
-	public void setAge(Short age) {
-		this.age = age;
-	}
-	public String getMajor() {
-		return major;
-	}
-	public void setMajor(String major) {
-		this.major = major;
-	}
-	public Byte getScope() {
-		return scope;
-	}
-	public void setScope(Byte scope) {
-		this.scope = scope;
-	}
-	public Integer getavgRating() {
-		return avgRating;
-	}
-	public void setRating(Integer avgRating) {
-		this.avgRating = avgRating;
-	}
-	public String getProvider() {
-		return provider;
-	}
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		List<SimpleGrantedAuthority> list = new ArrayList<>();
-		list.add(new SimpleGrantedAuthority("ROLE_SITTER"));
-		return list;
-	}
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return username;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

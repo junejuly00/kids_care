@@ -146,4 +146,10 @@ public class KCUserPostController {
 		return "kcuserpost/post";
 	}
 	
+	@GetMapping("/hide/{userPostId}")
+	String hide(@PathVariable Long userPostId) {
+		KCUserPost item = rest.getForObject(url + "hide/" + userPostId.toString() , KCUserPost.class);				
+		return "redirect:../list";
+	
+}
 }
