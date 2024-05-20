@@ -28,6 +28,7 @@ public class BabySitter implements UserDetails{
 	private Integer rating;
 	private String provider;
 	private String password;
+	
 	public String getSitterId() {
 		return username;
 	}
