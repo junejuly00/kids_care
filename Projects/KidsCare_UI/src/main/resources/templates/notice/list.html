@@ -38,7 +38,7 @@
                     <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.code}"></a></td>
                     <td ><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
-                    <td th:text="${item.noticedate}"></td>
+                    <td th:text="${item.postdate}"></td>
                 </tr>
             </tbody>
         </table>
@@ -50,11 +50,11 @@
 
     <div class="pagination">
         <ul>
-            <li class="prev"><a href="#"><</a></li>
+            <li class="prev"><a href="#">이전</a></li>
             <li class="page"><a href="#">1</a></li>
             <li class="page"><a href="#">2</a></li>
             <li class="page"><a href="#">3</a></li>
-            <li class="next"><a href="#">></a></li>
+            <li class="next"><a href="#">다음</a></li>
         </ul>
     </div>
 </div>
