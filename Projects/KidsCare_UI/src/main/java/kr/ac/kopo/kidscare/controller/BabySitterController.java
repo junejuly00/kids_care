@@ -44,6 +44,7 @@ public class BabySitterController {
 		
 		String resp = rest.getForObject(url + "list", String.class);
 		
+
 		List<BabySitter> list = om.readValue(resp, new TypeReference<List<BabySitter>>() {});
 
 		

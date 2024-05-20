@@ -36,6 +36,7 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
+
 	public String getCareer() {
 		return career;
 	}
@@ -110,6 +111,7 @@ public class BabySitter implements UserDetails{
 	public void setAvgRating(Integer avgRating) {
 		this.avgRating = avgRating;
 	}
+
 	public String getContent() {
 		return content;
 	}
