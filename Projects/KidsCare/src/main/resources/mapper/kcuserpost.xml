@@ -14,7 +14,7 @@
 	
 	<update id="update">
 	    UPDATE kcuserpost
-	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
+	    SET username=#{username},title=#{title},contents=#{contents}
 	    WHERE userPostId=#{userPostId}
 	</update>
 	

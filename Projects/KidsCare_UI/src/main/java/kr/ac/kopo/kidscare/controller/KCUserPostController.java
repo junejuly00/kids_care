@@ -133,7 +133,7 @@ public class KCUserPostController {
 		
 		System.out.println(result);
 		
-		return "redirect:../kcuserpost";
+		return "redirect:../list";
 	}
 	
 	@GetMapping("/post/{userPostId}")

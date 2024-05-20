@@ -36,6 +36,7 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
+	private String title;
 	
 	public String getContent() {
 		return content;
@@ -212,6 +213,12 @@ public class BabySitter implements UserDetails{
 	}
 	public void setOpen(Byte open) {
 		this.open = open;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

@@ -25,6 +25,7 @@
                     <th class="title">제목</th>
                     <th>작성자</th>
                     <th>작성 날짜</th>
+                    <th>관리</th>
                 </tr>
             </thead>
             
@@ -38,6 +39,7 @@
                     <td ><a th:href="@{'/kcuserpost/post/' + ${item.userPostId}}" th:text="${item.title}"></a></td>
                     <td th:text="${item.username}"></td>
                     <td th:text="${item.postdate}"></td>
+                    <td><a th:href="@{'/kcuserpost/update/' + ${item.userPostId}}">변경쓰</a></td>
                 </tr>
             </tbody>
         </table>
