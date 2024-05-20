@@ -45,16 +45,16 @@
 							<div class="td2">
 								<p
 									th:text="|${sitterInfo.name} | ${sitterInfo.age} ${sitterInfo.gender}|"></p>
-								<p th:text="|경력 : ${sitterInfo.경력}|"></p>
-								<p th:text="|희망급여 : ${sitterInfo.희망급여}|"></p>
+								<p th:text="|경력 : ${sitterInfo.age}|"></p>
+								<p th:text="|희망급여 : ${sitterInfo.salary}|"></p>
 							</div>
 						</td>
 						<td>
 							<div class="td3">
-								<p th:text="${sitterInfo.제목?}"></p>
-								<p th:text="|${sitterInfo.주소} | ${sitterInfo.scope}|"></p>
-								<p th:text="|${sitterInfo.시간} | ${sitterInfo.서류}|"></p>
-								<p th:text="|CCTV 동의 : ${sitterInfo.홈캠유무}|"></p>
+								<p th:text="${sitterInfo.clob}"></p>
+								<p th:text="|${sitterInfo.address} | ${sitterInfo.scope}|"></p>
+								<p th:text="|${sitterInfo.시간} | ${sitterInfo.document}|"></p>
+								<p th:text="|CCTV 동의 : ${sitterInfo.cctv}|"></p>
 							</div>
 						</td>
 					</tr>

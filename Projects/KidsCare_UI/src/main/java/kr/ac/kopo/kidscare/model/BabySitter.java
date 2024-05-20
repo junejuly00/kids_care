@@ -25,6 +25,8 @@ public class BabySitter implements UserDetails{
 	private String content;
 	private Byte open;
 	private String provider;
+
+
 	private Integer status;
 	private String insurance;
 	private String document;
@@ -110,6 +112,7 @@ public class BabySitter implements UserDetails{
 		this.username = username;
 	}
 	private String career;
+
 	
 	public String getSitterId() {
 		return username;
