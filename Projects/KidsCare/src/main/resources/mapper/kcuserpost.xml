@@ -5,11 +5,12 @@
 	<select id="list" resultType="KcUserPost">
 		SELECT *
 		FROM kcuserpost
+		WHERE status=0
 	</select>
 	
 		<insert id="add">
 	    INSERT into kcuserpost
-	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents})
+	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">
@@ -26,6 +27,12 @@
 		WHERE userPostId=#{userPostId}
 
 	</select>
+	
+	<update id="hide">
+		UPDATE kcuserpost
+		SET status=1
+		where userPostId=#{userPostId}
+	</update>
 	
 	<insert id="add_image">
 		INSERT INTO userfile

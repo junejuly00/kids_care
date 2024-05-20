@@ -19,4 +19,6 @@ public interface KCUserPostDao {
 
 	void add(UserFile userFile);
 
+	void hide(Integer userPostId);
+
 }

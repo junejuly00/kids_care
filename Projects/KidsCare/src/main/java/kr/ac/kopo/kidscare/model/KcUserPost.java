@@ -8,6 +8,13 @@ public class KcUserPost {
 	private String postdate;
 	private String contents;
 	private String title;
+	private Integer status;
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	private List<UserFile> userFiles;
 	
 	public Integer getUserPostId() {

@@ -51,6 +51,11 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 		
 		return dao.mypost(username);
 	}
+
+	@Override
+	public void hide(Integer userPostId) {
+		dao.hide(userPostId);
+	}
 	
 	
 
