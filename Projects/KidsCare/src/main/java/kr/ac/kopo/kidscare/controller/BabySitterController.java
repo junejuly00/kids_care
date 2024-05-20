@@ -52,6 +52,13 @@ public class BabySitterController {
 		
 		return service.sitterInfo(username);
 	}
+	
+	@GetMapping("/detail/{username}")
+	List<BabySitter> detail(@PathVariable String username){
+		List<BabySitter> sitterList = service.detail(username);
+		
+		return sitterList;
+	}
 		
 
 }

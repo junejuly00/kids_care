@@ -18,4 +18,9 @@
 		WHERE sitter=#{username}
 	</update>
 	
+	<select id="search" resultType="BabySitter">
+		SELECT *
+		FROM babysitter
+		WHERE username=#{username}
+	</select>
 </mapper>

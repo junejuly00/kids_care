@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.KCUserPost;
 
 @Controller
 @RequestMapping("/babysitter")
@@ -107,15 +108,13 @@ public class BabySitterController {
 		return "redirect:../list";	
 	}
 	
-	@GetMapping("/delete/{username}")
-	String delete(@PathVariable String username) {
-		RequestEntity<Void> req = RequestEntity.delete(url + username).build();
+	@GetMapping("/detail/{username}")
+	String post(@PathVariable String username, Model model) throws JsonProcessingException {
 		
-		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
+		BabySitter item = rest.getForObject(url + username, BabySitter.class);	
 		
-		System.out.println(result);
+		model.addAttribute("item", item);
 		
-		return "redirect:../list";
+		return "kcuserpost/detail";
 	}
-	
 }
