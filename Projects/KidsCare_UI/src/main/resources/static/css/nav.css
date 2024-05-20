@@ -21,32 +21,31 @@ header a{
 }
 
 header{
-    height: 0.5rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    padding: 2rem 9%;
+	width: auto;
+    height: 100px;
+    background-color: #ffffff;
+    padding: 0 280px 0 280px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-#logo{
-    font-size: 24px;
-    font-weight: bold;
+
+#logo img{
+    width: 290px;
+    height: auto;
 }
 a:hover{
-    color:green;
+    color:#000000;
 }
 a:active{
-    color:yellow;
+    color:#75C2F6;
 }
 .navbar a::after{
     content: '';
     width: 0;
     height: 2px;
-    background: green;
+    margin-top:2px;
+    background: #A0DEFF;
     display: block;
     transition: 0.2s linear;
 }
@@ -59,3 +58,14 @@ header .user a{
     padding: 10px;
 }
 
+#top_btn{
+	position: fixed;
+	bottom: 10px;
+	right: 30px;
+	width: 100px;
+	height: 100px;
+}
+#top_btn img{
+	width: 80%;
+	height: auto;
+}
