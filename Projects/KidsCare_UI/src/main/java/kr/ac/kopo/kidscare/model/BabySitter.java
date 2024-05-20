@@ -36,6 +36,7 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
+
 	private String title;
 	
 	public String getContent() {
@@ -98,23 +99,32 @@ public class BabySitter implements UserDetails{
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
+
 	public String getCareer() {
 		return career;
 	}
 	public void setCareer(String career) {
 		this.career = career;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	private String career;
-
 	
-	public String getSitterId() {
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		List<SimpleGrantedAuthority> list = new ArrayList<>();
+		list.add(new SimpleGrantedAuthority("ROLE_SITTER"));
+		return list;
+	}
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
 		return username;
 	}
-	public void setSitterId(String username) {
-		this.username = username;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getName() {
 		return name;
@@ -158,11 +168,18 @@ public class BabySitter implements UserDetails{
 	public void setScope(Byte scope) {
 		this.scope = scope;
 	}
-	public Integer getavgRating() {
+	public Integer getAvgRating() {
 		return avgRating;
 	}
-	public void setRating(Integer avgRating) {
+	public void setAvgRating(Integer avgRating) {
 		this.avgRating = avgRating;
+	}
+
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getProvider() {
 		return provider;
@@ -170,23 +187,62 @@ public class BabySitter implements UserDetails{
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	public String getPassword() {
-		return password;
+	public Integer getStatus() {
+		return status;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		List<SimpleGrantedAuthority> list = new ArrayList<>();
-		list.add(new SimpleGrantedAuthority("ROLE_SITTER"));
-		return list;
+	public String getInsurance() {
+		return insurance;
 	}
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return username;
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
+	public String getDocument() {
+		return document;
+	}
+	public void setDocument(String document) {
+		this.document = document;
+	}
+	public String getOther() {
+		return other;
+	}
+	public void setOther(String other) {
+		this.other = other;
+	}
+	public String getWorktime() {
+		return worktime;
+	}
+	public void setWorktime(String worktime) {
+		this.worktime = worktime;
+	}
+	public Integer getCctv() {
+		return cctv;
+	}
+	public void setCctv(Integer cctv) {
+		this.cctv = cctv;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getStartday() {
+		return startday;
+	}
+	public void setStartday(String startday) {
+		this.startday = startday;
+	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

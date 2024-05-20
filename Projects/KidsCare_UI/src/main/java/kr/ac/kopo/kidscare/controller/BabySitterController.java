@@ -45,12 +45,14 @@ public class BabySitterController {
 		
 		String resp = rest.getForObject(url + "list", String.class);
 		
-		List<BabySitter> list = om.readValue(resp, new TypeReference<List <BabySitter>>() {});
+
+		List<BabySitter> list = om.readValue(resp, new TypeReference<List<BabySitter>>() {});
+
 		
 		model.addAttribute("list",list);				
 				
 		
-		return "/babysitter/list";
+		return "babysitter/list";
 	}
 	
 	@GetMapping("/add")
@@ -88,7 +90,7 @@ public class BabySitterController {
 	
 	@PostMapping("/update/{username}")
 	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setSitterId(username);
+		sitterInfo.setUsername(username);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");

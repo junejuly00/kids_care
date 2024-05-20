@@ -48,4 +48,12 @@ public class KcUserPostController {
 		List<KcUserPost> myPostList = service.mypost(username);
 		return myPostList;
 	}
+	
+	@GetMapping("/hide/{userPostId}")
+	void hide(@PathVariable Integer userPostId) {
+		
+		service.hide(userPostId);
+	}
+	
+	
 }
