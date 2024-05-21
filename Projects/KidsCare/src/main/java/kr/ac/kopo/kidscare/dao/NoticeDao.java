@@ -14,4 +14,8 @@ public interface NoticeDao {
 
 	void update(Notice item);
 
+	void hide(Integer code);
+
+	List<Notice> mypost(String username);
+
 }

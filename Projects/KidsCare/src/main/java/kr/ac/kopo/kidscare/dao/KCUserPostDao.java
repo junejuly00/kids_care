@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface KCUserPostDao {
 
@@ -13,12 +14,16 @@ public interface KCUserPostDao {
 
 	void update(KcUserPost item);
 
-	List<KcUserPost> list();
+	List<KcUserPost> list(Pager pager);
 
 	List<KcUserPost> mypost(String username);
 
 	void add(UserFile userFile);
 
 	void hide(Integer userPostId);
+
+	int total(Pager pager);
+
+	List<KcUserPost> list();
 
 }

@@ -175,6 +175,7 @@ public class BabySitter implements UserDetails{
       this.avgRating = avgRating;
    }
 
+
    public String getProvider() {
       return provider;
    }
@@ -219,3 +220,4 @@ public class BabySitter implements UserDetails{
    }
    
 }
+

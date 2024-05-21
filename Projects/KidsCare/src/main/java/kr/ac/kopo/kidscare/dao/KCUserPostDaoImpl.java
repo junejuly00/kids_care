@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 @Repository
 public class KCUserPostDaoImpl implements KCUserPostDao {
@@ -49,6 +50,16 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 	@Override
 	public void hide(Integer userPostId) {
 		sql.update("kcuserpost.hide",userPostId);
+	}
+
+	@Override
+	public List<KcUserPost> list(Pager pager) {
+		return sql.selectList("kcuserpost.list",pager);
+	}
+
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("kcuserpost.total",pager);
 	}
 
 }
