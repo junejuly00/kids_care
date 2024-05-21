@@ -4,11 +4,12 @@
 	<select id="list" resultType="Notice">
 		SELECT *
 		FROM notice
+		WHERE status=0
 	</select>
 	
 		<insert id="add">
 	    INSERT into notice
-	    VALUES(#{code},#{username},sysdate,#{title},#{contents})
+	    VALUES(#{code},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">
@@ -23,5 +24,12 @@
 		WHERE code=#{code}
 
 	</select>
+	
+	<update id="hide">
+		UPDATE notice
+		SET status=1
+		where code=#{code}
+	</update>
+	
 </mapper>
 

@@ -9,7 +9,14 @@ public class Notice {
 	private String postdate;
 	private String contents;
 	private String title;
+	private Integer status;
 	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public Integer getCode() {
 		return code;
 	}
