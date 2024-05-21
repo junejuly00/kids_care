@@ -26,12 +26,6 @@ public class BabySitter {
 	private String career;
 	private String title;
 	
-	public String getSitterId() {
-		return username;
-	}
-	public void setSitterId(String username) {
-		this.username = username;
-	}
 	public String getName() {
 		return name;
 	}

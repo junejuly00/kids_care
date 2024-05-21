@@ -42,7 +42,7 @@ public class BabySitterController {
 	
 	@PutMapping("/{username}")
 	void update(@PathVariable String username, @RequestBody BabySitter sitterInfo) {
-		sitterInfo.setSitterId(username);
+		sitterInfo.setUsername(username);
 
 		service.update(sitterInfo);
 	}
