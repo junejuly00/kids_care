@@ -175,72 +175,13 @@ public class BabySitter implements UserDetails{
 		this.avgRating = avgRating;
 	}
 
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 	public String getProvider() {
 		return provider;
 	}
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public String getInsurance() {
-		return insurance;
-	}
-	public void setInsurance(String insurance) {
-		this.insurance = insurance;
-	}
-	public String getDocument() {
-		return document;
-	}
-	public void setDocument(String document) {
-		this.document = document;
-	}
-	public String getOther() {
-		return other;
-	}
-	public void setOther(String other) {
-		this.other = other;
-	}
-	public String getWorktime() {
-		return worktime;
-	}
-	public void setWorktime(String worktime) {
-		this.worktime = worktime;
-	}
-	public Integer getCctv() {
-		return cctv;
-	}
-	public void setCctv(Integer cctv) {
-		this.cctv = cctv;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	public String getStartday() {
-		return startday;
-	}
-	public void setStartday(String startday) {
-		this.startday = startday;
-	}
-	public String getSalary() {
-		return salary;
-	}
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
