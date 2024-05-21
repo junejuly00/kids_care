@@ -36,8 +36,8 @@
 	
 	<insert id="add_image">
 		INSERT INTO userfile
-		(userPostId, filename, uuid)
-		VALUES (#{userPostId},#{filename},#{uuid})
+		(code, userPostId, filename, uuid)
+		VALUES (#{code},#{userPostId},#{filename},#{uuid})
 	</insert>
 </mapper>
 

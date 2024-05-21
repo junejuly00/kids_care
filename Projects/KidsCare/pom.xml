@@ -53,7 +53,11 @@
 		</dependency>
 		
 			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client -->
-		
+		<dependency>
+	    <groupId>commons-fileupload</groupId>
+	    <artifactId>commons-fileupload</artifactId>
+	    <version>1.5</version>
+	</dependency>
 
 	</dependencies>
 
