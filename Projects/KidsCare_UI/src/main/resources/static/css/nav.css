@@ -17,13 +17,12 @@ header a{
     color: black;
     display: inline-block;
     transition: 0.2s linear;
-    font-weight: bold;
+    
 }
 
 header{
 	width: auto;
-    height: 100px;
-    background-color: #ffffff;
+    height: 80px;
     padding: 0 280px 0 280px; 
     display: flex;
     align-items: center;
@@ -31,7 +30,7 @@ header{
 }
 
 #logo img{
-    width: 290px;
+    width: 270px;
     height: auto;
 }
 a:hover{
@@ -40,6 +39,11 @@ a:hover{
 a:active{
     color:#75C2F6;
 }
+
+.navbar{
+	font-weight: bold;
+}
+
 .navbar a::after{
     content: '';
     width: 0;
@@ -54,7 +58,7 @@ header .navbar a:hover::after{
 }
 
 header .user a{
-    font-size: 16px;
+    font-size: 14px;
     padding: 10px;
 }
 
