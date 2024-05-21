@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.kopo.kidscare.dao.KCUserPostDao;
 import kr.ac.kopo.kidscare.model.KcUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 @Service
 public class KcUserPostServiceImpl implements KCUserPostService {
@@ -16,11 +17,16 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	KCUserPostDao dao;
 
 
-	
 	@Override
-	public List<KcUserPost> list() {
-		return dao.list();
+	public List<KcUserPost> list(Pager pager) {
+		
+		int total = dao.total(pager);
+		pager.setTotal(total);
+		return dao.list(pager);
 	}
+	
+
+
 
 	@Override
 	public KcUserPost item(Integer userPostId) {
@@ -56,6 +62,11 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	public void hide(Integer userPostId) {
 		dao.hide(userPostId);
 	}
+
+
+
+
+
 	
 	
 
