@@ -25,6 +25,7 @@ public class BabySitter {
 	private String salary;
 	private String career;
 	private String title;
+	private SitterPhoto photos;
 	
 	public String getName() {
 		return name;
@@ -169,6 +170,12 @@ public class BabySitter {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public SitterPhoto getPhotos() {
+		return photos;
+	}
+	public void setPhotos(SitterPhoto photos) {
+		this.photos = photos;
 	}
 	
 }

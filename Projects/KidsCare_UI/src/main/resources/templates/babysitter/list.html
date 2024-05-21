@@ -37,7 +37,9 @@
                 <tr th:each="sitterInfo : ${list}">
                     <td class="profile">
 							<div class="td1">
-								<img src="" alt="">
+
+								<img th:src="@{'/upload/' + ${sitterInfo.photos.filename} + '.png'}">
+
 							</div>
 							<div class="td1-1">
 								<img src="image/icon-star.png" alt="" style="width: 17px;">

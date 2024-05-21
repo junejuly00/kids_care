@@ -27,15 +27,18 @@ public class BabySitter implements UserDetails{
    private String provider;
 
 
-   private Integer status;
-   private String insurance;
-   private String document;
-   private String other;
-   private String worktime;
-   private Integer cctv;
-   private String nickname;
-   private String startday;
-   private String salary;
+
+	private Integer status;
+	private String insurance;
+	private String document;
+	private String other;
+	private String worktime;
+	private Integer cctv;
+	private String nickname;
+	private String startday;
+	private String salary;
+	private SitterPhoto photos;
+
 
    private String title;
    
@@ -176,48 +179,49 @@ public class BabySitter implements UserDetails{
    }
 
 
-   public String getProvider() {
-      return provider;
-   }
-   public void setProvider(String provider) {
-      this.provider = provider;
-   }
 
-   public void setUsername(String username) {
-      this.username = username;
-   }
-   @Override
-   public boolean isAccountNonExpired() {
-      // TODO Auto-generated method stub
-      return true;
-   }
-   @Override
-   public boolean isAccountNonLocked() {
-      // TODO Auto-generated method stub
-      return true;
-   }
-   @Override
-   public boolean isCredentialsNonExpired() {
-      // TODO Auto-generated method stub
-      return true;
-   }
-   @Override
-   public boolean isEnabled() {
-      // TODO Auto-generated method stub
-      return true;
-   }
-   public Byte getOpen() {
-      return open;
-   }
-   public void setOpen(Byte open) {
-      this.open = open;
-   }
-   public String getTitle() {
-      return title;
-   }
-   public void setTitle(String title) {
-      this.title = title;
-   }
-   
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	public Byte getOpen() {
+		return open;
+	}
+	public void setOpen(Byte open) {
+		this.open = open;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public SitterPhoto getPhotos() {
+		return photos;
+	}
+	public void setPhotos(SitterPhoto photos) {
+		this.photos = photos;
+	}
+	
+
 }
 

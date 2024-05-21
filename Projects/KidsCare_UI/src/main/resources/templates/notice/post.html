@@ -35,8 +35,9 @@
 		</div>
 		
 		<div id="btn">
-        <a th:href="@{'/notice/hide/' + ${postInfo.code}}" th:text="삭제"><button class="write">삭제</button></a>
-    </div>
+        	<a th:href="@{'/notice/hide/' + ${postInfo.code}}" th:text="삭제"><button class="write">삭제</button></a>
+        	<a th:href="@{'/notice/update/' + ${postInfo.code}}" th:text="변경"><button class="write">삭제</button></a>
+   	 	</div>
 		
 		<div>
 			<a href="../list">목록</a>
