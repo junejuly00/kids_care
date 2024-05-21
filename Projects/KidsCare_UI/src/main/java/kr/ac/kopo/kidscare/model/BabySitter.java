@@ -36,6 +36,7 @@ public class BabySitter implements UserDetails{
 	private String nickname;
 	private String startday;
 	private String salary;
+	private SitterPhoto photos;
 
 	private String title;
 	
@@ -216,6 +217,12 @@ public class BabySitter implements UserDetails{
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public SitterPhoto getPhotos() {
+		return photos;
+	}
+	public void setPhotos(SitterPhoto photos) {
+		this.photos = photos;
 	}
 	
 }
