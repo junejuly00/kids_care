@@ -3,9 +3,19 @@
 <mapper namespace="kcuserpost">
 
 	<select id="list" resultType="KcUserPost">
-		SELECT *
-		FROM kcuserpost
-		WHERE status=0
+		SELECT * FROM
+			(SELECT sub.*, ROWNUM rnum FROM 
+				(SELECT * FROM kcuserpost
+		ORDER BY userpostid) sub)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
+	</select>
+
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (
+		SELECT * FROM kcuserpost
+		ORDER BY userpostid
+		) sub
 	</select>
 	
 		<insert id="add">
@@ -36,8 +46,8 @@
 	
 	<insert id="add_image">
 		INSERT INTO userfile
-		(userPostId, filename, uuid)
-		VALUES (#{userPostId},#{filename},#{uuid})
+		(code, userPostId, filename, uuid)
+		VALUES (#{code},#{userPostId},#{filename},#{uuid})
 	</insert>
 </mapper>
 

@@ -27,6 +27,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 
 @Controller
 @RequestMapping("/kcuserpost")
@@ -43,16 +45,24 @@ public class KCUserPostController {
 	
 	
 	@GetMapping("/list")
-	String list(Model model) throws JsonMappingException, JsonProcessingException {
+	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
-		header.setContentType(MediaType.APPLICATION_JSON);
+		header.setContentType(MediaType.APPLICATION_JSON);	
 		
-		String resp = rest.getForObject(url + "list", String.class);
+	
+		String jsonString = om.writeValueAsString(pager);
 		
-		List<KCUserPost> list = om.readValue(resp, new TypeReference<List<KCUserPost>>() {});
+				HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+
+				ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
+			
+				String body = resp.getBody();
 		
-		model.addAttribute("list", list);
+				PagerMap<KCUserPost> map = om.readValue(body, new TypeReference<PagerMap<KCUserPost>>() { });
+		
+		model.addAttribute("list", map.getList());
+		model.addAttribute("pager", map.getPager());
 		
 		return "kcuserpost/list";
 	}

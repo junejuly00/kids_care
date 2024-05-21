@@ -54,11 +54,9 @@
 	
 	    <div class="pagination">
 	        <ul>
-	            <li class="prev"><a href="#">이전</a></li>
-	            <li class="page"><a href="#">1</a></li>
-	            <li class="page"><a href="#">2</a></li>
-	            <li class="page"><a href="#">3</a></li>
-	            <li class="next"><a href="#">다음</a></li>
+	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}}">이전</a></li>
+	            <li th:each="page : ${pager.list}"><a href="#" th:href="@{|?page=${page}|}" th:text="${page}"></a></li>
+	            <li class="next"><a th:href="@{'?page='+ ${pager.next}}">다음</a></li>
 	        </ul>
 	    </div>
 	</div>

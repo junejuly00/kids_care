@@ -5,11 +5,15 @@
 
     <link rel="stylesheet" th:href="@{/static/css/main.css}"/>
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
 </head>
 <body>
 
 	<nav th:replace="/nav.html"></nav>
 	
+	<!--  
     <section class="main_img">
     	<img alt="" src="../static/image/메인1.jpg">
         <div class="main_content">
@@ -18,8 +22,77 @@
 			<p>부모님들의 마음을 알기에 좋은 마음을 이어받아 <br>
 			   아이들을 케어해주실 베이비시터 분들을 소개해드립니다.</p>
         </div>
-    </section>
-
+    </section> -->
+    
+    <section class="swiper_box">
+    
+	  <!-- Slider main container -->
+	<div class="swiper">
+	  <!-- Additional required wrapper -->
+	  <div class="swiper-wrapper">
+	    <!-- Slides -->
+	   
+	    <div class="swiper-slide">
+	
+	      <div class="text-wrap1">
+	        <h2><span style="color: #5AB2FF">부모의 마음</span>을 받아<br>
+				마음으로 돌보는 <span style="color: #F9D949">KIDS CARE</span></h2>
+			<p>부모님들의 마음을 알기에 좋은 마음을 이어받아 <br>
+			   아이들을 케어해주실 베이비시터 분들을 소개해드립니다</p>
+	      </div>
+	      
+	      <div class="img_size">
+	        <img src="../static/image/메인1.jpg" alt="">
+	      </div>
+	     
+	    </div>
+	 
+	    <div class="swiper-slide">
+	      
+	      <div class="text-wrap2">
+	        <h2>
+	        	부모님의 든든한<br>
+	        	파트너가 되어 드리겠습니다
+	        </h2>
+	        <p>안전하고 신뢰할 수 있는 베이비시터 서비스 KIDSCARE</p>
+	      </div>
+	      
+	      <div class="img_size">
+	        <img src="../static/image/메인6.jpg" alt="">
+	      </div>
+	
+	    </div>
+	       
+	    <div class="swiper-slide">
+	      
+	      <div class="text-wrap3">
+	        <h2>
+	        	아이의 웃음이 가득한 하루,<br> 
+	        	믿을 수 있는 시터와 함께하세요
+			</h2>
+	        <p>
+				아이의 웃음이 가득한 하루를 만들어보세요
+			</p>
+	      </div>
+	      
+	      <div class="img_size">
+	        <img src="../static/image/메인5.jpg" alt="">
+	      </div>
+	
+	    </div>
+	   
+	  </div>
+	 
+	  <!-- If we need pagination -->
+	  <div class="swiper-pagination"></div>
+	
+	  <!-- If we need navigation buttons -->
+	  <div class="swiper-button-prev"></div>
+	  <div class="swiper-button-next"></div>
+	  </div>
+	  
+	</section>
+    
     <div class="main_div">
 
         <section class="service">
@@ -54,5 +127,8 @@
             </div>
         </section>
     </div>
+	
+   <script type="text/javascript" src="../static/js/swiper.js"></script>
+
 </body>
 </html>
