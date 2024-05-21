@@ -36,4 +36,14 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	}
 
+	@Override
+	public void hide(Integer code) {
+		sql.update("notice.hide",code);
+	}
+
+	@Override
+	public List<Notice> mypost(String username) {
+		return sql.selectList("notice.mypost",username);
+	}
+
 }

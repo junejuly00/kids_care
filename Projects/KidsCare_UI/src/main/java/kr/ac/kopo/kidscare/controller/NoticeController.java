@@ -22,6 +22,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Notice;
 
 @Controller
@@ -106,5 +107,24 @@ public class NoticeController {
 		return "redirect:../list";
 	}
 	
+	@GetMapping("/post/{code}")
+		String post(@PathVariable Long code, Model model) throws
+		JsonProcessingException {
+		
+		Notice postInfo = rest.getForObject(url + code, Notice.class);	
+		
+		model.addAttribute("postInfo", postInfo);
+		
+		return "notice/post";
+	}
+
+	
+	
+	@GetMapping("/hide/{code}")
+	String hide(@PathVariable Integer code) {
+		Notice item = rest.getForObject(url + "hide/" + code.toString() , Notice.class);				
+		return "redirect:../list";
+		
+	}
 
 }

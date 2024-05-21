@@ -46,4 +46,16 @@ public class NoticeController {
 		service.update(item);
 	}
 	
+	@GetMapping("/hide/{code}")
+	void hide(@PathVariable Integer code) {
+		service.hide(code);
+	}
+	
+	@GetMapping("/mypost/{username}")
+		List<Notice> mypost(@PathVariable String username ){
+			List<Notice> myPostList = service.mypost(username);
+			return myPostList;
+	}
+	
+	
 }
