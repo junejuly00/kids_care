@@ -24,12 +24,9 @@ public class BabySitter {
 	private String startday;
 	private String salary;
 	private String career;
-	public String getSitterId() {
-		return username;
-	}
-	public void setSitterId(String username) {
-		this.username = username;
-	}
+	private String title;
+	private SitterPhoto photos;
+	
 	public String getName() {
 		return name;
 	}
@@ -167,6 +164,18 @@ public class BabySitter {
 	}
 	public void setCareer(String career) {
 		this.career = career;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public SitterPhoto getPhotos() {
+		return photos;
+	}
+	public void setPhotos(SitterPhoto photos) {
+		this.photos = photos;
 	}
 	
 }

@@ -34,4 +34,10 @@ public class BabySitterServiceImpl implements BabySitterService {
 		dao.update(sitterInfo);
 	}
 
+	@Override
+	public List<BabySitter> detail(String username) {
+
+		return dao.detail(username);
+	}
+
 }

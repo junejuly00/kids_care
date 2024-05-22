@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.kidscare.model.KCUser;
+import kr.ac.kopo.kidscare.model.KcUserPost;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 import kr.ac.kopo.kidscare.service.KCUserService;
 
 @RestController
@@ -22,8 +25,8 @@ public class KCUserController {
 	KCUserService service;
 	
 	@GetMapping("/list")
-	List<KCUser> list(){
-		List<KCUser> list = service.list();
+		List<KCUser> list(){
+		List<KCUser> list = service.list();				
 		
 		return list;
 	}

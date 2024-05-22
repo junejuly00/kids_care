@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nav</title>
-    <link th:href="@{/resources/nav.css}" rel="stylesheet" type="text/css"></head>
+    <link th:href="@{/static/css/nav.css}" rel="stylesheet" type="text/css">
+    <link href="https://webfontworld.github.io/binggrae/Binggrae.css" rel="stylesheet">
 </head>
 <body>
     <header th:fragment="nav">
-        <a href="/" id="logo">LOGO</a>
+        <a href="/" id="logo"><img alt="" src="/static/image/로고1.png"></a>
         <nav class="navbar">
-            <a href="/sitter_profile">시터 찾기</a>
-            <a href="#">일자리 찾기</a>
+            <a href="/babysitter/list">시터 찾기</a>
             <a href="/kcuserpost/list">커뮤니티</a>
             <a href="/notice/list">공지사항</a>
         </nav>
@@ -22,5 +22,11 @@
             <a href="/login/all">로그인</a>
         </div>
     </header>
+    
+    <div id="top_btn">
+		<a href="#">
+			<img src="/static/image/젖병.png">
+		</a>
+	</div>
 </body>
 </html>

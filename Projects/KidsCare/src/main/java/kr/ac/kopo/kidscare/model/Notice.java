@@ -1,12 +1,22 @@
 package kr.ac.kopo.kidscare.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Notice {
 	private Integer code;
 	private String username;
-	private String noticedate;
+	@DateTimeFormat(pattern="yyyy/MM/dd HH:mm:ss")
+	private String postdate;
 	private String contents;
 	private String title;
+	private Integer status;
 	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public Integer getCode() {
 		return code;
 	}
@@ -19,11 +29,11 @@ public class Notice {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getNoticedate() {
-		return noticedate;
+	public String getpostdate() {
+		return postdate;
 	}
-	public void setNoticedate(String noticedate) {
-		this.noticedate = noticedate;
+	public void setpostdate(String postdate) {
+		this.postdate = postdate;
 	}
 	public String getContents() {
 		return contents;

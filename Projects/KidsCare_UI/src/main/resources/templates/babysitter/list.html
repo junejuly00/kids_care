@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:href="@{/fragment/head.html}">
+  	<meta charset="UTF-8">  
+    <title>커뮤니티</title>
+    <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
+<body>
+
+<nav th:replace="/nav.html"></nav>
+
+<section class="main_img">
+    <div class="main_content">
+        <h2>믿음과 사랑으로</h2>
+    </div>
+</section>
+
+<div class="wrap">
+    <p class="community">시터 찾기</p>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>사진</th>
+                    <th class="title">제목</th>
+                    <th>경력</th>
+                    <th>연봉</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            	<tr th:if="${list.size() < 1}">
+                  <td colspan="5">등록된 글이 없습니다.</td>
+               </tr>
+            
+                <tr th:each="sitterInfo : ${list}">
+                    <td class="profile">
+							<div class="td1">
+
+								<img th:src="@{'/upload/' + ${sitterInfo.photos.filename} + '.png'}">
+
+							</div>
+							<div class="td1-1">
+								<img src="image/icon-star.png" alt="" style="width: 17px;">
+							</div>
+					</td>
+                    <td ><a th:href="@{'/babysitter/post/' + ${sitterInfo.username}}" th:text="${sitterInfo.title}"></a></td>
+                    <td th:text="${sitterInfo.career}"></td>
+                    <td th:text="${sitterInfo.salary}"></td>
+                    <td><a th:href="@{'/babysitter/update/' + ${sitterInfo.username}}">변경쓰</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="btn">
+        <a href="/babysitter/add"><button class="write">글쓰기</button></a>
+    </div>
+
+
+    <div class="pagination">
+        <ul>
+            <li class="prev"><a href="#">이전</a></li>
+            <li class="page"><a href="#">1</a></li>
+            <li class="page"><a href="#">2</a></li>
+            <li class="page"><a href="#">3</a></li>
+            <li class="next"><a href="#">다음</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

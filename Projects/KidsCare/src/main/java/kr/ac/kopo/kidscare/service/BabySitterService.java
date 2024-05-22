@@ -14,4 +14,6 @@ public interface BabySitterService {
 
 	void update(BabySitter sitterInfo);
 
+	List<BabySitter> detail(String username);
+
 }

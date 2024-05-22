@@ -1,49 +1,55 @@
 @charset "UTF-8";
 
+@import url('https://webfontworld.github.io/binggrae/Binggrae.css');
+
 html{
     font-size: 18px;
+    font-family: 'Binggrae';
 }
 *{
     margin: 0;
     padding: 0;
     text-decoration-line: none;
-    
 }
+
 header a{
     padding: 35px;
     color: black;
     display: inline-block;
     transition: 0.2s linear;
+    
 }
 
 header{
-    height: 0.5rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #d4eda5;
-    padding: 2rem 9%;
+	width: auto;
+    height: 80px;
+    padding: 0 280px 0 280px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
 }
-#logo{
-    font-size: 24px;
-    font-weight: bold;
+
+#logo img{
+    width: 270px;
+    height: auto;
 }
 a:hover{
-    color:green;
+    color:#000000;
 }
 a:active{
-    color:yellow;
+    color:#75C2F6;
 }
+
+.navbar{
+	font-weight: bold;
+}
+
 .navbar a::after{
     content: '';
     width: 0;
     height: 2px;
-    background: green;
+    margin-top:2px;
+    background: #A0DEFF;
     display: block;
     transition: 0.2s linear;
 }
@@ -52,7 +58,18 @@ header .navbar a:hover::after{
 }
 
 header .user a{
-    font-size: 16px;
+    font-size: 14px;
     padding: 10px;
 }
 
+#top_btn{
+	position: fixed;
+	bottom: 10px;
+	right: 30px;
+	width: 100px;
+	height: 100px;
+}
+#top_btn img{
+	width: 80%;
+	height: auto;
+}

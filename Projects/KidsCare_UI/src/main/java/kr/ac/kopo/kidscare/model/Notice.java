@@ -6,10 +6,17 @@ public class Notice {
 	private Long code;
 	private String username;
 	@DateTimeFormat(pattern="yyyy/MM/dd HH:mm:ss")
-	private String noticedate;
+	private String postdate;
 	private String contents;
 	private String title;
+	private Integer status;
 	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public Long getCode() {
 		return code;
 	}
@@ -22,11 +29,11 @@ public class Notice {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getNoticedate() {
-		return noticedate;
+	public String getPostdate() {
+		return postdate;
 	}
-	public void setNoticedate(String noticedate) {
-		this.noticedate = noticedate;
+	public void setPostdate(String postdate) {
+		this.postdate = postdate;
 	}
 	public String getContents() {
 		return contents;

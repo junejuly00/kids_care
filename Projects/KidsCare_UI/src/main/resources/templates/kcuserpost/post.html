@@ -34,6 +34,12 @@
 		
 		</div>
 		
+		<div id="btn">
+        	<a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="숨기기"><button class="write">삭제</button></a>
+        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write">삭제</button></a>
+
+    	</div>
+		
 		<div>
 			<a href="../list">목록</a>
 		</div>

@@ -3,18 +3,29 @@
 <mapper namespace="kcuserpost">
 
 	<select id="list" resultType="KcUserPost">
-		SELECT *
-		FROM kcuserpost
+		SELECT * FROM
+			(SELECT sub.*, ROWNUM rnum FROM 
+				(SELECT * FROM kcuserpost
+		ORDER BY userpostid) sub)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
+	</select>
+
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (
+		SELECT * FROM kcuserpost
+		ORDER BY userpostid
+		) sub
 	</select>
 	
 		<insert id="add">
 	    INSERT into kcuserpost
-	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents})
+	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">
 	    UPDATE kcuserpost
-	    SET username=#{username},postdate=sysdate,title=#{title},contents=#{contents}
+	    SET username=#{username},title=#{title},contents=#{contents}
 	    WHERE userPostId=#{userPostId}
 	</update>
 	
@@ -27,10 +38,16 @@
 
 	</select>
 	
+	<update id="hide">
+		UPDATE kcuserpost
+		SET status=1
+		where userPostId=#{userPostId}
+	</update>
+	
 	<insert id="add_image">
 		INSERT INTO userfile
-		(userPostId, filename, uuid)
-		VALUES (#{userPostId},#{filename},#{uuid})
+		(code, userPostId, filename, uuid)
+		VALUES (#{code},#{userPostId},#{filename},#{uuid})
 	</insert>
 </mapper>
 

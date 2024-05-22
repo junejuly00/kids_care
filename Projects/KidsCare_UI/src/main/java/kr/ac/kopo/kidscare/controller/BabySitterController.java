@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.KCUserPost;
 
 @Controller
 @RequestMapping("/babysitter")
@@ -42,14 +43,16 @@ public class BabySitterController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String resp = rest.getForObject(url+"list",String.class);
+		String resp = rest.getForObject(url + "list", String.class);
 		
-		List<BabySitter> list = om.readValue(resp, new TypeReference<List <BabySitter>>() {});
+
+		List<BabySitter> list = om.readValue(resp, new TypeReference<List<BabySitter>>() {});
+
 		
 		model.addAttribute("list",list);				
 				
 		
-		return "/sitter_profile/list";
+		return "babysitter/list";
 	}
 	
 	@GetMapping("/add")
@@ -87,7 +90,7 @@ public class BabySitterController {
 	
 	@PostMapping("/update/{username}")
 	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setSitterId(username);
+		sitterInfo.setUsername(username);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -105,15 +108,13 @@ public class BabySitterController {
 		return "redirect:../list";	
 	}
 	
-	@GetMapping("/delete/{username}")
-	String delete(@PathVariable String username) {
-		RequestEntity<Void> req = RequestEntity.delete(url + username).build();
+	@GetMapping("/detail/{username}")
+	String post(@PathVariable String username, Model model) throws JsonProcessingException {
 		
-		ResponseEntity<Integer> result = rest.exchange(req, Integer.class);
+		BabySitter item = rest.getForObject(url + username, BabySitter.class);	
 		
-		System.out.println(result);
+		model.addAttribute("item", item);
 		
-		return "redirect:../list";
+		return "kcuserpost/detail";
 	}
-	
 }

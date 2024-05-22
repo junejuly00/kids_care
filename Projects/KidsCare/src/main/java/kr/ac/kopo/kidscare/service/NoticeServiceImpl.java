@@ -36,4 +36,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 	}
 
+	@Override
+	public void hide(Integer code) {
+		dao.hide(code);
+	}
+
+	@Override
+	public List<Notice> mypost(String username) {
+		return dao.mypost(username);
+	}
+
 }

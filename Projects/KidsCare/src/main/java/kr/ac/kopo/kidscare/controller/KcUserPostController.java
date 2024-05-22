@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 import kr.ac.kopo.kidscare.service.KCUserPostService;
 
 @RestController
@@ -20,10 +22,16 @@ public class KcUserPostController {
 	@Autowired
 	KCUserPostService service;
 	
-	@GetMapping("/list")
-	List<KcUserPost> list(){
-		List<KcUserPost> list = service.list();
-		return list;
+	@PostMapping("/list")
+	PagerMap<KcUserPost> list(@RequestBody Pager pager){
+		PagerMap<KcUserPost> map = new PagerMap<KcUserPost>();			
+		
+		List<KcUserPost> list = service.list(pager);
+		
+		map.setList(list);
+		map.setPager(pager);
+		
+		return map;
 	}
 	
 	@PostMapping("/{userPostId}")
@@ -48,4 +56,12 @@ public class KcUserPostController {
 		List<KcUserPost> myPostList = service.mypost(username);
 		return myPostList;
 	}
+	
+	@GetMapping("/hide/{userPostId}")
+	void hide(@PathVariable Integer userPostId) {
+		
+		service.hide(userPostId);
+	}
+	
+	
 }

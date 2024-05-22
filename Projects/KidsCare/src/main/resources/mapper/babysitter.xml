@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="babysitter">
 
-	<select id="list" resultType="Babysitter">		
-		SELECT *
-		FROM babysitter		
+	<select id="list" resultMap="BabySitterMap">		
+		SELECT babysitter.*, sitterphoto.username pid, sitterphoto.filename, sitterphoto.code
+		FROM babysitter left join sitterphoto
+		ON babysitter.username=sitterphoto.username	
 	</select>
+	
+	<resultMap type="BabySitter" id="BabySitterMap" autoMapping="true">
+		<id column="username" property="username"/>
+		
+		<association property="photos" column="pid" javaType="SitterPhoto" autoMapping="true">
+			<id column="code" property="code"/>
+		</association>
+	</resultMap>
 	
 	<insert id="add">
 		INSERT into babysitter
@@ -18,4 +27,15 @@
 		WHERE sitter=#{username}
 	</update>
 	
+	<select id="search" resultType="BabySitter">
+		SELECT *
+		FROM babysitter
+		WHERE username=#{username}
+	</select>
+	
+	<select id="item" resultType="BabySitter">
+		SELECT *
+		FROM babysitter
+		WHERE username=#{username}
+	</select>
 </mapper>

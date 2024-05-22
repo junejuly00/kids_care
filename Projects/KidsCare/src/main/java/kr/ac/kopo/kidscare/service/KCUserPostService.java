@@ -3,10 +3,11 @@ package kr.ac.kopo.kidscare.service;
 import java.util.List;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface KCUserPostService {
 
-	List<KcUserPost> list();
+	List<KcUserPost> list(Pager pager);
 
 	KcUserPost item(Integer userPostId);
 
@@ -15,5 +16,9 @@ public interface KCUserPostService {
 	void update(KcUserPost item);
 
 	List<KcUserPost> mypost(String username);
+
+	void hide(Integer userPostId);
+
+
 
 }
