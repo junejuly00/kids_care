@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.NoticeDao;
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
@@ -15,8 +16,11 @@ public class NoticeServiceImpl implements NoticeService {
 	NoticeDao dao;
 
 	@Override
-	public List<Notice> list() {
-		return dao.list();
+	public List<Notice> list(Pager pager) {
+		
+		int total = dao.total(pager);
+		pager.setTotal(total);
+		return dao.list(pager);
 	}
 
 	@Override
@@ -45,5 +49,7 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<Notice> mypost(String username) {
 		return dao.mypost(username);
 	}
+
+	
 
 }

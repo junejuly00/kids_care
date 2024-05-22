@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 import kr.ac.kopo.kidscare.service.NoticeService;
 
 @RestController
@@ -22,11 +24,16 @@ public class NoticeController {
 	@Autowired
 	NoticeService service;
 	
-	@GetMapping("/list")
-	List<Notice> list(){
-		List<Notice> list = service.list();
+	@PostMapping("/list")	
+	PagerMap<Notice> list(@RequestBody Pager pager){
+		PagerMap<Notice> map = new PagerMap<Notice>();
+		
+		List<Notice> list = service.list(pager);
+		
+		map.setList(list);
+		map.setPager(pager);
 	
-	return list;
+	return map;
 	}
 	
 	@PostMapping("/{code}")

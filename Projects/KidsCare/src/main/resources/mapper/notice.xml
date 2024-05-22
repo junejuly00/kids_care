@@ -3,8 +3,18 @@
 <mapper namespace="notice">
 	<select id="list" resultType="Notice">
 		SELECT *
-		FROM notice
-		WHERE status=0
+		FROM (SELECT sub.*, ROWNUM rnum FROM 
+				(SELECT * FROM notice
+		ORDER BY code) sub)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
+	</select>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM (
+		SELECT * FROM notice
+		ORDER BY code
+		) sub
 	</select>
 	
 		<insert id="add">
