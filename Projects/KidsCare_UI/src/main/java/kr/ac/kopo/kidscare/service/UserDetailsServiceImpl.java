@@ -42,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			
 			
 		} else if(sitterInfo != null){
-			user.setId(sitterInfo.getSitterId());
+			user.setId(sitterInfo.getUsername());
 			user.setPassword(sitterInfo.getPassword());
 			user.setName(sitterInfo.getName());
 			user.setRole("SITTER");
