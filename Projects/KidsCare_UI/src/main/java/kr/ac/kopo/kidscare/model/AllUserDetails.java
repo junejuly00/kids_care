@@ -13,6 +13,7 @@ public class AllUserDetails implements UserDetails {
 	private Collection<? extends GrantedAuthority> authority;
 	private boolean status;
 	private String name;
+	private String role;
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authority;
@@ -82,6 +83,14 @@ public class AllUserDetails implements UserDetails {
 	public String getUsername() {
 		
 		return id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

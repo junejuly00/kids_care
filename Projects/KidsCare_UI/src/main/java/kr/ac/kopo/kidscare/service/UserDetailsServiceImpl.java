@@ -34,6 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			user.setId(userInfo.getUsername());
 			user.setPassword(userInfo.getPassword()); 
 			user.setName(userInfo.getName());
+			user.setRole("USER");
 			
 			Set<GrantedAuthority> setUserAuth = new HashSet<GrantedAuthority>();
 			setUserAuth.add(new SimpleGrantedAuthority("ROLE_USER"));
@@ -44,6 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			user.setId(sitterInfo.getSitterId());
 			user.setPassword(sitterInfo.getPassword());
 			user.setName(sitterInfo.getName());
+			user.setRole("SITTER");
 			
 			Set<GrantedAuthority> setSitterAuth = new HashSet<GrantedAuthority>();
 			setSitterAuth.add(new SimpleGrantedAuthority("ROLE_SITTER"));

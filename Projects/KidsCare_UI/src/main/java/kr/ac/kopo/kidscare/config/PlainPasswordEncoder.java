@@ -6,15 +6,14 @@ public class PlainPasswordEncoder implements PasswordEncoder {
 
 	@Override
 	public String encode(CharSequence rawPassword) {
-		// TODO Auto-generated method stub
 		return rawPassword.toString();
 	}
 
 	@Override
 	public boolean matches(CharSequence rawPassword, String encodedPassword) {
-		System.out.println(rawPassword + ", "+ encodedPassword);
+		//System.out.println(rawPassword + ", "+ encodedPassword);
 		
-		if (rawPassword.toString() == encodedPassword) {
+		if (encode(rawPassword).equals(encodedPassword)) {
 			return true;
 		}
 		return false;
