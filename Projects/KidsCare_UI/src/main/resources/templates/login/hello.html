@@ -19,17 +19,17 @@
                 
                 <div class="login_parents">
                 
-                <form class="id_pw">
+                <form class="id_pw" method="post" action="/login">
                     <div class="group">
-                        <input id="parents_id" type="text" class="input" placeholder="아이디를 입력해주세요.">
+                        <input id="parents_id" name="username" type="text" class="input" placeholder="아이디를 입력해주세요.">
                     </div>
 
                     <div class="group">
-                        <input id="parents_passwd" type="password" class="input" data-type="password" placeholder="비밀번호를 입력해주세요.">
+                        <input id="parents_passwd" name="password" type="password" class="input" data-type="password" placeholder="비밀번호를 입력해주세요.">
                     </div>
 
                     <div class="group">
-                        <button class="button">로그인</button>
+                        <button class="button" type="submit">로그인</button>
                     </div>
                 </form>
 

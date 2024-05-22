@@ -1,32 +1,22 @@
 package kr.ac.kopo.kidscare.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-public class BabySitter implements UserDetails{
-
-   private static final long serialVersionUID = 1L;
-   
-   private String username;
-   private String password;
-   private String name;
-   private String phone;
-   private String email;
-   private Byte gender;
-   private Short age;
-   private String major;
-   private Byte scope;
-   private Integer avgRating;
-   private String content;
-   private Byte open;
-   private String provider;
+public class BabySitter{
 
 
+	
+	private String username;
+	private String password;
+	private String name;
+	private String phone;
+	private String email;
+	private Byte gender;
+	private Short age;
+	private String major;
+	private Byte scope;
+	private Integer avgRating;
+	private String content;
+	private Byte open;
+	private String provider;
 
 	private Integer status;
 	private String insurance;
@@ -111,18 +101,7 @@ public class BabySitter implements UserDetails{
    }
    private String career;
    
-   @Override
-   public Collection<? extends GrantedAuthority> getAuthorities() {
-      
-      List<SimpleGrantedAuthority> list = new ArrayList<>();
-      list.add(new SimpleGrantedAuthority("ROLE_SITTER"));
-      return list;
-   }
-   @Override
-   public String getUsername() {
-      // TODO Auto-generated method stub
-      return username;
-   }
+
    public String getPassword() {
       return password;
    }
@@ -183,25 +162,75 @@ public class BabySitter implements UserDetails{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+
+	private String career;
+	
+	public String getSitterId() {
+		return username;
 	}
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
+	public void setSitterId(String username) {
+		this.username = username;
 	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+	public String getName() {
+		return name;
 	}
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Byte getGender() {
+		return gender;
+	}
+	public void setGender(Byte gender) {
+		this.gender = gender;
+	}
+	public Short getAge() {
+		return age;
+	}
+	public void setAge(Short age) {
+		this.age = age;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public Byte getScope() {
+		return scope;
+	}
+	public void setScope(Byte scope) {
+		this.scope = scope;
+	}
+	public Integer getavgRating() {
+		return avgRating;
+	}
+	public void setRating(Integer avgRating) {
+		this.avgRating = avgRating;
+	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+
 	}
 	public Byte getOpen() {
 		return open;
