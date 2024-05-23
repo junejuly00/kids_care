@@ -2,42 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kcuserpost">
 
-	<sql id="file">
-		SELECT  kcuserpost.*, userfile.code,userfile.userPostId pid, userfile.filename, userfile.uuid  
-		FROM kcuserpost LEFT JOIN userfile
-		ON kcuserpost.userPostId=userfile.userPostId
-		ORDER BY kcuserpost.userpostid
+	<sql id="search">
+		select * from kcuserpost
+	   <where>
+	   		<if test="search == 1" >
+	   			title LIKE CONCAT(CONCAT('%', #{keyword}),'%')
+	   		</if>
+	   		
+	   		<if test="search == 2">
+	   			username LIKE CONCAT(CONCAT('%', #{keyword}),'%')
+	   		</if>
+	   </where>
 	</sql>
 
-	<select id="list" resultMap="KcUserPostMap">
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM(<include refid="search"></include>)
+	</select>
+
+	<select id="list" resultType="KcUserPost">
 		SELECT * FROM
-			( SELECT sub.*, ROWNUM rnum FROM
-				(<include refid="file"></include>) sub)
-		<if test="perPage != 0">
-		<![CDATA[		
+			(SELECT sub.*, ROWNUM rnum FROM 
+				(<include refid="search"></include>) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
-		]]>
-		</if>
 	</select>
-	
-	<resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
-		<id column="userPostId" property="userPostId"/>
-		
-		<collection property="userFiles" column="pid" javaType="ArrayList" ofType="UserFile" autoMapping="true">
-			<id column="code" property="code"/>
-		</collection>
-	</resultMap>
 
-	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM (
-		SELECT * FROM kcuserpost
-		ORDER BY userpostid
-		) sub
-	</select>
 	
-	<insert id="add">
-	    INSERT into kcuserpost
+	
+		<insert id="add">
+	    INSERT into kcuserpost(userpostid, username, postdate,title, contents, status)
 	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
@@ -50,11 +43,21 @@
 
 
 	<select id="search" resultMap="KcUserPostMap">
-		SELECT *
-		FROM kcuserpost LEFT JOIN userfile ON kcuserpost.userpostid=userfile.userpostid
-		WHERE kcuserpost.userPostId=#{userPostId}
+      SELECT *
+      FROM kcuserpost LEFT JOIN userfile ON kcuserpost.userpostid=userfile.userpostid
+      WHERE kcuserpost.userPostId=#{userPostId}
 
-	</select>
+   </select>
+   
+      <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
+      <id column="userPostId" property="userPostId"/>
+      
+      <collection property="userFiles" column="pid" javaType="ArrayList" ofType="UserFile" autoMapping="true">
+         <id column="code" property="code"/>
+      </collection>
+   </resultMap>
+	
+	
 	
 	<update id="hide">
 		UPDATE kcuserpost
@@ -63,8 +66,14 @@
 	</update>
 	
 	<insert id="add_image">
-		INSERT INTO userfile (code, userPostId, filename, uuid)
-		VALUES (SEQ_code.nextval, #{userPostId},#{filename},#{uuid})
+		INSERT INTO userfile
+		(code, userPostId, filename, uuid)
+		VALUES (#{code},#{userPostId},#{filename},#{uuid})
 	</insert>
+	
+	<select id="mypost" resultType="KcUserPost">
+		SELECT * FROM kcuserpost
+		WHERE username=#{username}
+	</select>
 </mapper>
 

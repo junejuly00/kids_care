@@ -7,7 +7,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
-import kr.ac.kopo.kidscare.model.KCUserPost;
+import kr.ac.kopo.kidscare.model.JobCert;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 
 @Controller
 @RequestMapping("/babysitter")
@@ -38,18 +39,21 @@ public class BabySitterController {
 	private ObjectMapper om = new ObjectMapper();
 	
 	@GetMapping("/list")
-	String list(Model model) throws JsonMappingException, JsonProcessingException {
+	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String resp = rest.getForObject(url + "list", String.class);
+		String jsonString = om.writeValueAsString(pager);
 		
-
-		List<BabySitter> list = om.readValue(resp, new TypeReference<List<BabySitter>>() {});
-
+		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+		ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
+		String body = resp.getBody();
 		
-		model.addAttribute("list",list);				
+		PagerMap<BabySitter> map = om.readValue(body, new TypeReference<PagerMap<BabySitter>>() {});
+
+		model.addAttribute("list", map.getList());
+		model.addAttribute("pager", map.getPager());
 				
 		
 		return "babysitter/list";
@@ -110,10 +114,15 @@ public class BabySitterController {
 	
 	@GetMapping("/detail/{username}")
 	String post(@PathVariable String username, Model model) throws JsonProcessingException {
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		BabySitter item = rest.getForObject(url + username, BabySitter.class);	
+		String resp = rest.getForObject("http://localhost:9090/jobcert/search/" + username, String.class);
+		List<JobCert> certList = om.readValue(resp, new TypeReference<List<JobCert>>() {});
 		
-		model.addAttribute("item", item);
+		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);	
+		model.addAttribute("sitterInfo", sitterInfo);
+		model.addAttribute("jobcert", certList);
 		
 		return "babysitter/detail";
 	}

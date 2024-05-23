@@ -14,4 +14,6 @@ public interface JobCertDao {
 
 	void update(JobCert jobCertInfo);
 
+	List<JobCert> searchByName(String username);
+
 }

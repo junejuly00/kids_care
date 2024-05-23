@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,12 +46,14 @@ public class KCUserPostController {
 	
 	
 	@GetMapping("/list")
-	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
+	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false) String keyword) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);	
 		
-	
+		pager.setSearch(Integer.parseInt(search));
+		pager.setKeyword(keyword);
+		//System.out.println(search + "," + keyword);  //여기까지 들어감
 		String jsonString = om.writeValueAsString(pager);
 		
 				HttpEntity<String> req = new HttpEntity<String>(jsonString, header);

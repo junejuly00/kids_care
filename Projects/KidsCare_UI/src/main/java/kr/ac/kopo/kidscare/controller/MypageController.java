@@ -38,19 +38,19 @@ public class MypageController {
 		//TODO if login 
 		String username = "user";
 		
-		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find"+ username , KCUser.class);
+		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);
 		
 		String sitterResp = rest.getForObject("http://localhost:9090/babysitter/list", String.class);
 		List<BabySitter> sitterList = om.readValue(sitterResp, new TypeReference<List<BabySitter>>() {});
 		
-		String postResp = rest.getForObject("http://localhost:9090/kcuserpost/find"+ username, String.class);
+		String postResp = rest.getForObject("http://localhost:9090/kcuserpost/mypost/"+ username, String.class);
 		List<KCUserPost> postList = om.readValue(postResp, new TypeReference<List<KCUserPost>>() {});
 		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		
-		return "/mypage/parents";
+		return "mypage/parents";
 	}
 	
 	@GetMapping("/sitter")

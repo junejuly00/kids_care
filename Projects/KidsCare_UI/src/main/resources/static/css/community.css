@@ -6,7 +6,7 @@
 }
 
 .main_img{
-    height: 600px;
+    height: 400px;
     display: flex;
     align-items: center;
     background-position: center;
@@ -17,12 +17,12 @@
 .main_img img{
 	width: 100%;
 	height: auto;
-	opacity: 0.5;
+	opacity: 0.6;
 }
 
 .main_content{
     text-align: left;
-    margin-left: 280px ;
+    margin-left: 880px ;
     position: absolute;
 }
 
@@ -43,8 +43,7 @@
 }
 
 .community{
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 36px;
     display: flex;
     justify-content: center;
 }
@@ -65,39 +64,47 @@ thead {
     font-weight: bold;
     background: #E3F0FB;
     height: 50px; 
-    font-size: 22px;
+    font-size: 20px;
 }
 
 td, th {
-    padding: 0.5em;
-    vertical-align: middle;
+    padding: 5px;
     text-align: center;
   }
 
 td {
     border-bottom: solid 0.5px #000000;
-    height: 70px;
+    height: 60px;
 }
 
-.title {
-    width: 580px;
+
+
+.pagination{
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
 }
 
-li{
+.pagination li{
     list-style: none;
     float:left;
 }
 
-ul li a{
+.pagination ul{
+	display: flex;
+}
+
+.pagination ul li a{
     float: left;
-    border: solid 1px black;
-    width: 50px;
-    height: 50px;
+    border: solid 0.5px #CCCCCC;
+    width: 40px;
+    height: 40px;
     margin: 5px;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
-    text-align: center;
-    line-height: 50px;
+    display:flex;
+    align-items: center;
+	justify-content: center;
 }
 
 ul li a:hover {
@@ -129,10 +136,4 @@ a {
     width: 1360px;
     display: flex;
     justify-content: flex-end;
-}
-
-.pagination{
-    margin-top: 45px;
-    display: flex;
-    justify-content: center;
 }

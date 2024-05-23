@@ -3,9 +3,12 @@
 <mapper namespace="babysitter">
 
 	<select id="list" resultMap="BabySitterMap">		
-		SELECT babysitter.*, sitterphoto.username pid, sitterphoto.filename, sitterphoto.code
-		FROM babysitter left join sitterphoto
-		ON babysitter.username=sitterphoto.username	
+		SELECT sub2.*, sub2.username pid
+   	 	FROM (SELECT sub.*, ROWNUM rnum FROM 
+            (SELECT * FROM babysitter) sub) sub2 left join sitterphoto
+		ON(sub2.username=sitterphoto.username)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
 	</select>
 	
 	<resultMap type="BabySitter" id="BabySitterMap" autoMapping="true">

@@ -18,8 +18,12 @@
 
         <div class="user">
         	<a href="/mypage">내 정보</a>
-            <a href="/singup">회원가입</a>
-            <a href="/login">로그인</a>
+            <a href="/signup">회원가입</a>
+            
+            <a th:href="@{/login/all}" th:if="${true}">로그인</a>
+            <a th:href="@{/logout}" th:if="${true}">로그아웃</a>
+            <a th:text="'' + '님 안녕하세요'"></a>
+            
         </div>
     </header>
     

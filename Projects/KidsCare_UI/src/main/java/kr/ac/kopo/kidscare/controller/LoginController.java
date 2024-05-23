@@ -11,9 +11,14 @@ public class LoginController {
 	
 	final String path = "login/";
 	
-	@GetMapping("/newlogin")
+	@GetMapping("")
 	String newLogin() {
-		return path + "newlogin";
+		return path + "hello";
+	}
+	@GetMapping("/all")
+	String redirect() {
+		return "redirect:../login";
+		
 	}
 
 	@GetMapping("/user")

@@ -7,12 +7,37 @@ public class Pager {
 	private int page = 1;
 	private int perPage = 10;
 	private float total;
+	public int getSearch() {
+		return search;
+	}
+
+	public void setSearch(int search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	private int perGroup = 3;
 	
 	private int next;
 	private int last;
 	private int prev;
+	private int search;
+	private String keyword;
+	private String query;
+	
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
 	private List<Integer> list;
+	
 
 	public void setNext(int next) {
 		this.next = next;
@@ -95,6 +120,14 @@ public class Pager {
 		next = next < last ? next : last;
 		
 		return next;
+	}		
+		
+		public String getQuery() {
+			String query = "";
+			
+			if(search > 0 && search <= 2)
+				query += "&search=" + search + "&keyword=" + keyword;
+			
+			return query;
+		}
 	}
-
-}

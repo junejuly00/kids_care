@@ -4,6 +4,7 @@ public class JobCert {
 	private String certName;
 	private String username;
 	private String certDate;
+	private String termination;
 	public String getCertName() {
 		return certName;
 	}
@@ -30,6 +31,6 @@ public class JobCert {
 	public void setTermination(String termination) {
 		this.termination = termination;
 	}
-	private String termination;
+	
 	
 }
