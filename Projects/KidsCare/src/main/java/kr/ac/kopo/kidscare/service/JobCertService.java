@@ -14,4 +14,6 @@ public interface JobCertService {
 
 	public void update(JobCert jobCertInfo);
 
+	List<JobCert> searchByName(String username);
+
 }

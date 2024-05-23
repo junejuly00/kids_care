@@ -36,4 +36,10 @@ public class JobCertServiceImpl implements JobCertService {
 		dao.update(jobCertInfo);
 	}
 
+	@Override
+	public List<JobCert> searchByName(String username) {
+		// TODO Auto-generated method stub
+		return dao.searchByName(username);
+	}
+
 }

@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.pager.Pager;
+import kr.ac.kopo.kidscare.pager.PagerMap;
 import kr.ac.kopo.kidscare.service.BabySitterService;
 
 @RestController
@@ -28,6 +31,18 @@ public class BabySitterController {
 		List<BabySitter> list = service.list();
 		
 		return list;
+	}
+	
+	@PostMapping("/list")
+	PagerMap<BabySitter> list(@RequestBody Pager pager) {
+		PagerMap<BabySitter> map = new PagerMap<BabySitter>();
+		List<BabySitter> list = service.list(pager);
+		
+		map.setList(list);
+		map.setPager(pager);
+		
+		return map;
+		
 	}
 	
 	@PostMapping("/add")

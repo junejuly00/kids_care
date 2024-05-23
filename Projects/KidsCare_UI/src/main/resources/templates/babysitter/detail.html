@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시터 프로필 상세페이지</title>
-    <link href="/siter_profile_detail.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/sitter_profile_detail.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="wrap">
 
         <div class="title">
-            <div id="title_txt" th:text="sitterInfo.제목"></div>
+            <div id="title_txt" th:text="${sitterInfo.name}"></div>
         </div>
 
         <section class="profil">
@@ -26,7 +26,7 @@
                     <tbody>
                         <tr>
                             <th>거주지</th>
-                            <td th:text="${sitterInfo.주소}"></td>
+                            <td>대충 자세한 주소(TODO)</td>
                         </tr>
 
                         <tr>
@@ -39,24 +39,20 @@
                             <td th:text="${sitterInfo.phone}"></td>
                         </tr>
 
-                        <tr>
-                            <th>기타 연락망</th>
-                            <td th:text="${sitterInfo.기타연락}"></td>
-                        </tr>
 
                         <tr>
                             <th>시터 안심보험</th>
-                            <td th:text="${sitterInfo.보험}"></td>
+                            <td th:text="${sitterInfo.insurance}"></td>
                         </tr>
 
                         <tr>
                             <th>제출 가능한 서류</th>
-                            <td th:text="${sitterInfo.서류}"></td>
+                            <td th:text="${sitterInfo.document}"></td>
                         </tr>
 
                         <tr>
                             <th>기타특징</th>
-                            <td th:text="${sitterInfo.특징}"></td>
+                            <td th:text="${sitterInfo.other}"></td>
                         </tr>
 
                     </tbody>
@@ -77,7 +73,7 @@
                     <tbody>
                         <tr>
                             <th>요일/시간 (협의가능)</th>
-                            <td th:text="${sitterInfo.시간}"></td>
+                            <td th:text="${sitterInfo.worktime}"></td>
                         </tr>
 
                         <tr>
@@ -87,22 +83,22 @@
 
                         <tr>
                             <th>CCTV</th>
-                            <td th:text="${sitterInfo.홈캠}"></td>
+                            <td th:text="${sitterInfo.cctv}"></td>
                         </tr>
 
                         <tr>
                             <th>호칭</th>
-                            <td th:text="${sitterInfo.호칭}"></td>
+                            <td th:text="${sitterInfo.nickname}"></td>
                         </tr>
 
                         <tr>
                             <th>근무 시작 희망일</th>
-                            <td th:text="${sitterInfo.근무 시작일}"></td>
+                            <td th:text="${sitterInfo.startday}"></td>
                         </tr>
 
                         <tr>
                             <th>희망 급여</th>
-                            <td th:text="${sitterInfo.희망급여}"></td>
+                            <td th:text="${sitterInfo.salary}"></td>
                         </tr>
 
                     </tbody>
@@ -126,9 +122,8 @@
 
                     <tbody>
                         <tr>
-                            <td th:text="${sitterInfo.근무기간}"></td>
-                            <td th:text="${sitterInfo.근무지역}"></td>
-                            <td th:text="${sitterIfno.그때급여}"></td>
+                            <td th:text="${sitterInfo.career}"></td>
+                            
                         </tr>
                     </tbody>
                 </table>
@@ -151,10 +146,9 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr th:each="jobcert : ${jobcert}">
                             <td th:text="${jobcert.certName}"></td>
                             <td th:text="${jobcert.certDate}"></td>
-                            <td th:text="${jobcert.발행처}"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -188,7 +182,7 @@
             </div>
 
             <div class="no">
-                <a href="siter_profile.html">목록</a>
+                <a href="../">목록</a>
             </div>
         </div>
 

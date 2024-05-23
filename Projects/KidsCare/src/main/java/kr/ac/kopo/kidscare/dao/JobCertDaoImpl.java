@@ -16,23 +16,29 @@ public class JobCertDaoImpl implements JobCertDao {
 	
 	@Override
 	public List<JobCert> list() {
-		return sql.selectList("mapper.jobcert.list");
+		return sql.selectList("jobcert.list");
 	}
 
 	@Override
 	public void add(JobCert jobCertInfo) {
-		sql.insert("mapper.jobcert.add", jobCertInfo);
+		sql.insert("jobcert.add", jobCertInfo);
 	}
 
 	@Override
 	public JobCert jobCertInfo(String certName) {
-		return sql.selectOne("mapper.jobcert.select", certName);
+		return sql.selectOne("jobcert.select", certName);
 	}
 
 	@Override
 	public void update(JobCert jobCertInfo) {
-		sql.update("mapper.jobcert.update", jobCertInfo);
+		sql.update("jobcert.update", jobCertInfo);
 
+	}
+
+	@Override
+	public List<JobCert> searchByName(String username) {
+		// TODO Auto-generated method stub
+		return sql.selectList("jobcert.searchName", username);
 	}
 
 }
