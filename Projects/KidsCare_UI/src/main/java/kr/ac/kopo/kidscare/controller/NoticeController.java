@@ -9,6 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,7 @@ import kr.ac.kopo.kidscare.pager.PagerMap;
 public class NoticeController {
 	final String path = "notice/";
 	final String url = "http://localhost:9090/notice/";
+	
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
