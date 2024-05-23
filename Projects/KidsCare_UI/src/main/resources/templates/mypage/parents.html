@@ -1,10 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title></title>
+    <title></title>
+    <style>
+	    body {
+	        font-family: Arial, sans-serif;
+	        background-color: #f2f2f2;
+	        width: 1024px;
+	    }
+	
+	    table {
+	        border-collapse: collapse;
+	        width: 100%;
+	        background-color: #fff;
+	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	        margin-bottom: 20px;
+	    }
+	
+	    th, td {
+	        border: 1px solid #ddd;
+	        padding: 8px;
+	        text-align: left;
+	    }
+	
+	    caption {
+	        font-weight: bold;
+	        margin-bottom: 10px;
+	    }
+	
+	    h1 {
+	        text-align: center;
+	        color: #333;
+	        margin-bottom: 20px;
+	    }
+	</style>
 </head>
 <body>
-dddd
+    <h1>MY PAGE</h1>
+
+    <table>
+        <caption>내 정보</caption>
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>연락처</th>
+            <th>이메일</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td th:text="${userInfo.username}"></td>
+            <td th:text="${userInfo.name}"></td>
+            <td th:text="${userInfo.phone}"></td>
+            <td th:text="${userInfo.email}"></td>
+            <td>암튼 일단 이거 주소임</td>
+        </tr>
+        
+    </table>
+	<br>
+    <table>
+        <caption>내 게시글</caption>
+        <tr>
+            <th>게시글번호</th>
+            <th>제목</th>
+            <th>작성일자</th>
+        </tr>
+        <tr th:each="postInfo : ${postList}">
+            <td th:text="${postInfo.userPostId}"></td>
+            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+            <td th:text="${postInfo.postdate}"></td>
+            
+        </tr>
+        
+    </table>
+	<br>
+    <table>
+        <caption>시터 리스트</caption>
+        <tr>
+            <th>시터 성명</th>
+            <th>전화번호</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>이메일</th>
+            <th>희망급여</th>
+            
+        </tr>
+        <tr th:each="sitterInfo : ${sitterList}">
+            <td th:text="${sitterInfo.name}"></td>
+            <td th:text="${sitterInfo.phone}"></td>
+            <td th:text="${sitterInfo.age}"></td>
+            <td th:text="${sitterInfo.gender}"></td>
+            <td th:text="${sitterInfo.email}"></td>
+            <td th:text="${sitterInfo.salary}"></td>
+        </tr>
+        
+    </table>
+
 </body>
 </html>
