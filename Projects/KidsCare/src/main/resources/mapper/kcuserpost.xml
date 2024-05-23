@@ -42,12 +42,20 @@
 	
 
 
-	<select id="search" resultType="KcUserPost">
-		SELECT *
-		FROM kcuserpost
-		WHERE userPostId=#{userPostId}
+	<select id="search" resultMap="KcUserPostMap">
+      SELECT *
+      FROM kcuserpost LEFT JOIN userfile ON kcuserpost.userpostid=userfile.userpostid
+      WHERE kcuserpost.userPostId=#{userPostId}
 
-	</select>
+   </select>
+   
+      <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
+      <id column="userPostId" property="userPostId"/>
+      
+      <collection property="userFiles" column="pid" javaType="ArrayList" ofType="UserFile" autoMapping="true">
+         <id column="code" property="code"/>
+      </collection>
+   </resultMap>
 	
 	
 	
