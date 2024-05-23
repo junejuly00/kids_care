@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <script src="/js/summernote-ko-KR.js"></script>
+
 </head>
 <body>
 
@@ -51,17 +52,36 @@
 			<div>
 				<a href="list">취소</a>
 			</div>
-			<div class="mt-2">
-					<label class="col-1">제품 이미지:</label> <button type="button" class="btn btn-sm btn-primary" id="add">파일 추가</button>
-					<ul id="files" class="col">
-						<li class="mt-2 row">
-							<div class="col-1"></div>
-							<div class="col">
-								<input name="uploadFile" type="file" class="form-control">
-							</div>
-						</li>
-					</ul>
+			<div class="upload_sec">
+					<label class="col-1">제품 이미지:</label> 
+					<button type="button" class="add">파일 추가</button>
+					<div class="upload_btn">
+						<input name="uploadFile" type="file">
+					</div>
 				</div>
+				<script>
+					const addBtn = document.querySelector('.add');
+				    addBtn.addEventListener('click', function() {
+				        const newDiv = document.createElement('div');
+				        newDiv.className = 'upload_btn';
+				        
+				        const input = document.createElement('input');
+				        input.name = 'uploadFile';
+				        input.type = 'file';
+				        
+				        const deleteBtn = document.createElement('button');
+				        deleteBtn.type = 'button';
+				        deleteBtn.textContent = '삭제';
+				        deleteBtn.addEventListener('click', function() {
+				        	newDiv.remove();
+				        })
+	
+				        newDiv.appendChild(input);
+				        newDiv.appendChild(deleteBtn);
+	
+						document.querySelector('.upload_sec').appendChild(newDiv);
+				    })
+				</script>
 			
 		</form>
 
