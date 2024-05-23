@@ -22,19 +22,19 @@ public class KCUserDaoImpl implements KCUserDao {
 	@Override
 
 	public void add(KCUser userInfo) {
-		sql.insert("mapper.kcuser.add",userInfo);
+		sql.insert("kcuser.add",userInfo);
 	}
 
 	@Override
 	public KCUser getUserInfo(String username) {
-		return sql.selectOne("mapper.kcuser.username",username);
+		return sql.selectOne("kcuser.search",username);
 
 	}
 
 
 	@Override
 	public void update(KCUser userInfo) {
-		sql.update("mapper.kcuser.update",userInfo);
+		sql.update("kcuser.update",userInfo);
 
 	}
 

@@ -25,7 +25,7 @@ public class KCUserController {
 	KCUserService service;
 	
 	@GetMapping("/list")
-		List<KCUser> list(){
+	List<KCUser> list(){
 		List<KCUser> list = service.list();				
 		
 		return list;

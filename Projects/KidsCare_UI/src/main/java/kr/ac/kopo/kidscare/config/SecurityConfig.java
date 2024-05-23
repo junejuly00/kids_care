@@ -27,7 +27,7 @@ public class SecurityConfig {
 			
 		})
 		.formLogin(login -> {
-			//login.loginPage("/login");
+			login.loginPage("/login");
 			login.defaultSuccessUrl("/");
 		})
 		.logout(logout -> {

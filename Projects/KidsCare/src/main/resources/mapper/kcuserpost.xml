@@ -30,7 +30,7 @@
 	
 	
 		<insert id="add">
-	    INSERT into kcuserpost
+	    INSERT into kcuserpost(userpostid, username, postdate,title, contents, status)
 	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
@@ -60,5 +60,10 @@
 		(code, userPostId, filename, uuid)
 		VALUES (#{code},#{userPostId},#{filename},#{uuid})
 	</insert>
+	
+	<select id="mypost" resultType="KcUserPost">
+		SELECT * FROM kcuserpost
+		WHERE username=#{username}
+	</select>
 </mapper>
 
