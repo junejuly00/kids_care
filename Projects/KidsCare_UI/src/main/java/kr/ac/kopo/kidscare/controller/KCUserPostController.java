@@ -46,12 +46,12 @@ public class KCUserPostController {
 	
 	
 	@GetMapping("/list")
-	String list(Model model, Pager pager, @RequestParam Integer search, @RequestParam String keyword) throws JsonMappingException, JsonProcessingException {
+	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false) String keyword) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);	
 		
-		pager.setSearch(search);
+		pager.setSearch(Integer.parseInt(search));
 		pager.setKeyword(keyword);
 		//System.out.println(search + "," + keyword);  //여기까지 들어감
 		String jsonString = om.writeValueAsString(pager);
