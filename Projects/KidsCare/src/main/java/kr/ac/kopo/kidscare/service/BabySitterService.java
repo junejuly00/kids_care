@@ -3,6 +3,7 @@ package kr.ac.kopo.kidscare.service;
 import java.util.List;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface BabySitterService {
 
@@ -15,5 +16,7 @@ public interface BabySitterService {
 	void update(BabySitter sitterInfo);
 
 	List<BabySitter> detail(String username);
+
+	List<BabySitter> list(Pager pager);
 
 }
