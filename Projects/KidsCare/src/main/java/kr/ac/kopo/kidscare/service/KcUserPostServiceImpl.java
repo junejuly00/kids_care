@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.kidscare.dao.KCUserPostDao;
 import kr.ac.kopo.kidscare.model.KcUserPost;
@@ -32,7 +33,8 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	public KcUserPost item(Integer userPostId) {
 		return dao.item(userPostId);
 	}
-
+	
+	@Transactional
 	@Override
 	public void add(KcUserPost item) {
 		dao.add(item);

@@ -9,14 +9,16 @@ public class KcUserPost {
 	private String contents;
 	private String title;
 	private Integer status;
+	
+	private List<UserFile> userFiles;
+	
+	
 	public Integer getStatus() {
 		return status;
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	private List<UserFile> userFiles;
-	
 	public Integer getUserPostId() {
 		return userPostId;
 	}

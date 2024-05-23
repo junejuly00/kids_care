@@ -94,6 +94,7 @@ public class KCUserPostController {
 					UserFile img = new UserFile();
 					img.setFilename(filename);
 					img.setUuid(uuid);
+					System.out.println(img.getFilename());
 					
 					userFiles.add(img);
 				} catch (Exception e) {
@@ -152,9 +153,9 @@ public class KCUserPostController {
 	@GetMapping("/post/{userPostId}")
 	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
 		
-		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);	
+		KCUserPost item = rest.getForObject(url + userPostId, KCUserPost.class);	
 		
-		model.addAttribute("postInfo", postInfo);
+		model.addAttribute("item", item);
 		
 		return "kcuserpost/post";
 	}
