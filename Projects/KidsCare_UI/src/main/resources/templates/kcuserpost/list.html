@@ -25,7 +25,26 @@
     </section>
 	
 	<div class="wrap">
-	    <h2 class="community">커뮤니티</h2>
+
+	    <p class="community">커뮤니티</p>
+	    
+	    
+	    	<form>
+	    		<div>
+	    			<label>검색항목:</label>
+	    			<select name="search">
+	    				<option value="1" th:selected="${pager.search == 1}">제목</option>
+        				<option value="2" th:selected="${pager.search == 2}">작성자</option>
+	    			</select>
+	    		</div>
+	    		<div>
+	    			 <input type="text" name="keyword" th:value="${pager.keyword}">
+	    		</div>
+	    		<button>검색</button>
+	    	</form>
+	    
+	    
+
 	    <div class="table">
 	        <table>
 	            <thead>
@@ -58,9 +77,9 @@
 	
 	    <div class="pagination">
 	        <ul>
-	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}}">이전</a></li>
-	            <li th:each="page : ${pager.list}"><a href="#" th:href="@{|?page=${page}|}" th:text="${page}"></a></li>
-	            <li class="next"><a th:href="@{'?page='+ ${pager.next}}">다음</a></li>
+	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}${pager.query}|}">이전</a></li>
+	            <li th:each="page : ${pager.list}"><a href="#" th:href="@{|?page=${page}${pager.query}|}" th:text="${page}"></a></li>
+	            <li class="next"><a th:href="@{'?page='+ ${pager.next}${pager.query}|}">다음</a></li>
 	        </ul>
 	    </div>
 	</div>

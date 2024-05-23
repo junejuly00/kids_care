@@ -27,6 +27,17 @@ public class BabySitter{
 	private String nickname;
 	private String startday;
 	private String salary;
+	private String career;
+	public String getCareer() {
+		return career;
+	}
+
+
+	public void setCareer(String career) {
+		this.career = career;
+	}
+
+
 	private SitterPhoto photos;
 
 

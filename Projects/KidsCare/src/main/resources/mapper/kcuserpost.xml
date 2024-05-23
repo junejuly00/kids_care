@@ -2,21 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kcuserpost">
 
+	<sql id="search">
+		select * from kcuserpost
+	   <where>
+	   		<if test="search == 1" >
+	   			title=#{keyword}
+	   		</if>
+	   		
+	   		<if test="search == 2">
+	   			username LIKE CONCAT(CONCAT('%', #{KEYWORD}),'%')
+	   		</if>
+	   </where>
+	</sql>
+
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM(<include refid="search"></include>)
+	</select>
+
 	<select id="list" resultType="KcUserPost">
 		SELECT * FROM
 			(SELECT sub.*, ROWNUM rnum FROM 
-				(SELECT * FROM kcuserpost
-		ORDER BY userpostid) sub)
+				(<include refid="search"></include>) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
 	</select>
 
-	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM (
-		SELECT * FROM kcuserpost
-		ORDER BY userpostid
-		) sub
-	</select>
+	
 	
 		<insert id="add">
 	    INSERT into kcuserpost
