@@ -221,6 +221,12 @@ public class BabySitter implements UserDetails{
 	public void setPhotos(SitterPhoto photos) {
 		this.photos = photos;
 	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
 	
 
 }

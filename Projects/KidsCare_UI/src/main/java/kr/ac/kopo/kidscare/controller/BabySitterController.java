@@ -115,6 +115,6 @@ public class BabySitterController {
 		
 		model.addAttribute("item", item);
 		
-		return "kcuserpost/detail";
+		return "babysitter/detail";
 	}
 }

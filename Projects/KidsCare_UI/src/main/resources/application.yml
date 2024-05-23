@@ -16,7 +16,13 @@ spring:
     password: kidscare
     url: jdbc:oracle:thin:@localhost:1521:xe
     username: kidscare 
-   
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+      location: D:/upload
+
+    
   mvc:
     static-path-pattern: "/static/**"
 
