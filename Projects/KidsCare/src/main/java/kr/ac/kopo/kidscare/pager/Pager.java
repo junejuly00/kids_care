@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pager {
 	private int page = 1;
-	private int perPage = 1;
+	private int perPage = 10;
 	private float total;
 	private int perGroup = 3;
 	

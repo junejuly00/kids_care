@@ -6,11 +6,11 @@
 		select * from kcuserpost
 	   <where>
 	   		<if test="search == 1" >
-	   			title=#{keyword}
+	   			title LIKE CONCAT(CONCAT('%', #{keyword}),'%')
 	   		</if>
 	   		
 	   		<if test="search == 2">
-	   			username LIKE CONCAT(CONCAT('%', #{KEYWORD}),'%')
+	   			username LIKE CONCAT(CONCAT('%', #{keyword}),'%')
 	   		</if>
 	   </where>
 	</sql>
@@ -48,6 +48,8 @@
 		WHERE userPostId=#{userPostId}
 
 	</select>
+	
+	
 	
 	<update id="hide">
 		UPDATE kcuserpost
