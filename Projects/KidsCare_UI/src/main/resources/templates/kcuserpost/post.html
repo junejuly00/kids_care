@@ -18,21 +18,21 @@
 		
 		<div class="box">
 		<div class="title">
-			<h4 th:text="${item.title}"></h4>
+			<h4 th:text="${postInfo.title}"></h4>
 		</div>
 		
 		<div class="info">
-			<p>작성자:</p><p th:text="${item.username}"></p>
-			<p>| 작성일:</p><p th:text="${item.postdate}"></p>
+			<p>작성자:</p><p th:text="${postInfo.username}"></p>
+			<p>| 작성일:</p><p th:text="${postInfo.postdate}"></p>
 		</div>
 		
 		<hr>
 		
 		<div class="content">
-			<div th:text="${item.contents}"></div>
+			<div th:text="${postInfo.contents}"></div>
 		</div>
 
-		<div th:each="userFile : ${item.userFiles}">
+		<div th:each="userFile : ${postInfo.userFiles}">
 			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
 			<div th:text="${userFile.filename}"></div>
 		</div>
@@ -41,8 +41,8 @@
 		</div>
 		
 		<div id="btn">
-        	<a th:href="@{'/kcuserpost/hide/' + ${item.userPostId}}" th:text="숨기기"><button class="write">삭제</button></a>
-        	<a th:href="@{'/kcuserpost/update/' + ${item.userPostId}}" th:text="변경"><button class="write">삭제</button></a>
+        	<a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="숨기기"><button class="write">삭제</button></a>
+        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write">삭제</button></a>
 
     	</div>
 		
@@ -54,8 +54,10 @@
 	<div>
 		<form action="/comment/add" method="post">
 		
-		<label for="commentId">게시글번호:</label>
-		<input type="text" id="게시글번호" name="commentId">
+		<label for="commentId">댓글번호:</label>
+		<input type="text" name="commentId">
+		
+		<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
 		
 		
         <label for="username">Name:</label>        

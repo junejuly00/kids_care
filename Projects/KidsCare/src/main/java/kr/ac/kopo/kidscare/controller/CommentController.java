@@ -35,7 +35,7 @@ public class CommentController {
 		return list;
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	void add(@RequestBody Comment commentInfo) {
 		service.add(commentInfo);
 	}
