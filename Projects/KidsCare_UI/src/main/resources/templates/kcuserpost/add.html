@@ -21,17 +21,18 @@
 	</div>
 	
 	<div class="wrap">
-	
-		
-		
 
-		<form action="/kcuserpost/add" method="post" enctype="multipart/form-data">
-	<!--  <input type="hidden" name="userPostId" th:value="${userPostId}"/> 
+
+	<form action="/kcuserpost/add" method="post" enctype="multipart/form-data">
+	
+	<div class="post_add">
+		
+		<!--  <input type="hidden" name="userPostId" th:value="${userPostId}"/> 
 
         <input type="hidden" name="username" th:value="${username}"/> 
         <input type="hidden" name="date" th:value="${date}"/> -->
-
-			<p>
+	
+		<p>
 				userpostid<input type="number" name="userPostId" />
 			</p>
 			
@@ -42,53 +43,29 @@
 			<p>
 				Title: <input type="text" name="title" />
 			</p>
+	</div>
 			
-			<p>Content:</p>
 			
-			<textarea name="contents" rows="20" cols="150" id="notice_txt"></textarea>
+		<textarea name="contents" rows="20" cols="150" id="notice_txt"></textarea>
 			
-			<div>
-				<button>등록</button>			
+		<div class="upload_sec">
+			<label class="col-1">제품 이미지:</label> 
+			<button type="button" class="add">파일 추가</button>
+			<div class="upload_btn">
+				<input name="uploadFile" type="file">
 			</div>
+		</div>
 			
-			<div>
-				<a href="list">취소</a>
-			</div>
-			<div class="upload_sec">
-					<label class="col-1">제품 이미지:</label> 
-					<button type="button" class="add">파일 추가</button>
-					<div class="upload_btn">
-						<input name="uploadFile" type="file">
-					</div>
-				</div>
-				<script>
-					const addBtn = document.querySelector('.add');
-				    addBtn.addEventListener('click', function() {
-				        const newDiv = document.createElement('div');
-				        newDiv.className = 'upload_btn';
-				        
-				        const input = document.createElement('input');
-				        input.name = 'uploadFile';
-				        input.type = 'file';
-				        
-				        const deleteBtn = document.createElement('button');
-				        deleteBtn.type = 'button';
-				        deleteBtn.textContent = '삭제';
-				        deleteBtn.addEventListener('click', function() {
-				        	newDiv.remove();
-				        })
-	
-				        newDiv.appendChild(input);
-				        newDiv.appendChild(deleteBtn);
-	
-						document.querySelector('.upload_sec').appendChild(newDiv);
-				    })
-				</script>
+		<div class="btn">
+			<button>등록</button>	
+			<a href="list">취소</a>	
+		</div>
 			
 		</form>
 
 	</div>
-
+	
+	<script type="text/javascript" src="../../static/js/file_add.js"></script>
 	
 	<script>
     	$(() => {

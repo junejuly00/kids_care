@@ -6,7 +6,7 @@
     text-decoration-line: none;
 }
 
-input {
+.post_add input {
     outline: 0.4em;
     padding-left: 20px;
     border-radius: 5px;
