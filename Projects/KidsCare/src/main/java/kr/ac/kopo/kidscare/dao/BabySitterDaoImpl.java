@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 @Repository
 public class BabySitterDaoImpl implements BabySitterDao {
@@ -26,17 +27,23 @@ public class BabySitterDaoImpl implements BabySitterDao {
 
 	@Override
 	public BabySitter sitterInfo(String username) {
-		return sql.selectOne("babySitter.item",username);
+		return sql.selectOne("babysitter.item",username);
 	}
 
 	@Override
 	public void update(BabySitter sitterInfo) {
-		sql.update("babySitter.update",sitterInfo);
+		sql.update("babysitter.update",sitterInfo);
 	}
 
 	@Override
 	public List<BabySitter> detail(String username) {
-		return sql.selectList("babySitter.detail", username);
+		return sql.selectList("babysitter.detail", username);
+	}
+
+	@Override
+	public List<BabySitter> list(Pager pager) {
+		// TODO Auto-generated method stub
+		return sql.selectList("babysitter.list", pager);
 	}
 
 }

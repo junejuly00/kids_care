@@ -47,12 +47,14 @@ public class KCUserPostController {
 	
 	
 	@GetMapping("/list")
+
 	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false) String keyword) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);	
 		
 		pager.setSearch(Integer.parseInt(search));
+
 		pager.setKeyword(keyword);
 		//System.out.println(search + "," + keyword);  //여기까지 들어감
 		String jsonString = om.writeValueAsString(pager);
@@ -95,6 +97,7 @@ public class KCUserPostController {
 					UserFile img = new UserFile();
 					img.setFilename(filename);
 					img.setUuid(uuid);
+					System.out.println(img.getFilename());
 					
 					userFiles.add(img);
 				} catch (Exception e) {
@@ -153,6 +156,7 @@ public class KCUserPostController {
 	@GetMapping("/post/{userPostId}")
 	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
 		
+
 		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);
 		
 		String resp = rest.getForObject("http://localhost:9090/comment/filter/"+userPostId, String.class);
@@ -160,6 +164,7 @@ public class KCUserPostController {
 		
 		model.addAttribute("postInfo", postInfo);
 		model.addAttribute("commentList", commentList);
+
 		
 		return "kcuserpost/post";
 	}

@@ -23,7 +23,7 @@
 		
 		<div class="info">
 			<p>작성자:</p><p th:text="${postInfo.username}"></p>
-			<p>| 작성일:</p><p th:text="${postInfo.postdate}"></p>
+			<p style="padding-left: 20px">작성일:</p><p th:text="${postInfo.postdate}"></p>
 		</div>
 		
 		<hr>
@@ -32,16 +32,27 @@
 			<div th:text="${postInfo.contents}"></div>
 		</div>
 		
-		</div>
+		<hr>
 		
 		<div id="btn">
-        	<a th:href="@{'/notice/hide/' + ${postInfo.code}}" th:text="삭제"><button class="write">삭제</button></a>
-        	<a th:href="@{'/notice/update/' + ${postInfo.code}}" th:text="변경"><button class="write">삭제</button></a>
+		
+			<div class="delete">
+				<a th:href="@{'/notice/hide/' + ${postInfo.code}}" th:text="삭제"></a>
+			</div>
+			
+			<div class="update">
+				<a th:href="@{'/notice/update/' + ${postInfo.code}}" th:text="변경"></a>
+			</div>
+        	
+        	<div class="list">
+        		<a href="../list">목록</a>
+        	</div>
+
    	 	</div>
 		
-		<div>
-			<a href="../list">목록</a>
 		</div>
+		
+		
 	</div>
 </body>
 </html>

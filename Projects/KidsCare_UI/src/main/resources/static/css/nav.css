@@ -4,12 +4,14 @@
 
 html{
     font-size: 18px;
-    font-family: 'Binggrae';
+    
 }
+
 *{
     margin: 0;
     padding: 0;
     text-decoration-line: none;
+    font-family: 'Binggrae';
 }
 
 header a{

@@ -24,9 +24,14 @@ public class JobCertController {
 	@GetMapping("/list")
 	List<JobCert> list() {
 		List<JobCert> list = service.list();
-		
 		return list;
 	}
+	@GetMapping("/search/{username}")
+	List<JobCert> searchByName(@PathVariable String username) {
+		List<JobCert> result = service.searchByName(username);
+		return result;
+	}
+	
 	
 	@PostMapping
 	void add(@RequestBody JobCert jobCertInfo) {
