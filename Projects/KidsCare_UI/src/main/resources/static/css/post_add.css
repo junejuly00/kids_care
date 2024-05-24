@@ -6,13 +6,18 @@
     text-decoration-line: none;
 }
 
-.post_add input {
-    outline: 0.4em;
-    padding-left: 20px;
+.add_info{
+	display: flex;
+	flex-direction: column
+}
+
+.add_info input {
+    padding-left: 10px;
     border-radius: 5px;
+    border: solid 0.5px;
     width: 200px;
     height: 30px;
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 0;
 }
 
 button{
@@ -25,7 +30,6 @@ button{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 0.5px solid #666666;
     padding: 70px 0 70px 0;
 }
 
@@ -34,4 +38,52 @@ button{
 	margin: 120px auto; 
 	display: flex;
 	justify-content: center;
+}
+
+#notice_txt{
+	margin: 40px 0 20px 0;	
+}
+
+.img_add{
+	display: flex;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.img_add .file_add{
+	width: 50px;
+	height: 30px;
+	margin-left: 5px;
+	border-radius: 5px;
+	border: solid 0.5px #BEBEBE;
+	font-size: 14px; 
+}
+
+.btn{
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.btn a{
+	width: 80px;
+	height: 40px;
+	background-color: #E3F0FB;
+	border-radius: 5px;
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 30px;
+}
+
+.btn button{
+	width: 80px;
+	height: 40px;
+	background-color: #E3F0FB;
+	border-radius: 5px;
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

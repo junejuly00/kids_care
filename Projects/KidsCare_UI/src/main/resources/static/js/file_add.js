@@ -1,4 +1,4 @@
-const addBtn = document.querySelector('.add');
+const addBtn = document.querySelector('.file_add');
 			 addBtn.addEventListener('click', function() {
 	const newDiv = document.createElement('div');
 		 newDiv.className = 'upload_btn';

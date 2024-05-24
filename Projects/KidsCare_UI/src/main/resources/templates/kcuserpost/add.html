@@ -25,40 +25,36 @@
 
 	<form action="/kcuserpost/add" method="post" enctype="multipart/form-data">
 	
-	<div class="post_add">
+	<div class="add_info">
 		
 		<!--  <input type="hidden" name="userPostId" th:value="${userPostId}"/> 
 
         <input type="hidden" name="username" th:value="${username}"/> 
         <input type="hidden" name="date" th:value="${date}"/> -->
 	
-		<p>
-				userpostid<input type="number" name="userPostId" />
-			</p>
+		<input type="number" name="userPostId" placeholder="글 번호" />
+		<input type="text" name="username" placeholder="ID" />
+		<input type="text" name="title" placeholder="제목"/>
 			
-			<p>
-				username<input type="text" name="username" />
-			</p>
-			
-			<p>
-				Title: <input type="text" name="title" />
-			</p>
 	</div>
 			
 			
 		<textarea name="contents" rows="20" cols="150" id="notice_txt"></textarea>
 			
 		<div class="upload_sec">
-			<label class="col-1">제품 이미지:</label> 
-			<button type="button" class="add">파일 추가</button>
+			<div class="img_add">
+				<p style="font-size: 16px">업로드 파일 추가 :</p> 
+				<button type="button" class="file_add">추가</button>
+			</div>
+			
 			<div class="upload_btn">
-				<input name="uploadFile" type="file">
+				<input class="upload-file" name="uploadFile" type="file">
 			</div>
 		</div>
 			
 		<div class="btn">
-			<button>등록</button>	
 			<a href="list">취소</a>	
+			<button>등록</button>	
 		</div>
 			
 		</form>
@@ -75,5 +71,7 @@
         	});
     	});
   </script>
+  
+  <footer th:replace="/footer.html"></footer>
 </body>
 </html>
