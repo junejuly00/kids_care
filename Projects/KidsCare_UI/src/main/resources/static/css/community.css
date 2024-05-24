@@ -46,13 +46,41 @@
     font-size: 36px;
     display: flex;
     justify-content: center;
+    margin-bottom: 60px;
+}
+
+.search-form{
+	width: 1360px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.search-form input{
+	width: 250px;
+	height: 35px;
+	border:solid 0.5px #BEBEBE;
+	border-radius: 5px;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.search select{
+	height: 35px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.search button {
+	width: 50px;
+	height: 35px;
+	font-size: 14px;
 }
 
 .table{
     display: flex;
     width: 1360px;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 table {
