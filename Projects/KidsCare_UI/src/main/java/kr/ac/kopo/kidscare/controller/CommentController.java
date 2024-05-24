@@ -7,7 +7,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +21,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.Comment;
 
 @Controller
-@RequestMapping("/babysitter")
-public class BabySitterController {
+@RequestMapping("/comment")
+public class CommentController {
 	
-	final String url = "http://localhost:9090/babysitter/";
+	final String url = "http://localhost:9090/comment/";
 	
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
@@ -45,27 +44,21 @@ public class BabySitterController {
 		String resp = rest.getForObject(url + "list", String.class);
 		
 
-		List<BabySitter> list = om.readValue(resp, new TypeReference<List<BabySitter>>() {});
+		List<Comment> list = om.readValue(resp, new TypeReference<List<Comment>>() {});
 
 		
-		model.addAttribute("list",list);				
-				
+		model.addAttribute("list",list);	
 		
-		return "babysitter/list";
-	}
-	
-	@GetMapping("/add")
-	String add() {
-		return "babysitter/add";
+		return "comment/list";
 	}
 	
 	@PostMapping("/add")
-	String add(BabySitter sitterInfo) throws JsonProcessingException {
+	String add(Comment commentInfo) throws JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
+		String jsonString = om.writeValueAsString(commentInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -77,43 +70,35 @@ public class BabySitterController {
 		
 		return "redirect:list";
 	}
-	
-	@GetMapping("/update/{username}")
-	String update(@PathVariable String username, Model model) {
-		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);
 		
-		model.addAttribute("sitterInfo", sitterInfo);
-		
-		return "babysitter/update";
+		@GetMapping("/update/{username}")
+		String update(@PathVariable String username, Model model) {
+		Comment commentInfo = rest.getForObject(url + username, Comment.class);
+			
+		model.addAttribute("commentInfo", commentInfo);
+			
+		return "comment/update";
+
 	}
-	
-	@PostMapping("/update/{username}")
-	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
-		sitterInfo.setUsername(username);
 		
-		HttpHeaders header = new HttpHeaders();
-		header.add("Content-Type", "application/json");
+		@PostMapping("/update/{username}")
+		String update(@PathVariable String username, Comment sitterInfo) throws JsonProcessingException {
+			sitterInfo.setUsername(username);
+			
+			HttpHeaders header = new HttpHeaders();
+			header.add("Content-Type", "application/json");
+			
+			String jsonString = om.writeValueAsString(sitterInfo);
+			
+			HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+			
+			ResponseEntity<Integer> resp = rest.exchange(url + username, HttpMethod.PUT, req, Integer.class);
+			
+			Integer result = resp.getBody();
+			
+			System.out.println(result);
+			
+			return "redirect:../list";	
+		}
 		
-		String jsonString = om.writeValueAsString(sitterInfo);
-		
-		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
-		
-		ResponseEntity<Integer> resp = rest.exchange(url + username, HttpMethod.PUT, req, Integer.class);
-		
-		Integer result = resp.getBody();
-		
-		System.out.println(result);
-		
-		return "redirect:../list";	
-	}
-	
-	@GetMapping("/detail/{username}")
-	String post(@PathVariable String username, Model model) throws JsonProcessingException {
-		
-		BabySitter item = rest.getForObject(url + username, BabySitter.class);	
-		
-		model.addAttribute("item", item);
-		
-		return "kcuserpost/detail";
-	}
 }

@@ -5,11 +5,11 @@
 	<sql id="search">
 		select * from kcuserpost
 	   <where>
-	   		<if test="search == 1" >
+	   		<if test="search == 1 and keyword != null" >
 	   			title LIKE CONCAT(CONCAT('%', #{keyword}),'%')
 	   		</if>
 	   		
-	   		<if test="search == 2">
+	   		<if test="search == 2 and keyword != null">
 	   			username LIKE CONCAT(CONCAT('%', #{keyword}),'%')
 	   		</if>
 	   </where>
@@ -49,7 +49,7 @@
 
    </select>
    
-      <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
+     <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
       <id column="userPostId" property="userPostId"/>
       
       <collection property="userFiles" column="pid" javaType="ArrayList" ofType="UserFile" autoMapping="true">

@@ -44,5 +44,34 @@
 			<a href="../list">목록</a>
 		</div>
 	</div>
+	
+	<div>
+		<form action="/comment/add" method="post">
+		
+		<label for="commentId">게시글번호:</label>
+		<input type="text" id="게시글번호" name="commentId">
+		
+		
+        <label for="username">Name:</label>        
+        <input type="text" id="name" name="username" required><br><br> 
+               
+        <label for="comments">Comment:</label><br>
+        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
+        <input type="submit" name="substance" value="Submit">
+        
+    </form>
+    
+	</div>
+	
+	<table>
+		<tbody>				               
+	               <tr th:each="item : ${commentList}">
+	                    <td th:text="${item.commentId}"></td>
+	                    <td th:text="${item.username}"></td>
+	                    <td th:text="${item.substance}"></td>
+	                </tr>
+	            </tbody>
+		</tbody>
+	</table>
 </body>
 </html>
