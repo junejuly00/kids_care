@@ -1,6 +1,5 @@
 var swiper = new Swiper(".swiper", {
     slidesPerView: 1,
-    spaceBetween: 30,
     speed : 1000,
     loop: true,
     pagination: {
@@ -18,3 +17,14 @@ var swiper = new Swiper(".swiper", {
         delay: 4500,
   },
 });
+
+// 카드형 Swiper
+
+var swiper = new Swiper(".mySwiper", {
+	    effect: "cards",
+	    grabCursor: true,
+	    
+	    autoplay: {
+        delay: 4500,
+  			},
+	  });
