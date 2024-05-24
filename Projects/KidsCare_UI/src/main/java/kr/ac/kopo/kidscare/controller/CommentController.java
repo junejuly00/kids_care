@@ -45,11 +45,11 @@ public class CommentController {
 		
 
 		List<Comment> list = om.readValue(resp, new TypeReference<List<Comment>>() {});
-
+		
 		
 		model.addAttribute("list",list);	
 		
-		return "comment/list";
+		return url + "list";
 	}
 	
 	@PostMapping("/add")
@@ -67,8 +67,9 @@ public class CommentController {
 		Integer body = resp.getBody();
 		
 		System.out.println(body);
+		String postId = commentInfo.getUserPostId().toString();
 		
-		return "redirect:list";
+		return "redirect:../kcuserpost/post/" + postId;
 	}
 		
 		@GetMapping("/update/{username}")
