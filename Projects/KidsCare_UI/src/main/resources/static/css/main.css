@@ -14,7 +14,7 @@ html{
 }
 
 .img_size{
-    width: auto;
+    width: 100%;
     height: 650px;
     display: flex;
     align-items: center;
@@ -22,10 +22,19 @@ html{
     overflow: hidden;
 }
 
+.img-option{
+	width: 100%;
+    height: 650px;
+    background-color: #343434;
+    position: absolute;
+    opacity: 0.25;
+}
+
 .img_size img {
     display: block;
     width: 100%;
     height: auto;
+    opacity: 1;
 }
 
 .swiper .swiper-initialized 
@@ -40,7 +49,6 @@ html{
 
 .swiper-slide{
     width: auto;
-
     background-color: rgb(255, 255, 255);
 }
 
@@ -72,6 +80,7 @@ html{
 
 .text-wrap1 h2{
     font-size: 40px;
+    color: #fff;
 }
 
 .text-wrap1 p {
@@ -101,7 +110,8 @@ html{
 }
 
 .text-wrap2 h2{
-    font-size: 40px;
+    font-size: 36px;
+    color: #fff;
 }
 
 .text-wrap2 p{
@@ -132,6 +142,7 @@ html{
 
 .text-wrap3 h2{
     font-size: 36px;
+    color: #fff;
 }
 
 .text-wrap3 p{
@@ -190,8 +201,8 @@ html{
 
 
 .kc-box .swiper2 {
-     width: 300px;
-     height: 420px;
+     width: 320px;
+     height: 440px;
      background-color: #FFFFFF;
      border-radius: 20px; 
    }
@@ -218,7 +229,9 @@ html{
    }
    
 .kc-item{
-	padding: 20px;
+	width: 300px;
+    height: 420px;
+	padding: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -226,8 +239,8 @@ html{
 }
 
 .kc-img{
-	width: 250px;
-	height: 250px;
+	width: 220px;
+	height: 220px;
 	border-radius : 150px;
 	overflow: hidden;
 	display: flex;
@@ -247,7 +260,7 @@ html{
 }
 
 .kc-text{
-	font-size: 16px;
+	font-size: 18px;
 	text-align: center;
 }
 
@@ -318,9 +331,6 @@ html{
     height: 100%;
 }
 
-
-
-
 .new-mtext{
 	font-size: 22px;
 	margin-bottom: 10px;
@@ -332,8 +342,6 @@ html{
 	word-break:break-all;
 	overflow: hidden;
 }
-
-
 
 .review{
     margin-top: 120px;
