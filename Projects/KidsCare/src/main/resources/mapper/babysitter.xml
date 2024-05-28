@@ -41,8 +41,8 @@
 	</resultMap>
 	
 	<insert id="add">
-		INSERT into babysitter
-		VALUES (#{username},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope})		
+		INSERT into babysitter(username, password, name, phone, email, gender, age, major, scope, avgRating, content, open, provider, status, insurance, document, other, worktime, cctv, nickname, startday, salary, career, title)
+		VALUES (#{username},#{password},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope},#{avgRating},#{content},#{open},#{provider},#{status},#{insurance},#{document},#{other},#{worktime},#{cctv},#{nickname},#{startday},#{salary},#{career},#{title})		
 	</insert>
 	
 	<update id="update">

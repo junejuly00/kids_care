@@ -31,13 +31,22 @@ public class SignupController {
 	
 	final String path = "signup/";
 	
-	@GetMapping("/user")
+	
+	@GetMapping
+	public String selectSignup() {
+		return "signup/select";
+	}
+	
+	@GetMapping("/parents")
 	public String userSignup() {
 		return path + "user";
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("/parents")
 	public String userSignup(KCUser userInfo) throws JsonProcessingException {
+		userInfo.setStatus((byte) 0);
+		userInfo.setRole((byte) 1);
+		
 		String rawPassword = userInfo.getPassword();
 		userInfo.setPassword(passwordEncoder.encode(rawPassword));
 		HttpHeaders header = new HttpHeaders();
@@ -47,7 +56,7 @@ public class SignupController {
 		
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		
-		Integer body = rest.postForObject("kcuser/add", request, Integer.class);
+		Integer body = rest.postForObject("http://localhost:9090/kcuser/add", request, Integer.class);
 		
 		return "redirect:../login";
 	}
@@ -61,6 +70,9 @@ public class SignupController {
 	@PostMapping("/sitter")
 	public String sitterSignup(BabySitter sitterInfo) throws JsonProcessingException {
 	
+		sitterInfo.setOpen((byte) 1);
+		
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -68,7 +80,7 @@ public class SignupController {
 		
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		
-		Integer body = rest.postForObject("sitter/add", request, Integer.class);
+		Integer body = rest.postForObject("http://localhost:9090/babysitter/add", request, Integer.class);
 		
 		return "redirect:../login";
 		

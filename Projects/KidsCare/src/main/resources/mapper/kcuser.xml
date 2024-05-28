@@ -7,8 +7,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT into kcuser
-		VALUES (#{username},#{password},#{name},#{phone},#{email},#{role})
+		INSERT into kcuser(username, name, phone, email, role, provider, password, status)
+		VALUES (#{username},#{name},#{phone},#{email},#{role},#{provider},#{password},#{status})
 	</insert>
 	
 	<update id="update">

@@ -12,6 +12,7 @@ public class KCUser {
 	private String email;
 	private Byte role;
 	private String provider;
+	private Byte status;
 	
 	
 	public String getUsername() {
@@ -55,6 +56,12 @@ public class KCUser {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Byte getStatus() {
+		return status;
+	}
+	public void setStatus(Byte status) {
+		this.status = status;
 	}
 	
 	
