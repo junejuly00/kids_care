@@ -12,12 +12,11 @@ import jakarta.servlet.http.HttpSession;
 public class RootController {
 
 	
-	
 	@GetMapping("/")
-	public String main(Model model) {
+	public String main(HttpSession session) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String currentUsername = auth.getName();
-		model.addAttribute("currName", currentUsername);
+		session.setAttribute("currName", currentUsername);
 		
 		return "main";
 	}

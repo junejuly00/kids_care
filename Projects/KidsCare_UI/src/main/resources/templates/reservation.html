@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약페이지</title>
+    <link th:href="@{/resources/booking.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form>
+    <label for="resId">RESID:</label>
+    <input type="text" name="resId"><br><br>
+    
+    <label for="username">USERNAME:</label>
+    <div th:text="${resUser}"></div><br><br>
+    
+    <label for="sitterUsername">SITTERNAME:</label>
+    <input type="text" name="sitterUsername" th:value="${resSitter}" readonly><br><br>
+    
+    <label for="">DATE:</label>
+    <input type="text" name="date"><br><br>
+    
+    <button>SUBMIT</button>
+</form>
+</body>
+</html>

@@ -8,6 +8,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,15 +46,23 @@ public class ReservationController {
 		return "/reservation/totallist";
 	}
 	
-	@GetMapping("/create")
-	String newReservation() {
-		return "/reservation/create";
+	@GetMapping("/{sitterId}")
+	String newReservation(@PathVariable String sitterId, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String resUserName = auth.getName();
+		model.addAttribute("resUser", resUserName);
+		model.addAttribute("resSitter", sitterId);
+		return "/reservation";
 	}
 	
-	@PostMapping("/create")
-	String newReservation(Reservation rsvInfo) throws JsonProcessingException {
+	@PostMapping("/{sitterId}")
+	String newReservation(@PathVariable String sitterId, Reservation rsvInfo) throws JsonProcessingException {
+		
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
+		
+		rsvInfo.setSitterId(sitterId);
 		
 		String jsonString = om.writeValueAsString(rsvInfo);
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
