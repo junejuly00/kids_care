@@ -50,7 +50,7 @@ public class KCUserPostController {
 	
 	@GetMapping("/list")
 
-	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false) String keyword) throws JsonMappingException, JsonProcessingException {
+	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false,defaultValue = "") String keyword) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);	
