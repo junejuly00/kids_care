@@ -33,9 +33,11 @@
          <div th:utext="${postInfo.contents}"></div>
       </div>
 
-      <div th:each="userFile : ${postInfo.userFiles}">
+      <div th:each="userFile : ${postInfo.userFiles}" th:if="${userFile.uuid != null}">
+      	 
          <img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
          <div th:text="${userFile.filename}"></div>
+        </div>
       </div>
       
       <hr>
@@ -61,18 +63,16 @@
       <div class="">
       <form action="/comment/add" method="post">
       
-         <label for="commentId">댓글번호:</label>
-         <input type="text" name="commentId">
+        
          
          <input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
          
          
-           <label for="username">Name:</label>        
-           <input type="text" id="name" name="username" required><br><br> 
+          
                   
            <label for="comments">Comment:</label><br>
            <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
-           <input type="submit" name="substance" value="Submit">
+           <input type="submit"  value="Submit">
         
        </form>
    </div>
@@ -83,6 +83,7 @@
              <td th:text="${item.commentId}"></td>
              <td th:text="${item.username}"></td>
              <td th:text="${item.substance}"></td>
+             <td th:text="${item.postDate}"></td>
           </tr>
       </tbody>
    </table>

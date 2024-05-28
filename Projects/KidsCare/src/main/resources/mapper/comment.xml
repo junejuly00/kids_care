@@ -5,17 +5,19 @@
 		SELECT *
 		FROM comments
 		WHERE status=0
+		ORDER BY commentId asc
 	</select>
 	
 	<select id="filter" resultType="Comment">
 		SELECT *
 		FROM comments
 		WHERE status=0 and userPostId=#{userPostId}
+		
 	</select>
 	
 	<insert id="add">
-		INSERT into comments
-		VALUES(#{commentId},#{username},#{userPostId},#{substance},0)
+		INSERT into comments(commentId, username, userPostId, substance, status,postdate)
+		VALUES(#{userPostId},#{username},#{userPostId},#{substance},0,sysdate)
 	</insert>
 	
 	<update id="update">
