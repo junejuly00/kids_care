@@ -14,7 +14,7 @@ html{
     font-family: 'Binggrae';
 }
 
-header a{
+header a, header p{
     padding: 0 35px 0 35px;
     color: black;
     display: inline-block;
@@ -59,8 +59,8 @@ header .navbar a:hover::after{
     width: 100%;
 }
 
-header .user a{
-    font-size: 14px;
+header .user a, header .user p{
+    font-size: 16px;
     padding: 10px;
 }
 

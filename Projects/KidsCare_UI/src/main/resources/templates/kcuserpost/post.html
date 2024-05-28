@@ -23,13 +23,13 @@
 		
 		<div class="info">
 			<p>작성자:</p><p th:text="${postInfo.username}"></p>
-			<p>| 작성일:</p><p th:text="${postInfo.postdate}"></p>
+			<p style="padding-left:20px ">작성일:</p><p th:text="${postInfo.postdate}"></p>
 		</div>
 		
 		<hr>
 		
 		<div class="content">
-			<div th:text="${postInfo.contents}"></div>
+			<div th:utext="${postInfo.contents}"></div>
 		</div>
 
 		<div th:each="userFile : ${postInfo.userFiles}">
@@ -56,38 +56,45 @@
     	</div>
 		
 		</div>
+
+		<div class="comment">
+			
+			<hr>
+			
+			<form action="/comment/add" method="post">
+			
+				<input type="text" name="commentId" placeholder="댓글번호">
+				<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
+		        <input type="text" id="name" name="username" placeholder="아이디" required>
+		        
+		        <div class="comment-text">       
+			        <textarea id="comment" name="substance" rows="6" cols="130" 
+			        	maxlength="500" required placeholder="작성할 댓글 내용을 입력해 주세요./ 최대 500자"></textarea>
+			        <button type="submit">등록</button>
+		        </div>
+	        
+	    	</form>
+	    	
+	    	<hr>
+				    	
+		</div>
+	
+	<div class="commentlist">
+		<div th:each="item : ${commentList}">
+			<div class="comment-text">
+				<p th:text="${item.commentId}" hidden="true"></p>
+				<p th:text="${item.username}"  style="font-weight:bold; margin-bottom: 5px;"></p>
+				<p th:text="${item.substance}"></p>
+			</div>
+			
+			<hr>
+			
+		</div>
+	</div>
 		
-		<div class="">
-		<form action="/comment/add" method="post">
-		
-			<label for="commentId">댓글번호:</label>
-			<input type="text" name="commentId">
-			
-			<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
-			
-			
-	        <label for="username">Name:</label>        
-	        <input type="text" id="name" name="username" required><br><br> 
-	               
-	        <label for="comments">Comment:</label><br>
-	        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
-	        <input type="submit" name="substance" value="Submit">
-        
-    	</form>
 	</div>
 	
-	<table>
-		<tbody>				               
-		    <tr th:each="item : ${commentList}">
-			    <td th:text="${item.commentId}"></td>
-			    <td th:text="${item.username}"></td>
-			    <td th:text="${item.substance}"></td>
-		    </tr>
-		</tbody>
-	</table>
-		
-	</div>
-	
+	<footer th:replace="/footer.html"></footer>
 	
 </body>
 </html>

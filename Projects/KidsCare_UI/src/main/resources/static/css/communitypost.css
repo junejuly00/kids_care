@@ -50,7 +50,7 @@ a {
 }
 
 .box{
-	padding: 70px;
+	padding: 70px 70px 30px 70px;
 }
 
 .title{
@@ -69,8 +69,8 @@ a {
 	overflow: auto;
 }
 
-hr{
-	margin-top: 20px
+.box hr{
+	margin-top: 10px
 }
 
 #btn{
@@ -90,3 +90,53 @@ hr{
 	font-size: 18px;
 }
 
+.comment{
+	padding: 0 70px 0 70px;
+	font-size: 18px;
+}
+
+.comment hr{
+	margin: 20px 0 10px 0;
+}
+
+.comment .comment-text{
+	display: flex;
+	align-items: flex-end;
+}
+
+.comment .comment-text button{
+	width: 70px;
+	height: 40px;
+	margin: 0 0 0 10px;
+	background-color: #E3F0FB;
+	border-radius: 5px;
+	font-size: 18px;
+	border: none;
+}
+
+.comment-text button:hover{
+	color: #000;
+}
+
+.comment-text button:active{
+	color: #75C2F6;
+}
+
+#comment{
+	margin: 10px 0 0 0;
+	padding: 5px;
+	font-size: 16px;
+}
+
+.commentlist{
+	padding: 0 70px 20px 70px;
+}
+
+.commentlist hr{
+	color: #B8B8B8;
+	opacity: 0.5;
+}
+
+.commentlist .comment-text{
+	padding: 10px;
+}
