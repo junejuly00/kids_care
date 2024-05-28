@@ -11,6 +11,27 @@
 		AND status=0
 	</select>
 	
+	<select id="salaryAscList" resultMap="BabySitterMap">		
+		SELECT sub2.*, sub2.username pid
+   	 	FROM (SELECT sub.*, ROWNUM rnum FROM 
+            (SELECT * FROM babysitter) sub) sub2 left join sitterphoto
+		ON(sub2.username=sitterphoto.username)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
+		ORDER BY salary asc
+	</select>
+	
+	<select id="careerDescList" resultMap="BabySitterMap">		
+		SELECT sub2.*, sub2.username pid
+   	 	FROM (SELECT sub.*, ROWNUM rnum FROM 
+            (SELECT * FROM babysitter) sub) sub2 left join sitterphoto
+		ON(sub2.username=sitterphoto.username)
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status=0
+		ORDER BY career desc
+	</select>
+	
+	
 	<resultMap type="BabySitter" id="BabySitterMap" autoMapping="true">
 		<id column="username" property="username"/>
 		

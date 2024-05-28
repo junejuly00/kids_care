@@ -17,6 +17,21 @@
 
 <div class="wrap">
     <p class="community">시터 찾기</p>
+    
+    <div>
+            <form>
+	    		<div class="search">
+	    			<select name="search">
+	    				<option value="1" th:selected="${pager.search == 1}">연봉적은순</option>
+        				<option value="2" th:selected="${pager.search == 2}">경력많은순</option>
+	    			</select>
+	    			
+	    			<button>검색</button>
+	    			
+	    		</div>		
+	    	</form>
+	    </div>
+	    
     <div class="table">
         <table>
             <thead>
@@ -27,6 +42,8 @@
                     <th>연봉</th>
                     <th>관리</th>
                 </tr>
+                
+               
             </thead>
             
             <tbody>
