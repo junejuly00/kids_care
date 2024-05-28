@@ -4,15 +4,18 @@ public class KCUser {
 	private String username;
 	private String password;
 	private String name;
+	private String provider;
+	private String phone;
+	private String email;
+	private Byte role;
+	private Byte status;
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String phone;
-	private String email;
-	private Byte role;
 	
 	
 	public String getUsername() {
@@ -44,6 +47,18 @@ public class KCUser {
 	}
 	public void setRole(Byte role) {
 		this.role = role;
+	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
+	public Byte getStatus() {
+		return status;
+	}
+	public void setStatus(Byte status) {
+		this.status = status;
 	}
 	
 }
