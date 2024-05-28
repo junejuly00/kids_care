@@ -6,6 +6,15 @@ public class Comment {
 	private Integer userPostId;
 	private String substance;
 	private Integer status;
+	private String postDate;
+
+	public String getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
 
 	public Integer getStatus() {
 		return status;

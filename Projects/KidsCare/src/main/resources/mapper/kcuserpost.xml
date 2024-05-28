@@ -25,13 +25,14 @@
 				(<include refid="search"></include>) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
+		
 	</select>
 
 	
 	
 		<insert id="add">
 	    INSERT into kcuserpost(userpostid, username, postdate,title, contents, status)
-	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
+	    VALUES(USERPOSTID_SEQ.nextval,#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">

@@ -11,11 +11,12 @@
 	<nav th:replace="/nav.html"></nav>
 	
 	<section class="main_img">
-    	<img alt="" src="../static/image/서브2.jpg">
+		<div class="img-option"></div>
+    	<img alt="" src="../static/image/서브3.jpg">
         <div class="main_content">
             <h2>
-            	안심하고 맡길 수 있는 베이비시터 서비스,<br> 
-            	아이의 안전과 행복을 최우선으로 생각합니다.
+            	부모님의 든든한 파트너 <br>
+            	KIDS CARE
             </h2>
         </div>
     </section>
@@ -72,9 +73,9 @@
 	
 	    <div class="pagination">
 	        <ul>
-	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}${pager.query}|}">이전</a></li>
+	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}}">이전</a></li>
 	            <li th:each="page : ${pager.list}"><a href="#" th:href="@{|?page=${page}${pager.query}|}" th:text="${page}"></a></li>
-	            <li class="next"><a th:href="@{'?page='+ ${pager.next}${pager.query}|}">다음</a></li>
+	            <li class="next"><a th:href="@{'?page='+ ${pager.next}}">다음</a></li>
 	        </ul>
 	    </div>
 	</div>
