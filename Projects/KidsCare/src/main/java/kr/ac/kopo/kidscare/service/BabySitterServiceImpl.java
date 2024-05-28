@@ -45,5 +45,6 @@ public class BabySitterServiceImpl implements BabySitterService {
 	public List<BabySitter> list(Pager pager) {
 		return dao.list(pager);
 	}
-
 }
+
+

@@ -22,6 +22,21 @@
 
 <div class="wrap">
     <p class="community">시터 찾기</p>
+    
+    <div>
+            <form>
+	    		<div class="search">
+	    			<select name="search">
+	    				<option value="1" th:selected="${pager.search == 1}">연봉적은순</option>
+        				<option value="2" th:selected="${pager.search == 2}">경력많은순</option>
+	    			</select>
+	    			
+	    			<button>검색</button>
+	    			
+	    		</div>		
+	    	</form>
+	    </div>
+	    
     <div class="table">
         <table>
             <thead>
@@ -32,6 +47,8 @@
                     <th>연봉</th>
                     <th>관리</th>
                 </tr>
+                
+               
             </thead>
             
             <tbody>
@@ -42,10 +59,13 @@
                 <tr th:each="sitterInfo : ${list}">
                     <td class="profile">
 							<div class="td1">
-
-								<img th:src="@{'/upload/' + ${sitterInfo.photos.filename} + '.png'}">
-
+								<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/' + ${sitterInfo.photos.filename} + '.png'}" alt="">
+								<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="" style="width:100px;">
+								
 							</div>
+							
+							
+							
 							<div class="td1-1">
 								<img src="image/icon-star.png" alt="" style="width: 17px;">
 							</div>

@@ -42,8 +42,16 @@ public class BabySitterDaoImpl implements BabySitterDao {
 
 	@Override
 	public List<BabySitter> list(Pager pager) {
-		// TODO Auto-generated method stub
-		return sql.selectList("babysitter.list", pager);
+		switch (pager.getSearch()) {
+		case 1:
+			return sql.selectList("babysitter.salaryAscList", pager);
+		case 2:
+			return sql.selectList("babysitter.careerDescList", pager);
+		default:
+			return sql.selectList("babysitter.list", pager);
+			
+		}
+		
 	}
 
 }

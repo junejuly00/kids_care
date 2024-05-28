@@ -5,7 +5,7 @@
 <title>KIDSCARE</title>
 
  	<link th:href="@{/static/css/noticepost.css}" rel="stylesheet" type="text/css">
-
+	<link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
 </head>
 <body>
 	
@@ -38,8 +38,8 @@
 		
 		<hr>
 		
-		<div class="content">
-			<div th:text="${postInfo.contents}"></div>
+		<div id="postContent" class="content">
+			<div th:utext="${postInfo.contents}"></div>
 		</div>
 		
 		<hr>
@@ -65,6 +65,19 @@
 	</div>
 	
 	<footer th:replace="/footer.html"></footer>
+	
+	<script type="text/javascript">
+		function encodeHtml(html) {
+			let element = document.createElement('div');
+			element.innerHTML = html;
+			return element.textContent || element.innerText;
+		}
+
+		document.onload = function() {
+			var content = document.getElementById('postContent').innerHTML;
+			document.getElementById('postContent').innerHTML = encodeHtml(content);
+		}
+	</script>
 	
 </body>
 </html>

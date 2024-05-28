@@ -18,7 +18,7 @@
 	</select>
 	
 		<insert id="add">
-	    INSERT into notice
+	    INSERT into notice(code, username, postdate, title, contents, status)
 	    VALUES(#{code},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
