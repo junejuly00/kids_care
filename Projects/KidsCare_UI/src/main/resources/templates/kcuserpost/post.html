@@ -36,50 +36,58 @@
 			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
 			<div th:text="${userFile.filename}"></div>
 		</div>
-
 		
-		</div>
+		<hr>
 		
 		<div id="btn">
-        	<a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="숨기기"><button class="write">삭제</button></a>
-        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write">삭제</button></a>
-
+		
+			<div class="delete">
+				<a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
+			</div>
+			
+			<div class="update">
+				        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
+			</div>
+			
+			<div class="list">
+				<a href="../list">목록</a>
+			</div>
+			
     	</div>
 		
-		<div>
-			<a href="../list">목록</a>
 		</div>
-	</div>
-	
-	<div>
+		
+		<div class="">
 		<form action="/comment/add" method="post">
 		
-		<label for="commentId">댓글번호:</label>
-		<input type="text" name="commentId">
-		
-		<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
-		
-		
-        <label for="username">Name:</label>        
-        <input type="text" id="name" name="username" required><br><br> 
-               
-        <label for="comments">Comment:</label><br>
-        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
-        <input type="submit" name="substance" value="Submit">
+			<label for="commentId">댓글번호:</label>
+			<input type="text" name="commentId">
+			
+			<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
+			
+			
+	        <label for="username">Name:</label>        
+	        <input type="text" id="name" name="username" required><br><br> 
+	               
+	        <label for="comments">Comment:</label><br>
+	        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
+	        <input type="submit" name="substance" value="Submit">
         
-    </form>
-    
+    	</form>
 	</div>
 	
 	<table>
 		<tbody>				               
-	               <tr th:each="item : ${commentList}">
-	                    <td th:text="${item.commentId}"></td>
-	                    <td th:text="${item.username}"></td>
-	                    <td th:text="${item.substance}"></td>
-	                </tr>
-	            </tbody>
+		    <tr th:each="item : ${commentList}">
+			    <td th:text="${item.commentId}"></td>
+			    <td th:text="${item.username}"></td>
+			    <td th:text="${item.substance}"></td>
+		    </tr>
 		</tbody>
 	</table>
+		
+	</div>
+	
+	
 </body>
 </html>
