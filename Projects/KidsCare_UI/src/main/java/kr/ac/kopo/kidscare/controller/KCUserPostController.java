@@ -26,6 +26,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
 import kr.ac.kopo.kidscare.pager.Pager;
@@ -46,12 +47,14 @@ public class KCUserPostController {
 	
 	
 	@GetMapping("/list")
+
 	String list(Model model, Pager pager, @RequestParam(defaultValue = "1") String search, @RequestParam(required=false) String keyword) throws JsonMappingException, JsonProcessingException {
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);	
 		
 		pager.setSearch(Integer.parseInt(search));
+
 		pager.setKeyword(keyword);
 		//System.out.println(search + "," + keyword);  //여기까지 들어감
 		String jsonString = om.writeValueAsString(pager);
@@ -153,9 +156,15 @@ public class KCUserPostController {
 	@GetMapping("/post/{userPostId}")
 	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
 		
-		KCUserPost item = rest.getForObject(url + userPostId, KCUserPost.class);	
+
+		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);
 		
-		model.addAttribute("item", item);
+		String resp = rest.getForObject("http://localhost:9090/comment/filter/"+userPostId, String.class);
+		List<Comment> commentList = om.readValue(resp,  new TypeReference<List<Comment>>() {});
+		
+		model.addAttribute("postInfo", postInfo);
+		model.addAttribute("commentList", commentList);
+
 		
 		return "kcuserpost/post";
 	}

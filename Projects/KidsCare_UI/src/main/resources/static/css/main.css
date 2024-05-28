@@ -34,22 +34,14 @@ html{
 }
 
 .swiper {
-    position: relative;
     margin: auto;
     width: 100%;
 }
 
 .swiper-slide{
     width: auto;
+
     background-color: rgb(255, 255, 255);
-}
-
-
-.swiper-pagination-bullet{
-    width: 40px;
-    height: 3px;
-    border-radius: 0;
-    background-color: #fff;
 }
 
 .swiper-pagination-bullet-active{
@@ -69,7 +61,7 @@ html{
     left: 0;
     right: 0;
     bottom: 66%;
-    opacity: 0;
+    opacity: 1;
     margin-left: 300px;
     text-align: left;
     transition: 0.7s;
@@ -177,59 +169,105 @@ html{
 }
 
 .kidscare{
+	width: 100%;
+	background-color: #FFF89A ;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 100px;
-}
-
-.kidscare h3{
-	font-size: 36px
+	margin-top: 200px;
+	margin-bottom: 200px;
+	position: relative;
 }
 
 .kidscare .kc-box{
-	width: 1360px;
+	width: 1200px;
+	height: 550px;
 	display: flex;
 	justify-content: center;
-	margin-top: 50px
+	align-items: center;
 }
 
 
+
+.kc-box .swiper2 {
+     width: 300px;
+     height: 420px;
+     background-color: #FFFFFF;
+     border-radius: 20px; 
+   }
+   
+.swiper-wrapper{
+	align-items: center;
+
+}
+
+.swiper-slide {
+	 border-radius: 20px;
+	 position: relative;
+
+   }
+   
+   .swiper-slide:nth-child(1n),
+   .swiper-slide:nth-child(2n),
+   .swiper-slide:nth-child(3n),
+   .swiper-slide:nth-child(4n) {
+   		display: flex;
+   		flex-direction: column;
+   		align-items: center;
+   		padding: 20px;
+   }
+
 .kc-img{
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	border-radius : 150px;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 }
 
-.kidscare .kc-box .kc-item .kc-img img{
-	width: 100%;
+.kc-img img{
+	width: auto;
     height: 100%;
-}
-
-
-.kc-itme{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	margin: 0 30px 0 30px;
 }
 
 .kc-mtext{
 	font-size: 20px;
 	font-weight: bold;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+}
+
+.kc-text{
+	font-size: 16px;
+	text-align: center;
+}
+
+.kc-ment{
+	display: flex;
+	flex-direction: column;
+	height: 550px;
+	margin-left: 300px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.kc-ment h1{
+	font-size:32px;
+	text-align: center;
+	margin-top: 60px;
+}
+
+.babys img{
+	width: 207px;
+	height: 100%;
 }
 
 .newsitter{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 250px;
+	margin-top: 150px;
 }
 
 .newsitter h3{
@@ -244,16 +282,17 @@ html{
 }
 
 .new-item{
-	width: 305px;
-	height: 420px;
-	background-color: #E3F0FB;
+	width: 250px;
+	height: 380px;
+	background-color: #F2F2F2;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	justify-content: flex-start;
-	margin: 0 30px 0 30px;
+	justify-content: center;
+	margin: 0 15px 0 15px;
+	padding: 20px;
 }
 
 .new-profile{
@@ -263,7 +302,7 @@ html{
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
-	margin: 20px 0 15px 0;
+	margin: 0 0 15px 0;
 }
 
 .new-profile img{
@@ -279,13 +318,22 @@ html{
 	margin-bottom: 10px;
 }
 
+.new-text{
+	width: 305px;
+	height: 80px;
+	word-break:break-all;
+	overflow: hidden;
+}
+
 
 
 .review{
     margin-top: 120px;
     width: 100%;
-    height: 600px;
+    height: 420px;
     background-color: #F2F2F2;
+    margin-bottom: 150px;
+    margin-top: 200px;
 }
 .review .review-main{
     font-size: 32px;
@@ -296,34 +344,36 @@ html{
 }
 
 .review .reviews{
+	width: 1360;
     display: flex;
     justify-content: center;
 }
 
-.review .reviews .review-box1 {
-    width: 300px;
-    height: 400px;
-    border-radius: 200px 200px 10px 10px;
-    background-color: #FFFFFF;
-    display: flex;
-    margin: 0 27px 0 27px ;
+.review-box{
+	width: 250px;
+	height: 150px;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 0 12px 0 12px;
 }
 
-.review .reviews .review-box1 div{
+.review-box .review-title{
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	justify-content: space-between;
+	font-size: 16px;
 }
 
-.review .reviews .review-box1 img {
-	width: 220px;
-	height: 220px;
-	margin-bottom: 5px;
+.review-box hr{
+	margin-top: 10px;
 }
 
-.review .reviews .review-box1 .review-text1 {
-	padding-left: 20px;
-	padding-right: 20px;
-	text-align: center;
+.review-box .review-content{
+	height:100px;
+	overflow: hidden;
+	display: flex;
+	margin-top: 10px;
+	font-size: 16px;
+	word-break:break-all;
 }
 
