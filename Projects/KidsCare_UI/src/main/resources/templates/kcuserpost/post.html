@@ -33,7 +33,7 @@
 		
 		<hr>
 		
-		<div class="content">
+		<div id="postContent" class="content">
 			<div th:text="${postInfo.contents}"></div>
 		</div>
 
@@ -71,8 +71,7 @@
 			<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
 			
 			
-	        <label for="username">Name:</label>        
-	        <input type="text" id="name" name="username" required><br><br> 
+	        
 	               
 	        <label for="comments">Comment:</label><br>
 	        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
@@ -93,6 +92,17 @@
 		
 	</div>
 	
-	
+	<script type="text/javascript">
+		function encodeHtml(str) {
+			var temp = document.createElement('div');
+			temp.textContent = str;
+			return temp.innerHTML;
+		}
+
+		document.onload = function() {
+			var content = document.getElementById('postContent').innerHTML;
+			document.getElementById('postContent').innerHTML = encodeHtml(content);
+		}
+	</script>
 </body>
 </html>
