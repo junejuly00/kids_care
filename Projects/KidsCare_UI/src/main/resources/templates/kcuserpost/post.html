@@ -6,6 +6,11 @@
 
  	<link th:href="@{/static/css/communitypost.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
 </head>
 <body>
 	
@@ -71,7 +76,7 @@
 	               
 	        <label for="comments">Comment:</label><br>
 	        <textarea id="comment" name="substance" rows="4" cols="50" maxlength="500" required></textarea><br><br>
-	        <input type="submit" name="substance" value="Submit">
+	        <input type="submit" value="Submit">
         
     	</form>
 	</div>
