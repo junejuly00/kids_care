@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
+<link rel="stylesheet" th:href="@{/static/css/select.css}" />
 </head>
 <body>
-	<a href="/signup/parents">부모 회원으로 회원 가입하기</a>
-	<a href="/signup/sitter">시터 회원으로 회원 가입하기</a>
+	<nav th:replace="/nav.html"></nav>
+	
+	<div class="wrap">
+	
+		<div class="select">
+			<div class="select-box">
+
+				
+					<div class="select-user">
+						<a href="/signup/parents" class="text">
+			                아이를 믿고 맏길 수 있는<br>
+			                베이비시터가 필요해요.<br>
+			                <span>부모회원으로 회원가입</span>
+		                </a>	
+					</div>
+				
+				
+				
+					<div class="select-sitter">
+						<a href="/signup/sitter" class="text">
+			                신뢰와 믿음을 줄 수 있는<br>
+	                  		베이비시터로 일하고 싶어요.<br>
+			                <span>시터회원으로 회원가입</span>
+		                </a> 	
+					</div>
+				
+		
+				<hr class="hr" data-content="OR">
+				
+				<div class="foot-lnk">
+                	<a href="/login">이미 회원이신가요?</a>
+              	</div>
+			
+			</div>
+		</div>
+	
+	</div>
+
+	<footer th:replace="/footer.html"></footer>
 </body>
 </html>
