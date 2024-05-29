@@ -8,6 +8,7 @@
 		ORDER BY code) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
+		
 	</select>
 	
 	<select id="total" resultType="Integer">
@@ -19,7 +20,7 @@
 	
 		<insert id="add">
 	    INSERT into notice(code, username, postdate, title, contents, status)
-	    VALUES(#{code},#{username},sysdate,#{title},#{contents},0)
+	    VALUES(CODE_SEQ.nextval,#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">

@@ -121,7 +121,7 @@ public class KCUserPostController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.postForEntity(url + item.getUserPostId().toString(), req, Integer.class);
+		ResponseEntity<Integer> resp = rest.postForEntity(url + "add", req, Integer.class);
 		
 		Integer body = resp.getBody();
 		

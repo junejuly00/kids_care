@@ -81,7 +81,7 @@ public class NoticeController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.postForEntity(url + item.getCode().toString(), req, Integer.class);
+		ResponseEntity<Integer> resp = rest.postForEntity(url + "add", req, Integer.class);
 		
 		Integer body = resp.getBody();
 		
