@@ -25,7 +25,7 @@
 				(<include refid="search"></include>) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
-		
+		ORDER BY postdate desc
 	</select>
 
 	
