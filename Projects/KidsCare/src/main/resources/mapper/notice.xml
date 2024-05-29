@@ -41,5 +41,9 @@
 		where code=#{code}
 	</update>
 	
+	<insert id="add_image">
+		INSERT INTO noticefile
+		VALUES (NOTICEID_SEQ.nextval, #{code}, #{filename}, #{uuid})
+	</insert>
 </mapper>
 

@@ -42,6 +42,11 @@
 			<div th:utext="${postInfo.contents}"></div>
 		</div>
 		
+		<div th:each="noticeFile : ${postInfo.noticeFiles}">
+			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" >
+			<div th:text="${noticeFile.filename}"></div>
+		</div>
+		
 		<hr>
 		
 		<div id="btn">

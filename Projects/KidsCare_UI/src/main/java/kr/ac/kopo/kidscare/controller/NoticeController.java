@@ -1,5 +1,10 @@
 package kr.ac.kopo.kidscare.controller;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,6 +28,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.model.NoticeFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 import kr.ac.kopo.kidscare.pager.PagerMap;
 
@@ -30,6 +37,7 @@ import kr.ac.kopo.kidscare.pager.PagerMap;
 public class NoticeController {
 	final String path = "notice/";
 	final String url = "http://localhost:9090/notice/";
+	private String uploadPath = "d:/upload/";
 	
 	
 	@Autowired
@@ -67,12 +75,37 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/add")
-	String add(Notice item) throws JsonProcessingException {
+	String add(Notice item, List<MultipartFile> uploadFile) throws JsonProcessingException {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String currUser = auth.getName();
 		item.setUsername(currUser);
 		
+		List<NoticeFile> noticeFiles = new ArrayList<NoticeFile>();
+		
+		if(uploadFile != null) {
+			for(MultipartFile file : uploadFile) {
+				if(file.isEmpty())
+					continue;
+				
+				String filename = file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
+				
+				try {
+					file.transferTo(new File(uploadPath + uuid + "_" + filename));
+					
+					NoticeFile img = new NoticeFile();
+					img.setFilename(filename);
+					img.setUuid(uuid);
+					
+					noticeFiles.add(img);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		item.setNoticeFiles(noticeFiles);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -91,7 +124,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/update/{code}")
-	String update(@PathVariable Long code, Model model) {
+	String update(@PathVariable Integer code, Model model) {
 		Notice item = rest.getForObject(url + code, Notice.class);
 		
 		model.addAttribute("item", item);
@@ -100,7 +133,7 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/update/{code}")
-	String update(@PathVariable Long code, Notice item) throws JsonProcessingException {
+	String update(@PathVariable Integer code, Notice item) throws JsonProcessingException {
 		item.setCode(code);
 		
 		HttpHeaders header = new HttpHeaders();
@@ -121,7 +154,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/post/{code}")
-		String post(@PathVariable Long code, Model model) throws
+		String post(@PathVariable Integer code, Model model) throws
 		JsonProcessingException {
 		
 		Notice postInfo = rest.getForObject(url + code, Notice.class);	

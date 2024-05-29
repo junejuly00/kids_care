@@ -39,6 +39,12 @@
 			
 		<textarea name="contents" id="notice_txt" th:value="${item.contents}"></textarea>
 			
+		<div>
+			<div th:each="userFile : ${item.userFiles}">
+				<img src="@{'/upload/'+ ${item.uuid}+'_'+${item.filename}}">
+			</div>
+		</div>
+		
 		<div class="upload_sec">
 			<button type="button" class="add">파일 추가하기</button>
 			<div class="upload_btn">

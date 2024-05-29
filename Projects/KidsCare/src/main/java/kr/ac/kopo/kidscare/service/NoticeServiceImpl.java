@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.NoticeDao;
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.model.NoticeFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 @Service
@@ -26,6 +27,12 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void add(Notice item) {
 		dao.add(item);
+		
+		for(NoticeFile noticefile : item.getNoticeFiles()) {
+			noticefile.setCode(item.getCode());
+			
+			dao.add(noticefile);
+		}
 
 	}
 
