@@ -1,12 +1,11 @@
 @charset "UTF-8";
-@charset "UTF-8";
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box
 }
 .wrap{
-    margin: 140px;
-    padding: 140px;
     display: flex;
     flex-direction: column;
 }
@@ -14,29 +13,18 @@
 button{
     border: none;
 }
+
 a {
     text-decoration: none;
     color: black;
     text-align: center;
 }
 
-.signupbox{
-    width: 800px;
-    height: 840px;
-    background-color: #EAF6D2;
-    border-radius: 0px 10px 10px 10px;
-    background: #EAF6D2;
-    border-radius: 0px 10px 10px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #signup{
-    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 120px 0 120px 0;
 }
 
 .siterbox{
@@ -47,7 +35,7 @@ a {
 #siter_user {
     width: 130px;
     height: 50px;
-    background: #FFEF99;
+    background: #E3F0FB;
     font-size: 18px;
     border-radius: 10px 10px 0 0;
     text-align: center;
@@ -57,140 +45,124 @@ a {
     align-items: center;
 }
 
+.signupbox{
+    width: 800px;
+    height: 840px;
+    background-color: #FFF3B2;
+    border-radius: 0px 10px 10px 10px;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 15px 0 rgba(53, 53, 53, 0.24), 0 17px 50px 0 rgba(23, 23, 23, 0.19);
+}
+
 .info {
     display: flex;
     flex-direction: column;
 }
 
-input, select {
-    outline: 0.4em;
-    padding-left: 20px;
-    border: none;
-    border-radius: 10px;
+.info .group {
+  margin-bottom: 10px;
 }
 
-.id{
-    width: 350px;
-    height: 50px;
-    border-radius: 10px;
-    border-width: 0px;
-    margin-top: 10px;
+#fm{
+	margin-left: 15px;
 }
 
-.id_check {
-    width: 83px;
-    height: 50px;
-    background: #FFEF99;
-    border-radius: 10px;
-    font-weight: bold;
+#passwd,
+#check_pw,
+.name,
+.phone,
+.address_detail,
+.email_choice,
+.birth,
+.certificate,
+.childs,
+.signup-form .group .button {
+  width: 500px;
+  height: 50px;
+  color: #000000;
+}
+
+#check{
+	font-size: 16px;
+	font-weight: 400;
+	color: #C20000;
+	margin: 0 0 7px 5px;
+}
+
+input[type='date']::before {
+  content: attr(data-placeholder);
+  width: 100%;
+  color: #818078;
+}
+
+.sitter_id,
+.address {
+  width: 410px;
+  height: 50px;
+}
+
+.id_check,
+.search_address {
+  width: 83px;
+  height: 50px;
+  background-color: #E3F0FB;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.mail {
+  width: 241.75px;
+  height: 50px;
+}
+
+#dd {
+  height: auto;
+  font-size: 16px;
+  border: none;
+  padding: 0 8px 0 8px;
+  font-size: 20px;
+}
+
+.email_choice {
+  width: 210px;
+  height: 50px;
+}
+
+input,
+.email_choice,
+.signup-form .group .button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.signup-form .group .button {
+  background: #E3F0FB;
+  font-size: 16px;
+}
+
+#gender div {
+  width: 500px;
+}
+
+#gender div #fm {
+  margin-left: 20px;
+}
+
+.button{
+	width: 500px;
+	height: 50px;
+	background-color: #E3F0FB;
+}
+
+.foot-lnk {
+	margin: 10px 0 0 0;
     font-size: 16px;
-    margin-left: 5px ;
-}
-
-.passwd{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.passwd_check{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.name{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.phone{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.mail{
-    width: 240px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-#dd{
-    font-size: 20px;
-    margin: 0 10px 0 10px;
-}
-
-.email_choice{
-    width: 210px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.majorbox{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.address{
-    width: 412px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.search_address{
-    width: 83px;
-    height: 50px;
-    background: #FFEF99;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 5px ;
-    margin-top: 10px;
-}
-
-.address_detail{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-#btn{
-    width: 800px;
-}
-
-.nextbox{  
-    background-color: #FFEF99;
-    border-radius: 10px;
-    border-width: 0px;
-    width: 83px;
-    height:50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 50px;
-}
-
-.mainbtn {
-    width: 150px;
-    height: 50px;
-    background: #FFEF99;
-    border-style: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-#main {
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    margin-top: 110px;
+    text-align: center;
 }
