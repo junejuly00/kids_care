@@ -29,9 +29,9 @@
 
 	
 	
-		<insert id="add">
-	    INSERT into kcuserpost(userpostid, username, postdate,title, contents, status)
-	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
+	<insert id="add">
+	    INSERT into kcuserpost
+	    VALUES(#{userPostId},#{username},sysdate,#{contents},#{title},0)
 	</insert>
 	
 	<update id="update">
@@ -43,13 +43,12 @@
 
 
 	<select id="search" resultMap="KcUserPostMap">
-      SELECT *
-      FROM kcuserpost LEFT JOIN userfile ON kcuserpost.userpostid=userfile.userpostid
+      SELECT kcuserpost.*,userfile.code, userfile.userPostId pid, userfile.filename, userfile.uuid
+      FROM kcuserpost LEFT JOIN userfile ON kcuserpost.userPostId=userfile.userPostId
       WHERE kcuserpost.userPostId=#{userPostId}
-
-   </select>
+	</select>
    
-     <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
+    <resultMap type="KcUserPost" id="KcUserPostMap" autoMapping="true">
       <id column="userPostId" property="userPostId"/>
       
       <collection property="userFiles" column="pid" javaType="ArrayList" ofType="UserFile" autoMapping="true">
@@ -67,13 +66,22 @@
 	
 	<insert id="add_image">
 		INSERT INTO userfile
-		(code, userPostId, filename, uuid)
-		VALUES (#{code},#{userPostId},#{filename},#{uuid})
+		VALUES (SEQ_CODE.nextval,#{userPostId},#{filename},#{uuid})
 	</insert>
 	
 	<select id="mypost" resultType="KcUserPost">
 		SELECT * FROM kcuserpost
 		WHERE username=#{username}
+	</select>
+	
+	<delete id="delete_image">
+		DELETE FROM userfile
+		WHERE code=#{code}
+	</delete>
+	
+	<select id="item_image" resultType="UserFile">
+		SELECT * FROM userfile
+		WHERE code=#{code}
 	</select>
 </mapper>
 

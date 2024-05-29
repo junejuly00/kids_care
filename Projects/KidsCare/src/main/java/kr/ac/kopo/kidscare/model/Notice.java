@@ -1,5 +1,7 @@
 package kr.ac.kopo.kidscare.model;
 
+import java.util.List;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Notice {
@@ -10,6 +12,8 @@ public class Notice {
 	private String contents;
 	private String title;
 	private Integer status;
+	
+	private List<NoticeFile> noticeFiles;
 	
 	public Integer getStatus() {
 		return status;
@@ -29,9 +33,7 @@ public class Notice {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getpostdate() {
-		return postdate;
-	}
+
 	public void setpostdate(String postdate) {
 		this.postdate = postdate;
 	}
@@ -46,6 +48,18 @@ public class Notice {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getPostdate() {
+		return postdate;
+	}
+	public void setPostdate(String postdate) {
+		this.postdate = postdate;
+	}
+	public List<NoticeFile> getNoticeFiles() {
+		return noticeFiles;
+	}
+	public void setNoticeFiles(List<NoticeFile> noticeFiles) {
+		this.noticeFiles = noticeFiles;
 	}
 
 }

@@ -47,7 +47,7 @@ public class NoticeController {
 	}
 	
 	@PutMapping("/{code}")
-	void update(@PathVariable Integer code ,@RequestBody Notice item) {
+	void update(@PathVariable Integer code, @RequestBody Notice item) {
 		item.setCode(code);
 		
 		service.update(item);

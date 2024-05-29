@@ -48,10 +48,13 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	}
 		
 	
-
+	@Transactional
 	@Override
 	public void update(KcUserPost item) {
 		dao.update(item);
+		
+		for(UserFile userFile : item.getUserFiles())
+			dao.add(userFile);
 	}
 
 	@Override
@@ -63,6 +66,25 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	@Override
 	public void hide(Integer userPostId) {
 		dao.hide(userPostId);
+	}
+
+
+
+
+	@Override
+	public UserFile itemImage(Integer code) {
+		return dao.itemImage(code);
+	}
+
+
+
+
+	@Override
+	public boolean deleteImage(Integer code) {
+		if(dao.deleteImage(code) > 0)
+			return true;
+			
+		return false;
 	}
 
 

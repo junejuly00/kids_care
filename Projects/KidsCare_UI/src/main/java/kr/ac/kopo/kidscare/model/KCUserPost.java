@@ -16,6 +16,8 @@ public class KCUserPost {
 	
 	private List<UserFile> userFiles;
 	
+	
+	
 	public Integer getStatus() {
 		return status;
 	}

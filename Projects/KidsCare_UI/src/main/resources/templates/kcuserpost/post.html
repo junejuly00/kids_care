@@ -32,10 +32,11 @@
 			<div th:text="${postInfo.contents}"></div>
 		</div>
 
-		<div th:each="userFile : ${postInfo.userFiles}">
-			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
-			<div th:text="${userFile.filename}"></div>
-		</div>
+		<div th:each="userFile : ${postInfo.userFiles}" th:if="${userFile.uuid != null}">
+          
+         <img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
+        </div>
+      </div>
 		
 		<hr>
 		
@@ -46,7 +47,7 @@
 			</div>
 			
 			<div class="update">
-				        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
+				<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
 			</div>
 			
 			<div class="list">

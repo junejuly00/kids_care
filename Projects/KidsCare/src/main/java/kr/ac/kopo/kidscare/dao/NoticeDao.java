@@ -3,6 +3,7 @@ package kr.ac.kopo.kidscare.dao;
 import java.util.List;
 
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.model.NoticeFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface NoticeDao {
@@ -22,5 +23,7 @@ public interface NoticeDao {
 	int total(Pager pager);
 
 	List<Notice> list();
+
+	void add(NoticeFile noticeFile);
 
 }

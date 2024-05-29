@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -125,7 +127,7 @@ public class KCUserPostController {
 	}
 	
 	@GetMapping("/update/{userPostId}")
-	String update(@PathVariable Long userPostId, Model model) {
+	String update(@PathVariable Integer userPostId, Model model) {
 		KCUserPost item = rest.getForObject(url + userPostId, KCUserPost.class);
 		
 		model.addAttribute("item", item);
@@ -154,7 +156,7 @@ public class KCUserPostController {
 	}
 	
 	@GetMapping("/post/{userPostId}")
-	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
+	String post(@PathVariable Integer userPostId, Model model) throws JsonProcessingException {
 		
 
 		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);
@@ -170,9 +172,9 @@ public class KCUserPostController {
 	}
 	
 	@GetMapping("/hide/{userPostId}")
-	String hide(@PathVariable Long userPostId) {
+	String hide(@PathVariable Integer userPostId) {
 		KCUserPost item = rest.getForObject(url + "hide/" + userPostId.toString() , KCUserPost.class);				
 		return "redirect:../list";
-	
-}
+	}
+
 }

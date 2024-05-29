@@ -3,6 +3,7 @@ package kr.ac.kopo.kidscare.service;
 import java.util.List;
 
 import kr.ac.kopo.kidscare.model.KcUserPost;
+import kr.ac.kopo.kidscare.model.UserFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface KCUserPostService {
@@ -18,6 +19,10 @@ public interface KCUserPostService {
 	List<KcUserPost> mypost(String username);
 
 	void hide(Integer userPostId);
+
+	UserFile itemImage(Integer code);
+
+	boolean deleteImage(Integer code);
 
 
 

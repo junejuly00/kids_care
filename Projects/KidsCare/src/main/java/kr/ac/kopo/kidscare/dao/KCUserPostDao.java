@@ -26,4 +26,8 @@ public interface KCUserPostDao {
 
 	List<KcUserPost> list();
 
+	UserFile itemImage(Integer code);
+
+	int deleteImage(Integer code);
+
 }

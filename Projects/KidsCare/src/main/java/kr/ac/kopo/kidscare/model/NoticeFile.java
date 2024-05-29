@@ -1,22 +1,22 @@
 package kr.ac.kopo.kidscare.model;
 
-public class UserFile {
-	private Long code;
-	private Integer userPostId;
+public class NoticeFile {
+	private Integer noticeId;
+	private Integer code;
 	private String filename;
 	private String uuid;
 	
-	public Long getCode() {
+	public Integer getNoticeId() {
+		return noticeId;
+	}
+	public void setNoticeId(Integer noticeId) {
+		this.noticeId = noticeId;
+	}
+	public Integer getCode() {
 		return code;
 	}
-	public void setCode(Long code) {
+	public void setCode(Integer code) {
 		this.code = code;
-	}
-	public Integer getUserPostId() {
-		return userPostId;
-	}
-	public void setUserPostId(Integer userPostId) {
-		this.userPostId = userPostId;
 	}
 	public String getFilename() {
 		return filename;

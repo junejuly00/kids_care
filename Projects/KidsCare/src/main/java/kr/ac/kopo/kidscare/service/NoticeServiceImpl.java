@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.kidscare.dao.NoticeDao;
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.model.NoticeFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 @Service
@@ -22,10 +24,17 @@ public class NoticeServiceImpl implements NoticeService {
 		pager.setTotal(total);
 		return dao.list(pager);
 	}
-
+	
+	@Transactional
 	@Override
 	public void add(Notice item) {
 		dao.add(item);
+		
+		for(NoticeFile noticeFile : item.getNoticeFiles()) {
+			noticeFile.setCode(item.getCode());
+			
+			dao.add(noticeFile);
+		}
 
 	}
 
@@ -37,7 +46,6 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void update(Notice item) {
 		dao.update(item);
-
 	}
 
 	@Override
