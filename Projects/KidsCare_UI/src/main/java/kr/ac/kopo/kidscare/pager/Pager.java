@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pager {
 	private int page = 1;
-	private int perPage = 3;
+	private int perPage = 5;
 	private float total;
 	public int getSearch() {
 		return search;

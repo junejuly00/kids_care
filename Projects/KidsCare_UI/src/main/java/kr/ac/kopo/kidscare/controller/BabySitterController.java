@@ -52,6 +52,8 @@ public class BabySitterController {
 		ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
 		String body = resp.getBody();
 		
+		
+		
 		PagerMap<BabySitter> map = om.readValue(body, new TypeReference<PagerMap<BabySitter>>() {});
 
 		model.addAttribute("list", map.getList());

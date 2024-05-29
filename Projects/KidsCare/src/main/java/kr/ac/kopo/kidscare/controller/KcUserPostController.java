@@ -41,7 +41,7 @@ public class KcUserPostController {
 		return map;
 	}
 	
-	@PostMapping("/{userPostId}")
+	@PostMapping("/add")
 	void add(@RequestBody KcUserPost item, List<MultipartFile> uploadFile) {
 		List<UserFile> userFiles = new ArrayList<UserFile>();
 		
