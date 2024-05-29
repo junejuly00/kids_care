@@ -30,9 +30,9 @@
 
 	
 	
-		<insert id="add">
+	<insert id="add">
 	    INSERT into kcuserpost(userpostid, username, postdate,title, contents, status)
-	    VALUES(USERPOSTID_SEQ.nextval,#{username},sysdate,#{title},#{contents},0)
+	    VALUES(#{userPostId},#{username},sysdate,#{title},#{contents},0)
 	</insert>
 	
 	<update id="update">
@@ -69,7 +69,7 @@
 	<insert id="add_image">
 		INSERT INTO userfile
 		(code, userPostId, filename, uuid)
-		VALUES (#{code},#{userPostId},#{filename},#{uuid})
+		VALUES (CODE_SEQ.nextval,#{userPostId},#{filename},#{uuid})
 	</insert>
 	
 	<select id="mypost" resultType="KcUserPost">
