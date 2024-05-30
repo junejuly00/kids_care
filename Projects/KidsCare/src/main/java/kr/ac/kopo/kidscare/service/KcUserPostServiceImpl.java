@@ -48,10 +48,15 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 	}
 		
 	
-
+	@Transactional
 	@Override
 	public void update(KcUserPost item) {
 		dao.update(item);
+		
+		for(UserFile userfile : item.getUserFiles()) {
+			userfile.setUserPostId(item.getUserPostId());
+			dao.add(userfile);
+		}
 	}
 
 	@Override

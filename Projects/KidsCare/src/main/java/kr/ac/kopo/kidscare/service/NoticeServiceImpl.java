@@ -44,6 +44,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void update(Notice item) {
 		dao.update(item);
+		
+		for(NoticeFile noticefile : item.getNoticeFiles()) {
+			noticefile.setCode(item.getCode());
+			dao.add(noticefile);
+		}
 
 	}
 

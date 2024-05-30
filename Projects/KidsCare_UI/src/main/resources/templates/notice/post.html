@@ -42,10 +42,12 @@
 			<div th:utext="${postInfo.contents}"></div>
 		</div>
 		
+		<div th:if="${postInfo.noticeFiles == null }">문장출력</div>
 		<div th:each="noticeFile : ${postInfo.noticeFiles}">
-			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" >
+			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" th:alt="${noticeFile.filename}" >
 			<div th:text="${noticeFile.filename}"></div>
 		</div>
+		
 		
 		<hr>
 		

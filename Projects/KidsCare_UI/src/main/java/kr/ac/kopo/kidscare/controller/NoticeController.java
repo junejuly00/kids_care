@@ -132,9 +132,34 @@ public class NoticeController {
 		return path + "update";
 	}
 	
-	@PostMapping("/update/{code}")
-	String update(@PathVariable Integer code, Notice item) throws JsonProcessingException {
-		item.setCode(code);
+	@PostMapping("/update")
+	String update(Notice item, List<MultipartFile> uploadFile) throws JsonProcessingException {
+		
+		List<NoticeFile> noticeFiles = new ArrayList<NoticeFile>();
+		
+		if(uploadFile != null) {
+			for(MultipartFile file : uploadFile) {
+				if(file.isEmpty())
+					continue;
+				
+				String filename = file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
+				
+				try {
+					file.transferTo(new File(uploadPath + uuid + "_" + filename));
+					
+					NoticeFile img = new NoticeFile();
+					img.setFilename(filename);
+					img.setUuid(uuid);
+					
+					noticeFiles.add(img);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		item.setNoticeFiles(noticeFiles);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -144,13 +169,14 @@ public class NoticeController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString ,header);
 		
+		String code = item.getCode().toString();
 		ResponseEntity<Integer> resp = rest.exchange(url + code, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
 		System.out.println(result);
 		
-		return "redirect:../list";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/post/{code}")
