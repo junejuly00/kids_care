@@ -41,34 +41,8 @@ public class KcUserPostController {
 		return map;
 	}
 	
-	@PostMapping("/{userPostId}")
-	void add(@RequestBody KcUserPost item, List<MultipartFile> uploadFile) {
-		List<UserFile> userFiles = new ArrayList<UserFile>();
-		
-		if(uploadFile != null) {
-			for(MultipartFile file : uploadFile) {
-				if(file.isEmpty())
-					continue;
-				
-				String filename = file.getOriginalFilename();
-				String uuid = UUID.randomUUID().toString();
-				
-				try {
-					file.transferTo(new File(uploadPath + uuid + "_" + filename));
-					
-					UserFile img = new UserFile();
-					img.setFilename(filename);
-					img.setUuid(uuid);
-					
-					System.out.println(img.getFilename());
-					
-					userFiles.add(img);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
+	@PostMapping("/add")
+	void add(@RequestBody KcUserPost item, List<MultipartFile> uploadFile) {		
 		service.add(item);
 	}
 	

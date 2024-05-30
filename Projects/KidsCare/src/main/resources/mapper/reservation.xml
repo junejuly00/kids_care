@@ -8,7 +8,7 @@
 	
 	<insert id="add">
 		INSERT INTO reservation
-		VALUES (#{resId},#{userId},#{sitterId},#{resDate},#{status})
+		VALUES (#{resId},#{username},#{sitterUsername},#{resDate})
 	</insert>
 	
 	<delete id="delete">

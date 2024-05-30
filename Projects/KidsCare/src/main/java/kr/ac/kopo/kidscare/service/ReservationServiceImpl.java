@@ -20,9 +20,9 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public Integer add(Reservation rsvInfo) {
+	public void add(Reservation rsvInfo) {
 		// TODO Auto-generated method stub
-		return dao.add(rsvInfo);
+		dao.add(rsvInfo);
 	}
 
 	@Override

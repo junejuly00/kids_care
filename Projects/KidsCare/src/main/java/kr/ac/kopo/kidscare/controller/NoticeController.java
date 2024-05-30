@@ -36,7 +36,7 @@ public class NoticeController {
 	return map;
 	}
 	
-	@PostMapping("/{code}")
+	@PostMapping("/add")
 	void add(@RequestBody Notice item) {
 		service.add(item);
 	}

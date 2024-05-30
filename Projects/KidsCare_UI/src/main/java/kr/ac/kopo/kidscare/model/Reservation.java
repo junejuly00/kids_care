@@ -17,12 +17,7 @@ public class Reservation {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getSitterId() {
-		return username;
-	}
-	public void setSitterId(String username) {
-		this.username = username;
-	}
+	
 	public String getResDate() {
 		return resDate;
 	}

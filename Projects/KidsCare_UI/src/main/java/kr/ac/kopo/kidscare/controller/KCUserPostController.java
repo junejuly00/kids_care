@@ -121,7 +121,7 @@ public class KCUserPostController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
-		ResponseEntity<Integer> resp = rest.postForEntity(url + item.getUserPostId().toString(), req, Integer.class);
+		ResponseEntity<Integer> resp = rest.postForEntity(url + "add", req, Integer.class);
 		
 		Integer body = resp.getBody();
 		
@@ -139,9 +139,35 @@ public class KCUserPostController {
 		return "kcuserpost/update";
 	}
 	
-	@PostMapping("/update/{userPostId}")
-	String update(@PathVariable Integer userPostId, KCUserPost item) throws JsonProcessingException {
-		item.setUserPostId(userPostId);
+	@PostMapping("/update")
+	String update( KCUserPost item, List<MultipartFile> uploadFile) throws JsonProcessingException {
+		
+		
+		List<UserFile> userFiles = new ArrayList<UserFile>();
+		
+		if(uploadFile != null) {
+			for(MultipartFile file : uploadFile) {
+				if(file.isEmpty())
+					continue;
+				
+				String filename = file.getOriginalFilename();
+				String uuid = UUID.randomUUID().toString();
+				
+				try {
+					file.transferTo(new File(uploadPath + uuid + "_" + filename));
+					
+					UserFile img = new UserFile();
+					img.setFilename(filename);
+					img.setUuid(uuid);
+					System.out.println(img.getFilename());
+					
+					userFiles.add(img);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		item.setUserFiles(userFiles);
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -150,13 +176,14 @@ public class KCUserPostController {
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
+		String userPostId = item.getUserPostId().toString();
 		ResponseEntity<Integer> resp = rest.exchange(url + userPostId, HttpMethod.PUT, req, Integer.class);
 		
 		Integer result = resp.getBody();
 		
 		System.out.println(result);
 		
-		return "redirect:../list";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/post/{userPostId}")

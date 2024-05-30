@@ -170,9 +170,23 @@
             <h3>베스트 리뷰</h3>
 
             <div class="review_box">
-                <div class="review_txt">
-                    아이들과 잘 놀아주시고 믿음이가요.
-                </div>
+                <table>
+                	<thead>
+                		<tr>
+                			<th>작성자</th>
+                			<th>내용</th>
+                			<th>별점</th>
+                		</tr>
+                	</thead>
+                	<tbody>
+                		<tr th:each="revInfo : ${revList}">
+                			<td th:text="${revInfo.username}"></td>
+                			<td th:text="${revInfo.reviewInfo}"></td>
+                			<td th:text="${revInfo.rating}"></td>
+                		</tr>
+                	</tbody>
+                	
+                </table>
             </div>
         </section>
 
