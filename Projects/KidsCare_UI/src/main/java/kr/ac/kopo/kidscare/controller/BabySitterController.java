@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 
 import kr.ac.kopo.kidscare.model.JobCert;
@@ -42,6 +45,14 @@ public class BabySitterController {
 	
 	@GetMapping("/list")
 	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
+		
+		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+		String parentName=auth.getName();
+		Address parentAddress = rest.getForObject("http://localhost:9090/address"+parentName,Address.class);
+		
+		String parentCity = parentAddress.getCity();
+		
+		
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
