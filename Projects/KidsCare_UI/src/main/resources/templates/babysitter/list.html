@@ -4,7 +4,6 @@
   	<meta charset="UTF-8">  
     <title>커뮤니티</title>
     <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
 <body>
 
 <nav th:replace="/nav.html"></nav>
@@ -24,9 +23,9 @@
     <p class="community">시터 찾기</p>
     
     <div>
-            <form>
-	    		<div class="search">
-	    			<select name="search">
+            <form  class="search-form">
+	    		<div  class="search">
+	    			<select name="search" >
 	    				<option value="1" th:selected="${pager.search == 1}">연봉적은순</option>
         				<option value="2" th:selected="${pager.search == 2}">경력많은순</option>
 	    			</select>

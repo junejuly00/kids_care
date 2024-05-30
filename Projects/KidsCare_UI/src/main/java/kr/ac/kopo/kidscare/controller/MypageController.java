@@ -39,7 +39,7 @@ public class MypageController {
 		header.setContentType(MediaType.APPLICATION_JSON);
 		//TODO if login 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
+
 		String username = auth.getName();
 		
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);

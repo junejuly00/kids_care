@@ -156,6 +156,7 @@ input,
 }
 
 .button{
+	font-size: 18px;
 	width: 500px;
 	height: 50px;
 	background-color: #E3F0FB;
