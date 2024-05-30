@@ -119,7 +119,7 @@ td, th {
   }
 
 td {
-    border-bottom: solid 0.5px #000000;
+    border-bottom: solid 0.5px #ddd;
     height: 60px;
 }
 
