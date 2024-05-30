@@ -27,6 +27,7 @@ import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 
 import kr.ac.kopo.kidscare.model.JobCert;
+import kr.ac.kopo.kidscare.model.UserReview;
 import kr.ac.kopo.kidscare.pager.Pager;
 import kr.ac.kopo.kidscare.pager.PagerMap;
 
@@ -129,14 +130,23 @@ public class BabySitterController {
 	
 	@GetMapping("/detail/{username}")
 	String post(@PathVariable String username, Model model) throws JsonProcessingException {
+		
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
 		String resp = rest.getForObject("http://localhost:9090/jobcert/search/" + username, String.class);
 		List<JobCert> certList = om.readValue(resp, new TypeReference<List<JobCert>>() {});
-		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);	
-		System.out.println(sitterInfo.getUsername());
 		
+		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);	
+
+		String reviewResp = rest.getForObject("http://localhost:9090/userreview/find/sitter/"+ username , String.class);
+		List<UserReview> revList = om.readValue(reviewResp, new TypeReference<List<UserReview>>() {});
+		
+		for (UserReview userReview : revList) {
+			System.out.println(userReview.getReviewInfo());
+		}
+		model.addAttribute("revList", revList);
 		model.addAttribute("sitterInfo", sitterInfo);
 		model.addAttribute("jobcert", certList);
 		

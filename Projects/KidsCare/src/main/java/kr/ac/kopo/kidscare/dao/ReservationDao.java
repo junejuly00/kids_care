@@ -8,7 +8,7 @@ public interface ReservationDao {
 
 	List<Reservation> totalList();
 
-	Integer add(Reservation rsvInfo);
+	void add(Reservation rsvInfo);
 
 	Integer delete(Long resId);
 

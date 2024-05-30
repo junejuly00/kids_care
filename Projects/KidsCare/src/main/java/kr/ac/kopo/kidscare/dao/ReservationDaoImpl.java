@@ -21,8 +21,8 @@ public class ReservationDaoImpl implements ReservationDao {
 	}
 
 	@Override
-	public Integer add(Reservation rsvInfo) {
-		return sql.insert("reservation.add", rsvInfo);
+	public void add(Reservation rsvInfo) {
+		sql.insert("reservation.add", rsvInfo);
 	}
 
 	@Override
