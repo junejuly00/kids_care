@@ -41,8 +41,10 @@
 			
 		<div>
 			<div th:each="userFile : ${item.userFiles}">
-				<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}">
-				<div th:text="${userFile.filename}"></div>
+				<div th:data-code="${userFile.code}">
+					<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}">
+					<button type="button" class="delete">삭제</button>
+				</div>
 			</div>
 		</div>
 		
@@ -76,6 +78,30 @@
         		lang: 'ko-KR',
         	});
     	});
+  </script>
+  	
+  <script>
+  window.addEventListener("load", () =>{
+	    document.querySelectorAll(".delete").forEach(item => {
+	        const div = item.closest("div[data-code]");
+
+	        item.addEventListener("click", e => {
+	            e.preventDefault(); // 기본 동작을 막음
+
+	            fetch("http://localhost:9091/kcuserpost/delete_image/" + div.dataset.code, {
+	                method: "DELETE",
+	            })
+	            .then(resp => {
+	                if(resp.ok) {
+	                    div.remove();
+	                } else {
+	                    // Handle error if needed
+	                    console.error("Failed to delete image.");
+	                }
+	            });
+	        });
+	    });
+	});
   </script>
 </body>
 </html>
