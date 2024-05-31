@@ -37,10 +37,16 @@
 			
 		<textarea name="contents" id="notice_txt" th:value="${item.contents}"></textarea>
 		
-		<div th:each="noticeFile : ${item.noticeFiles}">
-			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" >
-			<div th:text="${noticeFile.filename}"></div>
+		<div>
+			<div th:each="noticeFile : ${item.noticeFiles}">
+				<div th:data-noticeid="${noticeFile.noticeId}">
+					<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}">
+					<button type="button" class="delete">삭제</button>
+				</div>
+			</div>
 		</div>
+		
+		
 			
 		<div class="upload_sec">
 			<button type="button" class="add">파일 추가하기</button>
@@ -63,6 +69,7 @@
 	<footer th:replace="/footer.html"></footer>
 	
 	<script type="text/javascript" src="../../static/js/file_add.js"></script>
+	<script src="../../static/js/delete_image_notice.js"></script>
 	<script src="../../static/js/summernote-ko-KR.js"></script>
 
 	<script>

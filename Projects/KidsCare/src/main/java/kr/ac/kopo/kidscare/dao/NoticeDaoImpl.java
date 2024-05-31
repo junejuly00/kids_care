@@ -63,4 +63,14 @@ public class NoticeDaoImpl implements NoticeDao {
 		sql.insert("notice.add_image", noticefile);
 	}
 
+	@Override
+	public NoticeFile itemImage(Integer noticeId) {
+		return sql.selectOne("notice.item_image", noticeId);
+	}
+
+	@Override
+	public int deleteImage(Integer noticeId) {
+		return sql.delete("notice.delete_image", noticeId);
+	}
+
 }
