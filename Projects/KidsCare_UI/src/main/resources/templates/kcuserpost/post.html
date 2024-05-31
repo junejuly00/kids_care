@@ -61,8 +61,8 @@
 		</div>
 
 
-         <img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
-         <div th:text="${userFile.filename}"></div>
+         <img th:if="${userFile !=null}" th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
+         <div th:if="${userFile !=null}" th:text="${userFile.filename}"></div>
       </div>
       
       <hr>
