@@ -22,7 +22,7 @@
 	
 		
 		
-		<form action="/notice/add" method="post">
+		<form action="/notice/update" method="post" enctype="multipart/form-data">
 		<div class="post_add">
 		
 <!--  <input type="hidden" name="code" th:value="${code}"/> 
@@ -36,6 +36,11 @@
 			
 			
 		<textarea name="contents" id="notice_txt" th:value="${item.contents}"></textarea>
+		
+		<div th:each="noticeFile : ${item.noticeFiles}">
+			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" >
+			<div th:text="${noticeFile.filename}"></div>
+		</div>
 			
 		<div class="upload_sec">
 			<button type="button" class="add">파일 추가하기</button>

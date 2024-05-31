@@ -1,63 +1,41 @@
 @charset "UTF-8";
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration-line: none;
-}
 
-.wrap {
-    margin-left: 140px;
-    margin-right: 140px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+.wrap{
     display: flex;
     flex-direction: column;
-
-}
-
-input, select {
-    outline: 0.4em;
-    padding-left: 20px;
-    border: none;
-    border-radius: 10px;
 }
 
 button{
     border: none;
 }
 
-
-.top a {
+a {
     text-decoration: none;
     color: black;
-    margin: 5px;
-    font-size: 24px;
     text-align: center;
 }
 
 #signup{
-    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 120px 0 120px 0;
 }
 
-.signupbox {
-    width: 800px;
-    height: 700px;
-    background: #EAF6D2;
-    border-radius: 0px 10px 10px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mom{
+.siterbox{
     width: 800px;
     height: 50px;
 }
-#parent_user {
+
+#siter_user {
     width: 130px;
     height: 50px;
-    background: #FFEF99;
+    background: #E3F0FB;
     font-size: 18px;
     border-radius: 10px 10px 0 0;
     text-align: center;
@@ -67,106 +45,111 @@ button{
     align-items: center;
 }
 
-.info{
+.signupbox{
+    width: 800px;
+    height: 750px;
+    background-color: #FFF3B2;
+    border-radius: 0px 10px 10px 10px;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 15px 0 rgba(53, 53, 53, 0.24), 0 17px 50px 0 rgba(23, 23, 23, 0.19);
+}
+
+.info {
     display: flex;
     flex-direction: column;
 }
-.id {
-    width: 412px;
-    height: 50px;
+
+.info .group {
+  margin-bottom: 10px;
 }
 
-.id_check {
-    width: 83px;
-    height: 50px;
-    background: #FFE371;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 5px ;
+#fm{
+	margin-left: 15px;
 }
 
-.passwd {
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-.passwd_check{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-.name {
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
+#passwd,
+#check_pw,
+.name,
+.phone,
+.address_detail,
+.email_choice,
+.birth,
+.certificate,
+.childs,
+.signup-form .group .button {
+  width: 500px;
+  height: 50px;
+  color: #000000;
 }
 
-.phone {
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
+#check{
+	font-size: 16px;
+	font-weight: 400;
+	color: #C20000;
+	margin: 0 0 7px 5px;
 }
 
-.mail{
-    width: 240px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-#dd{
-    font-size: 20px;
-    margin: 0 10px 0 10px;
-}
-
-.email_choice{
-    width: 210px;
-    height: 50px;
-    margin-top: 10px;
-}
-
+.id,
 .address {
-    width: 412px;
-    height: 50px;
-    margin-top: 10px;
+  width: 410px;
+  height: 50px;
 }
 
-.search_address{
-    width: 83px;
-    height: 50px;
-    background: #FFE371;
-    border-radius: 10px;
-    font-weight: bold;
+.id_check,
+.search_address {
+  width: 83px;
+  height: 50px;
+  background-color: #E3F0FB;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.mail {
+  width: 241.75px;
+  height: 50px;
+}
+
+#dd {
+  height: auto;
+  font-size: 16px;
+  border: none;
+  padding: 0 8px 0 8px;
+  font-size: 20px;
+}
+
+.email_choice {
+  width: 210px;
+  height: 50px;
+}
+
+input,
+.email_choice,
+.signup-form .group .button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.signup-form .group .button {
+  background: #E3F0FB;
+  font-size: 16px;
+}
+
+.button{
+	font-size: 18px;
+	width: 500px;
+	height: 50px;
+	background-color: #E3F0FB;
+}
+
+.foot-lnk {
+	margin: 10px 0 0 0;
     font-size: 16px;
-    margin-left: 5px ;
-    margin-top: 10px;
-}
-
-.address_detail{
-    width: 500px;
-    height: 50px;
-    margin-top: 10px;
-}
-
-a  {
-    text-decoration: none;
-    color: black;
-}
-
-.mainbtn {
-    width: 150px;
-    height: 50px;
-    background: #FFE371;
-    border-style: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-#main {
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    margin-top: 110px;
+    text-align: center;
 }

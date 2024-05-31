@@ -8,6 +8,7 @@
 		ORDER BY code) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
+		
 	</select>
 	
 	<select id="total" resultType="Integer">
@@ -17,9 +18,14 @@
 		) sub
 	</select>
 	
-		<insert id="add">
+	<insert id="add">
 	    INSERT into notice(code, username, postdate, title, contents, status)
-	    VALUES(#{code},#{username},sysdate,#{title},#{contents},0)
+	    VALUES(CODE_SEQ.nextval,#{username},sysdate,#{title},#{contents},0)
+	    
+	    <selectKey keyProperty="code" resultType="Integer" order="AFTER">
+	         SELECT
+	         CODE_SEQ.currval FROM dual
+      	</selectKey>
 	</insert>
 	
 	<update id="update">
@@ -28,12 +34,20 @@
 	    WHERE code=#{code}
 	</update>
 	
-	<select id="item" resultType="Notice">
+	<select id="item" resultMap="NoticeMap">
 		SELECT *
-		FROM notice
-		WHERE code=#{code}
+		FROM notice LEFT JOIN noticefile ON notice.code=noticefile.code 
+		WHERE notice.code=#{code}
 
 	</select>
+	
+	<resultMap type="Notice" id="NoticeMap" autoMapping="true">
+		<id property="code" column="code"/>
+		
+		<collection property="noticeFiles" column="pid" javaType="ArrayList" ofType="NoticeFile" autoMapping="true" >
+			<id column="noticeId" property="noticeId"/>
+		</collection>
+	</resultMap>
 	
 	<update id="hide">
 		UPDATE notice
@@ -41,5 +55,9 @@
 		where code=#{code}
 	</update>
 	
+	<insert id="add_image">
+		INSERT INTO noticefile
+		VALUES (NOTICEID_SEQ.nextval, #{code}, #{filename}, #{uuid})
+	</insert>
 </mapper>
 

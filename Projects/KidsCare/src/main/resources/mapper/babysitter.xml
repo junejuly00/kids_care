@@ -3,12 +3,27 @@
 <mapper namespace="babysitter">
 
 	<select id="list" resultMap="BabySitterMap">		
-		SELECT sub2.*, sub2.username pid
-   	 	FROM (SELECT sub.*, ROWNUM rnum FROM 
-            (SELECT * FROM babysitter) sub) sub2 left join sitterphoto
-		ON(sub2.username=sitterphoto.username)
+				SELECT sub2.*, sub2.username pid, sitterphoto.*, sitteraddress.*
+		FROM (SELECT sub.*, ROWNUM rnum 
+		FROM (SELECT * FROM babysitter) sub) sub2
+		LEFT JOIN sitterphoto
+		    ON sub2.username = sitterphoto.username
+		LEFT JOIN sitteraddress
+		    ON sub2.username = sitteraddress.username
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
-		AND status=0
+		AND status = 0
+	</select>
+	
+	<select id="hyperlist" resultMap="BabySitterMap">
+				SELECT sub2.*, sub2.username pid, sitterphoto.*, sitteraddress.*
+		FROM (SELECT sub.*, ROWNUM rnum 
+		FROM (SELECT * FROM babysitter) sub) sub2
+		LEFT JOIN sitterphoto
+		    ON sub2.username = sitterphoto.username
+		LEFT JOIN sitteraddress
+		    ON sub2.username = sitteraddress.username
+		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND status = 0 AND 
 	</select>
 	
 	<select id="salaryAscList" resultMap="BabySitterMap">		
@@ -37,6 +52,13 @@
 		
 		<association property="photos" column="pid" javaType="SitterPhoto" autoMapping="true">
 			<id column="code" property="code"/>
+		</association>
+		
+		<association property="address" column="username" javaType="Address" autoMapping="true">
+			<id column="fullAddress" property="fullAddress" />
+			<id column="province" property="province" />
+			<id column="city" property="city" />
+			<id column="village" property="village" />
 		</association>
 	</resultMap>
 	

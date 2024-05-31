@@ -2,73 +2,140 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title></title>
-    <style>
-	    body {
-	        font-family: Arial, sans-serif;
-	        background-color: #f2f2f2;
-	        width: 1024px;
-	    }
-	
-	    table {
-	        border-collapse: collapse;
-	        width: 100%;
-	        background-color: #fff;
-	        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	        margin-bottom: 20px;
-	    }
-	
-	    th, td {
-	        border: 1px solid #ddd;
-	        padding: 8px;
-	        text-align: left;
-	    }
-	
-	    caption {
-	        font-weight: bold;
-	        margin-bottom: 10px;
-	    }
-	
-	    h1 {
-	        text-align: center;
-	        color: #333;
-	        margin-bottom: 20px;
-	    }
-	</style>
+    
+    <link th:href="@{/static/css/mypage.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>MY PAGE DEMO</h1>
+    
+	<nav th:replace="/nav.html"></nav>
+	
+	<div class="wrap">
+	
+	<div class="container">
+        <div class="buttons">
+            <button class="tab-button" data-target="content1">내 정보</button>
+            <button class="tab-button" data-target="content2">커뮤니티 글</button>
+            <button class="tab-button" data-target="content3">내 댓글</button>
+            <button class="tab-button" data-target="content4">작성 리뷰</button>
+            <button class="tab-button" data-target="content5">시터 리스트</button>
+            <button class="tab-button" data-target="content6">예약 내역</button>
+        </div>
 
-    <table>
-        <caption>내 정보</caption>
-        <tr>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>연락처</th>
-            <th>이메일</th>
-            <th>주소</th>
-        </tr>
-        <tr>
-            <td th:text="${userInfo.username}"></td>
-            <td th:text="${userInfo.name}"></td>
-            <td th:text="${userInfo.phone}"></td>
-            <td th:text="${userInfo.email}"></td>
-            <td>암튼 일단 이거 주소임</td>
-        </tr>
-        
-    </table>
-	<br>
-    <table>
-        <caption>내 게시글</caption>
-        <tr>
-            <th>게시글번호</th>
-            <th>제목</th>
-            <th>작성일자</th>
-        </tr>
-        <tr th:each="postInfo : ${postList}">
-            <td th:text="${postInfo.userPostId}"></td>
-            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-            <td th:text="${postInfo.postdate}"></td>
+        <div class="content">
+            <div id="content1" class="tab-content">
+				<div class="info">
+					 <input value="아이디" th:value="${userInfo.username}"  readonly>
+	                 <input value="이름" th:value="${userInfo.name}" readonly>
+	                 <input value="연락처" th:value="${userInfo.phone}" readonly>
+	                 <input value="이메일" th:value="${userInfo.email}" readonly>
+	                 <input value="주소" readonly>
+					
+				</div>
+            </div> 
+                  
+            <div id="content2" class="tab-content">
+              
+		        <div class="my-community">
+			        <table>
+			            <thead>
+			                <tr>
+			                    <th>번호</th>
+			                    <th>제목</th>
+			                    <th>작성 날짜</th>
+			                </tr>
+			            </thead>
+			            
+			            <tbody>
+			            	<tr th:if="${postList.size() < 1}">
+			                  <td colspan="3">등록된 글이 없습니다.</td>
+			               </tr>
+			            
+			            	
+			                <tr  th:each="postInfo : ${postList}">
+			                    <td><a th:text="${postInfo.userPostId}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+					            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+					            <td><a  th:text="${postInfo.postdate}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+		
+			                </tr>
+			               
+			            </tbody>
+			        </table>
+	    		</div>
+              
+            </div>
+
+            <div id="content3" class="tab-content">
+                
+				<div class="my-comment">
+			        <table>
+			            <thead>
+			                <tr>
+			                    <th>번호</th>
+			                    <th>제목</th>
+			                    <th>작성 날짜</th>
+			                </tr>
+			            </thead>
+			            
+			            <tbody>
+			            	<tr >
+			                  <td colspan="3">등록된 댓글이 없습니다.</td>
+			               </tr>
+			            
+			            	
+			                <tr  th:each="commentInfo : ${commentList}">
+			                    <td><a th:text="${commentInfo.userPostId}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+					            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+					            <td><a  th:text="${commentInfo.postdate}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+		
+			                </tr>
+			               
+			            </tbody>
+			        </table>
+	    		</div>
+
+            </div>
+
+            <div id="content4" class="tab-content">
+            	리뷰
+            </div>
+
+            <div id="content5" class="tab-content">
             
+            	 <div class="my-sitter">
+			        <table>
+			            <thead>
+			                <tr>
+			                    <th>시터 성명</th>
+            					<th>전화번호</th>
+            					<th>나이</th>
+            					<th>성별</th>
+            					<th>이메일</th>
+            					<th>희망급여</th>
+
+			                </tr>
+			            </thead>
+			            
+			            <tbody>
+			            	<tr th:if="${sitterList.size() < 6}">
+			                  <td colspan="6">등록된 시터가 없습니다.</td>
+			               </tr>
+			            
+			            	
+			                <tr th:each="sitterInfo : ${sitterList}">
+	            				<td th:text="${sitterInfo.name}"></td>
+					            <td th:text="${sitterInfo.phone}"></td>
+					            <td th:text="${sitterInfo.age}"></td>
+					            <td th:text="${sitterInfo.gender}"></td>
+					            <td th:text="${sitterInfo.email}"></td>
+					            <td th:text="${sitterInfo.salary}"></td>
+				        	</tr>
+
+			               
+			            </tbody>
+			        </table>
+	    		</div>
+            
+
         </tr>
         
     </table>
@@ -112,5 +179,15 @@
     	
     </table>
 
+
+        </div>
+    
+	</div>
+	</div>
+	
+	<footer th:replace="/footer.html"></footer>
+	
+	<script type="text/javascript" src="../../static/js/mypage.js"></script>
+	
 </body>
 </html>

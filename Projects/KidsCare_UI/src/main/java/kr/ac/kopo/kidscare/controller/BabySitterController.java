@@ -23,6 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 
 import kr.ac.kopo.kidscare.model.JobCert;
@@ -46,6 +47,14 @@ public class BabySitterController {
 	@GetMapping("/list")
 	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
 		
+		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+		String parentName=auth.getName();
+		Address parentAddress = rest.getForObject("http://localhost:9090/address"+parentName,Address.class);
+		
+		String parentCity = parentAddress.getCity();
+		
+		
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -54,6 +63,8 @@ public class BabySitterController {
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		ResponseEntity<String> resp = rest.postForEntity(url + "list", req, String.class);
 		String body = resp.getBody();
+		
+		
 		
 		PagerMap<BabySitter> map = om.readValue(body, new TypeReference<PagerMap<BabySitter>>() {});
 
