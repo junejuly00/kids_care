@@ -5,7 +5,7 @@
 		SELECT *
 		FROM (SELECT sub.*, ROWNUM rnum FROM 
 				(SELECT * FROM notice
-		ORDER BY code) sub)
+		ORDER BY postdate desc) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
 		
