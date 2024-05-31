@@ -73,6 +73,25 @@ public class KcUserPostServiceImpl implements KCUserPostService {
 
 
 
+	@Override
+	public boolean deleteImage(Integer code) {
+		if(dao.deleteImage(code) > 0)
+			return true;
+		
+		return false;
+	}
+
+
+
+
+	@Override
+	public UserFile itemImage(Integer code) {
+		return dao.itemImage(code);
+	}
+
+
+
+
 
 	
 	

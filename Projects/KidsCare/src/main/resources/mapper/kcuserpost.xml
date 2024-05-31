@@ -80,5 +80,15 @@
 		SELECT * FROM kcuserpost
 		WHERE username=#{username}
 	</select>
+	
+	<delete id="delete_image">
+		DELETE FROM userfile
+		WHERE code=#{code}
+	</delete>
+	
+	<select id="item_image" resultType="UserFile">
+		SELECT * FROM userfile
+		WHERE code=#{code}
+	</select>
 </mapper>
 
