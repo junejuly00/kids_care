@@ -10,11 +10,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -206,6 +208,14 @@ public class KCUserPostController {
 	String hide(@PathVariable Long userPostId) {
 		KCUserPost item = rest.getForObject(url + "hide/" + userPostId.toString() , KCUserPost.class);				
 		return "redirect:../list";
+	}
 	
-}
+	@GetMapping("/delete_image/{code}")
+	ResponseEntity<String> deleteImage(@PathVariable Integer code) {
+		RequestEntity<Void> req = RequestEntity.delete(url + "/delete_image/" + code).build();
+		
+		ResponseEntity<String> result = rest.exchange(req, String.class);
+		
+		return result;
+	}
 }

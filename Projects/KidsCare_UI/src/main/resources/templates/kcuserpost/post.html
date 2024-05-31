@@ -37,7 +37,7 @@
 		th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
 
 			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
-			<div th:text="${userFile.filename}"></div>
+			
 		</div>
 		
 		<hr>
@@ -61,8 +61,10 @@
 		</div>
 
 
+
          <img th:if="${userFile != null}" th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
          <div th:if="${userFile != null}" th:text="${userFile.filename}"></div>
+
       </div>
       
       <hr>
