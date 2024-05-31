@@ -7,20 +7,20 @@
     <link th:href="@{/resources/booking.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <form>
-    <label for="resId">RESID:</label>
-    <input type="text" name="resId"><br><br>
-    
-    <label for="username">USERNAME:</label>
-    <div th:text="${resUser}"></div><br><br>
-    
-    <label for="sitterUsername">SITTERNAME:</label>
-    <input type="text" name="sitterUsername" th:value="${resSitter}" readonly><br><br>
-    
-    <label for="">DATE:</label>
-    <input type="text" name="date"><br><br>
-    
-    <button>SUBMIT</button>
-</form>
+    <form method="post">
+	    <label for="resId">RESID:</label>
+	    <input type="text" name="resId"><br><br>
+	    
+	    <label for="username">USERNAME:</label>
+	    <div th:text="${resUser}"></div><br><br>
+	    
+	    <label for="sitterUsername">SITTERNAME:</label>
+	    <input type="text" name="sitterUsername" th:value="${resSitter}" readonly><br><br>
+	    
+	    <label for="date">DATE:</label>
+	    <input type="datetime-local" name="resDate"><br><br>
+	    
+	    <button type="submit">SUBMIT</button>
+	</form>
 </body>
 </html>

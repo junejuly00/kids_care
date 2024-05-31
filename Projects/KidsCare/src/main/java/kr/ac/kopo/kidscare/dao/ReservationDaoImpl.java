@@ -21,14 +21,20 @@ public class ReservationDaoImpl implements ReservationDao {
 	}
 
 	@Override
-	public Integer add(Reservation rsvInfo) {
-		return sql.insert("reservation.add", rsvInfo);
+	public void add(Reservation rsvInfo) {
+		sql.insert("reservation.add", rsvInfo);
 	}
 
 	@Override
 	public Integer delete(Long resId) {
 		// 이건 만들지 않아도 될 수도 있다
 		return sql.delete("reservation.delete", resId);
+	}
+
+	@Override
+	public List<Reservation> parentList(String username) {
+		// TODO Auto-generated method stub
+		return sql.selectList("reservation.parent", username);
 	}
 
 }

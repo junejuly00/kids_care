@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.UserReview;
+import kr.ac.kopo.kidscare.pager.Pager;
 
 @Repository
 public class UserReviceDaoImpl implements UserReviceDao {
@@ -15,8 +16,8 @@ public class UserReviceDaoImpl implements UserReviceDao {
 	SqlSession sql;
 
 	@Override
-	public List<UserReview> list() {
-		return sql.selectList("mapper.userreview.list");
+	public List<UserReview> list(Pager pager) {
+		return sql.selectList("mapper.userreview.list", pager);
 	}
 
 	@Override
@@ -32,6 +33,17 @@ public class UserReviceDaoImpl implements UserReviceDao {
 	@Override
 	public void update(UserReview userreviewInfo) {
 		sql.update("mapper.UserReview.update",userreviewInfo);
+	}
+
+	@Override
+	public List<UserReview> findByParent(String username, Pager pager) {
+		pager.setKeyword(username);
+		return sql.selectList("userreview.findparent", pager);
+	}
+
+	@Override
+	public List<UserReview> findBySitter(Pager pager) {
+		return sql.selectList("userreview.findsitter", pager);
 	}
 
 }

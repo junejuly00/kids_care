@@ -1,5 +1,5 @@
 function signup(){
-  const form = document.signup_form;
+  const form = document.info;
   const regExp = /^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/; // 비밀번호 조건 최소 8자 이상으로 숫자, 특수문자가 각각 최소 1개이상
 
   if(!form.id.value || form.id.value == ''){

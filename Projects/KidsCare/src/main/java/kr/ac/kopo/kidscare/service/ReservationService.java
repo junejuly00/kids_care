@@ -8,8 +8,10 @@ public interface ReservationService {
 
 	List<Reservation> totalList();
 
-	Integer add(Reservation rsvInfo);
+	void add(Reservation rsvInfo);
 
 	Integer delete(Long resId);
+
+	List<Reservation> parentList(String username);
 
 }

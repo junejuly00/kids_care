@@ -8,29 +8,30 @@
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
 </head>
 <body>
-	
-	<nav th:replace="/nav.html"></nav>
-	
-	<div class="wrap">
-		<div class="main_txt">
-			<p>커뮤니티<p>
-		</div>
-		
-		<div class="box">
-		<div class="title">
-			<h4 th:text="${postInfo.title}"></h4>
-		</div>
-		
-		<div class="info">
-			<p>작성자:</p><p th:text="${postInfo.username}"></p>
-			<p style="padding-left:20px ">작성일:</p><p th:text="${postInfo.postdate}"></p>
-		</div>
-		
-		<hr>
-		
-		<div class="content">
-			<div th:utext="${postInfo.contents}"></div>
-		</div>
+   
+   <nav th:replace="/nav.html"></nav>
+   
+   <div class="wrap">
+      <div class="main_txt">
+         <p>커뮤니티<p>
+      </div>
+      
+      <div class="box">
+      <div class="title">
+         <h4 th:text="${postInfo.title}"></h4>
+      </div>
+      
+      <div class="info">
+         <p>작성자:</p><p th:text="${postInfo.username}"></p>
+         <p style="padding-left:20px ">작성일:</p><p th:text="${postInfo.postdate}"></p>
+      </div>
+      
+      <hr>
+      
+      <div class="content">
+         <div th:utext="${postInfo.contents}"></div>
+      </div>
+
 
 		<div th:each="userFile : ${postInfo.userFiles}"
 		th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
@@ -59,44 +60,69 @@
 		
 		</div>
 
-		<div class="comment">
-			
-			<hr>
-			
-			<form action="/comment/add" method="post">
-			
 
-				<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">		        
-		        <div class="comment-text">       
-			        <textarea id="comment" name="substance" rows="6" cols="130" 
-			        	maxlength="500" required placeholder="작성할 댓글 내용을 입력해 주세요./ 최대 500자"></textarea>
-			        <button type="submit">등록</button>
-		        </div>
-	        
-	    	</form>
-	    	
-	    	<hr>
-				    	
-		</div>
+         <img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
+         <div th:text="${userFile.filename}"></div>
+      </div>
+      
+      <hr>
+      
+      <div id="btn">
+      
+         <div class="delete">
+            <a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
+         </div>
+         
+         <div class="update">
+                       <a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
+         </div>
+         
+         <div class="list">
+            <a href="../list">목록</a>
+         </div>
+         
+       </div>
+      
+      </div>
 
-	
-	<div class="commentlist">
-		<div th:each="item : ${commentList}">
-			<div class="comment-text">
-				<p th:text="${item.commentId}" hidden="true"></p>
-				<p th:text="${item.username}"  style="font-weight:bold; margin-bottom: 5px;"></p>
-				<p th:text="${item.substance}"></p>
-			</div>
-			
-			<hr>
-			
-		</div>
-	</div>
-		
-	</div>
-	
-	<footer th:replace="/footer.html"></footer>
-	
+      <div class="comment">
+         
+         <hr>
+         
+         <form action="/comment/add" method="post">
+         
+
+            <input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">              
+              <div class="comment-text">       
+                 <textarea id="comment" name="substance" rows="6" cols="130" 
+                    maxlength="500" required placeholder="작성할 댓글 내용을 입력해 주세요./ 최대 500자"></textarea>
+                 <button type="submit">등록</button>
+              </div>
+           
+          </form>
+          
+          <hr>
+                   
+      </div>
+
+   
+   <div class="commentlist">
+      <div th:each="item : ${commentList}">
+         <div class="comment-text">
+            <p th:text="${item.commentId}" hidden="true"></p>
+            <p th:text="${item.username}"  style="font-weight:bold; margin-bottom: 5px;"></p>
+            <p th:text="${item.substance}"></p>
+         </div>
+         
+         <hr>
+         
+      </div>
+   </div>
+      
+   </div>
+   
+   <footer th:replace="/footer.html"></footer>
+   
 
 </body>
 </html>

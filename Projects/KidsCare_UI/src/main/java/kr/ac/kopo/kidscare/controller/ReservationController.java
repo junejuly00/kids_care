@@ -57,20 +57,21 @@ public class ReservationController {
 	
 	@PostMapping("/{sitterId}")
 	String newReservation(@PathVariable String sitterId, Reservation rsvInfo) throws JsonProcessingException {
-		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		rsvInfo.setSitterId(sitterId);
+		rsvInfo.setUsername(username);
+		rsvInfo.setSitterUsername(sitterId);
 		
 		String jsonString = om.writeValueAsString(rsvInfo);
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		
-		Integer body = rest.postForObject(defaultUrl+"add", request, Integer.class);
+		Integer body = rest.postForObject(defaultUrl+"create", request, Integer.class);
 		
 		
-		return "redirect:../list";
+		return "redirect:/mypage/parents";
 	}
 	
 	@GetMapping("/delete/{resId}")

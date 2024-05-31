@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
+import kr.ac.kopo.kidscare.model.Reservation;
 
 @Controller
 @RequestMapping("/mypage")
@@ -39,7 +40,7 @@ public class MypageController {
 		header.setContentType(MediaType.APPLICATION_JSON);
 		//TODO if login 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
+
 		String username = auth.getName();
 		
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);
@@ -50,9 +51,13 @@ public class MypageController {
 		String postResp = rest.getForObject("http://localhost:9090/kcuserpost/mypost/"+ username, String.class);
 		List<KCUserPost> postList = om.readValue(postResp, new TypeReference<List<KCUserPost>>() {});
 		
+		String rsvResp = rest.getForObject("http://localhost:9090/reservation/parent/" + username, String.class);
+		List<Reservation> rsvList = om.readValue(rsvResp, new TypeReference<List<Reservation>>() {});
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
+		model.addAttribute("rsvList", rsvList);
 		
 		return "mypage/parents";
 	}

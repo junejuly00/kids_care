@@ -6,9 +6,14 @@
 		SELECT * FROM reservation
 	</select>
 	
+	<select id="parent" resultType="Reservation">
+		SELECT * FROM reservation
+		WHERE username=#{username}
+	</select>
+	
 	<insert id="add">
 		INSERT INTO reservation
-		VALUES (#{resId},#{userId},#{sitterId},#{resDate},#{status})
+		VALUES (#{resId},#{username},#{sittername},#{resDate})
 	</insert>
 	
 	<delete id="delete">

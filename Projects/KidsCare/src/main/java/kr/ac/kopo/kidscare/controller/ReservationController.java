@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.kidscare.model.Reservation;
 import kr.ac.kopo.kidscare.service.ReservationService;
 
-@Controller
+@RestController
 @RequestMapping("/reservation")
 public class ReservationController {
 	@Autowired
@@ -27,9 +28,16 @@ public class ReservationController {
 	}
 	
 	@PostMapping("/create")
-	Integer create(@RequestBody Reservation rsvInfo) {
-		return service.add(rsvInfo);
+	void create(@RequestBody Reservation rsvInfo) {
+		service.add(rsvInfo);
 	}
+	
+	@GetMapping("/parent/{username}")
+	List<Reservation> parentResvList(@PathVariable String username) {
+		List<Reservation> list = service.parentList(username);
+		return list;
+	}
+	
 	
 	@DeleteMapping("/delete/{resId}")
 	Integer delete(@PathVariable Long resId) {
