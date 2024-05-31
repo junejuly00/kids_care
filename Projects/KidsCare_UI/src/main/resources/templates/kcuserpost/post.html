@@ -66,10 +66,7 @@
 			<form action="/comment/add" method="post">
 			
 
-				<input type="text" name="commentId" placeholder="댓글번호">
-				<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">
-		        <input type="text" id="name" name="username" placeholder="아이디" required>
-		        
+				<input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">		        
 		        <div class="comment-text">       
 			        <textarea id="comment" name="substance" rows="6" cols="130" 
 			        	maxlength="500" required placeholder="작성할 댓글 내용을 입력해 주세요./ 최대 500자"></textarea>
