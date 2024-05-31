@@ -31,4 +31,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.delete(resId);
 	}
 
+	@Override
+	public List<Reservation> parentList(String username) {
+		return dao.parentList(username);
+	}
+
 }

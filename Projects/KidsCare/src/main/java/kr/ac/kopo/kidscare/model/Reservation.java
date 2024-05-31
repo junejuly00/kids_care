@@ -1,11 +1,15 @@
 package kr.ac.kopo.kidscare.model;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Reservation {
 	private String resId;
 	private String username;
-	private String sitterUsername;
+	private String sittername;
+	
 	private String resDate;
-	private Integer status;
 	
 	public String getResId() {
 		return resId;
@@ -27,15 +31,10 @@ public class Reservation {
 		this.resDate = resDate;
 	}
 	public String getSitterUsername() {
-		return sitterUsername;
+		return sittername;
 	}
 	public void setSitterUsername(String sitterUsername) {
-		this.sitterUsername = sitterUsername;
+		this.sittername = sitterUsername;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+	
 }

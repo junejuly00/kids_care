@@ -32,6 +32,13 @@ public class ReservationController {
 		service.add(rsvInfo);
 	}
 	
+	@GetMapping("/parent/{username}")
+	List<Reservation> parentResvList(@PathVariable String username) {
+		List<Reservation> list = service.parentList(username);
+		return list;
+	}
+	
+	
 	@DeleteMapping("/delete/{resId}")
 	Integer delete(@PathVariable Long resId) {
 		return service.delete(resId);
