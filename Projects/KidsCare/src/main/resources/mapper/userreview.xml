@@ -26,8 +26,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT into userreview(reviewId, userId, sitterId, rating, reviewInfo)
-		VALUES (#{reviewId},#{userId},#{sitterId},#{rating},#{reviewInfo})
+		INSERT into userreview(reviewId, username, username2, rating, reviewInfo, status)
+		VALUES (REVIEW_SEQ.nextval,#{username},#{sitterUsername},#{rating},#{reviewInfo},#{status})
 	</insert>
 	
 	<update id="update">
