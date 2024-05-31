@@ -26,6 +26,8 @@ public class BabySitter {
 	private String career;
 	private String title;
 	private SitterPhoto photos;
+		
+	private Address address;
 	
 	public String getName() {
 		return name;
@@ -176,6 +178,12 @@ public class BabySitter {
 	}
 	public void setPhotos(SitterPhoto photos) {
 		this.photos = photos;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 }
