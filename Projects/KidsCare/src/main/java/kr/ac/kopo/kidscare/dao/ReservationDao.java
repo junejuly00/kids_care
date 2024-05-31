@@ -12,4 +12,8 @@ public interface ReservationDao {
 
 	Integer delete(Long resId);
 
+	List<Reservation> parentList(String username);
+
+	List<Reservation> parentPastList(String username);
+
 }

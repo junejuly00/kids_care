@@ -21,14 +21,22 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public void add(Reservation rsvInfo) {
-		// TODO Auto-generated method stub
 		dao.add(rsvInfo);
 	}
 
 	@Override
 	public Integer delete(Long resId) {
-		// TODO Auto-generated method stub
 		return dao.delete(resId);
+	}
+
+	@Override
+	public List<Reservation> parentList(String username) {
+		return dao.parentList(username);
+	}
+
+	@Override
+	public List<Reservation> parentPastList(String username) {
+		return dao.parentPastList(username);
 	}
 
 }

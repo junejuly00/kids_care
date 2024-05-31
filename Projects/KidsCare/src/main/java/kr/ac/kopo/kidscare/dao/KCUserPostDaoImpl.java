@@ -62,4 +62,14 @@ public class KCUserPostDaoImpl implements KCUserPostDao {
 		return sql.selectOne("kcuserpost.total",pager);
 	}
 
+	@Override
+	public int deleteImage(Integer code) {
+		return sql.delete("kcuserpost.delete_image", code);
+	}
+
+	@Override
+	public UserFile itemImage(Integer code) {
+		return sql.selectOne("kcuserpost.item_image",code);
+	}
+
 }

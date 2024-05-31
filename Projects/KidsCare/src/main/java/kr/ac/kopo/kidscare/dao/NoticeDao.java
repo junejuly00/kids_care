@@ -26,4 +26,8 @@ public interface NoticeDao {
 
 	void add(NoticeFile noticefile);
 
+	NoticeFile itemImage(Integer noticeId);
+
+	int deleteImage(Integer noticeId);
+
 }

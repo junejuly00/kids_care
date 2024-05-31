@@ -62,6 +62,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.mypost(username);
 	}
 
+	@Override
+	public NoticeFile itemImage(Integer noticeId) {
+		return dao.itemImage(noticeId);
+	}
+
+	@Override
+	public boolean deleteImage(Integer noticeId) {
+		if(dao.deleteImage(noticeId) > 0)
+			return true;
+		
+		return false;
+	}
+
 	
 
 }

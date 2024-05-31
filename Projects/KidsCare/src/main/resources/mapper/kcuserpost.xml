@@ -22,10 +22,10 @@
 	<select id="list" resultType="KcUserPost">
 		SELECT * FROM
 			(SELECT sub.*, ROWNUM rnum FROM 
-				(<include refid="search"></include>) sub)
+				(<include refid="search" ></include> ORDER BY postdate desc) sub)
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
 		AND status=0
-		ORDER BY postdate desc
+		
 	</select>
 
 	
@@ -79,6 +79,16 @@
 	<select id="mypost" resultType="KcUserPost">
 		SELECT * FROM kcuserpost
 		WHERE username=#{username}
+	</select>
+	
+	<delete id="delete_image">
+		DELETE FROM userfile
+		WHERE code=#{code}
+	</delete>
+	
+	<select id="item_image" resultType="UserFile">
+		SELECT * FROM userfile
+		WHERE code=#{code}
 	</select>
 </mapper>
 

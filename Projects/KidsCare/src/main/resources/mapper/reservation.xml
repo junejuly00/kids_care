@@ -6,9 +6,20 @@
 		SELECT * FROM reservation
 	</select>
 	
+	<select id="pastparent" resultType="Reservation">
+		SELECT * FROM reservation 
+		WHERE username=#{username}
+		AND resdate &lt; TO_CHAR(sysdate ,'YYYY-MM-DD"T"HH24:MI:SS')
+	</select>
+	<select id="parent" resultType="Reservation">
+		SELECT * FROM reservation
+		WHERE username=#{username}
+		AND resdate &gt; TO_CHAR(sysdate, 'YYYY-MM-DD"T"HH24:MI:SS')
+	</select>
+	
 	<insert id="add">
 		INSERT INTO reservation
-		VALUES (#{resId},#{username},#{sitterUsername},#{resDate})
+		VALUES (#{resId},#{username},#{sittername},#{resDate})
 	</insert>
 	
 	<delete id="delete">

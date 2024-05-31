@@ -3,6 +3,7 @@ package kr.ac.kopo.kidscare.service;
 import java.util.List;
 
 import kr.ac.kopo.kidscare.model.Notice;
+import kr.ac.kopo.kidscare.model.NoticeFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 public interface NoticeService {
@@ -18,5 +19,9 @@ public interface NoticeService {
 	void hide(Integer code);
 
 	List<Notice> mypost(String username);
+
+	NoticeFile itemImage(Integer noticeId);
+
+	boolean deleteImage(Integer noticeId);
 
 }

@@ -45,6 +45,8 @@
 		th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
 
 			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
+
+      
 		</div>
 		
 		<hr>
@@ -66,8 +68,35 @@
     	</div>
 		
 		</div>
+
+
+         <img th:if="${userFile != null}" th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
+         <div th:if="${userFile != null}" th:text="${userFile.filename}"></div>
+
+      </div>
       
-      	<div class="comment">
+      <hr>
+      
+      <div id="btn">
+      
+         <div class="delete">
+            <a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
+         </div>
+         
+         <div class="update">
+            <a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
+         </div>
+         
+         <div class="list">
+            <a href="../list">목록</a>
+         </div>
+         
+       </div>
+      
+      </div>
+
+      <div class="comment">
+
          
          <hr>
          

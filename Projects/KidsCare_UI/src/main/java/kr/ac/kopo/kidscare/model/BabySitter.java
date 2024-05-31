@@ -28,6 +28,8 @@ public class BabySitter{
 	private String startday;
 	private String salary;
 	private String career;
+	
+	private Address address;
 	public String getCareer() {
 		return career;
 	}
@@ -281,6 +283,16 @@ public String getTitle() {
 
 public void setTitle(String title) {
 	this.title = title;
+}
+
+
+public Address getAddress() {
+	return address;
+}
+
+
+public void setAddress(Address address) {
+	this.address = address;
 }
    
    

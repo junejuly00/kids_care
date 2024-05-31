@@ -48,9 +48,14 @@ public class BabySitterController {
 	String list(Model model, Pager pager) throws JsonMappingException, JsonProcessingException {
 		
 		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+
 		String parentName=auth.getName();
-		Address parentAddress = rest.getForObject("http://localhost:9090/address"+parentName,Address.class);
+		Address parentAddress = rest.getForObject("http://localhost:9090/address/"+parentName,Address.class);
+
 		
+		
+		String parentName=auth.getName();
+		Address parentAddress = rest.getForObject("http://localhost:9090/address"+parentName,Address.class);		
 		String parentCity = parentAddress.getCity();
 		
 		

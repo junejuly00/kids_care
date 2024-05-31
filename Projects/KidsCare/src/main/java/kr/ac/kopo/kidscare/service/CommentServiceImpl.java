@@ -33,6 +33,8 @@ public class CommentServiceImpl implements CommentService {
 	public void update(Comment commentInfo) {
 		dao.update(commentInfo);
 	}
+	
+	
 
 	@Override
 	public List<Comment> filter(Integer userPostId) {

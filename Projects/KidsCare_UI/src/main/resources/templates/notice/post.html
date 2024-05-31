@@ -45,7 +45,11 @@
 		</div>
 		
 		<div th:if="${postInfo.noticeFiles == null }">문장출력</div>
-		<div th:each="noticeFile : ${postInfo.noticeFiles}">
+		<div th:each="noticeFile : ${postInfo.noticeFiles}"
+		th:if="${noticeFile.uuid != null and noticeFile.filename != null and noticeFile.uuid != '' and noticeFile.filename != ''}">
+		 
+		
+		
 			<img th:src="@{'/upload/'+ ${noticeFile.uuid}+'_'+${noticeFile.filename}}" th:alt="${noticeFile.filename}" >
 			<div th:text="${noticeFile.filename}"></div>
 		</div>

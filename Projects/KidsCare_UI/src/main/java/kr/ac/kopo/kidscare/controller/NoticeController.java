@@ -9,16 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.Notice;
 import kr.ac.kopo.kidscare.model.NoticeFile;
+import kr.ac.kopo.kidscare.model.UserFile;
 import kr.ac.kopo.kidscare.pager.Pager;
 import kr.ac.kopo.kidscare.pager.PagerMap;
 
@@ -196,7 +201,14 @@ public class NoticeController {
 	String hide(@PathVariable Integer code) {
 		Notice item = rest.getForObject(url + "hide/" + code.toString() , Notice.class);				
 		return "redirect:../list";
-		
 	}
-
+	
+	@GetMapping("/delete_image/{noticeId}")
+	ResponseEntity<String> deleteImage(@PathVariable Integer noticeId) {
+		RequestEntity<Void> req = RequestEntity.delete(url + "/delete_image/" + noticeId).build();
+		
+		ResponseEntity<String> result = rest.exchange(req, String.class);
+		
+		return result;
+	}
 }

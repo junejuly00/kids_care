@@ -42,9 +42,12 @@
 			
 		<div>
 			<div th:each="userFile : ${item.userFiles}">
-				<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" 
-					th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
-				<div th:text="${userFile.filename}"></div>
+
+				<div th:data-code="${userFile.code}">
+					<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}">
+					<button type="button" class="delete">삭제</button>
+				</div>
+
 			</div>
 		</div>
 		
@@ -69,6 +72,7 @@
 	<footer th:replace="/footer.html"></footer>
 	
 	<script type="text/javascript" src="../../static/js/file_add.js"></script>
+	<script type="text/javascript" src="../../static/js/delete_image_kcuserpost.js"></script>
 	<script src="../../static/js/summernote-ko-KR.js"></script>
 	
 	<script>

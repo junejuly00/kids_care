@@ -6,6 +6,7 @@ public class UserReview {
 	private String sitterUsername;
 	private Byte rating;
 	private String reviewInfo;
+	private Byte status;
 	public String getReviewId() {
 		return reviewId;
 	}
@@ -17,12 +18,6 @@ public class UserReview {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getSitterId() {
-		return username;
-	}
-	public void setSitterId(String sitterUsername) {
-		this.setSitterUsername(sitterUsername);
 	}
 	public Byte getRating() {
 		return rating;
@@ -41,5 +36,11 @@ public class UserReview {
 	}
 	public void setSitterUsername(String sitterUsername) {
 		this.sitterUsername = sitterUsername;
+	}
+	public Byte getStatus() {
+		return status;
+	}
+	public void setStatus(Byte status) {
+		this.status = status;
 	}
 }
