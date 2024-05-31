@@ -75,24 +75,41 @@
 	<br>
     <table>
         <caption>시터 리스트</caption>
-        <tr>
-            <th>시터 성명</th>
-            <th>전화번호</th>
-            <th>나이</th>
-            <th>성별</th>
-            <th>이메일</th>
-            <th>희망급여</th>
-            
-        </tr>
-        <tr th:each="sitterInfo : ${sitterList}">
-            <td th:text="${sitterInfo.name}"></td>
-            <td th:text="${sitterInfo.phone}"></td>
-            <td th:text="${sitterInfo.age}"></td>
-            <td th:text="${sitterInfo.gender}"></td>
-            <td th:text="${sitterInfo.email}"></td>
-            <td th:text="${sitterInfo.salary}"></td>
-        </tr>
-        
+        <thead>
+	        <tr>
+	            <th>시터 성명</th>
+	            <th>전화번호</th>
+	            <th>나이</th>
+	            <th>성별</th>
+	            <th>이메일</th>
+	            <th>희망급여</th>
+	            
+	        </tr>
+        </thead>
+        <tbody>
+	        <tr th:each="sitterInfo : ${sitterList}">
+	            <td th:text="${sitterInfo.name}"></td>
+	            <td th:text="${sitterInfo.phone}"></td>
+	            <td th:text="${sitterInfo.age}"></td>
+	            <td th:text="${sitterInfo.gender}"></td>
+	            <td th:text="${sitterInfo.email}"></td>
+	            <td th:text="${sitterInfo.salary}"></td>
+	        </tr>
+        </tbody>
+    </table>
+    <br>
+    
+    <table>
+    	<caption>내 예약 목록</caption>
+    	<tr>
+    		<td>시터 아이디</td>
+    		<td>예약 일자</td>
+    	</tr>
+    	<tr th:each="rsvInfo : ${rsvList}">
+    		<td th:text="${rsvInfo.sitterUsername}" th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
+    		<td th:text="${rsvInfo.resDate}"></td>
+    	</tr>
+    	
     </table>
 
 </body>
