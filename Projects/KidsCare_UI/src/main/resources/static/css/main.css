@@ -181,7 +181,7 @@ html{
 
 .kidscare{
 	width: 100%;
-	background-color: #FFF89A ;
+	background-color: #FFF89A;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -204,7 +204,8 @@ html{
      width: 320px;
      height: 440px;
      background-color: #FFFFFF;
-     border-radius: 20px; 
+     border-radius: 20px;
+     box-shadow: 0 12px 15px 0 rgba(53, 53, 53, 0.24), 0 17px 50px 0 rgba(23, 23, 23, 0.19);
    }
    
 .swiper-wrapper{
@@ -292,7 +293,7 @@ html{
 }
 
 .newsitter h3{
-	font-size: 36px
+	font-size: 30px
 }
 
 .newsitter .new-box{
@@ -351,8 +352,9 @@ html{
     margin-bottom: 150px;
     margin-top: 200px;
 }
+
 .review .review-main{
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
     justify-content: center;
     display: flex;

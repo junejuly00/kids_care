@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:href="@{/fragment/head.html}">
 <meta charset="UTF-8">
-<title></title>
+<title>KIDS CARE</title>
 <link rel="stylesheet" th:href="@{/static/css/post_add.css}" /> 
 
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -41,7 +42,8 @@
 			
 		<div>
 			<div th:each="userFile : ${item.userFiles}">
-				<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}">
+				<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" 
+					th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
 				<div th:text="${userFile.filename}"></div>
 			</div>
 		</div>

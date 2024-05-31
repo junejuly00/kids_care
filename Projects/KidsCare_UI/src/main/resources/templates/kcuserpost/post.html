@@ -2,19 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>KIDSCARE</title>
+<title>KIDS CARE</title>
 
-    <link th:href="@{/static/css/communitypost.css}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
+<link th:href="@{/static/css/communitypost.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
    
    <nav th:replace="/nav.html"></nav>
    
+   <section class="main_img">
+		<div class="img-option"></div>
+    	<img alt="" src="../../static/image/서브6.jpg">
+        <div class="main_content">
+            <h2>
+            	부모님의 든든한 파트너 <br>
+            	KIDS CARE
+            </h2>
+        </div>
+    </section>
+   
    <div class="wrap">
-      <div class="main_txt">
-         <p>커뮤니티<p>
-      </div>
       
       <div class="box">
       <div class="title">
@@ -37,7 +45,6 @@
 		th:if="${userFile.uuid != null and userFile.filename != null and userFile.uuid != '' and userFile.filename != ''}">
 
 			<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
-			<div th:text="${userFile.filename}"></div>
 		</div>
 		
 		<hr>
@@ -49,7 +56,7 @@
 			</div>
 			
 			<div class="update">
-				        	<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
+				<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
 			</div>
 			
 			<div class="list">
@@ -59,33 +66,8 @@
     	</div>
 		
 		</div>
-
-
-         <img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
-         <div th:text="${userFile.filename}"></div>
-      </div>
       
-      <hr>
-      
-      <div id="btn">
-      
-         <div class="delete">
-            <a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
-         </div>
-         
-         <div class="update">
-                       <a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
-         </div>
-         
-         <div class="list">
-            <a href="../list">목록</a>
-         </div>
-         
-       </div>
-      
-      </div>
-
-      <div class="comment">
+      	<div class="comment">
          
          <hr>
          
@@ -94,7 +76,7 @@
 
             <input type="text" name="userPostId" th:value="${postInfo.userPostId}" readonly hidden="true">              
               <div class="comment-text">       
-                 <textarea id="comment" name="substance" rows="6" cols="130" 
+                 <textarea id="comment" name="substance" rows="4" cols="130" 
                     maxlength="500" required placeholder="작성할 댓글 내용을 입력해 주세요./ 최대 500자"></textarea>
                  <button type="submit">등록</button>
               </div>
@@ -102,24 +84,26 @@
           </form>
           
           <hr>
+          
+          <div class="commentlist">
+	      	  <div th:each="item : ${commentList}">
+		          <div class="comment-text-list">
+		            <p th:text="${item.commentId}" hidden="true"></p>
+		            <p th:text="${item.username}"  style="font-weight:bold; margin-bottom: 5px;"></p>
+		            <p th:text="${item.substance}"></p>
+		         </div>
+	         
+	         	<hr>
+	         
+	      		</div>
+   		  </div>
                    
       </div>
-
-   
-   <div class="commentlist">
-      <div th:each="item : ${commentList}">
-         <div class="comment-text">
-            <p th:text="${item.commentId}" hidden="true"></p>
-            <p th:text="${item.username}"  style="font-weight:bold; margin-bottom: 5px;"></p>
-            <p th:text="${item.substance}"></p>
-         </div>
-         
-         <hr>
-         
-      </div>
-   </div>
       
-   </div>
+      </div>
+      
+      
+      
    
    <footer th:replace="/footer.html"></footer>
    
