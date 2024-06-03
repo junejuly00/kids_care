@@ -33,7 +33,7 @@ public class AddressController {
 		service.add(addressInfo);
 	}
 	
-	@GetMapping("/{username}")
+	@GetMapping("/find/{username}")
 	Address addressInfo(@PathVariable String username) {
 		return service.addressInfo(username);
 	}
