@@ -14,7 +14,7 @@
 	
 	<update id="update">
 		UPDATE kcuser
-		SET password=#{password},name=#{name},phone=#{phone},email=#{email},role=#{role}
+		SET password=#{password},name=#{name},phone=#{phone},email=#{email},role=#{role},provider=#{provider},status=#{status}
 		WHERE username=#{username}
 	</update>
 	

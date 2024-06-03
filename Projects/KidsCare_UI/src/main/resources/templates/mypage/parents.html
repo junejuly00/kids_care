@@ -14,25 +14,33 @@
 
 	<div class="wrap">
 
-		<div class="container">
-			<div class="buttons">
-				<button class="tab-button" data-target="content1">내 정보</button>
-				<button class="tab-button" data-target="content2">커뮤니티 글</button>
-				<button class="tab-button" data-target="content3">내 댓글</button>
-				<button class="tab-button" data-target="content4">작성 리뷰</button>
-				<button class="tab-button" data-target="content5">시터 리스트</button>
-				<button class="tab-button" data-target="content6">예약 내역</button>
-			</div>
+	
+	<div class="container">
+        <div class="buttons">
+            <button class="tab-button" data-target="content1">내 정보</button>
+            <button class="tab-button" data-target="content2">커뮤니티 글</button>
+            <button class="tab-button" data-target="content3">내 댓글</button>
+            <button class="tab-button" data-target="content4">작성 리뷰</button>
+            <button class="tab-button" data-target="content5">시터 리스트</button>
+            <button class="tab-button" data-target="content6">예약 내역</button>
+        </div>
 
-			<div class="content">
-				<div id="content1" class="tab-content">
-					<div class="info">
-						<input value="아이디" th:value="${userInfo.username}" readonly>
-						<input value="이름" th:value="${userInfo.name}" readonly> <input
-							value="연락처" th:value="${userInfo.phone}" readonly> <input
-							value="이메일" th:value="${userInfo.email}" readonly> <input
-							value="주소" readonly>
+        <div class="content">
+            <div id="content1" class="tab-content">
+				<div class="info">
+					 <input value="아이디" th:value="${userInfo.username}"  readonly>
+	                 <input value="이름" th:value="${userInfo.name}" readonly>
+	                 <input value="연락처" th:value="${userInfo.phone}" readonly>
+	                 <input value="이메일" th:value="${userInfo.email}" readonly>
+	                 <input value="주소" readonly>
+	                 
+					<div class="update">
+						<form action="post">
+						<a th:href="@{'/mypage/update/' + ${userInfo.username}}" th:text="변경"><button class="write"></button></a>
+						</form>
 					</div>
+					
+
 				</div>
 				<div id="content2" class="tab-content">
 					<div class="my-community">
