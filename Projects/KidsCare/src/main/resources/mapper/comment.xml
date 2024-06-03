@@ -15,6 +15,15 @@
 		
 	</select>
 	
+	<select id="info" resultType="Comment">
+		SELECT * FROM comments
+		WHERE status=0 and commentId=#{commentId}
+	</select>
+	
+	<select id="findUser" resultType="Comment">
+		SELECT * FROM comments
+		WHERE status=0 AND username=#{username}
+	</select>
 	<insert id="add">
 		INSERT into comments(commentId, username, userPostId, substance, status,postdate)
 		VALUES(CODE_SEQ.nextval,#{username},#{userPostId},#{substance},0,sysdate)

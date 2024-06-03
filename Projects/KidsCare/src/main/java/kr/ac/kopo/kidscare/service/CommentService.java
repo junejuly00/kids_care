@@ -17,4 +17,6 @@ public interface CommentService {
 
 	List<Comment> filter(Integer userPostId);
 
+	List<Comment> userComment(String username);
+
 }
