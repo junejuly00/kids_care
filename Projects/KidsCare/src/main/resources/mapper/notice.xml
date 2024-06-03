@@ -59,5 +59,15 @@
 		INSERT INTO noticefile
 		VALUES (NOTICEID_SEQ.nextval, #{code}, #{filename}, #{uuid})
 	</insert>
+	
+	<delete id="delete_image">
+		DELETE FROM noticefile
+		WHERE noticeId=#{noticeId}
+	</delete>
+	
+	<select id="item_image" resultType="NoticeFile">
+		SELECT * FROM noticefile
+		WHERE noticeId=#{noticeId}
+	</select>
 </mapper>
 

@@ -4,6 +4,21 @@
 
 html{
     font-size: 18px;
+    overflow-y: overlay;
+}
+
+/* 스크롤바의 폭 너비 */
+.scrollbar::-webkit-scrollbar {
+    width: 12px;  
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px; /* 스크롤바 둥근 테두리 */
+    border: 7px solid #FFDEEC;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: #fff;  /*스크롤바 뒷 배경 색상*/
 }
 
 *{
@@ -28,6 +43,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #fff;
 }
 
 #logo img{

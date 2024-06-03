@@ -14,4 +14,6 @@ public interface ReservationService {
 
 	List<Reservation> parentList(String username);
 
+	List<Reservation> parentPastList(String username);
+
 }

@@ -26,6 +26,7 @@ public class BabySitter {
 	private String career;
 	private String title;
 	private SitterPhoto photos;
+
 	private Address address;
 	
 	public String getName() {
