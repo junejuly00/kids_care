@@ -1,6 +1,8 @@
 package kr.ac.kopo.kidscare.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -27,6 +30,7 @@ import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 
 import kr.ac.kopo.kidscare.model.JobCert;
+import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.model.UserReview;
 import kr.ac.kopo.kidscare.pager.Pager;
 import kr.ac.kopo.kidscare.pager.PagerMap;
@@ -35,7 +39,7 @@ import kr.ac.kopo.kidscare.pager.PagerMap;
 @Controller
 @RequestMapping("/babysitter")
 public class BabySitterController {
-	
+	private String uploadPath = "d:/upload/";
 	final String url = "http://localhost:9090/babysitter/";
 	
 	@Autowired
@@ -111,8 +115,26 @@ public class BabySitterController {
 	}
 	
 	@PostMapping("/update/{username}")
-	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
+	String update(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile) throws JsonProcessingException {
 		sitterInfo.setUsername(username);
+		
+		if(uploadFile != null && !uploadFile.isEmpty()) {
+			String filename = uploadFile.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			
+			try {
+				uploadFile.transferTo(new File(uploadPath + uuid + "_" + filename));
+				
+				SitterPhoto img = new SitterPhoto();
+				img.setFilename(filename);
+				img.setUuid(uuid);
+				img.setUsername(username);
+				
+				sitterInfo.setPhotos(img);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
