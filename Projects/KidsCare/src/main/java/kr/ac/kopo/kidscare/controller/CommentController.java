@@ -31,7 +31,6 @@ public class CommentController {
 	@GetMapping("/filter/{userPostId}")
 	List<Comment> filter(@PathVariable Integer userPostId){
 		List<Comment> list = service.filter(userPostId);
-		
 		return list;
 	}
 	
@@ -44,6 +43,13 @@ public class CommentController {
 	Comment commentInfo(@PathVariable Integer commentId) {
 		return service.CommentInfo(commentId);
 	}
+	
+	@GetMapping("/user/{username}")
+	List<Comment> userComment(@PathVariable String username) {
+		List<Comment> list = service.userComment(username);
+		return list;
+	}
+	
 	
 	@PutMapping("/commentId")
 	void update(@PathVariable Integer commentId, @RequestBody Comment commentInfo) {
