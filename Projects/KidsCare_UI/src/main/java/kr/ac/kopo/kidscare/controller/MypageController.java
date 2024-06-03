@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
@@ -61,12 +62,16 @@ public class MypageController {
 		String rvwResp = rest.getForObject("http://localhost:9090/userreview/find/" + username, String.class);
 		List<UserReview> rvwList = om.readValue(rvwResp, new TypeReference<List<UserReview>>() {});
 		
+		String comResp = rest.getForObject("http://localhost:9090/comment/user/"+ username, String.class);
+		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {});
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("rsvList", rsvList);
 		model.addAttribute("rsvPastList", rsvPastList);
 		model.addAttribute("rvwList", rvwList);
+		model.addAttribute("commentList", comList);
 		
 		return "mypage/parents";
 	}
