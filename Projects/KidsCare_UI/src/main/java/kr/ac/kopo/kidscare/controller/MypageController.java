@@ -92,35 +92,5 @@ public class MypageController {
 		model.addAttribute("sitterInfo",sitterInfo);
 		
 		return "/mypage/sitter";
-		
-	}
-	
-	@GetMapping("/update/{username}")
-		String update(@PathVariable String username, Model model) {
-		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username, KCUser.class);
-		
-		model.addAttribute("userInfo", userInfo);
-		
-		return "/mypage/update";
-	}
-	
-	@PostMapping("/update/{username}")
-	String update(@PathVariable String username, KCUser userInfo) throws JsonProcessingException {
-		userInfo.setUsername(username);
-		
-		HttpHeaders header = new HttpHeaders();
-        header.add("Content-Type", "application/json");
-        
-        String jsonString = om.writeValueAsString(userInfo);
-        
-        HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
-        
-        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/find/" + username, HttpMethod.PUT, req, Integer.class);
-        
-        Integer result = resp.getBody();
-        
-        System.out.println(result);
-        
-        return "redirect:/mypage/sitter";
 	}
 }

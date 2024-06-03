@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.pager.Pager;
 
 @Repository
@@ -51,6 +52,12 @@ public class BabySitterDaoImpl implements BabySitterDao {
 			return sql.selectList("babysitter.list", pager);
 			
 		}
+		
+	}
+
+	@Override
+	public void add(SitterPhoto sitterphoto) {
+		sql.insert("babysitter.add_image", sitterphoto);
 		
 	}
 
