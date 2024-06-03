@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,17 +55,23 @@ public class UserReviewController {
 		return "userreview/list";
 	}
 	
-	@GetMapping("/add")
-	String add() {
+	@GetMapping("/add/{username}")
+	String add(@PathVariable String username, Model model) {
+		model.addAttribute("sitterName", username);
 		return "userreview/add";
 	}
 	
-	@PostMapping("/add")
-	String add(UserReview userreviewInfo) throws JsonProcessingException {
+	@PostMapping("/add/{username}")
+	String add(UserReview reviewInfo, @PathVariable String username) throws JsonProcessingException {
+		String parentName = SecurityContextHolder.getContext().getAuthentication().getName();
+		reviewInfo.setUsername(parentName);
+		reviewInfo.setSitterUsername(username);
+		reviewInfo.setStatus((byte) 0);
+		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String jsonString = om.writeValueAsString(userreviewInfo);
+		String jsonString = om.writeValueAsString(reviewInfo);
 		
 		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
 		
@@ -73,7 +81,7 @@ public class UserReviewController {
 		
 		System.out.println(body);
 		
-		return "redirect:list";
+		return "redirect:../../mypage/parents";
 	}
 	
 	@GetMapping("/update/{reviewId}")

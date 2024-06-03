@@ -28,6 +28,7 @@ import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
+import kr.ac.kopo.kidscare.model.UserReview;
 
 @Controller
 @RequestMapping("/mypage")
@@ -60,15 +61,19 @@ public class MypageController {
 		String rsvResp = rest.getForObject("http://localhost:9090/reservation/parent/" + username, String.class);
 		List<Reservation> rsvList = om.readValue(rsvResp, new TypeReference<List<Reservation>>() {});
 		
-		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/" + username, Address.class);
+		String rsvPastResp = rest.getForObject("http://localhost:9090/reservation/parent/past/" + username, String.class);
+		List<Reservation> rsvPastList = om.readValue(rsvPastResp, new TypeReference<List<Reservation>>() {});
 		
-
+		String rvwResp = rest.getForObject("http://localhost:9090/userreview/find/" + username, String.class);
+		List<UserReview> rvwList = om.readValue(rvwResp, new TypeReference<List<UserReview>>() {});
 		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("rsvList", rsvList);
+		model.addAttribute("rsvPastList", rsvPastList);
+		model.addAttribute("rvwList", rvwList);
 		
 		return "mypage/parents";
 	}

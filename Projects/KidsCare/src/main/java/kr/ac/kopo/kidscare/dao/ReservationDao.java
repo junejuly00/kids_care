@@ -14,4 +14,6 @@ public interface ReservationDao {
 
 	List<Reservation> parentList(String username);
 
+	List<Reservation> parentPastList(String username);
+
 }

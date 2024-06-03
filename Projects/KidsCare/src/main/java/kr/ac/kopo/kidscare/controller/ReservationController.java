@@ -38,6 +38,12 @@ public class ReservationController {
 		return list;
 	}
 	
+	@GetMapping("/parent/past/{username}")
+	List<Reservation> parentPastList(@PathVariable String username) {
+		List<Reservation> list = service.parentPastList(username);
+		return list;
+	}
+	
 	
 	@DeleteMapping("/delete/{resId}")
 	Integer delete(@PathVariable Long resId) {

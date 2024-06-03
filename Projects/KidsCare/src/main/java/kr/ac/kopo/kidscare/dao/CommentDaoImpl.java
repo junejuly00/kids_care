@@ -27,7 +27,7 @@ public class CommentDaoImpl implements CommentDao {
 
 	@Override
 	public Comment commentInfo(Integer commentId) {
-		return sql.selectOne("comment.item",commentId);
+		return sql.selectOne("comment.info",commentId);
 	}
 
 	@Override
@@ -38,6 +38,12 @@ public class CommentDaoImpl implements CommentDao {
 	@Override
 	public List<Comment> filter(Integer userPostId) {
 		return sql.selectList("comment.filter",userPostId);
+	}
+
+	@Override
+	public List<Comment> userComment(String username) {
+		
+		return sql.selectList("comment.findUser", username);
 	}
 
 }

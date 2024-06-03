@@ -29,7 +29,7 @@ public class UserReviewController {
 		return list;
 	}
 	
-	@PostMapping
+	@PostMapping("/add")
 	void add(@RequestBody UserReview userreviewInfo) {
 		service.add(userreviewInfo);
 	}

@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:href="@{/fragment/head.html}">
 <meta charset="UTF-8">
-<title></title>
+<title>KIDS CARE</title>
 <link rel="stylesheet" th:href="@{/static/css/post_add.css}" /> 
 
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -41,10 +42,12 @@
 			
 		<div>
 			<div th:each="userFile : ${item.userFiles}">
+
 				<div th:data-code="${userFile.code}">
 					<img th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}">
 					<button type="button" class="delete">삭제</button>
 				</div>
+
 			</div>
 		</div>
 		
@@ -69,6 +72,7 @@
 	<footer th:replace="/footer.html"></footer>
 	
 	<script type="text/javascript" src="../../static/js/file_add.js"></script>
+	<script type="text/javascript" src="../../static/js/delete_image_kcuserpost.js"></script>
 	<script src="../../static/js/summernote-ko-KR.js"></script>
 	
 	<script>
@@ -78,30 +82,6 @@
         		lang: 'ko-KR',
         	});
     	});
-  </script>
-  	
-  <script>
-  window.addEventListener("load", () =>{
-	    document.querySelectorAll(".delete").forEach(item => {
-	        const div = item.closest("div[data-code]");
-
-	        item.addEventListener("click", e => {
-	            e.preventDefault(); // 기본 동작을 막음
-
-	            fetch("http://localhost:9091/kcuserpost/delete_image/" + div.dataset.code, {
-	                method: "DELETE",
-	            })
-	            .then(resp => {
-	                if(resp.ok) {
-	                    div.remove();
-	                } else {
-	                    // Handle error if needed
-	                    console.error("Failed to delete image.");
-	                }
-	            });
-	        });
-	    });
-	});
   </script>
 </body>
 </html>

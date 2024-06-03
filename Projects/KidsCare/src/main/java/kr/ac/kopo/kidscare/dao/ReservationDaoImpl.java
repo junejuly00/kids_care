@@ -33,8 +33,12 @@ public class ReservationDaoImpl implements ReservationDao {
 
 	@Override
 	public List<Reservation> parentList(String username) {
-		// TODO Auto-generated method stub
 		return sql.selectList("reservation.parent", username);
+	}
+
+	@Override
+	public List<Reservation> parentPastList(String username) {
+		return sql.selectList("reservation.pastparent", username);
 	}
 
 }

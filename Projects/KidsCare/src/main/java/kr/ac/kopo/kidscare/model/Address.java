@@ -6,6 +6,7 @@ public class Address {
 	private String province;
 	private String city;
 	private String village;
+	
 	public String getUsername() {
 		return username;
 	}
