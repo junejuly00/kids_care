@@ -41,4 +41,9 @@ public class CommentServiceImpl implements CommentService {
 		return dao.filter(userPostId);
 	}
 
+	@Override
+	public List<Comment> userComment(String username) {
+		return dao.userComment(username);
+	}
+
 }
