@@ -29,6 +29,12 @@
 	                 <input value="연락처" th:value="${userInfo.phone}" readonly>
 	                 <input value="이메일" th:value="${userInfo.email}" readonly>
 	                 <input value="주소" readonly>
+	                 
+					<div class="update">
+						<form action="post">
+						<a th:href="@{'/mypage/update/' + ${userInfo.username}}" th:text="변경"><button class="write"></button></a>
+						</form>
+					</div>
 					
 				</div>
             </div> 
