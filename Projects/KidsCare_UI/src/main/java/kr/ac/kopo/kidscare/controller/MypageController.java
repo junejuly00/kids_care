@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
@@ -67,6 +68,9 @@ public class MypageController {
 		String rvwResp = rest.getForObject("http://localhost:9090/userreview/find/" + username, String.class);
 		List<UserReview> rvwList = om.readValue(rvwResp, new TypeReference<List<UserReview>>() {});
 		
+		String comResp = rest.getForObject("http://localhost:9090/comment/user/"+ username, String.class);
+		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {});
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
@@ -74,6 +78,7 @@ public class MypageController {
 		model.addAttribute("rsvList", rsvList);
 		model.addAttribute("rsvPastList", rsvPastList);
 		model.addAttribute("rvwList", rvwList);
+		model.addAttribute("commentList", comList);
 		
 		return "mypage/parents";
 	}
@@ -89,6 +94,7 @@ public class MypageController {
 		model.addAttribute("sitterInfo",sitterInfo);
 		
 		return "/mypage/sitter";
+
 		
 	}
 	
@@ -121,5 +127,6 @@ public class MypageController {
         System.out.println(result);
         
         return "redirect:/mypage/parents";
+
 	}
 }

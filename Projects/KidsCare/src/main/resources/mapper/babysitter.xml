@@ -84,4 +84,9 @@
 		FROM babysitter
 		WHERE username=#{username}
 	</select>
+	
+	<insert id="add_image">
+		INSERT INTO babysitter
+		VALUES (CODE_SEQ.nextval, #{username}, #{filename}, #{uuid})
+	</insert>
 </mapper>

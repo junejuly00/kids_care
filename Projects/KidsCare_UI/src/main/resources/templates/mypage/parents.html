@@ -73,22 +73,17 @@
 						<table>
 							<thead>
 								<tr>
-									<th>번호</th>
 									<th>제목</th>
 									<th>작성 날짜</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr th:if="${commentList.size() < 1}">
 									<td colspan="3">등록된 댓글이 없습니다.</td>
 								</tr>
 								<tr th:each="commentInfo : ${commentList}">
-									<td><a th:text="${commentInfo.userPostId}"
-										th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-									<td><a th:text="${postInfo.title}"
-										th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-									<td><a th:text="${commentInfo.postdate}"
-										th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+									<td><a th:href="@{'/kcuserpost/post/'+${commentInfo.userPostId}}" th:text="${commentInfo.postDate}"></a></td>
+									<td th:text="${commentInfo.substance}"></td>
 								</tr>
 							</tbody>
 						</table>
