@@ -7,6 +7,14 @@ html{
     overflow-y: overlay;
 }
 
+button{
+	font-family: 'Binggrae';
+}
+
+input{
+	outline: none;
+}
+
 /* 스크롤바의 폭 너비 */
 .scrollbar::-webkit-scrollbar {
     width: 12px;  

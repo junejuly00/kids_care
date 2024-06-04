@@ -14,30 +14,33 @@
 
 	<div class="wrap">
 
-	
-	<div class="container">
-        <div class="buttons">
-            <button class="tab-button" data-target="content1">내 정보</button>
-            <button class="tab-button" data-target="content2">커뮤니티 글</button>
-            <button class="tab-button" data-target="content3">내 댓글</button>
-            <button class="tab-button" data-target="content4">작성 리뷰</button>
-            <button class="tab-button" data-target="content5">시터 리스트</button>
-            <button class="tab-button" data-target="content6">예약 내역</button>
-        </div>
 
-        <div class="content">
-            <div id="content1" class="tab-content">
-				<div class="info">
-					 <input value="아이디" th:value="${userInfo.username}"  readonly>
-	                 <input value="이름" th:value="${userInfo.name}" readonly>
-	                 <input value="연락처" th:value="${userInfo.phone}" readonly>
-	                 <input value="이메일" th:value="${userInfo.email}" readonly>
-	                 <input value="주소" th:value="${addressInfo.fullAddress}" readonly>
-	                 
-					<div class="update">
-						<form action="post">
-						<a th:href="@{'/mypage/update/' + ${userInfo.username}}" th:text="변경"><button class="write"></button></a>
-						</form>
+		<div class="container">
+			<div class="buttons">
+				<button class="tab-button" data-target="content1">내 정보</button>
+				<button class="tab-button" data-target="content2">커뮤니티 글</button>
+				<button class="tab-button" data-target="content3">내 댓글</button>
+				<button class="tab-button" data-target="content4">작성 리뷰</button>
+				<button class="tab-button" data-target="content5">시터 리스트</button>
+				 <div class="dropdown">
+                <button class="tab-button" data-target="content6">예약 내역</button>
+                <div class="dropdown-content">
+                    <button class="inner-button" data-target="innerContent1">현재 내역</button>
+                    <button class="inner-button" data-target="innerContent2">지난 내역</button>
+                </div>
+            </div>
+			</div>
+
+			<div class="content">
+				<div id="content1" class="tab-content">
+					<div class="info">
+						<input value="아이디" th:value="${userInfo.username}" readonly>
+						<input value="이름" th:value="${userInfo.name}" readonly> <input
+							value="연락처" th:value="${userInfo.phone}" readonly> <input
+							value="이메일" th:value="${userInfo.email}" readonly> <input
+							value="주소" readonly>
+
+
 					</div>
 					
 
@@ -92,7 +95,7 @@
 				</div>
 
 				<div id="content4" class="tab-content">
-					<div>
+					<div class="my-review">
 						<table>
 							<thead>
 								<tr>
@@ -145,42 +148,74 @@
 								</tbody>
 							</table>
 						</div>
-						<br>
 
 					</div>
+					
+					
 					<div id="content6" class="tab-content">
-						<table>
-							<caption>내 지난 예약 기록</caption>
-							<tr>
-								<td>시터 아이디</td>
-								<td>예약 일자</td>
-								<td>리뷰 작성</td>
-							</tr>
-							<tr th:each="rsvInfo : ${rsvPastList}">
-								<td th:text="${rsvInfo.sitterUsername}"
-									th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
-								<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
-								<td><a
-									th:href="@{'/userreview/add/' + ${rsvInfo.sitterUsername}}">리뷰
-										작성</a></td>
-							</tr>
+					
+	                <div class="inner-content" id="innerContent1">
+	                
+	                	<div class="my-reservation">
+							<table>
+								<thead>
+									<tr>
+										<th>시터 아이디</th>
+										<th>예약 일자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:if="${rvwList.size() < 1}">
+										<td colspan="3">예약 내역이 없습니다.</td>
+									</tr>
+									
+									<tr th:each="rsvInfo : ${rsvList}">
+									<td th:text="${rsvInfo.sitterUsername}"
+										th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
+									<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
+									</tr>
+	
+								</tbody>
+							</table>
+						</div>
+	                
+	                </div>
+	                
+	                <div class="inner-content" id="innerContent2">
+	                	
+	                	<div class="my-last-reservation">
+							<table>
+								<thead>
+									<tr>
+										<th>시터 아이디</th>
+										<th>예약 일자</th>
+										<th>리뷰 작성</th>
 
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr th:if="${rsvPastList.size() < 1}">
+										<td colspan="3">이전 예약 기록이 없습니다.</td>
+									</tr>
+									
+									<tr th:each="rsvInfo : ${rsvPastList}">
+										<td th:text="${rsvInfo.sitterUsername}"
+											th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
+										<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
+										<td>
+											<a th:href="@{'/userreview/add/' + ${rsvInfo.sitterUsername}}">리뷰 작성</a>
+										</td>
+									</tr>
 
-						</table>
-
-						<table>
-							<caption>내 예약 목록</caption>
-							<tr>
-								<td>시터 아이디</td>
-								<td>예약 일자</td>
-							</tr>
-							<tr th:each="rsvInfo : ${rsvList}">
-								<td th:text="${rsvInfo.sitterUsername}"
-									th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
-								<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
-							</tr>
-						</table>
+	
+								</tbody>
+							</table>
+						</div>
+	                </div>
+					
 					</div>
+					
 				</div>
 			</div>
 		</div>
