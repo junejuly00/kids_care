@@ -71,6 +71,8 @@ public class MypageController {
 		String comResp = rest.getForObject("http://localhost:9090/comment/user/"+ username, String.class);
 		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {});
 		
+		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
