@@ -21,13 +21,6 @@ a {
   text-decoration: none
 }
 
-a:hover{
-  color:#1ca673;
-}
-a:active{
-  color:#014029;
-}
-
 .wrap{
   margin: 120px 0 120PX 0;
   margin-left: 140px;

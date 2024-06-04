@@ -67,7 +67,7 @@
 .search-form input{
 	width: 250px;
 	height: 35px;
-	border:solid 0.5px #BEBEBE;
+	border:solid 0.5px #ddd;
 	border-radius: 5px;
 	font-size: 14px;
 	padding-left: 10px;
@@ -78,7 +78,7 @@
 	text-align: center;
 	font-size: 14px;
 	border-radius: 5px;
-	border:solid 0.5px #BEBEBE;
+	border:solid 0.5px #ddd;
 }
 
 .search button {
@@ -86,7 +86,7 @@
 	height: 35px;
 	font-size: 14px;
 	border-radius: 5px;
-	border:solid 0.5px #BEBEBE;
+	border:solid 0.5px #ddd;
 }
 
 .search button:active{
@@ -142,7 +142,7 @@ td {
 
 .pagination ul li a{
     float: left;
-    border: solid 0.5px #CCCCCC;
+    border: solid 0.5px #ddd;
     width: 40px;
     height: 40px;
     margin: 5px;
@@ -159,7 +159,7 @@ ul li a:hover {
 
 a {
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
 .write{

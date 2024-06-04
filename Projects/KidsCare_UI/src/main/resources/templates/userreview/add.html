@@ -2,14 +2,36 @@
 <html xmlns="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>리뷰 작성하기</title>
+<title>KIDS CARE</title>
+
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
+<link th:href="@{/static/css/review.css}" rel="stylesheet" type="text/css">
+
+<link href="https://webfontworld.github.io/binggrae/Binggrae.css" rel="stylesheet">
 </head>
 <body>
-    <form method="post">
-        <input type="text" name="rating" placeholder="별점"><br>
-        <textarea name="reviewInfo" placeholder="리뷰 내용"></textarea><br>
-        <input type="submit" value="Submit">
-    </form>
+	<div class="wrap">
+	    <form method="post">
+	    
+	        <div class="stars">
+		      <span>
+		        <input id="review01" type="radio" name="review"><label for="review01">★</label>
+		        <input id="review02" type="radio" name="review"><label for="review02">★</label>
+		        <input id="review03" type="radio" name="review"><label for="review03">★</label>
+		        <input id="review04" type="radio" name="review"><label for="review04">★</label>
+		        <input id="review05" type="radio" name="review"><label for="review05">★</label>
+		      </span>
+	    	</div>
+	    	
+	        <textarea class="reviewInfo" name="reviewInfo" placeholder="리뷰 내용을 입력해주세요." rows="8" cols="35"></textarea><br>
+			
+			<div id="btn">
+				<button class="review_add" type="submit" value="Submit">등록</button>
+			</div>
+	        
+	    </form>
+	</div>
+
 
 </body>
 </html>

@@ -17,7 +17,7 @@ button{
 }
 
 .post_add input {
-	border: solid 0.5px #D3D4D5;
+	border: solid 0.5px #ddd;
     padding-left: 10px;
     border-radius: 5px;
     font-size:16px;
@@ -57,7 +57,7 @@ button{
 	border-radius: 5px;
 	font-size: 16px;
 	margin: 0 0 10px 0;
-	border: solid 0.1em #D3D4D5;
+	border: solid 0.1em #ddd;
 	background: none;
 }
 
@@ -66,7 +66,7 @@ button{
 	background-color: none;
 	font-size: 18px;
 	border-radius: 5px;
-	border: solid 0.1em #D3D4D5;
+	border: solid 0.1em #ddd;
 }
 
 .upload_btn{
@@ -79,7 +79,7 @@ button{
 	margin: 0 0 0 5px;
 	border-radius: 5px;
 	background: none;
-	border: solid 0.1em #D3D4D5;
+	border: solid 0.1em #ddd;
 }
 
 .btn{

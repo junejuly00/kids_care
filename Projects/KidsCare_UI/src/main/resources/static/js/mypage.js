@@ -46,3 +46,4 @@ document.addEventListener('DOMContentLoaded', function() {
         buttons[0].click();
     }
 });
+
