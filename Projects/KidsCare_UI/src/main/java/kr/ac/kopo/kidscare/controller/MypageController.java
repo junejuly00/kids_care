@@ -97,7 +97,7 @@ public class MypageController {
 		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find" + username, BabySitter.class);
 		model.addAttribute("sitterInfo",sitterInfo);
 		
-		return "/mypage/sitter";
+		return "mypage/sitter";
 
 		
 	}
