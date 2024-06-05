@@ -21,14 +21,6 @@ a {
   text-decoration: none
 }
 
-a:hover{
-  color:#1ca673;
-}
-a:active{
-  color:#014029;
-}
-
-
 button {
   border: none;
 }
@@ -112,7 +104,7 @@ input,
 
     padding: 0 .5em;
     line-height: 1.5em;
-    color: #818078;
+    color: #ddd;
     background-color: #FFF3B2;
   }
 }
