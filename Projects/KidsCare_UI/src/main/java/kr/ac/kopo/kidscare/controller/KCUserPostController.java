@@ -198,6 +198,8 @@ public class KCUserPostController {
 		
 		if (currUser.equals(postInfo.getUsername())) {
 			session.setAttribute("hasEditAuth", "true");
+		} else {
+			session.setAttribute("hasEditAuth", "false");
 		}
 		
 		
