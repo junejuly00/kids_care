@@ -47,6 +47,8 @@ public class MypageController {
 		
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);
 		
+	
+		
 		String sitterResp = rest.getForObject("http://localhost:9090/babysitter/list", String.class);
 		List<BabySitter> sitterList = om.readValue(sitterResp, new TypeReference<List<BabySitter>>() {});
 		

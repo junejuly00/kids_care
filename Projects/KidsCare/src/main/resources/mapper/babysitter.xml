@@ -11,6 +11,7 @@
 		LEFT JOIN sitteraddress
 		    ON sub2.username = sitteraddress.username
 		WHERE rnum BETWEEN (((#{page}-1) * #{perPage})+1) AND (#{page} * #{perPage})
+		AND sitteraddress.city = #{misc[0]}
 		AND status = 0
 	</select>
 	

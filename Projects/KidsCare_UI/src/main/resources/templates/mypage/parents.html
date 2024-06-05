@@ -13,6 +13,9 @@
 	<nav th:replace="/nav.html"></nav>
 
 	<div class="wrap">
+		<div>
+			
+		</div>
 
 		<div class="container">
 			<div class="buttons">
@@ -153,8 +156,8 @@
 									th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
 								<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
 								<td><a
-									th:href="@{'/userreview/add/' + ${rsvInfo.sitterUsername}}">리뷰
-										작성</a></td>
+									th:href="@{'/userreview/add/' + ${rsvInfo.sitterUsername}}" target="_blank"
+									onclick="window.open(this.href, '_blank', 'width=800, height=800'); return false;">리뷰 작성</a></td>
 							</tr>
 
 

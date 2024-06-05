@@ -20,7 +20,8 @@
         
         	<p th:if="${session.currName != 'anonymousUser'}" th:text="${session.currName} + '님 안녕하세요'"></p>
         	
-        	<a th:if="${session.currName != 'anonymousUser'}" href="/mypage">내 정보</a>
+        	<a th:if="${session.curRole == 'USER'}" href="/mypage/parents">내 정보</a>
+        	<a th:if="${session.curRole == 'SITTER'}" href="/mypage/sitter">내 정보</a>
             
             <a th:href="@{/login/all}" th:if="${session.currName == 'anonymousUser'}">로그인</a>
             
