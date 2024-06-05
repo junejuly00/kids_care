@@ -55,6 +55,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		return user;
-	}
+	    }
 
 }

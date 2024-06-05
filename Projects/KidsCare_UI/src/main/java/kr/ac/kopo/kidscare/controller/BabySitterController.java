@@ -55,10 +55,12 @@ public class BabySitterController {
 
 		String parentName=auth.getName();
 
-		Address parentAddress = rest.getForObject("http://localhost:9090/address/"+parentName,Address.class);		
 
-		String parentCity = parentAddress.getCity();
-		
+		String[] parentCity = new String[5];
+		String city = String.valueOf(parentAddress.getCity());
+		parentCity[0] = city;
+		pager.setMisc(parentCity);
+
 		
 		
 		HttpHeaders header = new HttpHeaders();

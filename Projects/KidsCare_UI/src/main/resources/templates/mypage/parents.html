@@ -13,6 +13,9 @@
 	<nav th:replace="/nav.html"></nav>
 
 	<div class="wrap">
+		<div>
+			
+		</div>
 
 
 		<div class="container">
@@ -153,43 +156,23 @@
 					
 					
 					<div id="content6" class="tab-content">
-					
-	                <div class="inner-content" id="innerContent1">
-	                
-	                	<div class="my-reservation">
-							<table>
-								<thead>
-									<tr>
-										<th>시터 아이디</th>
-										<th>예약 일자</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:if="${rvwList.size() < 1}">
-										<td colspan="3">예약 내역이 없습니다.</td>
-									</tr>
-									
-									<tr th:each="rsvInfo : ${rsvList}">
-									<td th:text="${rsvInfo.sitterUsername}"
-										th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
-									<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
-									</tr>
-	
-								</tbody>
-							</table>
-						</div>
-	                
-	                </div>
-	                
-	                <div class="inner-content" id="innerContent2">
-	                	
-	                	<div class="my-last-reservation">
-							<table>
-								<thead>
-									<tr>
-										<th>시터 아이디</th>
-										<th>예약 일자</th>
-										<th>리뷰 작성</th>
+
+						<table>
+							<caption>내 지난 예약 기록</caption>
+							<tr>
+								<td>시터 아이디</td>
+								<td>예약 일자</td>
+								<td>리뷰 작성</td>
+							</tr>
+							<tr th:each="rsvInfo : ${rsvPastList}">
+								<td th:text="${rsvInfo.sitterUsername}"
+									th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
+								<td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
+								<td><a
+									th:href="@{'/userreview/add/' + ${rsvInfo.sitterUsername}}" target="_blank"
+									onclick="window.open(this.href, '_blank', 'width=800, height=800'); return false;">리뷰 작성</a></td>
+							</tr>
+
 
 									</tr>
 								</thead>

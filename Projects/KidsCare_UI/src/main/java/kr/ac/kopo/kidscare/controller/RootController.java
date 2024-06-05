@@ -17,6 +17,17 @@ public class RootController {
 		String currentUsername = auth.getName();
 		session.setAttribute("currName", currentUsername);
 		
+		var role = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		var roleArray = role.toArray();
+		
+		
+		if (roleArray[0].equals("ROLE_USER")) {
+			session.setAttribute("curRole", "USER");
+		} else if (roleArray[0].equals("ROLE_SITTER")) {
+			session.setAttribute("curRole", "SITTER");
+		}
+			
+		
 		return "main";
 	}
 	
