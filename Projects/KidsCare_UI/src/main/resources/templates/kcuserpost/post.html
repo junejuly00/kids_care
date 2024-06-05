@@ -53,11 +53,10 @@
 		
 		<div id="btn">
 		
-			<div class="delete">
+			<div class="delete" th:if="${session.hasEditAuth == 'true'}">
 				<a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
 			</div>
-			
-			<div class="update">
+			<div class="update" th:if="${session.hasEditAuth == 'true'}">
 				<a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
 			</div>
 			
