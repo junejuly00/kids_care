@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.BabySitterDao;
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.pager.Pager;
 
@@ -34,12 +35,6 @@ public class BabySitterServiceImpl implements BabySitterService {
 	@Override
 	public void update(BabySitter sitterInfo) {
 		dao.update(sitterInfo);
-		
-			SitterPhoto sitterphoto = sitterInfo.getPhotos();
-			sitterphoto.setUsername(sitterInfo.getUsername());
-			
-			dao.add(sitterphoto);
-		
 	}
 
 	@Override

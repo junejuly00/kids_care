@@ -69,8 +69,13 @@
 	
 	<update id="update">
 		UPDATE babysitter
-		SET name=#{name},phone=#{phone},email=#{email},gender=#{gender},age=#{age},major=#{major},scope=#{scope}
-		WHERE sitter=#{username}
+		SET password=#{password},name=#{name},phone=#{phone},email=#{email},gender=#{gender},
+         age=#{age},major=#{major},scope=#{scope}, avgRating=#{avgRating}, 
+         content=#{content}, open=#{open}, provider=#{provider}, status=#{status}, 
+         insurance=#{insurance}, document=#{document}, other=#{other}, worktime=#{worktime},
+         cctv=#{cctv}, nickname=#{nickname}, startday=#{startday}, salary=#{salary},
+         career=#{career}, title=#{title}
+		WHERE username=#{username}
 	</update>
 	
 	<select id="search" resultType="BabySitter">

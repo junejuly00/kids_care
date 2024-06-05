@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.kidscare.model.BabySitter;
+import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.pager.Pager;
 
@@ -58,6 +59,17 @@ public class BabySitterDaoImpl implements BabySitterDao {
 	@Override
 	public void add(SitterPhoto sitterphoto) {
 		sql.insert("babysitter.add_image", sitterphoto);
+		
+	}
+
+	@Override
+	public SitterAddress sitterAddressInfo(String username) {
+		return sql.selectOne("sitteraddress.sitterAddressInfo", username);
+	}
+
+	@Override
+	public void update(SitterAddress sitterAddressInfo) {
+		sql.update("sitteraddress.sitterAddressUpdate", sitterAddressInfo);
 		
 	}
 

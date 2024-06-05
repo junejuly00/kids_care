@@ -5,19 +5,19 @@
 <title></title>
 </head>
 <body>
-	<form method="post">
-<input type="text"name="username" th:value="${userInfo.username}" readonly="readonly">
-		<input type="text"name="name" th:value="${userInfo.name}" readonly="readonly">
-		<input type="text"name="password" th:value="${userInfo.password}">
-		<input type="text"name="phone" th:value="${userInfo.phone}">
-		<input type="text"name="email" th:value="${userInfo.email}">
-		<input type="text"name="address" th:value="${addressInfo.fullAddress}">		
-		<input type="text"name="role" th:value="${userInfo.role}" hidden>
+	<form method="post" enctype="multipart/form-data">
+		<input type="text"name="username" th:value="${sitterInfo.username}" readonly="readonly">
+		<input type="password"name="password" th:value="${sitterInfo.password}">
+		<input type="text"name="name" th:value="${sitterInfo.name}" readonly="readonly">
+		<input type="text"name="open" th:value="${sitterInfo.open}" readonly="readonly">
+		<input type="text"name="gender" th:value="${sitterInfo.gender}" readonly="readonly">
+		<input type="text"name="phone" th:value="${sitterInfo.phone}">
+		<input type="text"name="email" th:value="${sitterInfo.email}">
+		<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
+		<input type="text"name="document" th:value="${sitterInfo.document}">
+		<input type="text"name="other" th:value="${sitterInfo.other}">
 		
-		
-		<button>등록</button>	
-	</form>		
-	
-	
+		<button>변경</button>
+	</form>
 </body>
 </html>
