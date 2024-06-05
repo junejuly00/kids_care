@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<form method="post">
+<input type="text"name="username" th:value="${userInfo.username}" readonly="readonly">
+		<input type="text"name="name" th:value="${userInfo.name}" readonly="readonly">
+		<input type="text"name="password" th:value="${userInfo.password}">
+		<input type="text"name="phone" th:value="${userInfo.phone}">
+		<input type="text"name="email" th:value="${userInfo.email}">
+		<input type="text"name="address" th:value="${addressInfo.fullAddress}">		
+		<input type="text"name="role" th:value="${userInfo.role}" hidden>
+		
+		
+		<button>등록</button>	
+	</form>		
+	
+	
+</body>
+</html>

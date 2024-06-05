@@ -72,30 +72,8 @@
 
          <img th:if="${userFile != null}" th:src="@{'/upload/'+ ${userFile.uuid}+'_'+${userFile.filename}}" >
          <div th:if="${userFile != null}" th:text="${userFile.filename}"></div>
-
-      </div>
-      
-      <hr>
-      
-      <div id="btn">
-      
-         <div class="delete">
-            <a th:href="@{'/kcuserpost/hide/' + ${postInfo.userPostId}}" th:text="삭제"><button class="write"></button></a>
-         </div>
          
-         <div class="update">
-            <a th:href="@{'/kcuserpost/update/' + ${postInfo.userPostId}}" th:text="변경"><button class="write"></button></a>
-         </div>
-         
-         <div class="list">
-            <a href="../list">목록</a>
-         </div>
-         
-       </div>
-      
-      </div>
-
-      <div class="comment">
+          <div class="comment">
 
          
          <hr>
@@ -128,12 +106,9 @@
    		  </div>
                    
       </div>
-      
+
       </div>
-      
-      
-      
-   
+
    <footer th:replace="/footer.html"></footer>
    
 

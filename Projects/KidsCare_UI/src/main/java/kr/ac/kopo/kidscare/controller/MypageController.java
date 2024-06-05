@@ -3,13 +3,18 @@ package kr.ac.kopo.kidscare.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +23,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
@@ -67,7 +73,10 @@ public class MypageController {
 		String comResp = rest.getForObject("http://localhost:9090/comment/user/"+ username, String.class);
 		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {});
 		
+		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
+		
 		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("rsvList", rsvList);
@@ -89,6 +98,39 @@ public class MypageController {
 		model.addAttribute("sitterInfo",sitterInfo);
 		
 		return "/mypage/sitter";
+
 		
+	}
+	
+	@GetMapping("/update/{username}")
+		String update(@PathVariable String username, Model model) {
+		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username, KCUser.class);
+		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
+		
+		model.addAttribute("addressInfo", addressInfo);
+		model.addAttribute("userInfo", userInfo);
+		
+		return "/mypage/update";
+	}
+	
+	@PostMapping("/update/{username}")
+	String update(@PathVariable String username, KCUser userInfo) throws JsonProcessingException {
+		userInfo.setUsername(username);
+		
+		HttpHeaders header = new HttpHeaders();
+        header.add("Content-Type", "application/json");
+        
+        String jsonString = om.writeValueAsString(userInfo);
+        
+        HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+        
+        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/find/" + username, HttpMethod.PUT, req, Integer.class);
+        
+        Integer result = resp.getBody();
+        
+        System.out.println(result);
+        
+        return "redirect:/mypage/parents";
+
 	}
 }

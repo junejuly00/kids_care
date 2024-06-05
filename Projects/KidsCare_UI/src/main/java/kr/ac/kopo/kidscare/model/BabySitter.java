@@ -30,7 +30,7 @@ public class BabySitter{
 	private String career;
 	
 	private Address address;
-	
+
 	public String getCareer() {
 		return career;
 	}
