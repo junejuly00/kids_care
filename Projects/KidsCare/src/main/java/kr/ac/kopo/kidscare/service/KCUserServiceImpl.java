@@ -33,5 +33,10 @@ public class KCUserServiceImpl implements KCUserService {
 	public void update(KCUser userInfo) {
 		dao.update(userInfo);
 	}
+	
+	@Override
+	public void updateAddress(Address addressInfo) {
+		dao.updateAddress(addressInfo);
+	}
 
 }
