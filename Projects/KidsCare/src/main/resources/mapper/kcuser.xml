@@ -18,8 +18,19 @@
 		WHERE username=#{username}
 	</update>
 	
-	<select id="search" resultType="KCUser">
-		SELECT * FROM kcuser
+	<update id="updateAddress">
+		UPDATE address
+		SET fulladdress=#{fullAddress},province=#{province},city=#{city},village=#{village}
 		WHERE username=#{username}
+	</update>
+	
+	<select id="search" resultType="KCUser">
+		SELECT kcuser.*, address.*
+		FROM kcuser
+		JOIN address on kcuser.username=address.username
+		WHERE kcuser.username=#{username}
 	</select>
+	
+	
+	
 </mapper>

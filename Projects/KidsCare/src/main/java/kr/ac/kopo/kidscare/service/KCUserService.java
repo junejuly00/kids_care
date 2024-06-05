@@ -2,6 +2,7 @@ package kr.ac.kopo.kidscare.service;
 
 import java.util.List;
 
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.KCUser;
 
 public interface KCUserService {
@@ -13,5 +14,7 @@ public interface KCUserService {
 	KCUser getUserInfo(String username);
 
 	void update(KCUser userInfo);
+
+	void updateAddress(Address addressInfo);
 
 }
