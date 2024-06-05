@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.SitterAddressDao;
+import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.SitterAddress;
 
 @Service
@@ -31,6 +32,7 @@ public class SitterAddressServiceImpl implements SitterAddressService {
 
 	@Override
 	public void update(SitterAddress sitterAddressInfo) {
+
 		dao.update(sitterAddressInfo);
 	}
 

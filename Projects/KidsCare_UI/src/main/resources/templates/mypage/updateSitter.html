@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>KIDS CARE</title>
+    
+    <link th:href="@{/static/css/mypage.css}" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
+</head>
+<body>
+    
+	<nav th:replace="/nav.html"></nav>
+	
+	<div class="wrap">
+	
+	<div class="container">
+        <div class="buttons">
+            <button class="tab-button" data-target="content1">내 정보</button>
+            <button class="tab-button" data-target="content2">커뮤니티 글</button>
+            <button class="tab-button" data-target="content3">내 댓글</button>
+            <button class="tab-button" data-target="content4">내 리뷰</button>
+            <button class="tab-button" data-target="content5">예약 내역</button>
+        </div>
+
+        <div class="content">
+            <div id="content1" class="tab-content">
+				<div class="info">
+					 <input value="아이디" th:value="${sitterInfo.username}">
+	                 <input value="이름" th:value="${sitterInfo.name}">
+	                 <input value="연락처" th:value="${sitterInfo.phone}">
+	                 <input value="이메일" th:value="${sitterInfo.email}">
+	                 <input value="주소" readonly>
+					
+				</div>
+				
+				<div>
+					<a href="update">변경하러갈래</a>
+				</div>
+            </div> 
+                  
+            <div id="content2" class="tab-content">
+              
+		        
+              
+            </div>
+
+            <div id="content3" class="tab-content">
+                
+				
+
+            </div>
+
+            <div id="content4" class="tab-content">
+            	리뷰
+            </div>
+            
+            <div id="content5" class="tab-content">
+            	예약내역
+            </div>
+
+        </div>
+    
+	</div>
+	</div>
+	
+	<footer th:replace="/footer.html"></footer>
+	
+	<script type="text/javascript" src="../../static/js/mypage.js"></script>
+	
+</body>
+</html>

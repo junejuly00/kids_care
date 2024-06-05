@@ -16,4 +16,16 @@
 		SET fullAddress=#{fullAddress},province=#{province},city=#{city},village=#{village}
 		WHERE username=#{username}
 	</update>
+	
+	<select id="search" resultType="sitterAddress">
+		SELECT *
+		FROM sitteraddress
+		WHERE username=#{username}
+	</select>
+	
+	<update id="sitterAddressUpdate">
+		UPDATE sitteraddress
+		SET fulladdress=#{fullAddress}, province=#{province}, city=#{city}, village=#{village}
+		WHERE username=#{username}
+	</update>
 </mapper>

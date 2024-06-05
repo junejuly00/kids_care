@@ -33,8 +33,8 @@ public class SitterAddressController {
 		service.add(sitterAddressInfo);
 	}
 	
-	@GetMapping("/{username}")
-	SitterAddress sitterAddressInfo(@PathVariable String username,@RequestBody SitterAddress sitterAddressInfo) {
+	@GetMapping("/find/{username}")
+	SitterAddress sitterAddressInfo(@PathVariable String username) {
 	return service.sitterAddressInfo(username);
 	}
 
@@ -45,5 +45,5 @@ public class SitterAddressController {
 		service.update(sitterAddressInfo);
 		
 	}
-	}
+}
 	

@@ -23,12 +23,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
+import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.UserReview;
 
 @Controller
@@ -76,7 +76,6 @@ public class MypageController {
 		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
 		
 		model.addAttribute("userInfo", userInfo);
-		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("rsvList", rsvList);
@@ -92,14 +91,14 @@ public class MypageController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String username = "sitter";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
 		
-		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find" + username, BabySitter.class);
+		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username, BabySitter.class);
 		model.addAttribute("sitterInfo",sitterInfo);
 		
 		return "mypage/sitter";
 
-		
 	}
 	
 	@GetMapping("/update/{username}")
@@ -111,26 +110,38 @@ public class MypageController {
 		model.addAttribute("userInfo", userInfo);
 		
 		return "/mypage/update";
+
 	}
 	
-	@PostMapping("/update/{username}")
-	String update(@PathVariable String username, KCUser userInfo) throws JsonProcessingException {
-		userInfo.setUsername(username);
+	@GetMapping("/sitter/update/{username}")
+    String update(@PathVariable String username, Model model) {
+        
+        BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username, BabySitter.class);
+        
+        model.addAttribute("sitterInfo", sitterInfo);
+        
+        return "mypage/update";
+    }
+	
+	
+	
+	@PostMapping("/sitter/update/{username}")
+	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
+		sitterInfo.setUsername(username);
 		
 		HttpHeaders header = new HttpHeaders();
-        header.add("Content-Type", "application/json");
-        
-        String jsonString = om.writeValueAsString(userInfo);
-        
-        HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
-        
-        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/find/" + username, HttpMethod.PUT, req, Integer.class);
-        
-        Integer result = resp.getBody();
-        
-        System.out.println(result);
-        
-        return "redirect:/mypage/parents";
-
+     	header.add("Content-Type", "application/json");
+     	
+     	String jsonString = om.writeValueAsString(sitterInfo);
+     	
+     	HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+     	
+     	ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/babysitter/find/" + username, HttpMethod.PUT, req, Integer.class);
+     	
+     	Integer result = resp.getBody();
+     	
+     	System.out.println(result);
+     	
+		return "redirect:/mypage/sitter";
 	}
 }
