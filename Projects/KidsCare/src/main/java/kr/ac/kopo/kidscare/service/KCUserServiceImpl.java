@@ -41,10 +41,6 @@ public class KCUserServiceImpl implements KCUserService {
 		dao.updateAddress(addressInfo);
 	}
 
-	@Override
-	public void updateAddress(Address addressInfo) {
-		
-	}
 	
 
 
