@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>KIDS CARE</title>
-    <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/static/css/notice.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" th:href="@{/static/css/nav.css}"/>
     <link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 <body>
@@ -24,46 +24,36 @@
     </section>
 	
 	<div class="wrap">
-	    <p class="community">공지사항</p>
-	    <div class="table">
-	        <table>
-	            <thead>
-	                <tr>
-	                    <th>번호</th>
-	                    <th class="title">제목</th>
-	                    <th>작성자</th>
-	                    <th>작성 날짜</th>
-	                </tr>
-	            </thead>
-	            
-	            <tbody>
-	            	<tr th:if="${list.size() < 1}">
-	                  <td colspan="5">등록된 글이 없습니다.</td>
-	               </tr>
-	            
-	                <tr th:each="item : ${list}">
-	                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.code}"></a></td>
-	                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.title}"></a></td>
-	                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.username}"></a></td>
-	                    <td><a th:href="@{'/notice/post/' + ${item.code}}" th:text="${item.postdate}"></a></td>
-	                </tr>
-	            </tbody>
-	        </table>
-	    </div>
-	
-	    <div id="btn">
-	        <a href="/notice/add"><button class="write">글쓰기</button></a>
-	    </div>
-	
-	    <div class="pagination">
-	        <ul>
-	            <li class="prev"><a th:href="@{'?page='+ ${pager.prev}}">이전</a></li>
-	            <li th:each="page : ${pager.list}"><a href="#" th:href="@{|?page=${page}|}" th:text="${page}"></a></li>
-	            <li class="next"><a th:href="@{'?page='+ ${pager.next}}">다음</a></li>
+	    <p class="notice">공지사항</p>
+	    
+	    <div th:if="${list.size() < 1}" id="notthing">등록된 글이 없습니다.</div>
+		
+		<div id="btn">
+	        	<a href="/notice/add"><button class="write">글쓰기</button></a>
+	    	</div>  
+	    
+		  <div class="container">
+  			<div class="notice-box">
 
-	        </ul>
-	    </div>
-	</div>
+      	<div th:each="item : ${list}" class="notice-item">
+        	<a th:href="@{'/notice/post/' + ${item.code}}" class="notice-link">
+	          	<div class="notice-bg"></div>
+	  
+	          	<div th:text="${item.title}" class="notice-title"></div>
+	  
+	          	<div class="notice-date-box">
+		            <span th:text="${item.postdate}" class="notice-date"></span>
+	          	</div>
+        	</a>
+      	</div>
+
+  			</div>
+		</div>
+		  
+</div>
+	
+	    
+	
 	
 	<footer th:replace="/footer.html"></footer>
 

@@ -7,6 +7,15 @@ public class Pager {
 	private int page = 1;
 	private int perPage = 5;
 	private float total;
+	private int next;
+	private int last;
+	private int prev;
+	private int search;
+	private String keyword;
+	private String query;
+	private String[] misc;
+	
+	
 	public int getSearch() {
 		return search;
 	}
@@ -25,12 +34,6 @@ public class Pager {
 
 	private int perGroup = 3;
 	
-	private int next;
-	private int last;
-	private int prev;
-	private int search;
-	private String keyword;
-	private String query;
 	
 	public void setQuery(String query) {
 		this.query = query;
@@ -129,5 +132,13 @@ public class Pager {
 				query += "&search=" + search + "&keyword=" + keyword;
 			
 			return query;
+		}
+
+		public String[] getMisc() {
+			return misc;
+		}
+
+		public void setMisc(String[] misc) {
+			this.misc = misc;
 		}
 	}

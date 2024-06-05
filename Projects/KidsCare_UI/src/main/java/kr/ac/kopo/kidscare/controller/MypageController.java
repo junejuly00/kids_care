@@ -53,6 +53,8 @@ public class MypageController {
 		
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);
 		
+	
+		
 		String sitterResp = rest.getForObject("http://localhost:9090/babysitter/list", String.class);
 		List<BabySitter> sitterList = om.readValue(sitterResp, new TypeReference<List<BabySitter>>() {});
 		
@@ -70,6 +72,8 @@ public class MypageController {
 		
 		String comResp = rest.getForObject("http://localhost:9090/comment/user/"+ username, String.class);
 		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {});
+		
+		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
 		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("sitterList", sitterList);
@@ -94,6 +98,19 @@ public class MypageController {
 		model.addAttribute("sitterInfo",sitterInfo);
 		
 		return "mypage/sitter";
+
+	}
+	
+	@GetMapping("/update/{username}")
+		String update(@PathVariable String username, Model model) {
+		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username, KCUser.class);
+		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
+		
+		model.addAttribute("addressInfo", addressInfo);
+		model.addAttribute("userInfo", userInfo);
+		
+		return "/mypage/update";
+
 	}
 	
 	@GetMapping("/sitter/update/{username}")

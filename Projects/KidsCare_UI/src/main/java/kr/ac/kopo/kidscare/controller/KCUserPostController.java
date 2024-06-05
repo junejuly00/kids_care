@@ -30,6 +30,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.servlet.http.HttpSession;
 import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.UserFile;
@@ -189,10 +190,18 @@ public class KCUserPostController {
 	}
 	
 	@GetMapping("/post/{userPostId}")
-	String post(@PathVariable Long userPostId, Model model) throws JsonProcessingException {
+	String post(@PathVariable Long userPostId, Model model, HttpSession session) throws JsonProcessingException {
 		
 
 		KCUserPost postInfo = rest.getForObject(url + userPostId, KCUserPost.class);
+		String currUser = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		
+		if (currUser.equals(postInfo.getUsername())) {
+			session.setAttribute("hasEditAuth", "true");
+		} else {
+			session.setAttribute("hasEditAuth", "false");
+		}
+		
 		
 		String resp = rest.getForObject("http://localhost:9090/comment/filter/"+userPostId, String.class);
 		List<Comment> commentList = om.readValue(resp,  new TypeReference<List<Comment>>() {});
