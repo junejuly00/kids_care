@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.kidscare.dao.KCUserDao;
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.KCUser;
 
 @Service
@@ -32,6 +33,9 @@ public class KCUserServiceImpl implements KCUserService {
 	@Override
 	public void update(KCUser userInfo) {
 		dao.update(userInfo);
+		dao.address(userInfo);
 	}
+	
+
 
 }
