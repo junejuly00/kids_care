@@ -5,6 +5,7 @@
 <title></title>
 </head>
 <body>
+
 	<form method="post" enctype="multipart/form-data">
 		<input type="text"name="username" th:value="${sitterInfo.username}" readonly="readonly">
 		<input type="password"name="password" th:value="${sitterInfo.password}">
@@ -16,6 +17,7 @@
 		<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
 		<input type="text"name="document" th:value="${sitterInfo.document}">
 		<input type="text"name="other" th:value="${sitterInfo.other}">
+
 		
 		<button>변경</button>
 	</form>

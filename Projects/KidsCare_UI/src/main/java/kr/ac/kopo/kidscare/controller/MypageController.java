@@ -104,23 +104,47 @@ public class MypageController {
 	@GetMapping("/update/{username}")
 		String update(@PathVariable String username, Model model) {
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username, KCUser.class);
-		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
 		
-		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("userInfo", userInfo);
 		
 		return "/mypage/update";
 
 	}
 	
+
+	@PostMapping("/update/{username}")
+   String update(@PathVariable String username, KCUser userInfo,Address addressInfo) throws JsonProcessingException {
+      userInfo.setUsername(username);
+      
+      HttpHeaders header = new HttpHeaders();
+        header.add("Content-Type", "application/json");
+        
+        String jsonString = om.writeValueAsString(userInfo);
+        
+        HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+        
+        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/update/" + username, HttpMethod.PUT, req, Integer.class);
+        
+        Integer result = resp.getBody();
+        
+        System.out.println(result);
+        
+        return "redirect:/mypage/parents";
+
+   }
 	@GetMapping("/sitter/update/{username}")
     String update(@PathVariable String username, Model model) {
+
         
         BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username, BabySitter.class);
         
+
+        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/update/" + username, HttpMethod.PUT, req, Integer.class);
+
         model.addAttribute("sitterInfo", sitterInfo);
+
         
-        return "mypage/update";
+        return "mypage/sitter/update";
     }
 	
 	
