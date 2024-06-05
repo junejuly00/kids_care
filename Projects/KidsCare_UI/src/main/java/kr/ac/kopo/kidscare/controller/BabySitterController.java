@@ -54,11 +54,13 @@ public class BabySitterController {
 		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
 
 		String parentName=auth.getName();
-
-		Address parentAddress = rest.getForObject("http://localhost:9090/address/"+parentName,Address.class);		
-
-		String parentCity = parentAddress.getCity();
 		
+		Address parentAddress = rest.getForObject("http://localhost:9090/address/find/"+parentName,Address.class);
+		String[] parentCity = new String[5];
+		String city = String.valueOf(parentAddress.getCity());
+		parentCity[0] = city;
+		pager.setMisc(parentCity);
+
 		
 		
 		HttpHeaders header = new HttpHeaders();

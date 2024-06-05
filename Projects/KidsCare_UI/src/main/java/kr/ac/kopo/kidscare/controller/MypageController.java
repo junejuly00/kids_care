@@ -23,12 +23,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.BabySitter;
 import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
+import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.UserReview;
 
 @Controller
@@ -53,6 +53,8 @@ public class MypageController {
 		
 		KCUser userInfo = rest.getForObject("http://localhost:9090/kcuser/find/"+ username , KCUser.class);
 		
+	
+		
 		String sitterResp = rest.getForObject("http://localhost:9090/babysitter/list", String.class);
 		List<BabySitter> sitterList = om.readValue(sitterResp, new TypeReference<List<BabySitter>>() {});
 		
@@ -74,7 +76,6 @@ public class MypageController {
 		Address addressInfo = rest.getForObject("http://localhost:9090/address/find/"+ username, Address.class);
 		
 		model.addAttribute("userInfo", userInfo);
-		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterList", sitterList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("rsvList", rsvList);
@@ -90,14 +91,14 @@ public class MypageController {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
-		String username = "sitter";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
 		
-		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find" + username, BabySitter.class);
+		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username, BabySitter.class);
 		model.addAttribute("sitterInfo",sitterInfo);
 		
-		return "/mypage/sitter";
+		return "mypage/sitter";
 
-		
 	}
 	
 	@GetMapping("/update/{username}")
@@ -107,13 +108,15 @@ public class MypageController {
 		model.addAttribute("userInfo", userInfo);
 		
 		return "/mypage/update";
+
 	}
 	
+
 	@PostMapping("/update/{username}")
-	String update(@PathVariable String username, KCUser userInfo,Address addressInfo) throws JsonProcessingException {
-		userInfo.setUsername(username);
-		
-		HttpHeaders header = new HttpHeaders();
+   String update(@PathVariable String username, KCUser userInfo,Address addressInfo) throws JsonProcessingException {
+      userInfo.setUsername(username);
+      
+      HttpHeaders header = new HttpHeaders();
         header.add("Content-Type", "application/json");
         
         String jsonString = om.writeValueAsString(userInfo);
@@ -128,5 +131,41 @@ public class MypageController {
         
         return "redirect:/mypage/parents";
 
+   }
+	@GetMapping("/sitter/update/{username}")
+    String update(@PathVariable String username, Model model) {
+
+        
+        BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username, BabySitter.class);
+        
+
+        ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/kcuser/update/" + username, HttpMethod.PUT, req, Integer.class);
+
+        model.addAttribute("sitterInfo", sitterInfo);
+
+        
+        return "mypage/sitter/update";
+    }
+	
+	
+	
+	@PostMapping("/sitter/update/{username}")
+	String update(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
+		sitterInfo.setUsername(username);
+		
+		HttpHeaders header = new HttpHeaders();
+     	header.add("Content-Type", "application/json");
+     	
+     	String jsonString = om.writeValueAsString(sitterInfo);
+     	
+     	HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+     	
+     	ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/babysitter/find/" + username, HttpMethod.PUT, req, Integer.class);
+     	
+     	Integer result = resp.getBody();
+     	
+     	System.out.println(result);
+     	
+		return "redirect:/mypage/sitter";
 	}
 }

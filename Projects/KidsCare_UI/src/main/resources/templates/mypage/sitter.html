@@ -8,109 +8,91 @@
 </head>
 <body>
     
-	<nav th:replace="/nav.html"></nav>
-	
-	<div class="wrap">
-	
-	<div class="container">
-        <div class="buttons">
-            <button class="tab-button" data-target="content1">내 정보</button>
-            <button class="tab-button" data-target="content2">커뮤니티 글</button>
-            <button class="tab-button" data-target="content3">내 댓글</button>
-            <button class="tab-button" data-target="content4">내 리뷰</button>
-            <button class="tab-button" data-target="content5">예약 내역</button>
+   <nav th:replace="/nav.html"></nav>
+   
+   <div class="wrap">
+   
+   <div class="container">
+        
+        <div>
+           <p th:text="${sitterInfo.title}"></p>
         </div>
-
-        <div class="content">
-            <div id="content1" class="tab-content">
-				<div class="info">
-					 <input value="아이디" th:value="${userInfo.username}"  readonly>
-	                 <input value="이름" th:value="${userInfo.name}" readonly>
-	                 <input value="연락처" th:value="${userInfo.phone}" readonly>
-	                 <input value="이메일" th:value="${userInfo.email}" readonly>
-	                 <input value="주소" readonly>
-					
-				</div>
-            </div> 
-                  
-            <div id="content2" class="tab-content">
-              
-		        <div class="my-community">
-			        <table>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성 날짜</th>
-			                </tr>
-			            </thead>
-			            
-			            <tbody>
-			            	<tr th:if="${postList.size() < 1}">
-			                  <td colspan="3">등록된 글이 없습니다.</td>
-			               </tr>
-			            
-			            	
-			                <tr  th:each="postInfo : ${postList}">
-			                    <td><a th:text="${postInfo.userPostId}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-					            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-					            <td><a  th:text="${postInfo.postdate}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-		
-			                </tr>
-			               
-			            </tbody>
-			        </table>
-	    		</div>
-              
-            </div>
-
-            <div id="content3" class="tab-content">
-                
-				<div class="my-comment">
-			        <table>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성 날짜</th>
-			                </tr>
-			            </thead>
-			            
-			            <tbody>
-			            	<tr >
-			                  <td colspan="3">등록된 댓글이 없습니다.</td>
-			               </tr>
-			            
-			            	
-			                <tr  th:each="commentInfo : ${commentList}">
-			                    <td><a th:text="${commentInfo.userPostId}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-					            <td><a th:text="${postInfo.title}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-					            <td><a  th:text="${commentInfo.postdate}"  th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
-		
-			                </tr>
-			               
-			            </tbody>
-			        </table>
-	    		</div>
-
-            </div>
-
-            <div id="content4" class="tab-content">
-            	리뷰
-            </div>
-            
-            <div id="content5" class="tab-content">
-            	예약내역
-            </div>
-
+        
+        
+        
+        <div>프로필</div>
+        <div style="display: flex;">
+           <p>거주지</p>
         </div>
-    
-	</div>
-	</div>
-	
-	<footer th:replace="/footer.html"></footer>
-	
-	<script type="text/javascript" src="../../static/js/mypage.js"></script>
-	
+        <div style="display: flex;">
+           <div>이름 / 나이 : </div><div th:text="|${sitterInfo.name} / ${sitterInfo.age}|"></div>
+        </div>
+        <div style="display: flex;">
+           <div>연락처 :</div><div th:text="${sitterInfo.phone}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>이메일 :</div><div th:text="${sitterInfo.email}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>시터 안심보험 :</div><div th:text="${sitterInfo.insurance}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>제출 가능한 서류 :</div><div th:text="${sitterInfo.document}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>기타특징 :</div><div th:text="${sitterInfo.other}"></div>
+        </div>
+        
+        
+        
+        <div>희망사항</div>
+        <div style="display: flex;">
+           <div>요일/시간(협의 가능) :</div><div th:text="${sitterInfo.worktime}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>가사범위 :</div><div th:text="${sitterInfo.scope}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>CCTV :</div><div th:text="${sitterInfo.cctv}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>호칭 :</div><div th:text="${sitterInfo.nickname}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>기타특징 :</div><div th:text="${sitterInfo.other}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>근무 시작 희망일 :</div><div th:text="${sitterInfo.startday}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>희망 급여 :</div><div th:text="${sitterInfo.salary}"></div>
+        </div>
+        
+        <div>경력</div>
+        <div style="display: flex;">
+           <div>근무기간 :</div><div th:text="${sitterInfo.career}"></div>
+        </div>
+        <div style="display: flex;">
+           <div>지역 : 울릉도</div>
+        </div>
+        <div style="display: flex;">
+           <div>급여 : 10만원</div>
+        </div>
+        
+        <div>자기소개</div>
+        <div style="display: flex;">
+           <div th:text="${sitterInfo.content}"></div>
+        </div>
+    	
+    	<div>
+        	<a th:href="@{'sitter/update/'+ ${sitterInfo.username}}">변경하러갈래</a>
+        </div>
+   </div>
+   </div>
+   
+   <footer th:replace="/footer.html"></footer>
+   
+   <script type="text/javascript" src="../../static/js/mypage.js"></script>
+   
 </body>
 </html>

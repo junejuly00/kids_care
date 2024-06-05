@@ -51,12 +51,12 @@ public class BabySitterController {
 		service.add(sitterInfo);
 	}
 	
-	@GetMapping("/{username}")
+	@GetMapping("/find/{username}")
 	BabySitter sitterInfo(@PathVariable String username) {
 		return service.sitterInfo(username);
 	}
 	
-	@PutMapping("/{username}")
+	@PutMapping("/find/{username}")
 	void update(@PathVariable String username, @RequestBody BabySitter sitterInfo) {
 		sitterInfo.setUsername(username);
 
