@@ -3,4 +3,58 @@
     margin: 0;
     padding: 0;
     text-decoration-line: none;
+    font-size: 20px;
+
+}
+html{
+	background: #fff;
+}
+
+.wrap{
+	display: flex;
+	justify-content: center;
+	margin: 70px 0 0 0;
+}
+
+form{
+	width: 375px;
+	height: 300px;
+	padding: 30px;
+	background: #FFF3B2;
+	border-radius: 10px;
+}
+
+.user, .sitter{
+	display: flex;
+}
+
+.date{
+	display:flex;
+	flex-direction: column;
+}
+.date label{
+	margin: 0 0 5px 0;
+}
+
+.user p, .sitter p{
+	margin: 0 0 30px 10px;
+}
+
+.reservation-add {
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFE371;
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	margin: 10px 0 0 0;
+	border: none;
+}
+
+#btn {
+	display: flex;
+	justify-content: flex-end;
+	margin: 15px 0 0 0;
 }

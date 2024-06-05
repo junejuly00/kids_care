@@ -58,6 +58,10 @@ header{
     width: 270px;
     height: auto;
 }
+
+a {
+	color: #000;
+}
 a:hover{
     color:#000000;
 }
