@@ -35,6 +35,13 @@ public class BabySitterServiceImpl implements BabySitterService {
 	@Override
 	public void update(BabySitter sitterInfo) {
 		dao.update(sitterInfo);
+		
+		
+		SitterPhoto sitterphoto = sitterInfo.getPhotos();
+		if(sitterphoto != null) {
+			sitterphoto.setUsername(sitterInfo.getUsername());
+		}
+        dao.add(sitterphoto);
 	}
 
 	@Override
@@ -46,6 +53,19 @@ public class BabySitterServiceImpl implements BabySitterService {
 	@Override
 	public List<BabySitter> list(Pager pager) {
 		return dao.list(pager);
+	}
+
+	@Override
+	public SitterPhoto itemImage(Long code) {
+		return dao.itemImage(code);
+	}
+
+	@Override
+	public boolean deleteImage(Long code) {
+		if(dao.deleteImage(code) > 0)
+			return true;
+		
+		return false;
 	}
 }
 

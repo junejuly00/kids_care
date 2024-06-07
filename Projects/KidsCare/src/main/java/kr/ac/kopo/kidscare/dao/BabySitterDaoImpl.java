@@ -73,4 +73,14 @@ public class BabySitterDaoImpl implements BabySitterDao {
 		
 	}
 
+	@Override
+	public SitterPhoto itemImage(Long code) {
+		return sql.selectOne("babysitter.item_image", code);
+	}
+
+	@Override
+	public int deleteImage(Long code) {
+		return sql.delete("babysitter.delete_image", code);
+	}
+
 }
