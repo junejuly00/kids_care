@@ -164,7 +164,7 @@ public class BabySitterController {
 		String resp = rest.getForObject("http://localhost:9090/jobcert/search/" + username, String.class);
 		List<JobCert> certList = om.readValue(resp, new TypeReference<List<JobCert>>() {});
 		
-		BabySitter sitterInfo = rest.getForObject(url + username, BabySitter.class);	
+		BabySitter sitterInfo = rest.getForObject(url + "find/" + username, BabySitter.class);	
 
 		String reviewResp = rest.getForObject("http://localhost:9090/userreview/find/sitter/"+ username , String.class);
 		List<UserReview> revList = om.readValue(reviewResp, new TypeReference<List<UserReview>>() {});
