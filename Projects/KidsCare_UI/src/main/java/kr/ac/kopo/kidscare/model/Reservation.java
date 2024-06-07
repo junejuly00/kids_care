@@ -28,10 +28,10 @@ public class Reservation {
 	public void setResDate(String resDate) {
 		this.resDate = resDate;
 	}
-	public String getSitterUsername() {
+	public String getSittername() {
 		return sittername;
 	}
-	public void setSitterUsername(String sitterUsername) {
-		this.sittername = sitterUsername;
+	public void setSittername(String sittername) {
+		this.sittername = sittername;
 	}
 }

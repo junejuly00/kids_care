@@ -8,14 +8,17 @@
     <link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 </head>
 <body>
+
+	<nav th:replace="/nav.html"></nav>
+	
     <div class="wrap">
 
         <div class="title">
-            <div id="title_txt" th:text="${sitterInfo.name}"></div>
+            <p th:text="${sitterInfo.title}"></p>
         </div>
 
         <section class="profil">
-            <div class="profil_group">
+            
                 <h3>프로필</h3>
                 <table>
                     
@@ -31,7 +34,7 @@
                         </tr>
 
                         <tr>
-                            <th>이름/나이/성별</th>
+                            <th>이름 / 나이 / 성별</th>
                             <td th:text="|${sitterInfo.name} / ${sitterInfo.age} / ${sitterInfo.gender}|"></td>
                         </tr>
 
@@ -58,11 +61,11 @@
 
                     </tbody>
                 </table>
-            </div>
+            
         </section>
 
         <section class="dream">
-            <div class="dream_group">
+            
                 <h3>희망사항</h3>
                 <table>
                     
@@ -73,7 +76,7 @@
 
                     <tbody>
                         <tr>
-                            <th>요일/시간 (협의가능)</th>
+                            <th>요일 / 시간(협의가능 여부)</th>
                             <td th:text="${sitterInfo.worktime}"></td>
                         </tr>
 
@@ -104,56 +107,26 @@
 
                     </tbody>
                 </table>
-            </div>
+            
         </section>
 
         <section class="career">
 
-            <div class="career_group">
                 <h3>경력</h3>
-
                 <table>
-                    <thead>
-                        <tr>
-                            <th>근무기간</th>
-                            <th>지역</th>
-                            <th>급여</th>
-                        </tr>
-                    </thead>
+                    
+                    <colgroup>
+                        <col style="width: 300px;">
+                        <col style="width: 700px;">
+                    </colgroup>
 
                     <tbody>
                         <tr>
-                            <td th:text="${sitterInfo.career}"></td>
-                            
+                            <th>근무기간 / 평균 월급</th>
+                           <td th:text="${sitterInfo.career}"></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-        </section>
-
-        <section class="certificate">
-
-            <div class="certificate_group">
-                <h3>자격증</h3>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>자격증명</th>
-                            <th>취득일자</th>
-                            <th>발행처</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr th:each="jobcert : ${jobcert}">
-                            <td th:text="${jobcert.certName}"></td>
-                            <td th:text="${jobcert.certDate}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
 
         </section>
 
@@ -172,18 +145,31 @@
 
             <div class="review_box">
                 <table>
+                	
+                	<colgroup>
+                        <col style="width: 150px;">
+                        <col style="width: 300px;">
+                        <col style="width: 550px;">
+                    </colgroup>
+                
                 	<thead>
                 		<tr>
                 			<th>작성자</th>
-                			<th>내용</th>
                 			<th>별점</th>
+                			<th>내용</th>
                 		</tr>
                 	</thead>
+                	
                 	<tbody>
+                		
+                		<tr th:if="${revList.size() < 1}" id="notthing">
+	                  		<td colspan="3">등록된 리뷰가 없습니다.</td>
+	              		</tr>
+                	
                 		<tr th:each="revInfo : ${revList}">
                 			<td th:text="${revInfo.username}"></td>
-                			<td th:text="${revInfo.reviewInfo}"></td>
                 			<td th:text="${revInfo.rating}"></td>
+                			<td th:text="${revInfo.reviewInfo}"></td>
                 		</tr>
                 	</tbody>
                 	
@@ -193,7 +179,8 @@
 
         <div class="yes_no">
             <div class="yes">
-                <a th:href="@{'/reservation/' + ${sitterInfo.getUsername}}">예약</a>
+                <a th:href="@{'/reservation/' + ${sitterInfo.getUsername}}"
+                	target="_blank" onclick="window.open(this.href, '_blank', 'width=800, height=500'); return false;">예약</a>
             </div>
 
             <div class="no">
@@ -202,5 +189,7 @@
         </div>
 
     </div>
+    
+    <footer th:replace="/footer.html"></footer>
 </body>
 </html>

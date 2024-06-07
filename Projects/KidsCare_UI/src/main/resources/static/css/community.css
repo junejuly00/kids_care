@@ -66,7 +66,7 @@
 
 .search-form input{
 	width: 250px;
-	height: 35px;
+	height: 40px;
 	border:solid 0.5px #ddd;
 	border-radius: 5px;
 	font-size: 14px;
@@ -74,16 +74,26 @@
 }
 
 .search select{
-	height: 35px;
+	width: 75px;
+	height: 40px;
 	text-align: center;
 	font-size: 14px;
 	border-radius: 5px;
 	border:solid 0.5px #ddd;
 }
 
-.search button {
+.sitter-search select{
+	width: 120px;
+	height: 40px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	border:solid 0.5px #ddd;
+}
+
+.search button, .sitter-search button {
 	width: 50px;
-	height: 35px;
+	height: 40px;
 	font-size: 14px;
 	border-radius: 5px;
 	border:solid 0.5px #ddd;
@@ -160,6 +170,17 @@ ul li a:hover {
 a {
     text-decoration: none;
     color: #000;
+}
+
+
+
+.sitter-img img{
+	width: 100px;
+	height: auto;
+}
+
+.star img{
+	width: 17px;
 }
 
 .write{

@@ -63,7 +63,7 @@ public class ReservationController {
 		header.setContentType(MediaType.APPLICATION_JSON);
 		
 		rsvInfo.setUsername(username);
-		rsvInfo.setSitterUsername(sitterId);
+		rsvInfo.setSittername(sitterId);
 		
 		String jsonString = om.writeValueAsString(rsvInfo);
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
