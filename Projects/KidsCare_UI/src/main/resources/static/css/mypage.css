@@ -136,6 +136,131 @@ a{
     border: solid 0.5px #ddd;
 }
 
+.info .profile{
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 150px;
+}
+
+.info .pofile img{
+	width: 250px;
+	height: auto;
+}
+
+
+
+
+.info table, .info th, .info td {
+    border: 0.5px solid #000;
+    border-collapse: collapse;
+}
+
+.profil table th,
+.dream table th,
+.career table th{
+    background-color: #E3F0FB;
+    height: 50px;
+    text-align: start;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.review table th{
+	background-color: #E3F0FB;
+    height: 50px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.review table td{
+	height: auto;
+	padding: 20px 10px 20px 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#notthing td{
+	height: auto;
+	padding: 20px 10px 20px 10px;
+	text-align: start;
+	font-size: 18px;
+}
+
+.info table td{
+    text-align: start;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.info h3 {
+	display: flex;
+	font-size: 20px;
+	margin: 0 0 15px 0;
+}
+
+.title{
+    width: 1000px;
+    height: 50px;
+    background-color: #fff;
+    border: 5px solid #E3F0FB;
+    display: flex;
+    align-items: center;
+}
+
+.title p{
+ margin-left: 10px;
+ font-size: 20px;
+ font-weight: bold;
+}
+
+.profil, .dream, .career, .introduce, .review{
+    margin-top: 50px;
+}
+
+.introduce_box{
+    border: 0.5px solid #000;
+    width: 1000px;
+    height: auto;
+}
+
+.introduce_txt{
+    padding: 20px 10px 20px 10px;
+}
+
+.info-update{
+	width: 1000px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.info-myupdate{
+	width: 500px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.info-update a, .info-myupdate a{
+	background: #FFE371;
+	border-radius: 5px;
+	width: 120px;
+	height: 40px;
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+
+
+
 .my-community{
    display: flex;
    justify-content: center;
@@ -176,23 +301,38 @@ a{
    flex-direction: column;
 }
 
-table {
+.my-community table,
+.my-comment table,
+.my-review table,
+.my-reservation table,
+.my-last-reservation table {
     border-collapse: collapse;
 }
-
-thead {
+.my-community thead,
+.my-comment thead,
+.my-review thead,
+.my-reservation thead,
+.my-last-reservation thead {
     font-weight: bold;
     background: #E3F0FB;
     height: 50px; 
     font-size: 20px;
 }
 
-td, th {
+.my-community td, .my-community th,
+.my-comment td, .my-comment th,
+.my-review td, .my-review th,
+.my-reservation td, .my-reservation th,
+.my-last-reservation td, .my-last-reservation th {
     padding: 10px;
     text-align: center;
   }
 
-td {
+.my-community td,
+.my-comment td,
+.my-review td,
+.my-reservation td,
+.my-last-reservation td {
     border-bottom: solid 0.5px #ddd;
     height: 60px;
     word-break:break-all;

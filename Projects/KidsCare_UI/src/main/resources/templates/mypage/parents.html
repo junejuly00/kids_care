@@ -14,8 +14,6 @@
 	<nav th:replace="/nav.html"></nav>
 
 	<div class="wrap">
-		<div></div>
-
 
 		<div class="container">
 			<div class="buttons">
@@ -23,7 +21,6 @@
 				<button class="tab-button" data-target="content2">커뮤니티 글</button>
 				<button class="tab-button" data-target="content3">내 댓글</button>
 				<button class="tab-button" data-target="content4">작성 리뷰</button>
-				<button class="tab-button" data-target="content5">시터 리스트</button>
 				<div class="dropdown">
 					<button class="tab-button" data-target="content6">예약 내역</button>
 					<div class="dropdown-content">
@@ -42,10 +39,7 @@
 						<input value="이름" th:value="${userInfo.name}" readonly> 
 						<input value="연락처" th:value="${userInfo.phone}" readonly> 
 						<input value="이메일" th:value="${userInfo.email}" readonly> 
-
-						<input value="주소" th:value="${addressInfo.fullAddress}" readonly>
-
-
+						<input value="주소" th:value="${userInfo.fullAddress}" readonly>
 					</div>
 
 
@@ -126,40 +120,6 @@
 					</div>
 				</div>
 
-				<div id="content5" class="tab-content">
-
-					<div class="my-sitter">
-						<table>
-							<thead>
-								<tr>
-									<th>시터 성명</th>
-									<th>전화번호</th>
-									<th>나이</th>
-									<th>성별</th>
-									<th>이메일</th>
-									<th>희망급여</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr th:if="${sitterList.size() < 1}">
-									<td colspan="6">등록된 시터가 없습니다.</td>
-								</tr>
-								<tr th:each="sitterInfo : ${sitterList}">
-									<td th:text="${sitterInfo.name}"></td>
-									<td th:text="${sitterInfo.phone}"></td>
-									<td th:text="${sitterInfo.age}"></td>
-									<td th:text="${sitterInfo.gender}"></td>
-									<td th:text="${sitterInfo.email}"></td>
-									<td th:text="${sitterInfo.salary}"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					
-					
-					
 					<div id="content6" class="tab-content">
 
                <div class="inner-content" id="innerContent1">
@@ -173,13 +133,13 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr th:if="${rvwList.size() < 1}">
+                           <tr th:if="${rsvList.size() < 1}">
                               <td colspan="3">예약 내역이 없습니다.</td>
                            </tr>
 
                            <tr th:each="rsvInfo : ${rsvList}">
-                              <td th:text="${rsvInfo.sitterUsername}"
-                                 th:href="@{'/babysitter/detail/' + ${rsvInfo.sitterUsername}}"></td>
+                              <td th:text="${rsvInfo.sittername}"
+                                 th:href="@{'/babysitter/detail/' + ${rsvInfo.sittername}}"></td>
                               <td th:text="${#strings.replace(rsvInfo.resDate, 'T', ' ')}"></td>
                            </tr>
 
