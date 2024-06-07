@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>KIDS CARE</title>
-    
-    <link th:href="@{/static/css/mypage.css}" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
+<title>KIDS CARE</title>
+
+<link th:href="@{/static/css/mypage.css}" rel="stylesheet"
+	type="text/css">
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 
 </head>
 <body>
@@ -13,9 +14,7 @@
 	<nav th:replace="/nav.html"></nav>
 
 	<div class="wrap">
-		<div>
-			
-		</div>
+		<div></div>
 
 
 		<div class="container">
@@ -25,13 +24,15 @@
 				<button class="tab-button" data-target="content3">내 댓글</button>
 				<button class="tab-button" data-target="content4">작성 리뷰</button>
 				<button class="tab-button" data-target="content5">시터 리스트</button>
-				 <div class="dropdown">
-                <button class="tab-button" data-target="content6">예약 내역</button>
-                <div class="dropdown-content">
-                    <button class="inner-button" data-target="innerContent1">현재 내역</button>
-                    <button class="inner-button" data-target="innerContent2">지난 내역</button>
-                </div>
-            </div>
+				<div class="dropdown">
+					<button class="tab-button" data-target="content6">예약 내역</button>
+					<div class="dropdown-content">
+						<button class="inner-button" data-target="innerContent1">현재
+							내역</button>
+						<button class="inner-button" data-target="innerContent2">지난
+							내역</button>
+					</div>
+				</div>
 			</div>
 
 			<div class="content">
@@ -41,11 +42,12 @@
 						<input value="이름" th:value="${userInfo.name}" readonly> 
 						<input value="연락처" th:value="${userInfo.phone}" readonly> 
 						<input value="이메일" th:value="${userInfo.email}" readonly> 
+
 						<input value="주소" th:value="${addressInfo.fullAddress}" readonly>
 
 
 					</div>
-					
+
 
 				</div>
 				<div id="content2" class="tab-content">
@@ -88,8 +90,10 @@
 									<td colspan="3">등록된 댓글이 없습니다.</td>
 								</tr>
 								<tr th:each="commentInfo : ${commentList}">
-									<td class="if-long"><a th:href="@{'/kcuserpost/post/'+${commentInfo.userPostId}}" th:text="${commentInfo.substance}"></a></td>
-									<td  th:text="${commentInfo.postDate}"></td>
+									<td class="if-long"><a
+										th:href="@{'/kcuserpost/post/'+${commentInfo.userPostId}}"
+										th:text="${commentInfo.substance}"></a></td>
+									<td th:text="${commentInfo.postDate}"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -112,7 +116,8 @@
 									<td colspan="3">등록된 댓글이 없습니다.</td>
 								</tr>
 								<tr th:each="rvwInfo : ${rvwList}">
-									<td><a th:text="${rvwInfo.sitterUsername}" th:href="@{'/babysitter/detail/'+${rvwInfo.sitterUsername}}"></a></td>
+									<td><a th:text="${rvwInfo.sitterUsername}"
+										th:href="@{'/babysitter/detail/'+${rvwInfo.sitterUsername}}"></a></td>
 									<td th:text="${rvwInfo.rating}"></td>
 									<td th:text="${rvwInfo.reviewInfo}"></td>
 								</tr>
@@ -121,38 +126,37 @@
 					</div>
 				</div>
 
-					<div id="content5" class="tab-content">
+				<div id="content5" class="tab-content">
 
-						<div class="my-sitter">
-							<table>
-								<thead>
-									<tr>
-										<th>시터 성명</th>
-										<th>전화번호</th>
-										<th>나이</th>
-										<th>성별</th>
-										<th>이메일</th>
-										<th>희망급여</th>
-									</tr>
-								</thead>
+					<div class="my-sitter">
+						<table>
+							<thead>
+								<tr>
+									<th>시터 성명</th>
+									<th>전화번호</th>
+									<th>나이</th>
+									<th>성별</th>
+									<th>이메일</th>
+									<th>희망급여</th>
+								</tr>
+							</thead>
 
-								<tbody>
-									<tr th:if="${sitterList.size() < 1}">
-										<td colspan="6">등록된 시터가 없습니다.</td>
-									</tr>
-									<tr th:each="sitterInfo : ${sitterList}">
-										<td th:text="${sitterInfo.name}"></td>
-										<td th:text="${sitterInfo.phone}"></td>
-										<td th:text="${sitterInfo.age}"></td>
-										<td th:text="${sitterInfo.gender}"></td>
-										<td th:text="${sitterInfo.email}"></td>
-										<td th:text="${sitterInfo.salary}"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-
+							<tbody>
+								<tr th:if="${sitterList.size() < 1}">
+									<td colspan="6">등록된 시터가 없습니다.</td>
+								</tr>
+								<tr th:each="sitterInfo : ${sitterList}">
+									<td th:text="${sitterInfo.name}"></td>
+									<td th:text="${sitterInfo.phone}"></td>
+									<td th:text="${sitterInfo.age}"></td>
+									<td th:text="${sitterInfo.gender}"></td>
+									<td th:text="${sitterInfo.email}"></td>
+									<td th:text="${sitterInfo.salary}"></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
+
 					
 					
 					
@@ -231,6 +235,6 @@
 			
 		<footer th:replace="/footer.html"></footer>
 
-		<script type="text/javascript" src="../../static/js/mypage.js"></script>
+	<script type="text/javascript" src="../../static/js/mypage.js"></script>
 </body>
 </html>

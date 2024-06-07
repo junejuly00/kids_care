@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.kidscare.model.Address;
 import kr.ac.kopo.kidscare.model.KCUser;
 
 @Repository
@@ -36,6 +37,16 @@ public class KCUserDaoImpl implements KCUserDao {
 	public void update(KCUser userInfo) {
 		sql.update("kcuser.update",userInfo);
 
+	}
+
+	@Override
+	public void updateAddress(Address addressInfo) {
+		sql.update("addressAddress.update", addressInfo);
+	}
+
+	@Override
+	public void address(KCUser userInfo) {
+		sql.update("kcuser.updateAddress",userInfo);
 	}
 
 }

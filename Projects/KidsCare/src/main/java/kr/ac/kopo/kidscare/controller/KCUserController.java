@@ -41,7 +41,7 @@ public class KCUserController {
 		return service.getUserInfo(username);			
 	}
 	
-	@PutMapping("/find/{username}")
+	@PutMapping("/update/{username}")
 	void update(@PathVariable String username, @RequestBody KCUser userInfo) {
 		userInfo.setUsername(username);
 		
