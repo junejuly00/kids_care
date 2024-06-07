@@ -18,9 +18,12 @@
            <p th:text="${sitterInfo.title}"></p>
         </div>
         
-        
-        
         <div>프로필</div>
+        
+        <div>
+			<img th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >        
+        </div>
+        
         <div style="display: flex;">
            <p>거주지</p>
         </div>

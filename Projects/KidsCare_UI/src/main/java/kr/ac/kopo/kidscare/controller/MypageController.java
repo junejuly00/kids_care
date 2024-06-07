@@ -1,12 +1,15 @@
 package kr.ac.kopo.kidscare.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -29,12 +33,13 @@ import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
+import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.model.UserReview;
 
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
-
+	private String uploadPath = "d:/upload/";
 	@Autowired
 	private RestTemplate rest = new RestTemplate();
 
@@ -150,8 +155,26 @@ public class MypageController {
 	}
 
 	@PostMapping("/sitter/update/{username}")
-	String updateSitter(@PathVariable String username, BabySitter sitterInfo) throws JsonProcessingException {
+	String updateSitter(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile) throws JsonProcessingException {
 		sitterInfo.setUsername(username);
+		
+		if(uploadFile != null && !uploadFile.isEmpty()) {
+			String filename = uploadFile.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			
+			try {
+				uploadFile.transferTo(new File(uploadPath + uuid + "_" + filename));
+				
+				SitterPhoto img = new SitterPhoto();
+				img.setFilename(filename);
+				img.setUuid(uuid);
+				img.setUsername(username);
+				
+				sitterInfo.setPhotos(img);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json");
@@ -168,5 +191,14 @@ public class MypageController {
 		System.out.println(result);
 
 		return "redirect:/mypage/sitter";
+	}
+	
+	@GetMapping("/delete_image/{code}")
+	ResponseEntity<String> deleteImage(@PathVariable Long code){
+		RequestEntity<Void> req = RequestEntity.delete("http://localhost:9090/babysitter/delete_image/" + code).build();
+		
+		ResponseEntity<String> result = rest.exchange(req, String.class);
+		
+		return result;
 	}
 }

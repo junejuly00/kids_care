@@ -27,4 +27,8 @@ public interface BabySitterDao {
 
 	void update(SitterAddress sitterAddressInfo);
 
+	SitterPhoto itemImage(Long code);
+
+	int deleteImage(Long code);
+
 }

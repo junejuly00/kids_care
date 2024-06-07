@@ -94,14 +94,27 @@
 		WHERE username=#{username}
 	</select>
 	
-	<select id="item" resultType="BabySitter">
-		SELECT *
-		FROM babysitter
-		WHERE username=#{username}
+	<select id="item" resultMap="BabySitterMap">
+		SELECT babysitter.*, sitterphoto.code, sitterphoto.username pid, sitterphoto.filename, sitterphoto.uuid
+		FROM babysitter LEFT JOIN sitterphoto ON babysitter.username=sitterphoto.username
+		WHERE babysitter.username=#{username}
 	</select>
 	
 	<insert id="add_image">
-		INSERT INTO babysitter
+		INSERT INTO sitterphoto
 		VALUES (CODE_SEQ.nextval, #{username}, #{filename}, #{uuid})
 	</insert>
+	
+	<delete id="delete_image">
+		DELETE FROM sitterphoto
+		WHERE code=#{code}
+	</delete>
+	
+	<select id="item_image" resultType="SitterPhoto">
+		SELECT *
+		FROM sitterphoto
+		WHERE code=#{code}
+	</select>
+		
+	
 </mapper>

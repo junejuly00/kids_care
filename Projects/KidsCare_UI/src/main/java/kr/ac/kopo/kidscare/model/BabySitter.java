@@ -29,6 +29,7 @@ public class BabySitter{
 	private String salary;
 	private String career;
 	
+	private SitterPhoto photos;
 	private Address address;
 
 	public String getCareer() {
@@ -41,7 +42,7 @@ public class BabySitter{
 	}
 
 
-	private SitterPhoto photos;
+
 
 
    private String title;
