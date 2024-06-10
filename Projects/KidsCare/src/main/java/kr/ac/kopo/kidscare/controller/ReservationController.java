@@ -50,5 +50,10 @@ public class ReservationController {
 		return service.delete(resId);
 	}
 	
+	@GetMapping("/count/{username}")
+	Integer countPending(@PathVariable String username) {
+		return service.count(username);
+	}
+	
 	
 }

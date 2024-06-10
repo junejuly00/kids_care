@@ -1,15 +1,19 @@
 package kr.ac.kopo.kidscare.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class RootController {
 
+	@Autowired
+	private RestTemplate rest = new RestTemplate();
 	
 	@GetMapping("/")
 	public String main(HttpSession session) {
@@ -19,6 +23,10 @@ public class RootController {
 		
 		var role = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		session.setAttribute("curRole", role);
+		
+		
+		Integer pendCount = rest.getForObject("http://localhost:9090/reservation/count/"+currentUsername, Integer.class);
+		session.setAttribute("pendCount", pendCount);
 		
 		
 		

@@ -6,6 +6,12 @@
 		SELECT * FROM reservation
 	</select>
 	
+	<select id="pending" resultType="Integer">
+		SELECT COUNT(*) FROM reservation
+		WHERE sittername=#{sittername}
+		AND status=1
+	</select>
+	
 	<select id="pastparent" resultType="Reservation">
 		SELECT * FROM reservation 
 		WHERE username=#{username}
@@ -18,8 +24,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT INTO reservation
-		VALUES (#{resId},#{username},#{sittername},#{resDate})
+		INSERT INTO reservation(resId, username, sittername, resDate)
+		VALUES (RES_SEQ.nextval,#{username},#{sittername},#{resDate})
 	</insert>
 	
 	<delete id="delete">

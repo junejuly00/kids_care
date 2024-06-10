@@ -64,7 +64,7 @@ public class ReservationController {
 		
 		rsvInfo.setUsername(username);
 		rsvInfo.setSittername(sitterId);
-		
+		rsvInfo.setStatus(1);
 		String jsonString = om.writeValueAsString(rsvInfo);
 		HttpEntity<String> request = new HttpEntity<String>(jsonString, header);
 		

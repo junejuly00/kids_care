@@ -39,4 +39,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.parentPastList(username);
 	}
 
+	@Override
+	public Integer count(String username) {
+		return dao.count(username);
+	}
+
 }

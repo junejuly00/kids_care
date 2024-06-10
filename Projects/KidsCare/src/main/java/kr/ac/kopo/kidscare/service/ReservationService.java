@@ -16,4 +16,6 @@ public interface ReservationService {
 
 	List<Reservation> parentPastList(String username);
 
+	Integer count(String username);
+
 }
