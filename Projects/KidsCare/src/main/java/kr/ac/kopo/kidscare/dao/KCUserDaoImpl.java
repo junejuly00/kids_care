@@ -41,12 +41,12 @@ public class KCUserDaoImpl implements KCUserDao {
 
 	@Override
 	public void updateAddress(Address addressInfo) {
-		sql.update("addressAddress.update", addressInfo);
+		sql.update("kcuser.update", addressInfo);
 	}
 
 	@Override
 	public void address(KCUser userInfo) {
-		sql.update("kcuser.updateAddress",userInfo);
+		sql.insert("kcuser.address",userInfo);
 	}
 
 }

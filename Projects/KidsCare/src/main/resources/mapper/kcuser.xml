@@ -12,6 +12,11 @@
 		VALUES (#{username},#{name},#{phone},#{email},#{role},#{provider},#{password},#{status})
 	</insert>
 	
+	<insert id="address">
+		INSERT INTO address(username, fullAddress, province, city, village, extra)
+		VALUES(#{username}, #{fullAddress}, #{province}, #{city}, #{village}, #{extra})
+	</insert>
+	
 	<update id="update">
 		UPDATE kcuser
 		SET password=#{password},name=#{name},phone=#{phone},email=#{email},role=#{role},provider=#{provider},status=#{status}

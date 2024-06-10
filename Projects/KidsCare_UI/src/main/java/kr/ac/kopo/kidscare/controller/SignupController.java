@@ -71,7 +71,8 @@ public class SignupController {
 	public String sitterSignup(BabySitter sitterInfo) throws JsonProcessingException {
 	
 		sitterInfo.setOpen((byte) 1);
-		
+		String rawPassword = sitterInfo.getPassword();
+		sitterInfo.setPassword(passwordEncoder.encode(rawPassword));
 		
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);

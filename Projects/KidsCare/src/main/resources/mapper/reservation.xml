@@ -5,6 +5,10 @@
 	<select id="totalList" resultType="Reservation">
 		SELECT * FROM reservation
 	</select>
+	<select id="count" resultType="Integer">
+		SELECT COUNT(*) FROM reservation
+		where sittername=#{sittername}
+	</select>
 	
 	<select id="pastparent" resultType="Reservation">
 		SELECT * FROM reservation 
@@ -18,8 +22,8 @@
 	</select>
 	
 	<insert id="add">
-		INSERT INTO reservation
-		VALUES (#{resId},#{username},#{sittername},#{resDate})
+		INSERT INTO reservation(resId, username, sittername, resDate)
+		VALUES (RES_SEQ.nextval,#{username},#{sittername},#{resDate})
 	</insert>
 	
 	<delete id="delete">

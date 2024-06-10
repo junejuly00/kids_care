@@ -50,5 +50,9 @@ public class ReservationController {
 		return service.delete(resId);
 	}
 	
+	@GetMapping("/count/{sittername}")
+	Integer count(@PathVariable String sittername) {
+		return service.count(sittername);
+	}
 	
 }
