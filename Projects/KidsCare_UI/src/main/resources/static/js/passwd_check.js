@@ -1,14 +1,16 @@
-function check(){
-    let passwd = $("#passwd").val();
-    let checkPw = $("#check_pw").val();
+function check() {
+    let passwd = document.getElementById("passwd").value;
+    let checkPw = document.getElementById("check_pw").value;
+    let checkElement = document.getElementById("check");
 
-    if(passwd !== checkPw){
-        $("#check").show();
+    if (passwd !== checkPw) {
+        checkElement.style.display = "block";
     } else {
-        $("#check").hide();
+        checkElement.style.display = "none";
     }
 }
 
-$(document).ready(function(){
-    $("#check").hide();
+document.addEventListener("DOMContentLoaded", function() {
+    let checkElement = document.getElementById("check");
+    checkElement.style.display = "none";
 });
