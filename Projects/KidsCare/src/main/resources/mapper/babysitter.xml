@@ -71,8 +71,17 @@
 		ORDER BY career desc
 	</select>
 	
-	
-	
+
+	<resultMap type="BabySitter" id="BabySitterMap" autoMapping="true">
+		<id column="username" property="username"/>
+		
+		<association property="photos" column="pid" javaType="SitterPhoto" autoMapping="true">
+			<id column="code" property="code"/>
+		</association>
+		
+		
+	</resultMap>
+
 	
 	<insert id="add">
 		INSERT into babysitter(username, password, name, phone, email, gender, age, major, scope, avgRating, content, open, provider, status, insurance, document, other, worktime, cctv, nickname, startday, salary, career, title)
@@ -97,8 +106,10 @@
 	</select>
 	
 	<select id="item" resultMap="BabySitterMap">
-		SELECT babysitter.*, sitterphoto.code, sitterphoto.username pid, sitterphoto.filename, sitterphoto.uuid
-		FROM babysitter LEFT JOIN sitterphoto ON babysitter.username=sitterphoto.username
+		SELECT babysitter.*, sitterphoto.code, sitterphoto.username pid, sitterphoto.filename, sitterphoto.uuid, sitteraddress.*
+		FROM babysitter 
+		LEFT JOIN sitterphoto ON babysitter.username=sitterphoto.username
+		LEFT JOIN sitteraddress ON babysitter.username=sitteraddress.username
 		WHERE babysitter.username=#{username}
 	</select>
 	
@@ -118,5 +129,10 @@
 		WHERE code=#{code}
 	</select>
 		
+	<update id="update_address">
+		UPDATE sitteraddress
+		SET fulladdress=#{fullAddress},province=#{province},city=#{city},village=#{village},extra=#{extra}
+		WHERE username=#{username}
+	</update>
 	
 </mapper>

@@ -83,4 +83,10 @@ public class BabySitterDaoImpl implements BabySitterDao {
 		return sql.delete("babysitter.delete_image", code);
 	}
 
+	@Override
+	public void address(BabySitter sitterInfo) {
+		sql.update("babysitter.update_address", sitterInfo);
+		
+	}
+
 }
