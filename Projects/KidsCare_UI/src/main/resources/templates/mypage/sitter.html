@@ -35,6 +35,7 @@
             <div id="content1" class="tab-content">
 				<div class="info">
 			        <div class="profile">
+			        	<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="" id="null">
 						<img th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >        
 			        </div>
 				

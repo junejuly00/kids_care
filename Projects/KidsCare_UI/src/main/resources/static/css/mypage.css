@@ -131,8 +131,8 @@ a{
     width: 500px;
     height: 40px;
     margin-top: 10px;
-    border-radius: 5px ;
-    padding: 5px;
+    border-radius: 10px ;
+    padding: 5px 10px 5px 10px;
     border: solid 0.5px #ddd;
 }
 
@@ -148,6 +148,11 @@ a{
 
 .info .pofile img{
 	width: 250px;
+	height: auto;
+}
+
+#null{
+	width: 200px;
 	height: auto;
 }
 
@@ -240,7 +245,7 @@ a{
 }
 
 .info-myupdate{
-	width: 500px;
+	width: 522px;
 	display: flex;
 	justify-content: flex-end;
 }
