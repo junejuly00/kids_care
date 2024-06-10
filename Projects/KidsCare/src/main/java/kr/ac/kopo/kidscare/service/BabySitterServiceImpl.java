@@ -35,6 +35,7 @@ public class BabySitterServiceImpl implements BabySitterService {
 	@Override
 	public void update(BabySitter sitterInfo) {
 		dao.update(sitterInfo);
+		dao.address(sitterInfo);
 		
 		
 		SitterPhoto sitterphoto = sitterInfo.getPhotos();

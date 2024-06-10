@@ -12,28 +12,35 @@
 	
 	<div class="wrap">
 		<form method="post" enctype="multipart/form-data">
-		<div th:data-code="${sitterInfo.photos.code}" class="img-sec">
-			<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="" id="null">
+
+		<div th:data-code="${sitterInfo.photos.code}" th:if="${sitterInfo.photos.filename != null}">
+
 			<img th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >
         </div>
-
+        
+        <div>
+        	<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">
+		</div>
+		
 		<div class="upload_sec">
 			<button type="button" class="delete">사진 삭제</button>        
 			<input name="uploadFile" type="file">
 		</div>
 		
-		<div class="update-info">
-			<input type="text"name="username" th:value="${sitterInfo.username}" readonly="readonly">
-			<input type="password"name="password" th:value="${sitterInfo.password}">
-			<input type="text"name="gender" th:value="${sitterInfo.gender}" hidden="hidden">
-			<input type="text"name="name" th:value="${sitterInfo.name}" readonly="readonly">
-			<input type="text"name="open" th:value="${sitterInfo.open}" readonly="readonly">
-			<input type="text"name="phone" th:value="${sitterInfo.phone}">
-			<input type="text"name="email" th:value="${sitterInfo.email}">
-			<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
-			<input type="text"name="document" th:value="${sitterInfo.document}">
-			<input type="text"name="other" th:value="${sitterInfo.other}">
-		</div>
+
+		<input type="text"name="username" th:value="${sitterInfo.username}" readonly="readonly">
+		<input type="password"name="password" th:value="${sitterInfo.password}">
+		<input type="text"name="name" th:value="${sitterInfo.name}" readonly="readonly">
+		<input type="text"name="open" th:value="${sitterInfo.open}" readonly="readonly">
+		<input type="text"name="gender" th:value="${sitterInfo.gender}" readonly="readonly">
+		<input type="text"name="phone" th:value="${sitterInfo.phone}">
+		<input type="text"name="email" th:value="${sitterInfo.email}">
+		<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
+		<input type="text"name="document" th:value="${sitterInfo.document}">
+		<input type="text"name="other" th:value="${sitterInfo.other}">
+		<input type="text"name="fullAddress" th:value="${sitterInfo.fullAddress}">
+		
+
 		
 		<div class="update-btn">
 			<button>변경</button>
@@ -46,28 +53,31 @@
 	
 	<footer th:replace="/footer.html"></footer>
 		
-	<script type="text/javascript">
-		window.addEventListener("load", () =>{
-			    document.querySelectorAll(".delete").forEach(item => {
-			        const div = item.closest("div[data-code]");
 
-			        item.addEventListener("click", e => {
-			            e.preventDefault(); // 기본 동작을 막음
+	<script type="text/javascript" src="../../static/js/mypage-sitter.js"></script>
+	<script>
+	  window.addEventListener("load", () =>{
+		    document.querySelectorAll(".delete").forEach(item => {
+		        const div = item.closest("div[data-code]");
 
-			            fetch("http://localhost:9091/mypage/delete_image/" + div.dataset.code, {
-			                method: "GET",
-			            })
-			            .then(resp => {
-			                if(resp.ok) {
-			                    div.remove();
-			                } else {
-			                    // Handle error if needed
-			                    console.error("Failed to delete image.");
-			                }
-			            });
-			        });
-			    });
-			});
+		        item.addEventListener("click", e => {
+		            e.preventDefault(); // 기본 동작을 막음
+
+		            fetch("http://localhost:9091/mypage/delete_image/" + div.dataset.code, {
+		                method: "GET",
+		            })
+		            .then(resp => {
+		                if(resp.ok) {
+		                    div.remove();
+		                } else {
+		                    // Handle error if needed
+		                    console.error("Failed to delete image.");
+		                }
+		            });
+		        });
+		    });
+		});
+
 	</script>
 	
 </body>

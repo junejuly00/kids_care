@@ -31,4 +31,6 @@ public interface BabySitterDao {
 
 	int deleteImage(Long code);
 
+	void address(BabySitter sitterInfo);
+
 }

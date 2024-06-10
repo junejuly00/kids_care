@@ -20,7 +20,7 @@
 	
 	<update id="updateAddress">
 		UPDATE address
-		SET fulladdress=#{fullAddress},province=#{province},city=#{city},village=#{village}
+		SET fulladdress=#{fullAddress},province=#{province},city=#{city},village=#{village},extra=#{extra}
 		WHERE username=#{username}
 	</update>
 	
