@@ -31,7 +31,7 @@
 					<div class="group">
 						<input id="id" type="text" class="sitter_id" name="id"
 							placeholder="아이디를 입력해주세요">
-						<button class="id_check">중복확인</button>
+						<button class="id_check" type="button">중복확인</button>
 					</div>
 
 					<div class="group">
@@ -79,12 +79,15 @@
 					</div>
 
 					<div class="group">
-						<input type="text" class="address" placeholder="주소를 입력해주세요" name="address">
-						<button class="search_address">주소찾기</button>
+						<input type="text" id="address" class="address" placeholder="주소찾기 버튼을 눌러 주소를 입력해주세요" name="address" readonly>
+						<button id="address-btn" class="search_address" type="button">주소찾기</button>
+						<input type="text" name="province" id="province" hidden="true">
+						<input type="text" name="city" id="city" hidden="true">
+						<input type="text" name="village" id="village" hidden="true">
 					</div>
 
 					<div class="group">
-						<input type="text" placeholder="상세주소를 입력해주세요" class="address_detail" name="address_detail">
+						<input type="text" id="extra" placeholder="상세주소를 입력해주세요" class="address_detail" name="address_detail">
 					</div>
 
 					<div class="group">
@@ -101,11 +104,14 @@
 		</div>
 
 	</div>
-	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="../../static/js/juso.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="../../static/js/passwd_check.js"></script>
 	<script type="text/javascript" src="../../static/js/signup.js"></script>
 	
+
+
 	<footer th:replace="/footer.html"></footer>
 	
 </body>
