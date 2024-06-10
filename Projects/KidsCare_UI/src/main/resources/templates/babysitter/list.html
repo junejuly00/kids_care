@@ -57,6 +57,7 @@
 	                <tr th:each="sitterInfo : ${list}">
 	                
                     <td class="profile">
+
 						<div class="sitter-img">
 							<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/' + ${sitterInfo.photos.uuid} + '_' + ${sitterInfo.photos.filename}}" alt="">
 							<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">
@@ -66,7 +67,7 @@
 							<img src="../../static/image/icon-star.png" alt="">
 						</div>
 					 -->		
-						
+
 					</td>
 					
                     <td>
@@ -80,10 +81,9 @@
                     </td>
                 </tr>
 
-	               
-	            </tbody>
-	        </table>
-	    </div>
+            </tbody>
+        </table>
+    </div>
 
     <div class="pagination">
         <ul>
