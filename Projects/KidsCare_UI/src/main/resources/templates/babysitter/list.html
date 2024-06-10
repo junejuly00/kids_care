@@ -25,7 +25,7 @@
     
     <div>
             <form  class="search-form">
-	    		<div  class="search">
+	    		<div  class="sitter-search">
 	    			<select name="search" >
 	    				<option value="1" th:selected="${pager.search == 1}">연봉적은순</option>
         				<option value="2" th:selected="${pager.search == 2}">경력많은순</option>
@@ -38,46 +38,53 @@
 	    </div>
 	    
     <div class="table">
-        <table>
-            <thead>
-                <tr>
-                    <th>사진</th>
-                    <th class="title">이름</th>
-                    <th>경력</th>
-                    <th>연봉</th>
-                    <th>관리</th>
-                </tr>
-                
-               
-            </thead>
-            
-            <tbody>
-            	<tr th:if="${list.size() < 1}">
-                  <td colspan="5">등록된 글이 없습니다.</td>
-               </tr>
-            
-                <tr th:each="sitterInfo : ${list}">
+	        <table>
+	            <thead>
+	                <tr>
+		                <th>시터 프로필</th>
+	                    <th>이름</th>
+	                    <th>경력</th>
+	                    <th>연봉</th>
+	                </tr>
+	            </thead>
+	            
+	            <tbody>
+	            	<tr th:if="${list.size() < 1}">
+	                  <td colspan="4">등록된 시터가 없습니다.</td>
+	               </tr>
+	            
+	            	
+	                <tr th:each="sitterInfo : ${list}">
+	                
                     <td class="profile">
-							<div class="td1">
-								<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/'+ ${sitterInfo.photos.uuid} + '_' + ${sitterInfo.photos.filename}}" alt="">
-								<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="" style="width:100px;">
-								
-							</div>
-							
-							
-							
-							<div class="td1-1">
-								<img src="image/icon-star.png" alt="" style="width: 17px;">
-							</div>
+
+						<div class="sitter-img">
+							<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/' + ${sitterInfo.photos.filename} + '.png'}" alt="">
+							<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">
+						</div>
+					<!-- 
+						<div class="star">
+							<img src="../../static/image/icon-star.png" alt="">
+						</div>
+					 -->		
+
 					</td>
-                    <td><a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.username}"></a></td>
-                    <td th:text="${sitterInfo.career}"></td>
-                    <td th:text="${sitterInfo.salary}"></td>
-                    <td><a th:href="@{'/babysitter/update/' + ${sitterInfo.username}}">변경쓰</a></td>
+					
+                    <td>
+                    	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.username}"></a>
+                    </td>
+                    <td>
+                    	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.career}"></a>
+                    </td>
+                    <td>
+                    	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.salary}"></a>
+                    </td>
                 </tr>
+
             </tbody>
         </table>
     </div>
+
     <div class="pagination">
         <ul>
             <li class="prev"><a href="#">이전</a></li>

@@ -96,16 +96,28 @@ public class MypageController {
 	}
 
 	@GetMapping("/sitter")
-	String sitter(Model model) {
+	String sitter(Model model) throws JsonMappingException, JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
-
+		
+		String postResp = rest.getForObject("http://localhost:9090/kcuserpost/mypost/" + username, String.class);
+		List<KCUserPost> postList = om.readValue(postResp, new TypeReference<List<KCUserPost>>() {
+		});
+		
+		String comResp = rest.getForObject("http://localhost:9090/comment/user/" + username, String.class);
+		List<Comment> comList = om.readValue(comResp, new TypeReference<List<Comment>>() {
+		});
+		
 		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username,
 				BabySitter.class);
+		
 		model.addAttribute("sitterInfo", sitterInfo);
+		model.addAttribute("postList", postList);
+		model.addAttribute("comList", comList);
+		
 
 		return "mypage/sitter";
 

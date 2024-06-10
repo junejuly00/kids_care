@@ -13,104 +13,73 @@
     align-items: center;
 }
 
+table, th, td {
+    border: 0.5px solid #000;
+    border-collapse: collapse;
+}
+
+.profil table th,
+.dream table th,
+.career table th{
+    background-color: #E3F0FB;
+    height: 50px;
+    text-align: start;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.review table th{
+	background-color: #E3F0FB;
+    height: 50px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.review table td{
+	height: auto;
+	padding: 20px 10px 20px 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#notthing td{
+	height: auto;
+	padding: 20px 10px 20px 10px;
+	text-align: start;
+	font-size: 18px;
+}
+
+table td{
+    text-align: start;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.wrap h3 {
+	font-size: 20px;
+	margin: 0 0 15px 0;
+}
+
 .title{
     width: 1000px;
-    height: 40px;
+    height: 50px;
     background-color: #fff;
-    border: 5px solid #D9EFB0;
+    border: 5px solid #E3F0FB;
     display: flex;
     align-items: center;
     margin-top: 150px;
 }
 
-#title_txt{
+.title p{
  margin-left: 10px;
- font-size: 18px;
+ font-size: 20px;
  font-weight: bold;
 }
 
-.profil{
-    margin-top: 66px;
-}
-
-.profil .profil_group h3{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.dream{
-    margin-top: 66px;
-}
-
-.dream .dream_group h3{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-table, th, td {
-    border: 0.5px solid black;
-    border-collapse: collapse;
-}
-
-.profil .profil_group table th, .dream .dream_group table th{
-    background-color: #D9EFB0;
-    height: 40px;
-    text-align: start;
-    padding-left: 10px;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.profil .profil_group table td, .dream .dream_group table td{
-    text-align: start;
-    padding-left: 10px;
-    font-size: 14px;
-}
-
-.career{
-    margin-top: 66px;
-}
-
-.career .career_group h3{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.certificate{
-    margin-top: 66px;
-}
-
-
-.certificate .certificate_group h3{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.career table, .certificate table{
-    width: 1000px;
-}
-
-.career table thead tr, .certificate table thead tr{
-    background-color: #D9EFB0;
-    height: 40px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.career table td, .certificate table td{
-    height: 40px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.introduce{
-    margin-top: 66px;
-}
-
-
-.introduce h3{
-    font-size: 16px;
-    margin-bottom: 10px;
+.profil, .dream, .career, .introduce, .review{
+    margin-top: 50px;
 }
 
 .introduce_box{
@@ -123,48 +92,21 @@ table, th, td {
     padding: 20px 10px 20px 10px;
 }
 
-.review{
-    margin-top: 66px;
-}
-
-
-.review h3{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.review_box{
-    border: 0.5px solid #000;
-    width: 1000px;
-    height: auto;
-}
-
 .review_txt{
     padding: 20px 10px 20px 10px;
-}
-
-a{
-    color: black;
-    transition: 0.2s linear;
-}
-a:hover{
-    color:green;
-}
-a:active{
-    color:white;
 }
 
 .yes_no{
     width: 1000px;
     height: auto;
     display: flex;
-    margin: 100px 0 30px 0;
+    margin: 100px 0 150px 0;
     justify-content: center;
 }
 
 .yes{
-    width: 120px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     background-color: #FFE371;
     border-radius: 10px;
     font-size: 20px;
@@ -175,13 +117,13 @@ a:active{
 }
 
 .no{
-    width: 120px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     background-color: #FFE371;
     border-radius: 10px;
     font-size: 20px;
     text-align: center;
-    margin-left: 50px;
+    margin-left: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
