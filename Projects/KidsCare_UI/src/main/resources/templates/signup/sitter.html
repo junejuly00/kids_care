@@ -29,18 +29,18 @@
 					</div>
 
 					<div class="group">
-						<input id="id" type="text" class="sitter_id" name="id"
+						<input id="id" type="text" class="sitter_id" name="username"
 							placeholder="아이디를 입력해주세요">
 						<button class="id_check" type="button">중복확인</button>
 					</div>
 
 					<div class="group">
-						<input name="passwd" id="passwd" type="password" data-type="password" 
+						<input name="password" id="passwd" type="password" data-type="password" 
 						placeholder="비밀번호를 입력해주세요" required="required">
 					</div>
 
 					<div class="group">
-						<input name="check_pw" id="check_pw" type="password" required="required" onchange="check()"
+						<input id="check_pw" type="password" required="required" onchange="check()"
 							 placeholder="비밀번호를 확인해주세요">
 					</div>
 					
@@ -49,12 +49,13 @@
 					</div>
 
 					<div class="group">
-						<input type="text" placeholder="성명을 입력해주세요" class="name" name="neme">
+						<input type="text" placeholder="성명을 입력해주세요" class="name" name="name">
 					</div>
 
 					<div class="group">
-						<input type="date" data-placeholder="출생일을 선택해주세요" class="birth"
+						<input id="birth" type="date" data-placeholder="출생일을 선택해주세요" class="birth"
 							required name="birth">
+						<input id="age" name="age" type="text" hidden="true">
 					</div>
 
 					<div class="group">
@@ -109,6 +110,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="../../static/js/passwd_check.js"></script>
 	<script type="text/javascript" src="../../static/js/signup.js"></script>
+	<script type="text/javascript" src="../../static/js/age.js"></script>
 	
 
 

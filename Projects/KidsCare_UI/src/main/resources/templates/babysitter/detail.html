@@ -35,7 +35,8 @@
 
                         <tr>
                             <th>이름 / 나이 / 성별</th>
-                            <td th:text="|${sitterInfo.name} / ${sitterInfo.age} / ${sitterInfo.gender}|"></td>
+                            <td th:if="${sitterInfo.gender == 1}" th:text="|${sitterInfo.name} / ${sitterInfo.age} / 남성|"></td>
+                            <td th:if="${sitterInfo.gender == 2}" th:text="|${sitterInfo.name} / ${sitterInfo.age} / 여성|"></td>
                         </tr>
 
                         <tr>
@@ -87,7 +88,8 @@
 
                         <tr>
                             <th>CCTV</th>
-                            <td th:text="${sitterInfo.cctv}"></td>
+                            <td th:if="${sitterInfo.cctv == 0}" th:text="가능"></td>
+                            <td th:if="${sitterInfo.cctv == 1}" th:text="불가능"></td>
                         </tr>
 
                         <tr>

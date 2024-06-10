@@ -16,4 +16,6 @@ public interface ReservationDao {
 
 	List<Reservation> parentPastList(String username);
 
+	Integer count(String sittername);
+
 }

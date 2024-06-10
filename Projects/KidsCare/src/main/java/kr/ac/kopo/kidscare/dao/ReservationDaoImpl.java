@@ -41,4 +41,9 @@ public class ReservationDaoImpl implements ReservationDao {
 		return sql.selectList("reservation.pastparent", username);
 	}
 
+	@Override
+	public Integer count(String sittername) {
+		return sql.selectOne("reservation.count");
+	}
+
 }
