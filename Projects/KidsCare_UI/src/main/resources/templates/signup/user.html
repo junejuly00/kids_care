@@ -24,18 +24,18 @@
 				<form method="post" class="info">
 
 					<div class="group">
-						<input id="id" type="text" class="id" name="id"
+						<input id="id" type="text" class="id" name="username"
 							placeholder="아이디를 입력해주세요">
 						<button class="id_check" type="button">중복확인</button>
 					</div>
 
 					<div class="group">
-						<input name="passwd" id="passwd" type="password" data-type="password" 
+						<input name="password" id="passwd" type="password" data-type="password" 
 						placeholder="비밀번호를 입력해주세요" required="required">
 					</div>
 
 					<div class="group">
-						<input name="check_pw" id="check_pw" type="password" required="required" onchange="check()"
+						<input id="check_pw" type="password" required="required" onchange="check()"
 							 placeholder="비밀번호를 확인해주세요">
 					</div>
 					
@@ -44,7 +44,7 @@
 					</div>
 
 					<div class="group">
-						<input type="text" placeholder="성명을 입력해주세요" class="name" name="neme">
+						<input type="text" placeholder="성명을 입력해주세요" class="name" name="name">
 					</div>
 
 					<div class="group">
@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="group">
-						<input type="email" placeholder="메일을 입력해주세요" class="mail" name="mail">
+						<input type="email" placeholder="메일을 입력해주세요" class="mail" name="email">
 						<span id="dd">@</span> <select name="email_address"
 							class="email_choice">
 							<option value="naver.com">naver.com</option>

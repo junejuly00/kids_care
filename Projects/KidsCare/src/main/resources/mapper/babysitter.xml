@@ -9,12 +9,7 @@
 			<id column="code" property="code"/>
 		</association>
 		
-		<association property="address" column="username" javaType="Address" autoMapping="true">
-			<id column="fullAddress" property="fullAddress" />
-			<id column="province" property="province" />
-			<id column="city" property="city" />
-			<id column="village" property="village" />
-		</association>
+		
 	</resultMap>
 
 	<select id="list" resultMap="BabySitterMap">		
@@ -72,15 +67,7 @@
 	</select>
 	
 
-	<resultMap type="BabySitter" id="BabySitterMap" autoMapping="true">
-		<id column="username" property="username"/>
-		
-		<association property="photos" column="pid" javaType="SitterPhoto" autoMapping="true">
-			<id column="code" property="code"/>
-		</association>
-		
-		
-	</resultMap>
+	
 
 	
 	<insert id="add">

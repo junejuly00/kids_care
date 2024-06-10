@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sitterAddress">
+<mapper namespace="sitteraddress">
 	<select id="list">
 		SELECT *
 		FROM sitteraddress
@@ -25,7 +25,7 @@
 	
 	<update id="sitterAddressUpdate">
 		UPDATE sitteraddress
-		SET fulladdress=#{fullAddress}, province=#{province}, city=#{city}, village=#{village}
+		SET fulladdress=#{fullAddress}, province=#{province}, city=#{city}, village=#{village}, extra=#{extra}
 		WHERE username=#{username}
 	</update>
 </mapper>

@@ -16,22 +16,22 @@ public class SitterAddressDaoImpl implements SitterAddressDao {
 
 	@Override
 	public List<SitterAddress> list() {
-		return sql.selectList("sitterAddress.list");
+		return sql.selectList("sitteraddress.list");
 	}
 
 	@Override
 	public void add(SitterAddress sitterAddressInfo) {
-		sql.insert("sitterAddress.add",sitterAddressInfo);
+		sql.insert("sitteraddress.add",sitterAddressInfo);
 	}
 
 	@Override
 	public SitterAddress sitterAddressInfo(String username) {
-		return sql.selectOne("sitterAddress.search",username);
+		return sql.selectOne("sitteraddress.search",username);
 	}
 
 	@Override
 	public void update(SitterAddress sitterAddressInfo) {
-		sql.update("sitterAddress.update",sitterAddressInfo);
+		sql.update("sitteraddress.update",sitterAddressInfo);
 	}
 
 }

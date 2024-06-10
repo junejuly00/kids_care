@@ -16,12 +16,12 @@ public class AddressDaoImpl implements AddressDao {
 
 	@Override
 	public List<Address> list() {
-		return sql.selectList("mapper.address.list");
+		return sql.selectList("address.list");
 	}
 
 	@Override
 	public void add(Address addressInfo) {
-		sql.insert("mapper.address.add",addressInfo);
+		sql.insert("address.add",addressInfo);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class AddressDaoImpl implements AddressDao {
 
 	@Override
 	public void update(Address addressInfo) {
-		sql.update("mapper.address.update",addressInfo);
+		sql.update("address.update",addressInfo);
 	}
 
 }

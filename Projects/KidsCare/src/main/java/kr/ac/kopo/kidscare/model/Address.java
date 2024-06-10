@@ -6,6 +6,7 @@ public class Address {
 	private String province;
 	private String city;
 	private String village;
+	private String extra;
 	
 	public String getUsername() {
 		return username;
@@ -36,5 +37,11 @@ public class Address {
 	}
 	public void setVillage(String village) {
 		this.village = village;
+	}
+	public String getExtra() {
+		return extra;
+	}
+	public void setExtra(String extra) {
+		this.extra = extra;
 	}
 }

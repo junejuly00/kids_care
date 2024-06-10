@@ -13,12 +13,12 @@
 	
 	<insert id="add">
 		INSERT into address
-		VALUES(#{username},#{fullAddress},#{province},#{city},#{village})
+		VALUES(#{username},#{fullAddress},#{province},#{city},#{village},#{extra})
 	</insert>
 	
 	<update id="update">
 		UPDATE address
-		SET fullAddress=#{fullAddress},province=#{province},city=#{city},village=#{village}
+		SET fullAddress=#{fullAddress},province=#{province},city=#{city},village=#{village}, extra=#{extra}
 		WHERE username=#{username}
 	</update>
 	
