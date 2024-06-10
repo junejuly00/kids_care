@@ -91,6 +91,10 @@ header .user a, header .user p{
     padding: 10px;
 }
 
+header .user .img {
+	padding: 3px;
+}
+
 #top_btn{
 	position: fixed;
 	bottom: 10px;
@@ -102,3 +106,5 @@ header .user a, header .user p{
 	width: 80%;
 	height: auto;
 }
+
+

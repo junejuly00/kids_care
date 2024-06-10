@@ -20,14 +20,15 @@
         
         	<p th:if="${session.currName != 'anonymousUser'}" th:text="${session.currName} + '님 안녕하세요'"></p>
         	
-        	<a th:if="${#strings.equals(session.curRole, '[ROLE_USER]')}" href="/mypage/parents">내 정보</a>
-        	<a th:if="${#strings.equals(session.curRole, '[ROLE_SITTER]')}" href="/mypage/sitter">내 정보</a>
+        	<a class="textlink" th:if="${#strings.equals(session.curRole, '[ROLE_USER]')}" href="/mypage/parents">내 정보</a>
+        	<a class="textlink" th:if="${#strings.equals(session.curRole, '[ROLE_SITTER]')}" href="/mypage/sitter">내 정보</a>
             
-            <a th:href="@{/login/all}" th:if="${session.currName == 'anonymousUser'}">로그인</a>
+            <a class="textlink" th:href="@{/login/all}" th:if="${session.currName == 'anonymousUser'}">로그인</a>
             
-            <a href="/signup" th:if="${session.currName == 'anonymousUser'}">회원가입</a>
+            <a class="textlink" href="/signup" th:if="${session.currName == 'anonymousUser'}">회원가입</a>
             
-            <a th:href="@{/logout}" th:if="${session.currName != 'anonymousUser'}">로그아웃</a>
+            <a class="textlink" th:href="@{/logout}" th:if="${session.currName != 'anonymousUser'}">로그아웃</a>
+            <a  th:href="@{/mypage/sitter}"> <img alt="notification" src="/static/image/bell.webp" width="36px"> </a>
             
         </div>
     </header>
