@@ -64,12 +64,7 @@
 			<id column="code" property="code"/>
 		</association>
 		
-		<association property="address" column="username" javaType="Address" autoMapping="true">
-			<id column="fullAddress" property="fullAddress" />
-			<id column="province" property="province" />
-			<id column="city" property="city" />
-			<id column="village" property="village" />
-		</association>
+		
 	</resultMap>
 	
 	<insert id="add">
@@ -95,8 +90,10 @@
 	</select>
 	
 	<select id="item" resultMap="BabySitterMap">
-		SELECT babysitter.*, sitterphoto.code, sitterphoto.username pid, sitterphoto.filename, sitterphoto.uuid
-		FROM babysitter LEFT JOIN sitterphoto ON babysitter.username=sitterphoto.username
+		SELECT babysitter.*, sitterphoto.code, sitterphoto.username pid, sitterphoto.filename, sitterphoto.uuid, sitteraddress.*
+		FROM babysitter 
+		LEFT JOIN sitterphoto ON babysitter.username=sitterphoto.username
+		LEFT JOIN sitteraddress ON babysitter.username=sitteraddress.username
 		WHERE babysitter.username=#{username}
 	</select>
 	
@@ -116,5 +113,10 @@
 		WHERE code=#{code}
 	</select>
 		
+	<update id="update_address">
+		UPDATE sitteraddress
+		SET fulladdress=#{fullAddress},province=#{province},city=#{city},village=#{village},extra=#{extra}
+		WHERE username=#{username}
+	</update>
 	
 </mapper>

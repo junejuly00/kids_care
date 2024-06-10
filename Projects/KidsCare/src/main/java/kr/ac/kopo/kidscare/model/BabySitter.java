@@ -25,9 +25,14 @@ public class BabySitter {
 	private String salary;
 	private String career;
 	private String title;
+	
 	private SitterPhoto photos;
-
-	private Address address;
+	
+	private String fullAddress;
+	private String province;
+	private String city;
+	private String village;
+	private String extra;
 	
 	public String getName() {
 		return name;
@@ -179,11 +184,36 @@ public class BabySitter {
 	public void setPhotos(SitterPhoto photos) {
 		this.photos = photos;
 	}
-	public Address getAddress() {
-		return address;
+	
+	public String getFullAddress() {
+		return fullAddress;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setFullAddress(String fullAddress) {
+		this.fullAddress = fullAddress;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getVillage() {
+		return village;
+	}
+	public void setVillage(String village) {
+		this.village = village;
+	}
+	public String getExtra() {
+		return extra;
+	}
+	public void setExtra(String extra) {
+		this.extra = extra;
 	}
 	
 }

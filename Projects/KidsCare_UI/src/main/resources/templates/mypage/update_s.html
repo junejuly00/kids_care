@@ -9,11 +9,15 @@
 <body>
 	<div class="wrap">
 		<form method="post" enctype="multipart/form-data">
-		<div th:data-code="${sitterInfo.photos.code}">
+		<div th:data-code="${sitterInfo.photos.code}" th:if="${sitterInfo.photos.filename != null}">
 			<img th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >
 			<button type="button" class="delete">삭제</button>        
         </div>
-
+        
+        <div>
+        	<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">
+		</div>
+		
 		<div class="upload_sec">
 			<div class="upload_btn">
 				<input name="uploadFile" type="file">
@@ -30,6 +34,7 @@
 		<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
 		<input type="text"name="document" th:value="${sitterInfo.document}">
 		<input type="text"name="other" th:value="${sitterInfo.other}">
+		<input type="text"name="fullAddress" th:value="${sitterInfo.fullAddress}">
 		
 		
 		
@@ -40,6 +45,29 @@
 	</div>
 		
 	<script type="text/javascript" src="../../static/js/mypage-sitter.js"></script>
+	<script>
+	  window.addEventListener("load", () =>{
+		    document.querySelectorAll(".delete").forEach(item => {
+		        const div = item.closest("div[data-code]");
+
+		        item.addEventListener("click", e => {
+		            e.preventDefault(); // 기본 동작을 막음
+
+		            fetch("http://localhost:9091/mypage/delete_image/" + div.dataset.code, {
+		                method: "GET",
+		            })
+		            .then(resp => {
+		                if(resp.ok) {
+		                    div.remove();
+		                } else {
+		                    // Handle error if needed
+		                    console.error("Failed to delete image.");
+		                }
+		            });
+		        });
+		    });
+		});
+	</script>
 	
 </body>
 </html>

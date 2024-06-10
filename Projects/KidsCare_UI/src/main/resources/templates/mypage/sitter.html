@@ -35,14 +35,15 @@
             <div id="content1" class="tab-content">
 				<div class="info">
 			        <div class="profile">
-						<img th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >        
+						<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >
+						<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">        
 			        </div>
 				
 					 <input value="아이디" th:value="${sitterInfo.username}"  readonly>
 	                 <input value="이름" th:value="${sitterInfo.name}" readonly>
 	                 <input value="연락처" th:value="${sitterInfo.phone}" readonly>
 	                 <input value="이메일" th:value="${sitterInfo.email}" readonly>
-	                 <input value="주소" readonly>
+	                 <input value="주소" th:value="${sitterInfo.fullAddress}" readonly>
 					
 					<div class="info-myupdate">
 			        	<a th:href="@{'sitter/update/'+ ${sitterInfo.username}}">정보 수정</a>
@@ -72,7 +73,7 @@
 			                    <tbody>
 			                        <tr>
 			                            <th>거주지</th>
-			                            <td>대충 자세한 주소(TODO)</td>
+			                            <td th:text="${sitterInfo.fullAddress}"></td>
 			                        </tr>
 			
 			                        <tr>

@@ -33,6 +33,7 @@ import kr.ac.kopo.kidscare.model.Comment;
 import kr.ac.kopo.kidscare.model.KCUser;
 import kr.ac.kopo.kidscare.model.KCUserPost;
 import kr.ac.kopo.kidscare.model.Reservation;
+import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.model.UserReview;
 
@@ -114,6 +115,10 @@ public class MypageController {
 		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username,
 				BabySitter.class);
 		
+		SitterAddress addressInfo = rest.getForObject("http://localhost:9090/sitteraddress/find/" + username, 
+				SitterAddress.class);
+		
+		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterInfo", sitterInfo);
 		model.addAttribute("postList", postList);
 		model.addAttribute("comList", comList);
@@ -167,7 +172,7 @@ public class MypageController {
 	}
 
 	@PostMapping("/sitter/update/{username}")
-	String updateSitter(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile) throws JsonProcessingException {
+	String updateSitter(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile, SitterAddress sitterAddressInfo) throws JsonProcessingException {
 		sitterInfo.setUsername(username);
 		
 		if(uploadFile != null && !uploadFile.isEmpty()) {
