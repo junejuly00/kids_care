@@ -40,10 +40,19 @@
 						<input value="연락처" th:value="${userInfo.phone}" readonly> 
 						<input value="이메일" th:value="${userInfo.email}" readonly> 
 						<input value="주소" th:value="${userInfo.fullAddress}" readonly>
+						
+						<div class="info-myupdate">
+			        		<a th:href="@{'update/'+ ${userInfo.username}}">정보 수정</a>
+			        	</div>
 					</div>
+					
+					
 
 
 				</div>
+				
+					
+			        
 				<div id="content2" class="tab-content">
 					<div class="my-community">
 						<table>
@@ -65,10 +74,16 @@
 										th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
 									<td><a th:text="${postInfo.postdate}"
 										th:href="@{/kcuserpost/post/{postid}(postid = ${postInfo.userPostId})}"></a></td>
+										
+								
+										
 								</tr>
 							</tbody>
 						</table>
 					</div>
+					
+														
+							
 				</div>
 				<div id="content3" class="tab-content">
 					<div class="my-comment">
