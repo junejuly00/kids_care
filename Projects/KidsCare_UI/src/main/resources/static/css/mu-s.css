@@ -7,16 +7,20 @@
 }
 
 .wrap{
-    margin: 50px auto;
-    width: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#null{
-	width: 200px;
-	height: auto;
+.container {
+   margin: 120px 0;
+   width: 1360px;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #ddd;
+   border-radius: 5px;
 }
 
 .img-sec{
@@ -25,6 +29,23 @@
 	display: flex;
 	justify-content: center;
 }
+
+.not-null{
+	width: 200px;
+	height: 200px;
+	border-radius: 150px;
+	overflow: hidden;
+}
+
+.not-null img{
+	width: 100%;
+	height: auto;
+}
+
+.null img{
+	width: 200px;
+	height: auto;
+} 
 
 .upload_sec{
 	width: 522px;

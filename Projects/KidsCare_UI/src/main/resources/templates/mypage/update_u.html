@@ -2,22 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>KIDS CARE</title>
+<link th:href="@{/static/css/mu-u.css}" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 </head>
 <body>
-   <form method="post">
-<input type="text"name="username" th:value="${userInfo.username}" readonly="readonly">
-      <input type="text"name="name" th:value="${userInfo.name}" readonly="readonly">
-      <input type="text"name="password" th:value="${userInfo.password}">
-      <input type="text"name="phone" th:value="${userInfo.phone}">
-      <input type="text"name="email" th:value="${userInfo.email}">
-      <input type="text"name="fullAddress" th:value="${userInfo.fullAddress}">      
-      <input type="text"name="role" th:value="${userInfo.role}" hidden>
-      
-      
-      <button>등록</button>   
-   </form>      
+
+<nav th:replace="/nav.html"></nav>
+
+<div class="wrap">
+	<div class="container">
+		<form method="post" class="update-info">
    
+		  	<input type="text"name="username" th:value="${userInfo.username}" readonly="readonly">
+	      	<input type="text"name="name" th:value="${userInfo.name}" readonly="readonly">
+	      	<input type="password"name="password" th:value="${userInfo.password}">
+	      	<input type="text"name="phone" th:value="${userInfo.phone}">
+	      	<input type="text"name="email" th:value="${userInfo.email}">
+	      	<input type="text"name="fullAddress" th:value="${userInfo.fullAddress}">      
+	      	<input type="text"name="role" th:value="${userInfo.role}" hidden>
+	      
+	      
+	     	<div class="update-btn">
+				<button>변경</button>
+			</div>
+   		</form>      
+	</div>
+   
+ </div>
+   
+   <footer th:replace="/footer.html"></footer>
    
 </body>
 </html>

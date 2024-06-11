@@ -116,7 +116,7 @@ html{
 
 .text-wrap2 p{
 	font-size: 22px;
-	color: #1E9400;
+	color: #000;
 }
 
 .swiper-slide-active .text-wrap3{
@@ -147,7 +147,7 @@ html{
 
 .text-wrap3 p{
 	font-size: 22px;
-	color: #FFA62F;
+	color: #000;
 }
 
 .swiper-button-next.swiper-button-disabled,
@@ -369,10 +369,10 @@ html{
 
 .review-box{
 	width: 250px;
-	height: 150px;
+	height: 180px;
 	background-color: #fff;
 	border-radius: 10px;
-	padding: 30px;
+	padding: 15px;
 	margin: 0 12px 0 12px;
 }
 
@@ -387,7 +387,7 @@ html{
 }
 
 .review-box .review-content{
-	height:100px;
+	height:120px;
 	overflow: hidden;
 	display: flex;
 	margin-top: 10px;
