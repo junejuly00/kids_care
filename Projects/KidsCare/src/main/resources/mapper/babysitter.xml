@@ -75,6 +75,11 @@
 		VALUES (#{username},#{password},#{name},#{phone},#{email},#{gender},#{age},#{major},#{scope},#{avgRating},#{content},#{open},#{provider},#{status},#{insurance},#{document},#{other},#{worktime},#{cctv},#{nickname},#{startday},#{salary},#{career},#{title})		
 	</insert>
 	
+	<insert id="new_address">
+		INSERT into sitteraddress(username, fulladdress, province, city, village, extra)
+		VALUES (#{username}, #{fullAddress}, #{city}, #{village}, #{extra})
+	</insert>
+	
 	<update id="update">
 		UPDATE babysitter
 		SET password=#{password},name=#{name},phone=#{phone},email=#{email},gender=#{gender},
