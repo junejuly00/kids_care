@@ -44,4 +44,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.count(sittername);
 	}
 
+	@Override
+	public List<Reservation> sitterList(String sittername) {
+		return dao.sitterList(sittername);
+	}
+
+	@Override
+	public List<Reservation> sitterPastList(String sittername) {
+		return dao.sitterPastList(sittername);
+	}
+
 }

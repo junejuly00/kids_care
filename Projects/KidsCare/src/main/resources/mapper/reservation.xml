@@ -20,6 +20,16 @@
 		WHERE username=#{username}
 		AND resdate &gt; TO_CHAR(sysdate, 'YYYY-MM-DD"T"HH24:MI:SS')
 	</select>
+	<select id="sitter" resultType="Reservation">
+		SELECT * FROM reservation
+		WHERE sittername=#{sittername}
+		AND resdate &gt; TO_CHAR(sysdate, 'YYYY-MM-DD"T"HH24:MI:SS')
+	</select>
+	<select id="pastsitter" resultType="Reservation">
+		SELECT * FROM reservation 
+		WHERE sittername=#{sittername}
+		AND resdate &lt; TO_CHAR(sysdate ,'YYYY-MM-DD"T"HH24:MI:SS')
+	</select>
 	
 	<insert id="add">
 		INSERT INTO reservation(resId, username, sittername, resDate)

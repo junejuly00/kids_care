@@ -49,4 +49,9 @@ public class KCUserDaoImpl implements KCUserDao {
 		sql.insert("kcuser.address",userInfo);
 	}
 
+	@Override
+	public void newAddr(KCUser userInfo) {
+		sql.insert("kcuser.newAddr", userInfo);
+	}
+
 }
