@@ -12,6 +12,11 @@
 		VALUES (#{username},#{name},#{phone},#{email},#{role},#{provider},#{password},#{status})
 	</insert>
 	
+	<insert id="newAddr">
+		INSERT INTO address(username, fullAddress, province, city, village, extra)
+		VALUES(#{username}, #{fullAddress}, #{province}, #{city}, #{village}, #{extra})
+	</insert>
+	
 	<insert id="address">
 		INSERT INTO address(username, fullAddress, province, city, village, extra)
 		VALUES(#{username}, #{fullAddress}, #{province}, #{city}, #{village}, #{extra})
@@ -32,7 +37,7 @@
 	<select id="search" resultType="KCUser">
 		SELECT kcuser.*, address.*
 		FROM kcuser
-		JOIN address on kcuser.username=address.username
+		LEFT JOIN address on(kcuser.username=address.username)
 		WHERE kcuser.username=#{username}
 	</select>
 	

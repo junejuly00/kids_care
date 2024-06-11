@@ -44,6 +44,17 @@ public class ReservationController {
 		return list;
 	}
 	
+	@GetMapping("/sitter/{sittername}")
+	List<Reservation> sitterResvList(@PathVariable String sittername) {
+		List<Reservation> list = service.sitterList(sittername);
+		return list;
+	}
+	
+	@GetMapping("/sitter/past/{sittername}")
+	List<Reservation> sitterPastList(@PathVariable String sittername) {
+		List<Reservation> list = service.sitterPastList(sittername);
+		return list;
+	}
 	
 	@DeleteMapping("/delete/{resId}")
 	Integer delete(@PathVariable Long resId) {

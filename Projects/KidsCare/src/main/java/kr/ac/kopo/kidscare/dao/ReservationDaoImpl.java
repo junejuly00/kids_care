@@ -46,4 +46,14 @@ public class ReservationDaoImpl implements ReservationDao {
 		return sql.selectOne("reservation.count");
 	}
 
+	@Override
+	public List<Reservation> sitterList(String sittername) {
+		return sql.selectList("reservation.sitter", sittername);
+	}
+
+	@Override
+	public List<Reservation> sitterPastList(String sittername) {
+		return sql.selectList("reservation.pastsitter", sittername);
+	}
+
 }

@@ -23,6 +23,7 @@ public class KCUserServiceImpl implements KCUserService {
 	@Override
 	public void add(KCUser userInfo) {
 		dao.add(userInfo);
+		dao.newAddr(userInfo);
 	}
 
 	@Override

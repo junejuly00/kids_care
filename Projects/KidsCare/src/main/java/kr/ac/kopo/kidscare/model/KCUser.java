@@ -13,7 +13,8 @@ public class KCUser {
 	private String province;
 	private String city;
 	private String village;
-
+	private String extra;
+	
 	public String getFullAddress() {
 		return fullAddress;
 	}
@@ -108,6 +109,14 @@ public class KCUser {
 
 	public void setStatus(Byte status) {
 		this.status = status;
+	}
+
+	public String getExtra() {
+		return extra;
+	}
+
+	public void setExtra(String extra) {
+		this.extra = extra;
 	}
 
 }

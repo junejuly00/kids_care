@@ -52,7 +52,6 @@ public class MypageController {
 	String parents(Model model) throws JsonMappingException, JsonProcessingException {
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
-		// TODO if login
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		String username = auth.getName();
@@ -119,11 +118,19 @@ public class MypageController {
 		SitterAddress addressInfo = rest.getForObject("http://localhost:9090/sitteraddress/find/" + username, 
 				SitterAddress.class);
 		
+		String rsvResp = rest.getForObject("http://localhost:9090/reservation/sitter/" + username, String.class);
+		List<Reservation> rsvList = om.readValue(rsvResp, new TypeReference<List<Reservation>>() {});
+		
+		String rsvPastResp = rest.getForObject("http://localhost:9090/reservation/sitter/past/" + username,
+				String.class);
+		List<Reservation> rsvPastList = om.readValue(rsvPastResp, new TypeReference<List<Reservation>>() {});
+		
 		model.addAttribute("addressInfo", addressInfo);
 		model.addAttribute("sitterInfo", sitterInfo);
 		model.addAttribute("postList", postList);
 		model.addAttribute("comList", comList);
-		
+		model.addAttribute("rsvList", rsvList);
+		model.addAttribute("rsvPastList", rsvPastList);
 
 		return "mypage/sitter";
 

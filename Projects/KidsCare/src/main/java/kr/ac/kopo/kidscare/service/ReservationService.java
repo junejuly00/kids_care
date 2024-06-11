@@ -18,4 +18,8 @@ public interface ReservationService {
 
 	Integer count(String sittername);
 
+	List<Reservation> sitterList(String sittername);
+
+	List<Reservation> sitterPastList(String sittername);
+
 }

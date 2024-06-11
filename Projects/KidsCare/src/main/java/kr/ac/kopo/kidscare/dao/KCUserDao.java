@@ -19,5 +19,7 @@ public interface KCUserDao {
 
 	void address(KCUser userInfo);
 
+	void newAddr(KCUser userInfo);
+
 
 }

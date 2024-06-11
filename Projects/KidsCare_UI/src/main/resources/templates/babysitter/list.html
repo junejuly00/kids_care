@@ -3,7 +3,7 @@
 <head th:href="@{/fragment/head.html}">
   	<meta charset="UTF-8">  
     <title>KIDS CARE</title>
-    <link th:href="@{/static/css/community.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/static/css/sitter_list.css}" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/x-icon" th:href="@{/static/favicon.ico}">
 <body>
 
@@ -21,7 +21,7 @@
     </section>
 
 <div class="wrap">
-    <p class="community">시터 찾기</p>
+    <p class="community">KIDS CARE 시터 분들을 소개합니다</p>
     
     <div>
             <form  class="search-form">
@@ -71,7 +71,7 @@
 					</td>
 					
                     <td>
-                    	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.username}"></a>
+                    	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.name}"></a>
                     </td>
                     <td>
                     	<a th:href="@{'/babysitter/detail/' + ${sitterInfo.username}}" th:text="${sitterInfo.career}"></a>

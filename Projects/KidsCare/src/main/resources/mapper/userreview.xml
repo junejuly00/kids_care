@@ -22,11 +22,11 @@
 	
 	<select id="findsitter" resultType="UserReview">
 		SELECT * FROM userreview
-		WHERE username2=#{keyword}
+		WHERE username=#{keyword}
 	</select>
 	
 	<insert id="add">
-		INSERT into userreview(reviewId, username, username2, rating, reviewInfo, status)
+		INSERT into userreview(reviewId, username, sitterUsername, rating, reviewInfo, status)
 		VALUES (REVIEW_SEQ.nextval,#{username},#{sitterUsername},#{rating},#{reviewInfo},#{status})
 	</insert>
 	
