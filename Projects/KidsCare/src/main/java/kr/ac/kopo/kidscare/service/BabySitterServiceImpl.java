@@ -25,6 +25,7 @@ public class BabySitterServiceImpl implements BabySitterService {
 	@Override
 	public void add(BabySitter sitterInfo) {
 		dao.add(sitterInfo);
+		dao.newAddr(sitterInfo);
 	}
 
 	@Override

@@ -33,4 +33,6 @@ public interface BabySitterDao {
 
 	void address(BabySitter sitterInfo);
 
+	void newAddr(BabySitter sitterInfo);
+
 }
