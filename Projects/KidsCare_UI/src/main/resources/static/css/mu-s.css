@@ -6,6 +6,10 @@
     text-decoration-line: none;
 }
 
+button{
+	border: none
+}
+
 .wrap{
     display: flex;
     flex-direction: column;
@@ -55,8 +59,27 @@
 }
 
 .upload_sec input{
+	width: 84px;
+	height: 27px;
 	border-radius: 5px ;
 	border: solid 0.5px #ddd;
+}
+
+.delete{
+	width: 86px;
+	height: 27px;
+	border-radius: 5px;
+	margin: 0 10px 0 0;
+	background: #f0f0f0;
+	font-size: 16px;
+	border: solid 0.5px #959595;
+}
+
+.upload_btn{
+	font-size: 16px;
+}
+.upload_btn #file-upload-button{
+	height: 35px;
 }
 
 .update-info{
