@@ -29,15 +29,15 @@
 		
 
 		<input type="text"name="username" th:value="${sitterInfo.username}" readonly="readonly">
-		<input type="password"name="password" th:value="${sitterInfo.password}">
+		<input type="password"name="password" th:value="${sitterInfo.password}" readonly="readonly" hidden="true">
 		<input type="text"name="name" th:value="${sitterInfo.name}" readonly="readonly">
-		<input type="text"name="open" th:value="${sitterInfo.open}" readonly="readonly">
-		<input type="text"name="gender" th:value="${sitterInfo.gender}" readonly="readonly">
+		<input type="text"name="open" th:value="${sitterInfo.open}" readonly="readonly" hidden="true">
+		<input type="text"name="gender" th:value="${sitterInfo.gender}" readonly="readonly" hidden="true">
 		<input type="text"name="phone" th:value="${sitterInfo.phone}">
-		<input type="text"name="email" th:value="${sitterInfo.email}">
-		<input type="text"name="insurance" th:value="${sitterInfo.insurance}">
-		<input type="text"name="document" th:value="${sitterInfo.document}">
-		<input type="text"name="other" th:value="${sitterInfo.other}">
+		<input type="text"name="email" th:value="${sitterInfo.email}" >
+		<input type="text"name="insurance" th:value="${sitterInfo.insurance}" hidden="true">
+		<input type="text"name="document" th:value="${sitterInfo.document}" hidden="true">
+		<input type="text"name="other" th:value="${sitterInfo.other}" hidden="true">
 		<input type="text"name="fullAddress" th:value="${sitterInfo.fullAddress}">
 		
 

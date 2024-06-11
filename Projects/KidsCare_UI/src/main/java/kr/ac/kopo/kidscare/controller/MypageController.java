@@ -36,6 +36,7 @@ import kr.ac.kopo.kidscare.model.Reservation;
 import kr.ac.kopo.kidscare.model.SitterAddress;
 import kr.ac.kopo.kidscare.model.SitterPhoto;
 import kr.ac.kopo.kidscare.model.UserReview;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/mypage")
@@ -136,6 +137,9 @@ public class MypageController {
 
 		return "/mypage/update_u";
 	}
+	
+
+	
 
 	@PostMapping("/update/{username}")
 	String updateParent(@PathVariable String username, KCUser userInfo, Address addressInfo)
@@ -170,6 +174,8 @@ public class MypageController {
 
 		return "mypage/update_s";
 	}
+	
+	
 
 	@PostMapping("/sitter/update/{username}")
 	String updateSitter(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile, SitterAddress sitterAddressInfo) throws JsonProcessingException {
@@ -217,5 +223,55 @@ public class MypageController {
 		ResponseEntity<String> result = rest.exchange(req, String.class);
 		
 		return result;
+	}
+	
+	@GetMapping("/sitter/updatedetail/{username}")
+	String updateDetail(@PathVariable String username, Model model) {
+		
+		BabySitter sitterInfo = rest.getForObject("http://localhost:9090/babysitter/find/" + username,
+				BabySitter.class);
+
+		model.addAttribute("sitterInfo", sitterInfo);
+
+		return "mypage/update_j";
+	}
+	
+	@PostMapping("/sitter/updatedetail/{username}")
+	String updatedetail(@PathVariable String username, BabySitter sitterInfo, MultipartFile uploadFile, SitterAddress sitterAddressInfo) throws JsonProcessingException {
+		sitterInfo.setUsername(username);
+		
+		if(uploadFile != null && !uploadFile.isEmpty()) {
+			String filename = uploadFile.getOriginalFilename();
+			String uuid = UUID.randomUUID().toString();
+			
+			try {
+				uploadFile.transferTo(new File(uploadPath + uuid + "_" + filename));
+				
+				SitterPhoto img = new SitterPhoto();
+				img.setFilename(filename);
+				img.setUuid(uuid);
+				img.setUsername(username);
+				
+				sitterInfo.setPhotos(img);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json");
+
+		String jsonString = om.writeValueAsString(sitterInfo);
+
+		HttpEntity<String> req = new HttpEntity<String>(jsonString, header);
+
+		ResponseEntity<Integer> resp = rest.exchange("http://localhost:9090/babysitter/find/" + username,
+				HttpMethod.PUT, req, Integer.class);
+
+		Integer result = resp.getBody();
+
+		System.out.println(result);
+
+		return "redirect:/mypage/sitter";
 	}
 }
