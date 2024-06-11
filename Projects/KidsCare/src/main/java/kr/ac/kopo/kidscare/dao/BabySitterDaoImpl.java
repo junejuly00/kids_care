@@ -89,4 +89,10 @@ public class BabySitterDaoImpl implements BabySitterDao {
 		
 	}
 
+	@Override
+	public void newAddr(BabySitter sitterInfo) {
+		sql.insert("babysitter.new_address", sitterInfo);
+		
+	}
+
 }
