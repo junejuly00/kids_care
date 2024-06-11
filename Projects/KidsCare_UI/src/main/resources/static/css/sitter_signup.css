@@ -77,7 +77,7 @@ a {
 .name,
 .phone,
 .address_detail,
-.email_choice,
+.mail,
 .birth,
 .certificate,
 .childs,
@@ -115,26 +115,7 @@ input[type='date']::before {
   font-size: 16px;
 }
 
-.mail {
-  width: 241.75px;
-  height: 50px;
-}
-
-#dd {
-  height: auto;
-  font-size: 16px;
-  border: none;
-  padding: 0 8px 0 8px;
-  font-size: 20px;
-}
-
-.email_choice {
-  width: 210px;
-  height: 50px;
-}
-
 input,
-.email_choice,
 .signup-form .group .button {
   border: none;
   padding: 10px 15px;

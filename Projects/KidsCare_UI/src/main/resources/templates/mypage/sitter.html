@@ -35,10 +35,8 @@
             <div id="content1" class="tab-content">
 				<div class="info">
 			        <div class="profile">
-
 						<img th:if="${sitterInfo.photos.filename != null}" th:src="@{'/upload/'+ ${sitterInfo.photos.uuid}+'_'+${sitterInfo.photos.filename}}" >
 						<img th:if="${sitterInfo.photos.filename == null}" th:src="@{/static/image/애기쪽쪽이.png}" alt="">        
-
 			        </div>
 				
 					 <input value="아이디" th:value="${sitterInfo.username}"  readonly>

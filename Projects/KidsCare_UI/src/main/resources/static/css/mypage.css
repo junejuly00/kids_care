@@ -137,17 +137,18 @@ a{
 }
 
 .info .profile{
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 150px;
+	margin: 0 0 20px 0;
 }
 
 .info .pofile img{
-	width: 250px;
+	width: 100%;
 	height: auto;
 }
 
@@ -201,6 +202,11 @@ a{
     text-align: start;
     padding-left: 10px;
     font-size: 18px;
+}
+
+.info img{
+	width: 200px;
+	height: auto;
 }
 
 .info h3 {
